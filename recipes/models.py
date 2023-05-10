@@ -13,6 +13,7 @@ def recipe_thumbnail_path(instance, filename):
 
 
 class Recipe(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=20)
     thumbnail_upload = models.ImageField(upload_to=recipe_thumbnail_path)
     thumbnail = ImageSpecField(
@@ -27,13 +28,14 @@ class Recipe(models.Model):
     content = RichTextUploadingField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    used_products = models.ManyToManyField("products.Product", related_name="used_recipes")
+    used_products = models.ManyToManyField("products.Product", related_name="used_recipes", null=True, blank=True)
 
     def __srt__(self):
         return self.title
 
 
 class Comment(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
     content = models.TextField()
     like_user = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="like_comments")
