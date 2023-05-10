@@ -8,6 +8,8 @@ from ckeditor_uploader.fields import RichTextUploadingField
 def comment_img_path(instance, filename):
     return f'images/comment/{instance.name}/{filename}'
 
+def recipe_thumbnail_path(instance, filename):
+    return f'images/recipe/thumbnail/{instance.title}/{filename}'
 
 def recipe_thumbnail_path(instance, filename):
     return f'images/recipe/thumbnail/{instance.title}/{filename}'
