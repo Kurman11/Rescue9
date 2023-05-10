@@ -4,8 +4,8 @@
   - 수정: 기존 존재하는 파일의 수정
   - 추가: 새로운 파일을 추가하는 경우
   - 삭제: 기존의 파일을 삭제하는 경우
-  - ex) 추가-recipeDetailPage
+  - ex) 추가-recipesDetailPage
 - branch 생성
   - feature/<본인이 작업한 내용 중 가장 핵심이 되는 내용>을 적는다
-  - ex) feature/recipeDetailPage
+  - ex) feature/recipesDetailPage
 - pull request에 본인이 작업한 내용을 간략히 작성한다
