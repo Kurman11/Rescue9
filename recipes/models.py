@@ -32,6 +32,11 @@ class Recipe(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     used_products = models.ManyToManyField("products.Product", related_name="used_recipes")
 
+    def __srt__(self):
+        return self.title
+
+    def get_absolute_url(self):
+        return reverse('recipe:detail', kwargs={'recipe_pk': self.pk})
 
 class Comment(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
