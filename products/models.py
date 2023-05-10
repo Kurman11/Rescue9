@@ -28,8 +28,8 @@ class Product(models.Model):
 
 
 class Review(models.Model):
-    user_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    product_id = models.ForeignKey(Product, blank=False, null=False, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, blank=False, null=False, on_delete=models.CASCADE)
     crated_at = models.DateTimeField(auto_now=True)
     updated_at = models.DateTimeField(auto_now=True)
     content = models.CharField(max_length=600)
@@ -37,7 +37,7 @@ class Review(models.Model):
     rating = models.FloatField()
 
 class Review_image(models.Model):
-    review_id = models.ForeignKey(Review,blank=False, null=False, on_delete=models.CASCADE)
+    review = models.ForeignKey(Review,blank=False, null=False, on_delete=models.CASCADE)
     image = ProcessedImageField(blank = True,  
                                 upload_to='review/', 
                                 processors=[ResizeToFill(300, 300)], 

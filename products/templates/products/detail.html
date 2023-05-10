@@ -22,13 +22,13 @@
 
   <form action="{% url 'products:review_create' product.pk %}" method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    {% comment %} {{ review_form.as_p }} {% endcomment %}
-    {{ review_img }}
+    {{ review_form.as_p }}
+    {{ review_img.as_p }}
     <input type="submit" value="리뷰 작성">
   </form>
 
-  {% comment %} {% for review in reviews %}
-
-  {% endfor %} {% endcomment %}
+  {% for review in reviews %}
+    {{review.content}}
+  {% endfor %}
 </body>
 </html>
