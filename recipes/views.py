@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Recipe, Comment, CommentImage
 from .forms import RecipeForm, CommentForm, CommentImageForm
 from accounts.models import User
@@ -10,7 +10,7 @@ def index(request):
     context = {
         'recipes': recipes,
     }
-    return render(request, 'recipes/recipes_index.html')
+    return render(request, 'recipes/recipes_index.html', context)
 
 
 def create(request):
@@ -69,7 +69,7 @@ def recipe_like_users(request, recipe_pk):
 
 def category(request, subject):
     subject = subject
-    recipe = Recipe.objects.filter(category=subject)
+    recipes = Recipe.objects.filter(category=subject)
     context = {
         'subject': subject,
         'recipes': recipes,
