@@ -1,5 +1,5 @@
 from django import forms
-from .models import Recipe, Comment
+from .models import Recipe, Comment, CommentImage
 
 
 class RecipeForm(forms.ModelForm):
