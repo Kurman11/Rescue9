@@ -26,11 +26,13 @@ def create(request):
 def detail(request, product_pk):
     product = Product.objects.get(pk=product_pk)
     review_form = ReviewForm()
+    review_img = Review_imageForm(request.POST, request.FILES)
     reviews = product.review_set.all()
     context ={
         'product' : product,
         'review_form' : review_form,
         'reviews' : reviews,
+        'review_img' : review_img,
     }
     return render(request,'products/detail.html', context)
 
@@ -71,12 +73,13 @@ def review_create(request, product_pk):
     review_img = Review_imageForm(request.POST, request.FILES)
     if review_form.is_valid() and review_img.is_valid():
         review = review_form.save(commit=False)
-        review.product_id = product
+        review.product = product
         review.user = request.user
+        review.save()
 
         # Review_image 모델 저장
         review_image = review_img.save(commit=False)
-        review_image.review_id = review
+        review_image.review = review
         review_image.save()
         return redirect('products:detail', product.pk)
     context = {
