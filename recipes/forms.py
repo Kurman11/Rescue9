@@ -1,8 +1,11 @@
 from django import forms
 from .models import Recipe, Comment, CommentImage
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
+
 
 
 class RecipeForm(forms.ModelForm):
+    content = forms.CharField(widget=CKEditorUploadingWidget())
     category = forms.ChoiceField(
         label='카테고리',
         widget=forms.Select(
@@ -12,7 +15,7 @@ class RecipeForm(forms.ModelForm):
             }
         ),
         choices = (
-            ('', ''), ('', ''), 
+            ('라면', '라면'), ('', ''), 
             ('', ''), ('', ''), 
             ('', ''), ('', ''),
         ),

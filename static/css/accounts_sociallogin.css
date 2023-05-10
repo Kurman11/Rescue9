@@ -1,0 +1,22 @@
+.social--btn_google {
+  text-decoration: none;
+  font-weight: bold;
+  display: flex;
+  text-align: left;
+  align-items: center;
+  font-size: 20px;
+  border : solid 1px #e0e0e0;
+}
+
+.social--btn_naver {
+  text-decoration: none;
+  font-weight: bold;
+  display: flex;
+  text-align: left;
+  align-items: center;
+  font-size: 20px;
+  background: rgb(3, 199, 90);
+  border : 0px;
+  height: 72px;
+  color: white;
+}

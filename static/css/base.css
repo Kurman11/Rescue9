@@ -1,6 +1,6 @@
-html, body, main {
+body{
   font-family: 'NanumSquareNeo-Variable';
-  height: 95%;
+  /* height: 100%; */
   }
 
 a {
@@ -13,11 +13,12 @@ ul {
 }
 
 nav{
-  position: sticky-top;
+  position:fixed;
   width: 100%;
   height: 56px;
   border-bottom: 1px solid var(--subtle-color);
   margin-top: 0;
+  background-color: white;
 }
 
 footer {
@@ -76,15 +77,25 @@ footer {
   }
 }
 
-/* footer */
+/* content */
+main {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
 .content--wrapper {
-  display :flex;
+  display: flex;
   flex-direction:column;
   height: 100%;
   }
 
 .content {
   flex: 1;
+}
+
+/* footer */
+footer {
+  /* position: sticky; */
+  bottom: 0;
 }
 
 .footer_container {

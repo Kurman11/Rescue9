@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>레시피 리스트</h1>
+{% for recipe in recipes %}
+  <p>
+    <a href="{% url 'recipes:detail' recipe.pk %}">
+      <img src="{{ recipe.thumbnail.url }}" alt="썸네일">
+      {{ recipe.title }}
+    </a>
+  </p>
+{% empty %}
+  <p>아직 레시피가 없어요.</p>
+{% endfor %}
+{% endblock content %}

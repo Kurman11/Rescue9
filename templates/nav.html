@@ -8,8 +8,8 @@
       </a>
     </div>
     <div class="nav--left__wrap">
-      <a href="#" class="btn nav--button nav--btn">제품</a>
-      <a href="#" class="btn nav--button nav--btn">레시피</a>
+      <a href="{% url 'products:index' %}" class="btn nav--button nav--btn">제품</a>
+      <a href="{% url 'recipes:index' %}" class="btn nav--button nav--btn">레시피</a>
       <form class="search_hidden">
         <div>
           <span class="nave__search__icon"><i class="bi bi-search"></i></span>
