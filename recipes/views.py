@@ -20,7 +20,9 @@ def create(request):
             recipe = recipe_form.save(commit=False)
             recipe.user = request.user
             recipe.save()
-            return redirect('recipes:detail', recipe.pk)
+            return redirect('recipes:index')
+        else:
+            print(recipe_form.errors)
     else:
         recipe_form = RecipeForm()
     context = {
@@ -114,6 +116,7 @@ def comment_create(request, recipe_pk: int):
 
 
 def comment_update(request, recipe_pk, comment_pk):
+    recipe = Recipe.objects.get(pk=recipe_pk)
     comment = Comment.objects.get(pk=comment_pk)
     if request.user == comment.user:
         if request.method == 'POST':
@@ -151,7 +154,7 @@ def comment_delete(request, recipe_pk, comment_pk):
 
 
 def comment_like_users(request, recipe_pk, comment_pk):
-    comment = comment.objects.get(pk=comment_pk)
+    comment = Comment.objects.get(pk=comment_pk)
     if request.user in comment.like_users.all():
         comment.like_users.remove(request.user)
     else:
