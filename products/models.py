@@ -24,7 +24,7 @@ class Product(models.Model):
 
     is_new = models.BooleanField(default=False)
     content = models.TextField()
-    like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_product',null=True)
+    like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_product')
 
 
 class Review(models.Model):
@@ -33,13 +33,12 @@ class Review(models.Model):
     crated_at = models.DateTimeField(auto_now=True)
     updated_at = models.DateTimeField(auto_now=True)
     content = models.CharField(max_length=600)
-    like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_review',null=True)
+    like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_review')
     rating = models.FloatField()
 
 class Review_image(models.Model):
     review_id = models.ForeignKey(Review,blank=False, null=False, on_delete=models.CASCADE)
-    image = ProcessedImageField(blank = True, 
-                                null= True, 
+    image = ProcessedImageField(blank = True,  
                                 upload_to='review/', 
                                 processors=[ResizeToFill(300, 300)], 
                                 format = 'JPEG', 
