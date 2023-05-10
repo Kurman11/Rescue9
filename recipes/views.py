@@ -15,16 +15,16 @@ def index(request):
 
 def create(request):
     if request.method == 'POST':
-        Recipe_form = RecipeForm(data=request.POST, files=request.FILES)
-        if Recipe_form.is_valid():
-            recipe = Recipe_form.save(commit=False)
+        recipe_form = RecipeForm(data=request.POST, files=request.FILES)
+        if recipe_form.is_valid():
+            recipe = recipe_form.save(commit=False)
+            recipe.user = request.user
+            recipe.save()
             return redirect('recipes:detail', recipe.pk)
-
     else:
-        Recipe_form = RecipeForm()
-    
+        recipe_form = RecipeForm()
     context = {
-        'Recipe_form': Recipe_form,
+        'recipe_form': recipe_form,
     }
     return render(request, 'recipes/create.html', context)
 
@@ -33,7 +33,7 @@ def detail(request, recipe_pk: int):
     recipe = Recipe.objects.get(pk=recipe_pk)
     comments = recipe.comment_set.all()
     comment_form = CommentForm()
-    comment_images = CommentImage.objects.filter(recipe = recipe)
+    comment_images = CommentImageForm(request.POST, request.FILES)
     context = {
         'recipe': recipe,
         'comments': comments,
@@ -48,7 +48,8 @@ def update(request, recipe_pk: int):
     if request.method == 'POST':
         recipe_form = RecipeForm(data=request.POST, files=request.FILES, instance=recipe)
         if recipe_form.is_valid():
-            recipe = recipe_form.save(commit=False)
+            recipe = recipe_form.save()
+            return redirect('recipes:datail', recipe_pk)
     else:
         recipe_form = RecipeForm(instance=recipe)
 
@@ -56,6 +57,13 @@ def update(request, recipe_pk: int):
         'recipe_form': recipe_form,
     }
     return render(request, 'recipes/update.html', context)
+
+
+def delete(request, recipe_pk):
+    recipe = Recipe.objects.get(pk=recipe_pk)
+    if request.user == recipe.user:
+        recipe.delete()
+    return redirect('recipes:index')
 
 
 def recipe_like_users(request, recipe_pk):
@@ -79,16 +87,28 @@ def category(request, subject):
 
 def comment_create(request, recipe_pk: int):
     recipe = Recipe.objects.get(pk=recipe_pk)
-    comment_form = CommentForm(request.POST)
-    if comment_form.is_valid():
-        comment = comment_form.save(commit=False)
-        comment.recipe = recipe
-        comment.recipe.user = request.user
-        comment.save()
-        return redirect('recipes:detail', recipe.pk)
+    if request.method == 'POST':
+        comment_form = CommentForm(request.POST)
+        comment_image_form = CommentImageForm(request.POST, request.FILES)
+        files = request.FILES.getlist('image')
+        if comment_form.is_valid():
+            comment = comment_form.save(commit=False)
+            comment.recipe = Recipe.objects.get(pk=recipe_pk)
+            comment.recipe.user = request.user
+            comment.save()
+
+            for file in files:
+                CommentImage.objects.create(comment=comment, image=file)
+
+            return redirect('recipes:detail', recipe_pk)
+    else:
+        comment_form = CommentForm()
+        comment_image_form = CommentImageForm()
+
     context = {
         'recipe': recipe,
         'comment_form': comment_form,
+        'comment_image_form': comment_image_form,
     }
     return render(request, 'recipes/detail.html', context)
 
@@ -98,22 +118,35 @@ def comment_update(request, recipe_pk, comment_pk):
     if request.user == comment.user:
         if request.method == 'POST':
             comment_form = CommentForm(request.POST, instance=comment)
+            files = request.FILES.getlist('image')
             if comment_form.is_valid():
                 comment_form.save()
-                return redirect('recipes:detail', recipe_pk)
+                comment_images = CommentImage.objects.filter(comment=comment)
+                for comment_image in comment_images:
+                    comment_image.delete()
+                for file in files:
+                    CommentImage.objects.create(recipe=recipe, image=file)
+                return redirect('recipes:detail', comment.recipe.pk)
         else:
             comment_form = CommentForm(instance=comment)
+            comment_image_form = CommentImageForm()
         context = {
             'comment_form': comment_form,
+            'comment_image_form': comment_image_form,
             'comment': comment,
         }
         return render(request, 'recipes/detail.html', context)
 
+
+
+
 def comment_delete(request, recipe_pk, comment_pk):
     comment = Comment.objects.get(pk=comment_pk)
+    comment_images = comment.commentimage_ser.all()
     if request.user == comment.user:
+        for comment_image in comment_images:
+            comment_image.delete()
         comment.delete()
-
     return redirect('recipes:detail', recipe_pk)
 
 
