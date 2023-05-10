@@ -3,8 +3,8 @@
 <h1>레시피 작성</h1>
 <form action="{% url 'recipes:create' %}" method="POST" enctype="multipart/form-data">
   {% csrf_token %}
-  {{ Recipe_form.media }}
-  {{ Recipe_form.as_p }}
+  {{ recipe_form.media }}
+  {{ recipe_form.as_p }}
   <input type="submit" value="작성">
 </form>
 {% endblock content %}

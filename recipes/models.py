@@ -11,9 +11,6 @@ def comment_img_path(instance, filename):
 def recipe_thumbnail_path(instance, filename):
     return f'images/recipe/thumbnail/{instance.title}/{filename}'
 
-def recipe_thumbnail_path(instance, filename):
-    return f'images/recipe/thumbnail/{instance.title}/{filename}'
-
 
 class Recipe(models.Model):
     title = models.CharField(max_length=20)
@@ -25,7 +22,7 @@ class Recipe(models.Model):
         options={'quality': 60},
         )
     category = models.CharField(max_length=20)
-    hits = models.PositiveIntegerField()
+    hits = models.PositiveIntegerField(default=0)
     like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="like_recipes")
     content = RichTextUploadingField()
     created_at = models.DateTimeField(auto_now_add=True)
@@ -35,8 +32,6 @@ class Recipe(models.Model):
     def __srt__(self):
         return self.title
 
-    def get_absolute_url(self):
-        return reverse('recipe:detail', kwargs={'recipe_pk': self.pk})
 
 class Comment(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
