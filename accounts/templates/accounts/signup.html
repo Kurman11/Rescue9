@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container-fluid mt-5">
-    <div class="container mt-5" style="width: 500px;">
+<div class="container-fluid">
+    <div class="container" style="width: 500px;">
       <h1 class="text-center fw-bold">간단한 회원가입</h1>
         <form action="{% url 'accounts:signup' %}" method="POST" class="form-text" enctype = 'multipart/form-data'>
           {% csrf_token %}
@@ -12,7 +12,7 @@
             {{ field }}
           </div>
           {% endfor %}
-          <input type="submit" class="btn btn-orange w-100 mt-5 fs-3" value="회원가입">
+          <input type="submit" class="btn btn-primary w-100 mt-3 fs-3" value="회원가입">
         </form>
     </div>
   </div>

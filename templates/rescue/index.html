@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<p>main index</p>
+<a href="{% url 'products:index' %}" class="btn nav--button nav--btn">제품</a>
+<a href="{% url 'recipes:recipes_index' %}" class="btn nav--button nav--btn">레시피</a>
+{% endblock content %}
