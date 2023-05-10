@@ -3,6 +3,7 @@ from .models import Recipe, Comment, CommentImage
 from .forms import RecipeForm, CommentForm, CommentImageForm
 from accounts.models import User
 
+
 # Create your views here.
 def index(request):
     recipes = Recipe.object.all()
