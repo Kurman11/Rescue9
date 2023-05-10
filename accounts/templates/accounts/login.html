@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block link %}
+  <link rel="stylesheet" href="{% static 'css/accounts_sociallogin.css' %}">
+{% endblock link %}
 {% block content %}
 <div class="container-fluid mt-5">
     <div class="container-fluid d-flex justify-content-center mt-5">
@@ -16,22 +19,34 @@
             <input type="submit" class="btn btn-secondary w-100 fs-3 mt-5" value="로그인">
         </form>
         <div class="w-100 text-center mt-5">
+        {% comment %} 소셜 로그인 부분입니다. {% endcomment %}
+          {% load socialaccount %}
+          <a href="{% provider_login_url 'kakao' method='oauth2' %}">
+            <img src="{% static 'image/kakao_login.png' %}" alt="kakao"  class="w-100">
+          </a>
 
+          <a href="{% provider_login_url 'google' method='oauth2' %}">
+            <button type='button'class="btn btn-link w-100 social--btn_google container mt-3 p-0">
+              <div class='col-5'>
+                <img src="{% static 'image/google_logo.png' %}" alt="logo">
+              </div>
+              <div class='col-7'>
+                Google 로그인
+              </div>
+            </button>
+          </a>
 
-          {% comment %} 소셜 로그인 부분입니다. {% endcomment %}
-          
-            {% load socialaccount %}
-
-                <a href="{% provider_login_url 'kakao' method='oauth2' %}">
-                  <img src="{% static 'image/kakao_login.png' %}" alt="kakao"  class="w-100">
-                </a>
-                <a href="{% provider_login_url 'google' method='oauth2' %}">
-                    <img src="{% static 'image/google.png' %}"  class="w-100">
-                </a>
-                <a href="{% provider_login_url 'naver' method='oauth2' %}">
-                    <img src="{% static 'image/naver_login.png' %}" class="w-100" >
-                </a>
-          
+          <a href="{% provider_login_url 'naver' method='oauth2' %}">
+            <button type='button'class="w-100 social--btn_naver container mt-3 rounded">
+              <div class='col-5'>
+                <img src="{% static 'image/naver.png' %}" alt="logo" style='width: 40px;' class='ms-2'>
+              </div>
+              <div class='col-7'>
+                네이버  로그인
+              </div>
+            </button>
+          </a> 
+                   
         </div>
       </div>
     </div>
