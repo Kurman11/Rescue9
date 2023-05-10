@@ -6,11 +6,11 @@ from accounts.models import User
 
 # Create your views here.
 def index(request):
-    recipes = Recipe.object.all()
+    recipes = Recipe.objects.all()
     context = {
         'recipes': recipes,
     }
-    return render(request, 'recipes/recipes_index.html', context)
+    return render(request, 'recipes/index.html', context)
 
 
 def create(request):
