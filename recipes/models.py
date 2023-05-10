@@ -9,10 +9,15 @@ def comment_img_path(instance, filename):
     return f'images/comment/{instance.name}/{filename}'
 
 
+def recipe_thumbnail_path(instance, filename):
+    return f'images/recipe/thumbnail/{instance.title}/{filename}'
+
+
 class Recipe(models.Model):
     title = models.CharField(max_length=20)
+    thumbnail_upload = models.ImageField(upload_to=recipe_thumbnail_path)
     thumbnail = ImageSpecField(
-        source = '',
+        source = 'thumbnail_upload',
         processors = [Thumbnail(100, 100)],
         format='JPEG',
         options={'quality': 60},
