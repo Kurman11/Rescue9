@@ -10,7 +10,7 @@ def index(request):
     context = {
         'recipes': recipes,
     }
-    return render(request, 'recipes/recipes_index.html', context)
+    return render(request, 'recipes/index.html', context)
 
 
 def create(request):
