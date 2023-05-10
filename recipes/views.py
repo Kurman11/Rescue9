@@ -42,7 +42,7 @@ def detail(request, recipe_pk: int):
         'comment_form': comment_form,
         'comment_images': comment_images,
     }
-    return render(request, 'recipe/detail.html', context)
+    return render(request, 'recipes/detail.html', context)
 
 
 def update(request, recipe_pk: int):
