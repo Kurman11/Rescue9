@@ -78,6 +78,10 @@ footer {
 }
 
 /* content */
+main {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
 .content--wrapper {
   display: flex;
   flex-direction:column;
