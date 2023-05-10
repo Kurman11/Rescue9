@@ -72,6 +72,7 @@ class CustomUserCreationForm(UserCreationForm):
             }
         )
     )
+
     image = forms.ImageField(
         label='프로필 이미지',
         widget=forms.ClearableFileInput(
@@ -92,10 +93,11 @@ class CustomUserCreationForm(UserCreationForm):
         )
     )
 
+
     class Meta(UserCreationForm.Meta):
         model = get_user_model()
         fields = (
-            'username', 'password1', 'password2', 'nickname', 'email', 'image', 'address',
+            'username', 'password1', 'password2', 'nickname', 'email',
         )
 
 
@@ -118,6 +120,7 @@ class CustomUserChangeForm(UserChangeForm):
             }
         )
     )
+
     image = forms.ImageField(
         label='프로필 이미지',
         widget=forms.ClearableFileInput(
@@ -137,10 +140,11 @@ class CustomUserChangeForm(UserChangeForm):
             }
         )
     )
+
     password = None
     class Meta(UserChangeForm.Meta):
         model = get_user_model()
-        fields = ('nickname', 'email', 'image', 'address',)
+        fields = ('nickname', 'email',)
 
 
 class CustomPasswordChangeForm(PasswordChangeForm):

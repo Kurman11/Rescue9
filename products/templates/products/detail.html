@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>detail</h1>
+  <p>작성자 : {{product.user}}</p>
+  <p>번호: {{ product.pk }}</p>
+  <p>제목: {{ product.name }}</p>
+  <p>내용: {{ product.content }}</p>
+
+  {% comment %} 이미지 {% endcomment %}
+  {% if product.photo %}
+      <img src="{{product.photo.url}}" alt="image">
+  {% endif %} 
+  
+  <h2>리뷰</h2>
+
+  <form action="{% url 'products:review_create' product.pk %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ review_form.as_p }}
+    {{ review_img.as_p }}
+    <input type="submit" value="리뷰 작성">
+  </form>
+
+  {% for review in reviews %}
+    {{review.content}}
+  {% endfor %}
+</body>
+</html>

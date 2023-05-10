@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-2u9iww_4r51rnnut+yteic_yc#%mnh!pc3utd*0vy+_kc&3hdt
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -33,7 +33,10 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'accounts',
     'products',
+    'recipes',
     'django_extensions',
+    'ckeditor',
+    'ckeditor_uploader',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -137,6 +140,9 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL = '/media/'
+
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+CKEDITOR_IMAGE_BACKEND = "pillow" 
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

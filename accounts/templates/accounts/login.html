@@ -16,6 +16,10 @@
             <input type="submit" class="btn btn-secondary w-100 fs-3 mt-5" value="로그인">
         </form>
         <div class="w-100 text-center mt-5">
+
+
+          {% comment %} 소셜 로그인 부분입니다. {% endcomment %}
+          
             {% load socialaccount %}
 
                 <a href="{% provider_login_url 'kakao' method='oauth2' %}">
@@ -27,6 +31,7 @@
                 <a href="{% provider_login_url 'naver' method='oauth2' %}">
                     <img src="{% static 'image/naver_login.png' %}" class="w-100" >
                 </a>
+          
         </div>
       </div>
     </div>
