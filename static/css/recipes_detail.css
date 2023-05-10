@@ -1,0 +1,132 @@
+.recipe__main-image {
+  width: 100%;
+}
+
+.recipe__header{
+  margin: 15px 0 15px 0;
+}
+
+.recipe__title{
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  color: var(--main-color);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+.recipe__user-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 17px;
+}
+
+.recipe__user-container__left {
+  display: flex;
+}
+
+.recipe__user__image__container{
+  height: 34px;
+  margin-right: 10px;
+}
+
+.recipe__user__image {
+  height: 100%;
+  border-radius: 50%;
+}
+
+.recipe__user__info{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 12px;
+}
+
+.recipe__user-container__right {
+  height: 32px;
+}
+
+.recipe__user-container__follow-btn {
+  height: 90%;
+}
+
+/* CK editor 작성 결과 화면  */
+.recipe__content{
+  margin: 0 30px 30px 30px;
+}
+
+.recipe__content img {
+  width: 100% !important;
+  height: auto !important;
+}
+
+/* 레시피 footer */
+.recipe__footer__info {
+  display: flex;
+  font-size: 14px;
+  line-height: 20px;
+  border-bottom: 1px solid var(--subtle-color);
+  margin-bottom: 20px;
+}
+
+.recipe__footer__info__item {
+  margin: 0 10px 10px 0;
+}
+/* 레시피 댓글 */
+.recipe__comment {
+  
+}
+
+.recipe__comment__info{
+  margin: 0 0 16px;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 700;
+}
+
+.recipe__comment__form{
+  display: flex;
+  align-items: center
+}
+
+.recipe__comment__info--figure{
+  color: var(--main-color);
+}
+
+.recipe__comment__user__image{
+  height: 34px;
+  margin-right: 10px;
+}
+
+.recipe__comment__input-area {
+  width: 100%;
+  display: flex;
+  border: 1px solid var(--subtle-color);
+  border-radius: 4px;
+}
+
+.recipe__comment__input-area__input--text{
+  border: none;
+  outline: none;
+  word-break: break-word;
+  overflow-y: auto;
+  cursor: text;
+  font-size: 16px;
+  line-height: 24px;
+  min-width: 100px;
+  flex: 1 0 0%;
+  min-height: 24px;
+  margin: 9px 0px;
+}
+
+.recipe__comment__input-area__input--submit:hover{
+  color: var(--main-color)
+}
+
+.recipe__comment__list{
+}
+
+.recipe__comment__item {
+  display: flex;
+}

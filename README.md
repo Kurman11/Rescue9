@@ -1,10 +1,11 @@
-# base code
-- project 생성
-- accounts app 생성 및 project url과 연결
-- accounts에서 기본 django 내장 django.contrib.auth 모델을 만질 수 있게 모델 대치
-- .gitignore 생성
-- django, pillow, imagekit
-- 위에 필요한 settings.py 조정
-- templates 폴더 생성, settings.py base templates 폴더 연결
-- base.html 생성 및 bootstrap 적용
-- LANGUAGE_CODE, TIME_ZONE 한국으로 설정
+# Rescue9 GIT commit 규칙 0.1
+- 커밋메세지: <커밋 행동에 대해 명시>-<커밋내용>
+  - 시작: 새로운 기능(앱)의 추가
+  - 수정: 기존 존재하는 파일의 수정
+  - 추가: 새로운 파일을 추가하는 경우
+  - 삭제: 기존의 파일을 삭제하는 경우
+  - ex) 추가-recipesDetailPage
+- branch 생성
+  - feature/<본인이 작업한 내용 중 가장 핵심이 되는 내용>을 적는다
+  - ex) feature/recipesDetailPage
+- pull request에 본인이 작업한 내용을 간략히 작성한다
