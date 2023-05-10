@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    프로필입니다.
+    <p>프로필입니다</p>
+    <a href="{% url 'accounts:update' %}">개인정보 변경</a>
 {% endblock content %}

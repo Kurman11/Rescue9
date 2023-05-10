@@ -1,0 +1,36 @@
+{% load static %}
+
+<div class="container nav__flex nav--div ">
+  <div class="nav--left__wrap">
+    <div class="nav--left--image-container">
+      <a href="http://127.0.0.1:8000/">
+        <img src="{% static 'image/logo.png' %}" alt="logo" class="nav--image" >             
+      </a>
+    </div>
+    <div class="nav--left__wrap">
+      <a href="#" class="btn nav--button nav--btn">제품</a>
+      <a href="#" class="btn nav--button nav--btn">레시피</a>
+      <form class="search_hidden">
+        <div>
+          <span class="nave__search__icon"><i class="bi bi-search"></i></span>
+          <input type="search" placeholder="Search" name = "">
+          {% comment %} <button type='submit'>검색</button> {% endcomment %}
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  <div class="nav--right__wrap">
+    {% if request.user.is_authenticated %}
+      <a href="{% url 'accounts:profile' request.user.username %}"> {{request.user.username}} 님</a> 
+      <form action="{% url 'accounts:logout' %}" method="POST">
+        {% csrf_token %}
+        <button class="btn nav--button nav--btn" type="submit">Logout</button> 
+      </form>
+      {% else %}
+      <a href="{% url 'accounts:login' %}" class="btn nav--button nav--btn">Login</a>
+      <a href="{% url 'accounts:signup' %}" class="btn nav--button nav--btn">Signup</a>
+      {% endif %}
+  </div>
+  </div>
+</div>        

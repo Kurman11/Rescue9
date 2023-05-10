@@ -9,7 +9,8 @@ class CustomAuthenticationForm(AuthenticationForm):
         label='사용자 ID',
         widget=forms.TextInput(
             attrs={
-                'class': 'form-control'
+                'class': 'form-control',
+                'id': '사용자 ID',
             }
         )
     )
@@ -17,7 +18,9 @@ class CustomAuthenticationForm(AuthenticationForm):
         label='비밀번호',
         widget=forms.PasswordInput(
             attrs={
-                'class': 'form-control'
+                'class': 'form-control',
+                'id': '비밀번호',
+            
             }
         )
     )
@@ -28,7 +31,8 @@ class CustomUserCreationForm(UserCreationForm):
         label='사용자 ID',
         widget=forms.TextInput(
             attrs={
-                'class': 'form-control'
+                'class': 'form-control',
+                'id': '사용자 ID',
             }
         )
     )
@@ -36,7 +40,8 @@ class CustomUserCreationForm(UserCreationForm):
         label='비밀번호',
         widget=forms.PasswordInput(
             attrs={
-                'class': 'form-control'
+                'class': 'form-control',
+                'id': '비밀번호',
             }
         )
     )
@@ -44,7 +49,8 @@ class CustomUserCreationForm(UserCreationForm):
         label='비밀번호 확인',
         widget=forms.PasswordInput(
             attrs={
-                'class': 'form-control'
+                'class': 'form-control',
+                'id': '비밀번호 확인',
             }
         )
     )
@@ -52,7 +58,8 @@ class CustomUserCreationForm(UserCreationForm):
         label='닉네임',
         widget=forms.TextInput(
             attrs={
-                'class': 'form-control'
+                'class': 'form-control',
+                'id': '닉네임',
             }
         )
     )
@@ -60,7 +67,8 @@ class CustomUserCreationForm(UserCreationForm):
         label='이메일',
         widget=forms.EmailInput(
             attrs={
-                'class': 'form-control'
+                'class': 'form-control',
+                'id': '이메일',
             }
         )
     )
@@ -69,6 +77,7 @@ class CustomUserCreationForm(UserCreationForm):
         widget=forms.ClearableFileInput(
             attrs={
                 'class': 'form-control',
+                'id' : '프로필 이미지',
             },
         ),
         required=False,
@@ -77,7 +86,8 @@ class CustomUserCreationForm(UserCreationForm):
         label='주소',
         widget=forms.TextInput(
             attrs={
-                'class': 'form-control'
+                'class': 'form-control',
+                'id' : '주소',
             }
         )
     )
@@ -94,7 +104,8 @@ class CustomUserChangeForm(UserChangeForm):
         label='닉네임',
         widget=forms.TextInput(
             attrs={
-                'class': 'form-control'
+                'class': 'form-control',
+                'id' : '닉네임',
             }
         )
     )
@@ -102,7 +113,8 @@ class CustomUserChangeForm(UserChangeForm):
         label='이메일',
         widget=forms.EmailInput(
             attrs={
-                'class': 'form-control'
+                'class': 'form-control',
+                'id' : '이메일',
             }
         )
     )
@@ -111,6 +123,7 @@ class CustomUserChangeForm(UserChangeForm):
         widget=forms.ClearableFileInput(
             attrs={
                 'class': 'form-control',
+                'id' : '프로필 이미지',
             },
         ),
         required=False,
@@ -119,7 +132,8 @@ class CustomUserChangeForm(UserChangeForm):
         label='주소',
         widget=forms.TextInput(
             attrs={
-                'class': 'form-control'
+                'class': 'form-control',
+                'id' : '주소',
             }
         )
     )
@@ -135,6 +149,7 @@ class CustomPasswordChangeForm(PasswordChangeForm):
         widget=forms.PasswordInput(
             attrs={
                 'class': 'form-control',
+                'id' : '기존 비밀번호',
             },
         ),
     )
@@ -143,6 +158,7 @@ class CustomPasswordChangeForm(PasswordChangeForm):
         widget=forms.PasswordInput(
             attrs={
                 'class': 'form-control',
+                'id' : '새 비밀번호',
             },
         ),
     )
@@ -151,6 +167,7 @@ class CustomPasswordChangeForm(PasswordChangeForm):
         widget=forms.PasswordInput(
             attrs={
                 'class': 'form-control',
+                'id' : '새 비밀번호 확인',
             },
         ),
     )   
