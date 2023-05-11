@@ -7,6 +7,90 @@
     padding: 10px;
     border: solid 1px var(--main-color);
   }
+
+  .star {
+    display: inline-block;
+    font-size: 25px;
+    color: #ccc;
+    cursor: pointer;
+  }
+
+  .star-filled {
+    color: #ffca08;
+  }
+  .star-filled-half {
+    color: #ffca08;
+    transform: scaleX(0.5);
+  }
+  .stars-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+    width: 0;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+  }
+  
+  .star-input {
+    display: inline-block;
+  }
+
+  .star-input input {
+    display: none;
+  }
+
+  .star-input label {
+    font-size: 30px;
+    color: gray;
+    display: inline-block;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+  }
+
+  .star-input label:before {
+    content: '\2605';
+    font-size: 30px;
+  }
+
+  .star-input input:checked ~ label:before,
+  .star-input label:hover:before {
+    content: '\2605';
+    color: gold;
+  }
+
+  .star-input input:checked ~ label {
+    color: gold;
+  }
+
+  .star-input input:checked ~ label:nth-child(1) ~ label:before {
+    content: '\2605';
+    color: gold;
+  }
+
+  .star-input input:checked ~ label:nth-child(1) ~ label:nth-child(2):before {
+    content: '\2605';
+    color: gold;
+  }
+
+  .star-input input:checked ~ label:nth-child(3) ~ label:nth-child(-n+3):before {
+    content: '\2605';
+    color: gold;
+  }
+
+  .star-input input:checked ~ label:nth-child(4) ~ label:nth-child(-n+4):before {
+    content: '\2605';
+    color: gold;
+  }
+
+  .star-input input:checked ~ label:nth-child(5) ~ label:before {
+    content: '\2605';
+    color: gold;
+  }
 </style>
 {% endblock style %}
 
@@ -17,21 +101,41 @@
   <p>번호: {{ product.pk }}</p>
   <p>제목: {{ product.name }}</p>
   <p>내용: {{ product.content }}</p>
+  <p>태그 :
+  {% for tag in tags %}
+     {{tag}},
+  {% endfor %}</p>
 
   {% comment %} 이미지 {% endcomment %}
   {% if product.photo %}
-  <img src="{{product.photo.url}}" alt="image">
+    <img src="{{product.photo.url}}" alt="image">
   {% endif %} 
 
   <hr>
-  <h2>리뷰 작성</h2>
-
-  <form action="{% url 'products:review_create' product.pk %}" method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ review_form.as_p }}
-    {{ review_img.as_p }}
-    <input type="submit" value="리뷰 작성">
-  </form>
+  <div class="review-form">
+    <h3>리뷰 쓰기</h3>
+    <form method="post" enctype="multipart/form-data" action="{% url 'products:review_create' product.pk %}">
+      {% csrf_token %}
+      {{ review_form.as_p }}
+      {{ review_img.as_p }}
+      <form>
+        <fieldset class="star-input">
+          <legend>별점 평가하기</legend>
+          <input type="radio" id="star-5" name="rating" value="5">
+          <label for="star-5"></label>
+          <input type="radio" id="star-4" name="rating" value="4">
+          <label for="star-4"></label>
+          <input type="radio" id="star-3" name="rating" value="3">
+          <label for="star-3"></label>
+          <input type="radio" id="star-2" name="rating" value="2">
+          <label for="star-2"></label>
+          <input type="radio" id="star-1" name="rating" value="1">
+          <label for="star-1"></label>
+        </fieldset>
+      </form>
+      <button type="submit" class="btn btn-outline-dark">작성하기</button>
+    </form>
+  </div>
   
   {% for review in reviews %}
   {% if request.user == review.user %}
@@ -63,5 +167,23 @@
     {% endif %}
   </form>
   {% endfor %}
-</body>
-</html>
+
+
+  <script>
+
+    const starInputs = document.querySelectorAll('.star-input input');
+    const starLabels = document.querySelectorAll('.star-input label');
+
+    for (let i = 0; i < starInputs.length; i++) {
+      starInputs[i].addEventListener('click', function () {
+        for (let j = 0; j <= i; j++) {
+          starLabels[j].classList.add('checked');
+        }
+
+        for (let j = i + 1; j < starInputs.length; j++) {
+          starLabels[j].classList.remove('checked');
+        }
+      });
+    }
+  </script>
+{% endblock content %}
