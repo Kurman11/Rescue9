@@ -38,6 +38,13 @@ def detail(request, product_pk):
     review_form = ReviewForm()
     review_img = Review_imageForm(request.POST, request.FILES)
     reviews = product.review_set.all()
+
+    session_key = 'product_{}_hits'.format(product_pk)
+    if not request.session.get(session_key):
+        product.hits += 1
+        product.save()
+        request.session[session_key] = True
+
     context ={
         'product' : product,
         'review_form' : review_form,
