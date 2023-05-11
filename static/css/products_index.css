@@ -1,0 +1,83 @@
+a {
+  color: black; 
+}
+
+.button--color{
+  background-color: var(--main-color);
+  color: white;
+}
+
+/* card */
+.main--padding{
+  padding-left: 80px;
+  padding-right: 80px;
+}
+.card--border {
+  box-shadow : 5px 5px 5px 1px var(--subtle-color);
+  display: inline-block;
+  overflow: hidden;
+}
+
+.title--content{
+  margin-top:3rem;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.title--content--2{
+  margin-top:6rem;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.card--tag--border {
+  border-bottom: solid 1px var(--subtle-color)
+}
+
+.card--rating__color {
+  color:var(--secondary-color)
+}
+
+.card--name--box {
+  width: 120px;
+  font-size: 20px;
+  margin-bottom : 20px
+}
+
+.card--name{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* owl */
+ .owl-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-130%);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  z-index: 10;
+}
+
+
+.owl-nav button {
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  border-radius: 50%;
+  color: #fff;
+  background-color: var(--subtle-color);
+  transition: background-color 0.2s ease-in-out;
+}
+
+.owl-dot{
+  margin-top: 2rem;
+}
+
+.carousel--bottom {
+  margin-bottom: 100px;
+}
+
+
+  

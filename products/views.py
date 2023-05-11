@@ -4,7 +4,17 @@ from .forms import ProductForm, ReviewForm, Review_imageForm
 # Create your views here.
 
 def index(request):
-    return render(request, 'products/index.html')
+    products = Product.objects.all()[::-1]
+    new_products = Product.objects.filter(is_new=True)[::-1]
+    like_products = Product.objects.order_by('-like_users')
+    hits_products = Product.objects.order_by('-hits')[:5]
+    content = {
+        'products':products,
+        'new_products': new_products,
+        'like_products':like_products,
+        'hits_products' : hits_products,
+    }
+    return render(request, 'products/index.html', content)
 
 
 def create(request):
