@@ -4,6 +4,8 @@ from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 
 
+
+
 class RecipeForm(forms.ModelForm):
     content = forms.CharField(widget=CKEditorUploadingWidget())
     category = forms.ChoiceField(
@@ -24,7 +26,7 @@ class RecipeForm(forms.ModelForm):
 
     class Meta:
         model = Recipe
-        exclude = ('like_users', 'hits')
+        exclude = ('like_users', 'hits',)
 
         labels = {
             'title': '레시피 명',
@@ -32,7 +34,7 @@ class RecipeForm(forms.ModelForm):
         widget = {
             'title': forms.TextInput(attrs={'class': 'form-control w-75'}),
         }
-
+   
 
 class CommentForm(forms.ModelForm):
     content = forms.CharField(

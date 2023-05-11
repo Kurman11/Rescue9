@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Recipe, Comment, CommentImage
 from .forms import RecipeForm, CommentForm, CommentImageForm
 from accounts.models import User
-
+from django.conf import settings
 
 # Create your views here.
 def index(request):
@@ -29,6 +29,7 @@ def create(request):
         recipe_form = RecipeForm()
     context = {
         'recipe_form': recipe_form,
+        'media_url': settings.MEDIA_URL,
     }
     return render(request, 'recipes/create.html', context)
 
@@ -38,6 +39,13 @@ def detail(request, recipe_pk: int):
     comments = recipe.comment_set.all()
     comment_form = CommentForm()
     comment_images = CommentImageForm(request.POST, request.FILES)
+
+    session_key = 'recipe_{}_hits'.format(recipe_pk)
+    if not request.session.get(session_key):
+        recipe.hits += 1
+        recipe.save()
+        request.session[session_key] = True
+
     context = {
         'recipe': recipe,
         'comments': comments,
