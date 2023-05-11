@@ -38,7 +38,7 @@
       {% endfor %}
   </div>
 
-  <p class='title--content--2'>최고 평점 5개</p>
+  {% comment %} <p class='title--content--2'>최고 평점 5개</p>
   <div class='owl-carousel hits_owl-carousel owl-theme' >
     {% for product in hits_products %}
     <div class='card--border'>
@@ -53,12 +53,12 @@
         </div>
         <div>
           <p>tag</p>
-          {% comment %} {{product.tags}} {% endcomment %} 
+          {{product.tags}}
         </div>
       </a>  
     </div>
     {% endfor %}
-  </div>
+  </div> {% endcomment %}
 
   <p class='title--content--2'>인기순</p>
     <div class='owl-carousel like_owl-carousel owl-theme' >
@@ -103,14 +103,11 @@
         </div>
         {% endfor %}
     </div>
-
-
-
 </div>
+{% endblock content %}
+
 {% block script %}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="{% static 'js/owl.carousel.min.js' %}"></script>
 <script src="{% static 'js/products_index.js' %}"></script>
 {% endblock script %}
-
-{% endblock content %}

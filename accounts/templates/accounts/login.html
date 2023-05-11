@@ -2,6 +2,7 @@
 {% load static %}
 {% block link %}
   <link rel="stylesheet" href="{% static 'css/accounts_sociallogin.css' %}">
+  <link rel="stylesheet" href="{% static 'css/button.css' %}">
 {% endblock link %}
 {% block content %}
 <div class="container-fluid">
@@ -16,7 +17,7 @@
                 {{ field }}
             </div>
             {% endfor %}
-            <input type="submit" class="btn btn-secondary w-100 fs-3 mt-5" value="로그인">
+            <input type="submit" class="button--color rounded w-100 fs-3 mt-5" value="로그인">
         </form>
         <div class="w-100 text-center mt-5">
         {% comment %} 소셜 로그인 부분입니다. {% endcomment %}

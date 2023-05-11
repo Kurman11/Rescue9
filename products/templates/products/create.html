@@ -1,12 +1,10 @@
 {% extends "base.html" %}
+{% load static %}
+{% block link %}
+  <link rel="stylesheet" href="{% static 'css/button.css' %}">
+{% endblock link %}
 {% block style %}
 <style>
-  .button--color {
-    background-color: var(--main-color);
-    color: white;
-    padding: 10px;
-    border: solid 1px var(--main-color);
-  }
 </style>
 {% endblock style %}
 
@@ -15,6 +13,6 @@
 <form action="{% url 'products:create' %}" method = 'POST' enctype="multipart/form-data">
   {% csrf_token %}
   {{form.as_p}}
-  <button type="submit" class='button--color w-100'>등록</button> 
+  <button type="submit" class='button--color w-100 rounded'>등록</button> 
 </form>
 {% endblock content %}

@@ -1,0 +1,68 @@
+.category--style {
+  color : var(--secondary-color);
+}
+
+.title--font {
+font-size : 30px;
+font-weight: bold;
+}
+
+.title--style {
+margin-bottom: 16px;
+}
+
+.main--padding{
+padding-left: 80px;
+padding-right: 80px;
+}
+
+.title--likescount {
+margin-right: 6px;
+color: var(--main-color)
+}
+.content--style {
+margin-bottom: 20px;
+margin-top: 15px;
+font-size: 20px;
+padding-left: 50px;
+}
+
+.review--color {
+color: var(--main-color);
+font-weight: bold;
+}
+
+.btn--size {
+height: 58px;
+width: 100%;
+min-width: 100px;
+}
+
+.review--image__padding {
+width: 100%;
+}
+
+@media (max-width: 1100px) {
+.review--image__padding {
+  padding-left: 8px;
+}
+
+}
+@media (max-width: 700px) {
+.content--image {
+ width: 100%;
+}
+}
+
+.review--user {
+font-weight: bold
+}
+
+.edit--model--botton {
+height: 42;
+}
+
+.review--updated_at{
+font-size: 12px;
+color: var(--subtle-color)
+}
