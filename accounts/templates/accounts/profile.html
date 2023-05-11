@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
-
+{% load static %}
+{% block link %}
+<link rel="stylesheet" href="{% static 'css/button.css' %}">
+{% endblock link %}
 {% block content %}
   {{ person.username }}님의 프로필 페이지
   <a href="{% url 'accounts:update' %}">내 정보 수정</a>

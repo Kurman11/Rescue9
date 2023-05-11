@@ -1,0 +1,13 @@
+.button--color {
+    background-color: var(--main-color);
+    color: white;
+    padding: 8px 16px;
+    border: solid 1px var(--main-color);
+  }
+
+.subtle--button--color {
+    background-color: var(--subtle-color);
+    color: black;
+    padding: 8px 16px;
+    border: solid 1px #a3a3a3;
+  }

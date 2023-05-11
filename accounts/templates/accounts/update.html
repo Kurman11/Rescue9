@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
-
+{% load static %}
+{% block link %}
+  <link rel="stylesheet" href="{% static 'css/button.css' %}">
+{% endblock link %}
 {% block content %}
 <div class="container-fluid">
     <div class="container" style="width: 500px;">
@@ -12,8 +15,9 @@
             {{ field }}
           </div>
         {% endfor %}
-        <input type="submit" class="btn btn-orange w-100 mt-5 mb-3 fs-3" value="정보수정">
-        <a href="{% url 'accounts:change_password' %}" class="btn btn-orange w-100 fs-3">비밀번호 변경</a>
+        <input type="submit" class="button--color rounded w-100 mt-5 mb-3 fs-3" value="정보수정">
+        
+        <a href="{% url 'accounts:change_password' %}" class="btn button--color rounded fs-3 w-100">비밀번호 변경</a>
       </form>
     </div>
 </div>

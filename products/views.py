@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
 from .models import Product, Review, Review_image
 from .forms import ProductForm, ReviewForm, Review_imageForm
+from django.http import JsonResponse
 from taggit.models import Tag
+
 # Create your views here.
 
 def index(request):
@@ -9,11 +11,12 @@ def index(request):
     new_products = Product.objects.filter(is_new=True)[::-1]
     like_products = Product.objects.order_by('-like_users')
     hits_products = Product.objects.order_by('-price')[:5]
+
     content = {
         'products':products,
         'new_products': new_products,
         'like_products':like_products,
-        'hits_products' : hits_products,
+        # 'hits_products' : hits_products,
     }
     return render(request, 'products/index.html', content)
 
@@ -59,6 +62,7 @@ def detail(request, product_pk):
     }
     return render(request,'products/detail.html', context)
 
+
 def update(request, product_pk):
     product = Product.objects.get(pk=product_pk)
     if request.method == 'POST':
@@ -77,6 +81,7 @@ def update(request, product_pk):
     }
     return render(request,'products/update.html',context)
 
+
 def delete(request,product_pk):
     product = Product.objects.get(pk=product_pk)
     if request.user == product.user:
@@ -86,11 +91,19 @@ def delete(request,product_pk):
 
 def likes(request, product_pk):
     product = Product.objects.get(pk=product_pk)
-    if product.like_users.filter(request.user):
+    if product.like_users.filter(pk=request.user.pk).exists():
         product.like_users.remove(request.user)
+        is_liked = False
     else:
         product.like_users.add(request.user)
-    return redirect('products:detail')
+        is_liked = True
+    like_count = product.like_users.all().count()
+    context = {
+        'is_liked': is_liked,
+        'like_count': like_count,
+    }
+    # return JsonResponse(context)
+    return redirect('products:detail', product.pk)
 
 
 def review_create(request, product_pk):

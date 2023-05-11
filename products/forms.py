@@ -106,7 +106,7 @@ class ReviewForm(forms.ModelForm):
             attrs= {
                 'class' : 'form-control',
                 'style' : 
-                    'width: 100%; outline: 1px solid #cccccc; border:1px solid #ffffff; border-radius:5px; padding:1rem;', 
+                    'width: 100%; outline: 1px solid #e0e0e0; border:1px solid #ffffff; border-radius:5px; padding:1rem;', 
                 'placeholder' : '댓글을 입력해주세요!'
             }
         )
@@ -118,7 +118,7 @@ class ReviewForm(forms.ModelForm):
             attrs={
                 'class': 'form-control',
                 'style' : 
-                    'width: 5%; outline: 1px solid #cccccc; border:1px solid #ffffff; border-radius:5px; padding:0.5rem;', 
+                    'width: 90%; outline: 1px solid #e0e0e0; border:1px solid #ffffff; border-radius:5px; padding:0.5rem; min-width: 100px;', 
                 'id' : 'rating',
                 'min': 1,
                 'max': 5,
@@ -164,5 +164,6 @@ class Review_imageForm(forms.ModelForm):
 #     class Meta:
 #         model = Review_image
 #         fields = ('image',)
+
 
 
