@@ -7,11 +7,11 @@ $('.recipes-owl').owlCarousel({
           items:2,
           slideBy:2,
       },
-      600:{
+      720:{
           items:4,
           slideBy:4,
       },
-      1000:{
+      1140:{
           items:6,
           slideBy:6,
       },
