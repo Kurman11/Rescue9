@@ -14,5 +14,4 @@ urlpatterns = [
     path('<int:recipe_pk>/comments/<int:comment_pk>/update/', views.comment_update, name='comment_update'),
     path('<int:recipe_pk>/comments/<int:comment_pk>/delete/', views.comment_delete, name='comment_delete'),
     path('<int:recipe_pk>/comments/<int:comment_pk>/like/', views.comment_like, name='comment_like'),
-    path("image_upload/", views.upload_file, name="ck_editor_5_upload_file"),
 ]
