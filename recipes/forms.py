@@ -4,6 +4,8 @@ from django_ckeditor_5.widgets import CKEditor5Widget
 
 
 
+
+
 class RecipeForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -30,14 +32,13 @@ class RecipeForm(forms.ModelForm):
     class Meta:
         model = Recipe
         exclude = ('user', 'like_users', 'hits',)
-
         labels = {
             'title': '레시피 명',
         }
         widget = {
             'title': forms.TextInput(attrs={'class': 'form-control w-75'}),
         }
-
+   
 
 class CommentForm(forms.ModelForm):
     content = forms.CharField(
