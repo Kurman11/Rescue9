@@ -6,7 +6,7 @@ from django_ckeditor_5.fields import CKEditor5Field
 
 # Create your models here.
 def comment_img_path(instance, filename):
-    return f'images/comment/{instance.name}/{filename}'
+    return f'images/comment/{instance.comment.user.username}/{filename}'
 
 def recipe_thumbnail_path(instance, filename):
     return f'images/recipe/thumbnail/{instance.title}/{filename}'
@@ -44,8 +44,8 @@ class Comment(models.Model):
 
 
 class CommentImage(models.Model):
-    comment = models.ForeignKey(Comment, blank=False ,null=False, on_delete=models.CASCADE)
-    name = models.CharField(max_length=255)
+    comment = models.ForeignKey(Comment, blank=False, null=False, on_delete=models.CASCADE)
+    # name = models.CharField(max_length=255)
     image = ProcessedImageField(
         blank=True,
         upload_to=comment_img_path,
