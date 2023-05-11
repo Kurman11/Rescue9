@@ -23,22 +23,45 @@
   <img src="{{product.photo.url}}" alt="image">
   {% endif %} 
 
-  <a href="{% url 'products:update' product.pk %}" class='button--color rounded'>수정</a>
-</div>
+  <hr>
+  <h2>리뷰 작성</h2>
 
-<h2>리뷰</h2>
-
-<form action="{% url 'products:review_create' product.pk %}" method="post" enctype="multipart/form-data">
-  {% csrf_token %}
-  {{ review_form.as_p }}
-  {{ review_img.as_p }}
-  <input type="submit" value="리뷰 작성">
-</form>
-
-{% for review in reviews %}
-  {{review.content}}
-{% endfor %}
-
-
-
-{% endblock content %}
+  <form action="{% url 'products:review_create' product.pk %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ review_form.as_p }}
+    {{ review_img.as_p }}
+    <input type="submit" value="리뷰 작성">
+  </form>
+  
+  {% for review in reviews %}
+  {% if request.user == review.user %}
+  <hr>
+    <h3>리뷰 수정</h3>
+    <form action="{% url 'products:review_update' product.pk review.pk %}" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ review_form.as_p }}
+      {{ review_img.as_p }}
+      <input type="submit" value="수정">
+    </form>
+  {% endif %}
+  <form action="{% url 'products:review_delete' product.pk review.pk %}" method='POST'>
+    {% csrf_token %}
+    <p>리뷰 내용 : {{review.content}}</p>
+    {% for review_img in review.review_image_set.all %}
+      {% if review_img.image %}
+        <img src="{{ review_img.image.url }}" alt="">
+        {% endif %}
+    {% endfor %}
+      <input type="submit" value='삭제'>
+  </form>
+  <form action="{% url 'products:review_likes' product.pk review.pk %}">
+    {% csrf_token %}
+    {% if request.user in review.like_users.all %}
+      <input type="submit" value='종아요취소'>
+    {% else %}
+      <input type="submit" value='좋아요'>
+    {% endif %}
+  </form>
+  {% endfor %}
+</body>
+</html>

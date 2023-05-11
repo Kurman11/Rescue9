@@ -99,51 +99,65 @@ def review_create(request, product_pk):
     }
     return render(request,'products/detail.html', context)
 
-# def review_create(request, product_pk):
-#     product = Product.objects.get(pk=product_pk)
-#     review_form = ReviewForm(request.POST)
-#     review_img = Review_imageForm(request.POST, request.FILES)
-#     if review_form.is_valid() and review_img.is_valid():
-#         review = review_form.save(commit=False)
-#         review.product_id = product
-#         review.user = request.user
-#         review.save()
+def review_update(request, product_pk, review_pk):
+    review = Review.objects.get(pk=review_pk)
+    if request.user == review.user:
+        if request.method == 'POST':
+            review_form = ReviewForm(request.POST, instance=review)
+            review_img = Review_imageForm(request.POST, request.FILES, instance=review.review_image_set.first())
+            if review_form.is_valid() and review_img.is_valid():
+                review_img.save()
+                review_form.save()
+                return redirect('products:detail', product_pk)
+        else:
+            review_form = ReviewForm(instance=review)
+            review_img = Review_imageForm(instance=review.review_image_set.first())
+        context = {
+            'review_img' : review_img,
+            'review_form': review_form,
+            'review': review,
+        }
+        return render(request, 'products/detail.html', context)
 
-#         review_image = review_img.save(commit=False)
-#         review_image.review_id = review
-#         review_image.save()
 
-#         return redirect('products:detail', product.pk)
-#     context = {
-#         'product': product,
-#         'review_form': review_form,
-#         'review_img': review_img,
-#     }
-#     return render(request, 'products/detail.html', context)
+# def review_update(request, product_pk, review_pk):
+#     review = Review.objects.get(pk=review_pk)
+#     if request.user == review.user:
+#         review_form = ReviewForm(request.POST, request.FILES, instance=review)
+#         if review_form.is_valid():
+#             review_form.save()
+#             return redirect('products:detail', product_pk)
+#         else:
+#             review_form = ReviewForm(instance=review)
+#         context = {
+#             'review_form': review_form,
+#             'review': review,
+#         }
+#         return render(request, 'products/detail.html', context)
+    #     else:
+    #         review_form = ReviewForm(instance=review)
+    #     context = {
+    #         'review' : review,
+    #         'review_form' : review_form,
+    #     }
+    #     return render(request,'products/')
 
-# def review_create(request, product_pk):
-#     product = Product.objects.get(pk=product_pk)
-#     if request.method == 'POST':
-#         review_form = ReviewForm(request.POST)
-#         review_img = Review_imageForm(request.POST, request.FILES)
-#         if review_form.is_valid() and review_img.is_valid():
-#             review = review_form.save(commit=False)
-#             review.product_id = product
-#             review.user = request.user
-#             review.save()
+    # return redirect('products/detail.html', product_pk)
 
-#             review_image = review_img.save(commit=False)
-#             review_image.review_id = review
-#             review_image.save()
+def review_delete(request,product_pk,review_pk):
+    review = Review.objects.get(pk=review_pk)
+    if request.user == review.user:
+        review.delete()
+        return redirect('products:detail', product_pk)
+        
 
-#             return redirect('products:detail', product.pk)
-#     else:
-#         review_form = ReviewForm()
-#         review_img = Review_imageForm()
-
-#     context = {
-#         'product': product,
-#         'review_form': review_form,
-#         'review_img': review_img,
-#     }
-#     return render(request, 'products/detail.html', context)
+def review_likes(request,product_pk, review_pk):
+    review = Review.objects.get(pk=review_pk)
+    if review.like_users.filter(pk=request.user.pk).exists():
+        review.like_users.remove(request.user)
+    else:
+        review.like_users.add(request.user)
+    context={
+        'review.like_users' : review.like_users,
+    }
+    return redirect('products:detail', product_pk)

@@ -6,7 +6,10 @@ body{
 #wrapper{
   height: auto;
   min-height: calc(100vh - 350px);
-  
+}
+
+p {
+  margin-bottom: 0;
 }
 
 a {

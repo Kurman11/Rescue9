@@ -7,7 +7,9 @@ from accounts.models import User
 # Create your views here.
 def index(request):
     recipes = Recipe.objects.all()
+    subject = '전체'
     context = {
+        'subject': subject,
         'recipes': recipes,
     }
     return render(request, 'recipes/index.html', context)
@@ -42,7 +44,7 @@ def detail(request, recipe_pk: int):
         'comment_form': comment_form,
         'comment_images': comment_images,
     }
-    return render(request, 'recipe/detail.html', context)
+    return render(request, 'recipes/detail.html', context)
 
 
 def update(request, recipe_pk: int):
@@ -68,7 +70,7 @@ def delete(request, recipe_pk):
     return redirect('recipes:index')
 
 
-def recipe_like_users(request, recipe_pk):
+def recipe_like(request, recipe_pk):
     recipe = Recipe.objects.get(pk=recipe_pk)
     if recipe.like_users.filter(pk=request.user.pk).exist():
         recipe.like_users.remove(request.user)
@@ -84,7 +86,7 @@ def category(request, subject):
         'subject': subject,
         'recipes': recipes,
     }
-    return render(request, 'recipes/category.html', context)
+    return render(request, 'recipes/index.html', context)
 
 
 def comment_create(request, recipe_pk: int):
@@ -141,8 +143,6 @@ def comment_update(request, recipe_pk, comment_pk):
         return render(request, 'recipes/detail.html', context)
 
 
-
-
 def comment_delete(request, recipe_pk, comment_pk):
     comment = Comment.objects.get(pk=comment_pk)
     comment_images = comment.commentimage_ser.all()
@@ -153,7 +153,7 @@ def comment_delete(request, recipe_pk, comment_pk):
     return redirect('recipes:detail', recipe_pk)
 
 
-def comment_like_users(request, recipe_pk, comment_pk):
+def comment_like(request, recipe_pk, comment_pk):
     comment = Comment.objects.get(pk=comment_pk)
     if request.user in comment.like_users.all():
         comment.like_users.remove(request.user)
