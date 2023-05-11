@@ -36,9 +36,9 @@ def create(request):
 
 def detail(request, recipe_pk: int):
     recipe = Recipe.objects.get(pk=recipe_pk)
-    comments = recipe.comment_set.all()
     comment_form = CommentForm()
-    comment_images = CommentImageForm(request.POST, request.FILES)
+    comment_image_form = CommentImageForm(request.POST, request.FILES)
+    comments = recipe.comment_set.all()
 
     session_key = 'recipe_{}_hits'.format(recipe_pk)
     if not request.session.get(session_key):
@@ -50,7 +50,7 @@ def detail(request, recipe_pk: int):
         'recipe': recipe,
         'comments': comments,
         'comment_form': comment_form,
-        'comment_images': comment_images,
+        'comment_image_form': comment_image_form,
     }
     return render(request, 'recipes/detail.html', context)
 
@@ -99,24 +99,18 @@ def category(request, subject):
 
 def comment_create(request, recipe_pk: int):
     recipe = Recipe.objects.get(pk=recipe_pk)
-    if request.method == 'POST':
-        comment_form = CommentForm(request.POST)
-        comment_image_form = CommentImageForm(request.POST, request.FILES)
-        files = request.FILES.getlist('image')
-        if comment_form.is_valid():
-            comment = comment_form.save(commit=False)
-            comment.recipe = Recipe.objects.get(pk=recipe_pk)
-            comment.recipe.user = request.user
-            comment.save()
+    comment_form = CommentForm(request.POST)
+    comment_image_form = CommentImageForm(request.POST, request.FILES)
+    if comment_form.is_valid() and comment_image_form.is_valid():
+        comment = comment_form.save(commit=False)
+        comment.recipe = recipe
+        comment.user = request.user
+        comment.save()
 
-            for file in files:
-                CommentImage.objects.create(comment=comment, image=file)
-
-            return redirect('recipes:detail', recipe_pk)
-    else:
-        comment_form = CommentForm()
-        comment_image_form = CommentImageForm()
-
+        commentimage = comment_image_form.save(commit=False)
+        commentimage.comment = comment
+        commentimage.save()
+        return redirect('recipes:detail', recipe.pk)
     context = {
         'recipe': recipe,
         'comment_form': comment_form,
