@@ -23,7 +23,7 @@
     {% for recipe in recipes %}
     <div class='card--border'>
       <a href="{% url 'recipes:detail' recipe.pk %}">
-        <img src="{{ recipe.thumbnail.url}}" class='rounded' style='width: 170px; height: 170px;' alt="{{ recipe.title }}의 이미지">  
+        <img src="{{ recipe.thumbnail.url}}" class='card--border__image rounded' alt="{{ recipe.title }}의 이미지">  
         <div class='card--name--box'>
           <strong class='card--name'>{{ recipe.title }}</strong>
         </div>
@@ -39,10 +39,10 @@
   <p class='title--content'>모든 상품</p>
   <div class="row">
     {% for recipe in recipes %}
-    <div class="col-3">
+    <div class="col-6 col-md-3 col-xl-2">
       <div class='card--border'>
         <a href="{% url 'recipes:detail' recipe.pk %}">
-          <img src="{{ recipe.thumbnail.url }}" class='rounded' style='width: 170px; height: 170px;' alt="{{ recipe.title }}의 이미지">  
+          <img src="{{ recipe.thumbnail.url }}" class='card--border__image rounded' alt="{{ recipe.title }}의 이미지">  
           <div class='card--name--box'>
             <strong class='card--name'>{{ recipe.title }}</strong>
           </div>
