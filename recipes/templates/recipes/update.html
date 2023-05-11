@@ -1,0 +1,9 @@
+{% extends 'recipes/create.html' %}
+
+{% block title %}
+<h1>나만의 레시피 수정</h1>
+{% endblock title %}
+
+{% block create_url %}
+{% url 'recipes:update' recipe.pk %}
+{% endblock create_url %}

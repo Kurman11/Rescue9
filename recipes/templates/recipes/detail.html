@@ -42,12 +42,23 @@
   <p>{{ recipe.content|safe }}</p>
 </div>
 
-{% comment %} 마지막 유저 정보 및 글 정보 {% endcomment %}
+{% comment %} 마지막 유저 정보 ,글 스테이터스 및 글 조작 {% endcomment %}
 <div class="recipe__footer__info">
-  <p class="recipe__footer__info__item">좋아요 {{ recipe.like_users.count }}</p>
-  <p class="recipe__footer__info__item">댓글 {{ recipe.comment_set.count }}</p>
-  <p class="recipe__footer__info__item">조회 {{ recipe.hits }}</p>
+  <div class="recipe__footer__info__left">
+    <p class="recipe__footer__info__item">좋아요 {{ recipe.like_users.count }}</p>
+    <p class="recipe__footer__info__item">댓글 {{ recipe.comment_set.count }}</p>
+    <p class="recipe__footer__info__item">조회 {{ recipe.hits }}</p>
+  </div>
+  <div class="recipe__footer__info__right">
+    <a class="btn btn-secondary me-2" href="{% url 'recipes:update' recipe.pk %}">글 수정</a>
+    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#recipeDeleteModal">
+      글 삭제하기
+    </button>
+  </div>
 </div>
+
+{% include 'recipes/detail_delete_modal.html' %}
+
 {% comment %} 레시피 댓글 {% endcomment %}
 <div class="recipe__comment">
   <p class="recipe__comment__info">댓글 <span class="recipe__comment__info--figure">{{ recipe.comment_set.count }}</span></p>

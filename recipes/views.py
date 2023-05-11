@@ -66,6 +66,7 @@ def update(request, recipe_pk: int):
         recipe_form = RecipeForm(instance=recipe)
 
     context = {
+        'recipe': recipe,
         'recipe_form': recipe_form,
     }
     return render(request, 'recipes/update.html', context)
