@@ -1,11 +1,17 @@
 body{
   font-family: 'NanumSquareNeo-Variable';
-  /* height: 100%; */
+  height: 100%;
   }
+
+#wrapper{
+  height: auto;
+  min-height: calc(100vh - 350px);
+}
 
 p {
   margin-bottom: 0;
 }
+
 a {
   text-decoration: none;
 }
@@ -22,10 +28,12 @@ nav{
   border-bottom: 1px solid var(--subtle-color);
   margin-top: 0;
   background-color: white;
+  z-index: 100;
 }
 
 footer {
   width: 100%;
+  height: 192px;
   background: var(--secondary-color);
 
 }
@@ -134,4 +142,3 @@ footer {
   font-weight: normal;
   font-style: normal;
 }
-  
