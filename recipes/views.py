@@ -121,23 +121,18 @@ def comment_create(request, recipe_pk: int):
 
 
 def comment_update(request, recipe_pk, comment_pk):
-    recipe = Recipe.objects.get(pk=recipe_pk)
     comment = Comment.objects.get(pk=comment_pk)
     if request.user == comment.user:
         if request.method == 'POST':
             comment_form = CommentForm(request.POST, instance=comment)
-            files = request.FILES.getlist('image')
-            if comment_form.is_valid():
+            comment_image_form = CommentImageForm(request.POST, request.FILES, instance=comment.commentimage_set.first())
+            if comment_form.is_valid() and comment_image_form.is_valid():
                 comment_form.save()
-                comment_images = CommentImage.objects.filter(comment=comment)
-                for comment_image in comment_images:
-                    comment_image.delete()
-                for file in files:
-                    CommentImage.objects.create(recipe=recipe, image=file)
-                return redirect('recipes:detail', comment.recipe.pk)
+                comment_image_form.save()
+                return redirect('recipes:detail', recipe_pk)
         else:
             comment_form = CommentForm(instance=comment)
-            comment_image_form = CommentImageForm()
+            comment_image_form = CommentImageForm(instance=comment.commentimage_set.first())
         context = {
             'comment_form': comment_form,
             'comment_image_form': comment_image_form,
@@ -148,7 +143,7 @@ def comment_update(request, recipe_pk, comment_pk):
 
 def comment_delete(request, recipe_pk, comment_pk):
     comment = Comment.objects.get(pk=comment_pk)
-    comment_images = comment.commentimage_ser.all()
+    comment_images = comment.commentimage_set.all()
     if request.user == comment.user:
         for comment_image in comment_images:
             comment_image.delete()
@@ -158,8 +153,8 @@ def comment_delete(request, recipe_pk, comment_pk):
 
 def comment_like(request, recipe_pk, comment_pk):
     comment = Comment.objects.get(pk=comment_pk)
-    if request.user in comment.like_users.all():
-        comment.like_users.remove(request.user)
+    if request.user in comment.like_user.all():
+        comment.like_user.remove(request.user)
     else:
-        comment.like_users.add(request.user)
+        comment.like_user.add(request.user)
     return redirect('recipes:detail', recipe_pk)
