@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.urls import reverse
 from .models import Recipe, Comment, CommentImage
 from .forms import RecipeForm, CommentForm, CommentImageForm
 from accounts.models import User
@@ -38,7 +39,7 @@ def detail(request, recipe_pk: int):
     recipe = Recipe.objects.get(pk=recipe_pk)
     comment_form = CommentForm()
     comment_image_form = CommentImageForm(request.POST, request.FILES)
-    comments = recipe.comment_set.all()
+    comments = recipe.comment_set.all().order_by('-pk')
 
     session_key = 'recipe_{}_hits'.format(recipe_pk)
     if not request.session.get(session_key):
@@ -111,7 +112,8 @@ def comment_create(request, recipe_pk: int):
         commentimage = comment_image_form.save(commit=False)
         commentimage.comment = comment
         commentimage.save()
-        return redirect('recipes:detail', recipe.pk)
+        return redirect(reverse('recipes:detail', kwargs={"recipe_pk": recipe_pk}) + '#comment-start')
+        
     context = {
         'recipe': recipe,
         'comment_form': comment_form,
