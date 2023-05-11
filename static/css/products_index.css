@@ -12,10 +12,18 @@ a {
   padding-left: 80px;
   padding-right: 80px;
 }
+
 .card--border {
   box-shadow : 5px 5px 5px 1px var(--subtle-color);
   display: inline-block;
+  /* 카드 너무 작아서 width 90% 추가했음 */
+  width: 90%;
   overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.card--border__image {
+  width: 100%;
 }
 
 .title--content{

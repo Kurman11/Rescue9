@@ -1,10 +1,60 @@
 {% extends 'base.html' %}
+
+
 {% block content %}
 <h1>레시피 작성</h1>
 <form action="{% url 'recipes:create' %}" method="POST" enctype="multipart/form-data">
   {% csrf_token %}
   {{ recipe_form.media }}
-  {{ recipe_form.as_p }}
+  {% for field in recipe_form %}
+    {% if field.name == 'thumbnail_upload' %}
+      <div>
+        {{ field.label_tag }}
+        {{ field }}
+        <div id="thumbnail_preview" style="max-width: 100px;"></div>
+      </div>
+    {% else %}
+      <div>
+        {{ field.label_tag }}
+        {{ field }}
+      </div>
+    {% endif %}
+  {% endfor %}
+
   <input type="submit" value="작성">
 </form>
+
+{% block script %}
+<script>
+  function previewThumbnail(event) {
+    const preview = document.querySelector('#thumbnail_preview');
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.addEventListener('load', function() {
+      const image = new Image();
+      image.src = this.result;
+      preview.innerHTML = '';
+      preview.appendChild(image);
+    });
+
+    if (file) {
+      reader.readAsDataURL(file);
+    } else {
+      preview.innerHTML = '';
+    }
+  }
+
+  const thumbnailUpload = document.querySelector('#id_thumbnail_upload');
+  thumbnailUpload.addEventListener('change', previewThumbnail);
+</script>
+<style>
+  #thumbnail_preview img {
+    max-width: 100px;
+    max-height: 100px;
+    min-width: 100px;
+    min-height: 100px;
+  }
+</style>
+{% endblock script %}
 {% endblock content %}

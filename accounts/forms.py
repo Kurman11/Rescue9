@@ -72,25 +72,14 @@ class CustomUserCreationForm(UserCreationForm):
             }
         )
     )
-
     image = forms.ImageField(
         label='프로필 이미지',
         widget=forms.ClearableFileInput(
             attrs={
                 'class': 'form-control',
-                'id' : '프로필 이미지',
             },
         ),
         required=False,
-    )
-    address = forms.CharField(
-        label='주소',
-        widget=forms.TextInput(
-            attrs={
-                'class': 'form-control',
-                'id' : '주소',
-            }
-        )
     )
 
 
@@ -131,17 +120,9 @@ class CustomUserChangeForm(UserChangeForm):
         ),
         required=False,
     )
-    address = forms.CharField(
-        label='주소',
-        widget=forms.TextInput(
-            attrs={
-                'class': 'form-control',
-                'id' : '주소',
-            }
-        )
-    )
 
     password = None
+    
     class Meta(UserChangeForm.Meta):
         model = get_user_model()
         fields = ('nickname', 'email',)

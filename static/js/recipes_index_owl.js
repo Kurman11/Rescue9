@@ -1,0 +1,19 @@
+$('.recipes-owl').owlCarousel({
+  loop:false,
+  margin:10,
+  nav:false,
+  responsive:{
+      0:{
+          items:2,
+          slideBy:2,
+      },
+      720:{
+          items:4,
+          slideBy:4,
+      },
+      1140:{
+          items:6,
+          slideBy:6,
+      },
+  }
+})

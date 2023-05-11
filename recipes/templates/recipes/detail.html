@@ -54,7 +54,11 @@
 </div>
 {% comment %} 댓글 작성란 {% endcomment %}
 {% comment %} 현재 기능 미구현 이미지 첨부 고려 x 상태 {% endcomment %}
-<form class="recipe__comment__form" action="">
+
+<form class="recipe__comment__form" action="{% url 'recipes:comment_create' recipe.pk %}" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{ comment_form.as_p }}
+  {{ comment_image_form.as_p }}
   <div class="recipe__comment__user__image">
     {% if request.user.image %}
     <img class="recipe__user__image" src="{{ request.user.image}}" alt="{{ request.user.username }}의 프로필 이미지">
@@ -78,6 +82,11 @@
       <img class="recipe__user__image" src="{% static 'image/no_image432.png' %}" alt="유저 프로필 사진 없음">
       {% endif %}
     </div>
+    {% for review_img in review.review_image_set.all %}
+      {% if review_img.image %}
+        <img src="{{ review_img.image.url }}" alt="">
+        {% endif %}
+    {% endfor %}
     {% comment %} 여 {% endcomment %}
     {% comment %} 기 {% endcomment %}
     {% comment %} 까 {% endcomment %}
@@ -85,6 +94,7 @@
     <div>
       <p>{{ comment.user.username }}</p>
       <p>{{ comment.user.content }}</p>
+      <p>{{ comment.content }}</p>
     </div>
   </div>
   {% endfor %}

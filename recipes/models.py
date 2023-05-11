@@ -2,7 +2,7 @@ from django.db import models
 from django.conf import settings
 from imagekit.models import ImageSpecField, ProcessedImageField
 from imagekit.processors import Thumbnail, ResizeToFit
-from ckeditor_uploader.fields import RichTextUploadingField
+from django_ckeditor_5.fields import CKEditor5Field
 
 # Create your models here.
 def comment_img_path(instance, filename):
@@ -25,10 +25,10 @@ class Recipe(models.Model):
     category = models.CharField(max_length=20)
     hits = models.PositiveIntegerField(default=0)
     like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="like_recipes")
-    content = RichTextUploadingField()
+    content = CKEditor5Field('Content', config_name='extends')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    used_products = models.ManyToManyField("products.Product", related_name="used_recipes", null=True, blank=True)
+    used_products = models.ManyToManyField("products.Product", related_name="used_recipes", blank=True)
 
     def __srt__(self):
         return self.title
@@ -44,7 +44,7 @@ class Comment(models.Model):
 
 
 class CommentImage(models.Model):
-    comment = models.ForeignKey(Comment, on_delete=models.CASCADE)
+    comment = models.ForeignKey(Comment, blank=False ,null=False, on_delete=models.CASCADE)
     image = ProcessedImageField(
         blank=True,
         upload_to=comment_img_path,

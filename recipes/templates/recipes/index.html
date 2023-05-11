@@ -1,14 +1,65 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block link %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+{% endblock link %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/products_index.css' %}">
+{% endblock style %}
+
 {% block content %}
-<h1>레시피 리스트</h1>
-{% for recipe in recipes %}
-  <p>
-    <a href="{% url 'recipes:detail' recipe.pk %}">
-      <img src="{{ recipe.thumbnail.url }}" alt="썸네일">
-      {{ recipe.title }}
+<div class='container main--padding'>
+  {% comment %} 레시피 등록 {% endcomment %}
+  <div class='mt-3'> 
+    <a href="{% url 'recipes:create' %}" class='button--color p-3 rounded'>
+      <i class="bi bi-cloud-plus me-2 ms-1"></i>
+      나만의 레시피 등록하러 가기
     </a>
-  </p>
-{% empty %}
-  <p>아직 레시피가 없어요.</p>
-{% endfor %}
+  </div>
+  {% comment %} Carousel 나열 {% endcomment %}
+  <p class='title--content--2'>강조/분류하고 싶은 항목</p>
+  <div class='owl-carousel owl-theme recipes-owl'>
+    {% for recipe in recipes %}
+    <div class='card--border'>
+      <a href="{% url 'recipes:detail' recipe.pk %}">
+        <img src="{{ recipe.thumbnail.url}}" class='card--border__image rounded' alt="{{ recipe.title }}의 이미지">  
+        <div class='card--name--box'>
+          <strong class='card--name'>{{ recipe.title }}</strong>
+        </div>
+        <div class='card--tag--border'>
+          <p>조회수 {{ recipe.hits }}</p>
+          <p>리뷰 {{ recipe.comment_set.count }}</p>
+        </div>
+      </a>  
+    </div>
+    {% endfor %}
+  </div>
+  {% comment %} 전체 상품 나열 {% endcomment %}
+  <p class='title--content'>모든 상품</p>
+  <div class="row">
+    {% for recipe in recipes %}
+    <div class="col-6 col-md-3 col-xl-2">
+      <div class='card--border'>
+        <a href="{% url 'recipes:detail' recipe.pk %}">
+          <img src="{{ recipe.thumbnail.url }}" class='card--border__image rounded' alt="{{ recipe.title }}의 이미지">  
+          <div class='card--name--box'>
+            <strong class='card--name'>{{ recipe.title }}</strong>
+          </div>
+          <div class='card--tag--border'>
+            <p>조회수 {{ recipe.hits }}</p>
+            <p>리뷰 {{ recipe.comment_set.count }}</p>
+          </div>
+        </a>  
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
 {% endblock content %}
+
+{% block script %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="{% static 'js/recipes_index_owl.js' %}"></script>
+{% endblock script %}
