@@ -51,9 +51,12 @@ class CommentForm(forms.ModelForm):
         ),
     )
 
+
+
     class Meta:
         model = Comment
         fields = ('content',)
+
 
 
 class CommentImageForm(forms.ModelForm):
@@ -62,11 +65,11 @@ class CommentImageForm(forms.ModelForm):
         widget=forms.ClearableFileInput(
             attrs={
                 'class': 'form-control',
-                'multiple': True,
             },
         ),
         required=False,
     )
+
     class Meta:
         model = CommentImage
         fields = ('image',)
