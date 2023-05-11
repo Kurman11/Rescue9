@@ -93,9 +93,9 @@
       <img class="recipe__user__image" src="{% static 'image/no_image432.png' %}" alt="유저 프로필 사진 없음">
       {% endif %}
     </div>
-    {% for review_img in review.review_image_set.all %}
-      {% if review_img.image %}
-        <img src="{{ review_img.image.url }}" alt="">
+    {% for comment_img in comment.commentimage_set.all %}
+      {% if comment_img.image %}
+        <img src="{{ comment_img.image.url }}" alt="">
         {% endif %}
     {% endfor %}
     {% comment %} 여 {% endcomment %}
