@@ -70,7 +70,8 @@
   {% csrf_token %}
   {{ comment_form.as_p }}
   {{ comment_image_form.as_p }}
-  <div class="recipe__comment__user__image">
+  {% comment %} 일단 comment 테스트 하기 위해서 밑은 주석처리 하겠슴다 {% endcomment %}
+  <!-- <div class="recipe__comment__user__image">
     {% if request.user.image %}
     <img class="recipe__user__image" src="{{ request.user.image}}" alt="{{ request.user.username }}의 프로필 이미지">
     {% else %}
@@ -80,7 +81,8 @@
   <div class="recipe__comment__input-area">
     <input class="recipe__comment__input-area__input--text"type="text" placeholder="칭찬과 격려의 댓글은 작성자에게 큰 힘이 됩니다 :)">
     <input class="btn recipe__comment__input-area__input--submit" type="submit" name="" id="" value="제출">
-  </div>
+  </div> -->
+  <button type="submit" class="btn btn-outline-dark">작성하기</button>
 </form>
 {% comment %} 댓글 표시 {% endcomment %}
 <div class="recipe__comment__list">
@@ -93,11 +95,35 @@
       <img class="recipe__user__image" src="{% static 'image/no_image432.png' %}" alt="유저 프로필 사진 없음">
       {% endif %}
     </div>
-    {% for comment_img in comment.commentimage_set.all %}
-      {% if comment_img.image %}
-        <img src="{{ comment_img.image.url }}" alt="">
-        {% endif %}
-    {% endfor %}
+    {% comment %} comment 이미지 구현 완료 {% endcomment %}
+    {% comment %} comment 삭제 구현 완료 {% endcomment %}
+    <form action="{% url 'recipes:comment_delete' recipe.pk comment.pk %}" method='POST'>
+      {% csrf_token %}
+      <p>리뷰 내용 : {{comment.content}}</p>
+      {% for comment_img in comment.commentimage_set.all %}
+        {% if comment_img.image %}
+          <img src="{{ comment_img.image.url }}" alt="">
+          {% endif %}
+      {% endfor %}
+        <input type="submit" value='삭제'>
+    </form>
+    {% comment %} comment 따봉 구현 완료 {% endcomment %}
+    <form action="{% url 'recipes:comment_like' recipe.pk comment.pk %}">
+      {% csrf_token %}
+      {% if request.user in comment.like_user.all %}
+        <input type="submit" value='종아요취소'>
+      {% else %}
+        <input type="submit" value='좋아요'>
+      {% endif %}
+    </form>
+    {% comment %} comment 업데이트 구현 완료 {% endcomment %}
+    <form action="{% url 'recipes:comment_update' recipe.pk comment.pk %}" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ comment_form.as_p }}
+      {{ comment_image_form.as_p }}
+      <input type="submit" value="수정">
+    </form>
+
     {% comment %} 여 {% endcomment %}
     {% comment %} 기 {% endcomment %}
     {% comment %} 까 {% endcomment %}
