@@ -1,13 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <h1>detail</h1>
+{% extends 'base.html' %}
+{% block style %}
+<style>
+  .button--color {
+    background-color: var(--main-color);
+    color: white;
+    padding: 10px;
+    border: solid 1px var(--main-color);
+  }
+</style>
+{% endblock style %}
+
+{% block content %}
+<h1>detail</h1>
+<div class='d-flex row'>
   <p>작성자 : {{product.user}}</p>
   <p>번호: {{ product.pk }}</p>
   <p>제목: {{ product.name }}</p>
@@ -15,8 +20,9 @@
 
   {% comment %} 이미지 {% endcomment %}
   {% if product.photo %}
-      <img src="{{product.photo.url}}" alt="image">
+  <img src="{{product.photo.url}}" alt="image">
   {% endif %} 
+
   <hr>
   <h2>리뷰 작성</h2>
 
