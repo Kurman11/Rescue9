@@ -45,6 +45,7 @@ class Comment(models.Model):
 
 class CommentImage(models.Model):
     comment = models.ForeignKey(Comment, blank=False ,null=False, on_delete=models.CASCADE)
+    name = models.CharField(max_length=255)
     image = ProcessedImageField(
         blank=True,
         upload_to=comment_img_path,
