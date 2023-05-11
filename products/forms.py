@@ -1,5 +1,8 @@
 from django import forms
 from .models import Product, Review, Review_image
+from taggit.forms import TagField, TagWidget
+from taggit.managers import TaggableManager
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 category_choices = (
@@ -12,7 +15,14 @@ category_choices = (
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = ('name', 'category', 'hits', 'photo', 'is_new', 'content')
+        fields = ('name','price', 'category', 'photo', 'is_new', 'content','tags',)
+        widgets = {
+            'tags':TagWidget(attrs={'class': 'form-control', 'placeholder': "콤마 구분"}),
+            
+        }
+        help_texts = {
+            'tags': '콤마로 구분',
+        }
     name = forms.CharField(
         label='name',
         widget=forms.TextInput(
@@ -36,15 +46,26 @@ class ProductForm(forms.ModelForm):
         choices=category_choices,
     )
 
-    hits = forms.IntegerField(
-        label='hits',
+    # hits = forms.IntegerField(
+    #     label='hits',
+    #     widget=forms.NumberInput(
+    #         attrs={
+    #             'class': 'form-control',
+    #             'id' : 'hits',
+    #         }
+    #     )
+    # )
+
+    price = forms.IntegerField(
+        label='price',
         widget=forms.NumberInput(
             attrs={
                 'class': 'form-control',
-                'id' : 'hits',
+                'id' : 'price',
             }
         )
     )
+
     photo = forms.ImageField(
         label='photo',
         widget=forms.ClearableFileInput(
@@ -62,6 +83,7 @@ class ProductForm(forms.ModelForm):
                 'id' : 'is_new',
             }
         )
+        ,required=False,
     )
     content = forms.CharField(
         label='content',
@@ -98,6 +120,9 @@ class ReviewForm(forms.ModelForm):
                 'style' : 
                     'width: 5%; outline: 1px solid #cccccc; border:1px solid #ffffff; border-radius:5px; padding:0.5rem;', 
                 'id' : 'rating',
+                'min': 1,
+                'max': 5,
+                'value':1,
             }
         )
     )
@@ -106,7 +131,7 @@ class ReviewForm(forms.ModelForm):
 class Review_imageForm(forms.ModelForm):
     class Meta:
         model = Review_image
-        fields='__all__'
+        fields=('image',)
     image = forms.ImageField(
         label='image',
         widget=forms.ClearableFileInput(
@@ -133,11 +158,11 @@ class Review_imageForm(forms.ModelForm):
 #         enctype = 'multipart/form-data'
 
 
-class Review_imageForm(forms.ModelForm):
-    image = forms.ImageField(label='옵션1 이미지', label_suffix='', required=False, widget=forms.ClearableFileInput(
-        attrs={'class': 'form-control-file'}))
-    class Meta:
-        model = Review_image
-        fields = ('image',)
+# class Review_imageForm(forms.ModelForm):
+#     image = forms.ImageField(label='옵션1 이미지', label_suffix='', required=False, widget=forms.ClearableFileInput(
+#         attrs={'class': 'form-control-file'}))
+#     class Meta:
+#         model = Review_image
+#         fields = ('image',)
 
 

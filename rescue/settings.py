@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'imagekit',
     'django.contrib.sites',
+    'taggit',
+    'taggit_templatetags2',
 
     #allauth
     'allauth',
@@ -160,6 +162,8 @@ AUTHENTICATION_BACKENDS = (
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'  # 로그인 후 리다이렉트 될 경로
 
+# TAGGIT_CASE_INSENSITIVE = True
+# TAGGIT_LIMIT = 50
 customColorPalette = [
     {"color": "hsl(4, 90%, 58%)", "label": "Red"},
     {"color": "hsl(340, 82%, 52%)", "label": "Pink"},

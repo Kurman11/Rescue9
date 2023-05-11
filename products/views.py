@@ -1,13 +1,14 @@
 from django.shortcuts import render, redirect
 from .models import Product, Review, Review_image
 from .forms import ProductForm, ReviewForm, Review_imageForm
+from taggit.models import Tag
 # Create your views here.
 
 def index(request):
     products = Product.objects.all()[::-1]
     new_products = Product.objects.filter(is_new=True)[::-1]
     like_products = Product.objects.order_by('-like_users')
-    hits_products = Product.objects.order_by('-hits')[:5]
+    hits_products = Product.objects.order_by('-price')[:5]
     content = {
         'products':products,
         'new_products': new_products,
@@ -19,11 +20,14 @@ def index(request):
 
 def create(request):
     if request.method == 'POST':
+        tags = request.POST.get('tags').split(',')
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
             product = form.save(commit=False)
             product.user = request.user
             product.save()
+            for tag in tags:
+                product.tags.add(tag.strip())
             return redirect('products:detail', product.pk)
     else:
         form = ProductForm()
@@ -38,6 +42,7 @@ def detail(request, product_pk):
     review_form = ReviewForm()
     review_img = Review_imageForm(request.POST, request.FILES)
     reviews = product.review_set.all()
+    tags = product.tags.all()
 
     session_key = 'product_{}_hits'.format(product_pk)
     if not request.session.get(session_key):
@@ -50,6 +55,7 @@ def detail(request, product_pk):
         'review_form' : review_form,
         'reviews' : reviews,
         'review_img' : review_img,
+        'tags': tags,
     }
     return render(request,'products/detail.html', context)
 
@@ -58,6 +64,9 @@ def update(request, product_pk):
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES, instance=product)
         if form.is_valid():
+            tags = request.POST.get('tags').split(',')
+            for tag in tags:
+                product.tags.add(tag.strip())
             form.save()
             return redirect('products:detail', product.pk)
     else:
