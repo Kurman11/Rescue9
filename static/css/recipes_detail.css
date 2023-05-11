@@ -64,14 +64,27 @@
 /* 레시피 footer */
 .recipe__footer__info {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   font-size: 14px;
   line-height: 20px;
   border-bottom: 1px solid var(--subtle-color);
   margin-bottom: 20px;
+  padding-bottom: 10px;
+}
+
+.recipe__footer__info__left{
+  display: flex;
+  align-items: center;
 }
 
 .recipe__footer__info__item {
-  margin: 0 10px 10px 0;
+  margin-right: 10px;
+}
+
+.recipe__footer__info__right{
+  display: flex;
+  align-items: center
 }
 /* 레시피 댓글 */
 .recipe__comment {

@@ -1,0 +1,21 @@
+<!-- Modal -->
+<div class="modal fade" id="recipeDeleteModal" tabindex="-1" aria-labelledby="recipeDeleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="recipeDeleteModalLabel">확인창</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        글을 정말로 삭제하시겠어요?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+        <form action="{% url 'recipes:delete' recipe.pk %}" method="POST">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-danger">글 삭제</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
