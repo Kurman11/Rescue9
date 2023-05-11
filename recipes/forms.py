@@ -1,11 +1,16 @@
 from django import forms
 from .models import Recipe, Comment, CommentImage
-from ckeditor_uploader.widgets import CKEditorUploadingWidget
+from django_ckeditor_5.widgets import CKEditor5Widget
 
 
 
 class RecipeForm(forms.ModelForm):
-    content = forms.CharField(widget=CKEditorUploadingWidget())
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # it is required to set it False,
+        # otherwise it will throw error in console
+        self.fields["content"].required = False
+
     category = forms.ChoiceField(
         label='카테고리',
         widget=forms.Select(
@@ -24,7 +29,7 @@ class RecipeForm(forms.ModelForm):
 
     class Meta:
         model = Recipe
-        exclude = ('like_users', 'hits')
+        exclude = ('user', 'like_users', 'hits',)
 
         labels = {
             'title': '레시피 명',
