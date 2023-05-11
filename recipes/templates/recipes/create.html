@@ -2,8 +2,10 @@
 
 
 {% block content %}
-<h1>레시피 작성</h1>
-<form action="{% url 'recipes:create' %}" method="POST" enctype="multipart/form-data">
+{% block title %}
+<h1>나만의 레시피 작성</h1>
+{% endblock title %}
+<form action="{% block create_url %}{% url 'recipes:create' %}{% endblock create_url %}" method="POST" enctype="multipart/form-data">
   {% csrf_token %}
   {{ recipe_form.media }}
   {% for field in recipe_form %}
