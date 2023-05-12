@@ -5,9 +5,31 @@
     border: solid 1px var(--main-color);
   }
 
-.subtle--button--color {
+.button--reversecolor {
+    background-color:white;
+    color: var(--main-color);
+    padding: 8px 16px;
+    border: solid 1px var(--main-color);
+  }
+
+.subtle--button--reversecolor {
     background-color: var(--subtle-color);
     color: black;
     padding: 8px 16px;
     border: solid 1px #a3a3a3;
+  }
+
+  .subtle--button--reversecolor{
+    background-color: white;
+    color: black;
+    padding: 8px 16px;
+    border: solid 1px var(--subtle-color);
+  }
+
+
+  .button--reversecolor--clear {
+    background-color:white;
+    color: var(--main-color);
+    padding: 8px 16px;
+    border: solid 0px white;
   }
