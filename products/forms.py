@@ -107,7 +107,7 @@ class ReviewForm(forms.ModelForm):
                 'class' : 'form-control',
                 'style' : 
                     'width: 100%; outline: 1px solid #e0e0e0; border:1px solid #ffffff; border-radius:5px; padding:1rem;', 
-                'placeholder' : '댓글을 입력해주세요!'
+                'placeholder' : '리뷰을 입력해주세요!'
             }
         )
     )
