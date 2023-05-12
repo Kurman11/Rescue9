@@ -83,8 +83,8 @@
 }
 
 .recipe__content img {
-  width: 100% !important;
-  height: auto !important;
+  /* width: 100% !important;
+  height: auto !important; */
 }
 
 /* 레시피 footer */

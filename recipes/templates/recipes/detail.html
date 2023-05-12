@@ -3,6 +3,8 @@
 
 {% block style %}
 <link rel="stylesheet" href="{% static 'css/recipes_detail.css' %}">
+<link href="{% static 'django_ckeditor_5/dist/styles.css' %}" type="text/css" media="all" rel="stylesheet">
+<script src="{% static 'django_ckeditor_5/dist/bundle.js' %}"></script>
 {% endblock style %}
 
 {% block content %} 
@@ -64,8 +66,9 @@
 
 
 
-{% comment %} 레시피 content (CK editor 작성 결과 화면) {% endcomment %}
-<div class="recipe__content">
+
+<div class="recipe__content ck ck-content">
+
   {{ recipe.content|safe }}
 </div>
 {% include 'recipes/detail_delete_modal.html' %}
@@ -153,3 +156,4 @@
 </div> 
 {% endcomment %}
 {% endblock content %}
+

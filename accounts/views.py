@@ -37,7 +37,7 @@ def signup(request):
         return redirect('products:index')
 
     if request.method == 'POST':
-        form = CustomUserCreationForm(request.POST)
+        form = CustomUserCreationForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('products:index')
@@ -59,7 +59,7 @@ def delete(request):
 @login_required
 def update(request):
     if request.method == 'POST':
-        form = CustomUserChangeForm(request.POST, instance=request.user, files=request.FILES)
+        form = CustomUserChangeForm(request.POST, request.FILES, instance=request.user)
         if form.is_valid():
             form.save()
             return redirect('accounts:profile', request.user)
