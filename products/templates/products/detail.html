@@ -7,96 +7,19 @@
 {% endblock link %}
 {% block style %}
 <style>
-  .button--color {
-    background-color: var(--main-color);
-    color: white;
-    padding: 10px;
-    border: solid 1px var(--main-color);
-  }
-
-  .star {
-    display: inline-block;
-    font-size: 25px;
-    color: #ccc;
-    cursor: pointer;
-  }
-
-  .star-filled {
-    color: #ffca08;
-  }
-  .star-filled-half {
-    color: #ffca08;
-    transform: scaleX(0.5);
-  }
-  .stars-inner {
-    position: absolute;
-    top: 0;
-    left: 0;
-    white-space: nowrap;
-    width: 0;
-    height: 100%;
-    overflow: hidden;
-    z-index: 1;
+  .star-rating {
+    font-size: 24px;
   }
   
-  .star-input {
-    display: inline-block;
-  }
-
-  .star-input input {
-    display: none;
-  }
-
-  .star-input label {
-    font-size: 30px;
-    color: gray;
-    display: inline-block;
+  .star {
     cursor: pointer;
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    line-height: 30px;
   }
-
-  .star-input label:before {
-    content: '\2605';
-    font-size: 30px;
-  }
-
-  .star-input input:checked ~ label:before,
-  .star-input label:hover:before {
-    content: '\2605';
+  
+  .star.filled,
+  .star.selected {
     color: gold;
   }
 
-  .star-input input:checked ~ label {
-    color: gold;
-  }
-
-  .star-input input:checked ~ label:nth-child(1) ~ label:before {
-    content: '\2605';
-    color: gold;
-  }
-
-  .star-input input:checked ~ label:nth-child(1) ~ label:nth-child(2):before {
-    content: '\2605';
-    color: gold;
-  }
-
-  .star-input input:checked ~ label:nth-child(3) ~ label:nth-child(-n+3):before {
-    content: '\2605';
-    color: gold;
-  }
-
-  .star-input input:checked ~ label:nth-child(4) ~ label:nth-child(-n+4):before {
-    content: '\2605';
-    color: gold;
-  }
-
-  .star-input input:checked ~ label:nth-child(5) ~ label:before {
-    content: '\2605';
-    color: gold;
-  }
 </style>
 {% endblock style %}
 
@@ -151,6 +74,14 @@
         </div>
         <div class='col-2 p-0'>
           <input type="submit" value="리뷰 작성" class='button--color rounded btn--size'>
+        </div>
+        <div class="star-rating" data-rating="0">
+          {% comment %} <input type="hidden" name="rating" value="0"> {% endcomment %}
+          <span class="star" data-value="1">&#9733;</span>
+          <span class="star" data-value="2">&#9733;</span>
+          <span class="star" data-value="3">&#9733;</span>
+          <span class="star" data-value="4">&#9733;</span>
+          <span class="star" data-value="5">&#9733;</span>
         </div>
       </div>
     </form>
@@ -225,61 +156,189 @@
     <hr>
     {% endfor %}
 
-    {% endblock content %}
-    {% block script %}
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
-
-    {% comment %} const forms = document.querySelectorAll(".like-form")
-    const csrftokenLike = document.querySelector("[name=csrfmiddlewaretoken]").value
-
-    forms.forEach((form) => {
-      form.addEventListener('submit', function(e) {
-        e.preventDefault()
-        const productId = e.target.dataset.productId
-        axios({
-          method: 'post',
-          url: `/products/${productId}/likes/`,
-          headers: { "X-CSRFToken": csrftokenLike},
-        }).then((response) => {
-          const isLiked = response.data.is_liked
-          const likeBtn = form.querySelector(`#like-btn`)
-          if (isLiked){
-            likeBtn.className = 'bi bi-heart-fill'
-          } else{
-            likeBtn.className = 'bi bi-heart'
+      {% comment %} var currentRating = 0;
+      var stars = document.querySelectorAll('.star-rating .star');
+      
+      function fillStars(el) {
+        // 호버한 별과 그 앞의 모든 별을 채운다.
+        var rating = el.getAttribute('data-value');
+        for (var i = 0; i < stars.length; i++) {
+          if (i < rating) {
+            stars[i].classList.add('filled');
+          } else {
+            stars[i].classList.remove('filled');
           }
-
-          const likeCountTag = form.querySelector('#like-count')
-          const likeCountData = response.data.like_count
-          likeCountTag.textContent = likeCountData
-        })
-        .catch((error) => {
-          console.log(error.response)
-        })
-      })
-    }) {% endcomment %}
-
-
-  </script>
-  {% endblock script %}
-</body>
-</html>
-  <script>
-
-    const starInputs = document.querySelectorAll('.star-input input');
-    const starLabels = document.querySelectorAll('.star-input label');
-
-    for (let i = 0; i < starInputs.length; i++) {
-      starInputs[i].addEventListener('click', function () {
-        for (let j = 0; j <= i; j++) {
-          starLabels[j].classList.add('checked');
         }
-
-        for (let j = i + 1; j < starInputs.length; j++) {
-          starLabels[j].classList.remove('checked');
+      }
+      
+      function setRating(el) {
+        // 클릭한 별과 그 앞의 모든 별을 채운다.
+        var rating = el.getAttribute('data-value');
+        for (var i = 0; i < stars.length; i++) {
+          if (i < rating) {
+            stars[i].classList.add('selected');
+          } else {
+            stars[i].classList.remove('selected');
+          }
+        }
+        currentRating = rating;
+      }
+      
+      function unfillStars() {
+        // 모든 별을 검은색으로 변경한다.
+        for (var i = 0; i < stars.length; i++) {
+          stars[i].classList.remove('filled');
+        }
+      }
+      
+      // 이벤트 리스너 추가
+      var starRating = document.querySelector('.star-rating');
+      starRating.addEventListener('mouseover', function(e) {
+        if (e.target.classList.contains('star')) {
+          fillStars(e.target);
         }
       });
-    }
-  </script>
-{% endblock content %}
+      
+      starRating.addEventListener('mouseout', function(e) {
+        if (e.target.classList.contains('star')) {
+          unfillStars();
+        }
+      });
+      
+      starRating.addEventListener('click', function(e) {
+        if (e.target.classList.contains('star')) {
+          setRating(e.target);
+        }
+      }); {% endcomment %}
+
+      {% comment %} var currentRating = 0;
+      var stars = document.querySelectorAll('.star-rating .star');
+      
+      function fillStars(el) {
+        // 호버한 별과 그 앞의 모든 별을 채운다.
+        var rating = el.getAttribute('data-value');
+        for (var i = 0; i < stars.length; i++) {
+          if (i < rating) {
+            stars[i].classList.add('filled');
+          } else {
+            stars[i].classList.remove('filled');
+          }
+        }
+      }
+      
+      function setRating(el) {
+        // 클릭한 별과 그 앞의 모든 별을 채운다.
+        var rating = el.getAttribute('data-value');
+        for (var i = 0; i < stars.length; i++) {
+          if (i < rating) {
+            stars[i].classList.add('selected');
+          } else {
+            stars[i].classList.remove('selected');
+          }
+        }
+        currentRating = rating;
+      
+        // rating 값을 form의 rating input 요소에 할당
+        var ratingInput = document.querySelector('#id_rating');
+        ratingInput.value = rating;
+      }
+      
+      function unfillStars() {
+        // 모든 별을 검은색으로 변경한다.
+        for (var i = 0; i < stars.length; i++) {
+          stars[i].classList.remove('filled');
+        }
+      }
+      
+      // 이벤트 리스너 추가
+      var starRating = document.querySelector('.star-rating');
+      starRating.addEventListener('mouseover', function(e) {
+        if (e.target.classList.contains('star')) {
+          fillStars(e.target);
+        }
+      });
+      
+      starRating.addEventListener('mouseout', function(e) {
+        if (e.target.classList.contains('star')) {
+          unfillStars();
+        }
+      });
+      
+      starRating.addEventListener('click', function(e) {
+        if (e.target.classList.contains('star')) {
+          setRating(e.target);
+        }
+      }); {% endcomment %}
+      {% comment %} const ratingInput = document.querySelector('input[name=rating]');
+      const stars = document.querySelectorAll('.star-rating .star');
+    
+      stars.forEach(star => {
+        star.addEventListener('click', () => {
+          const rating = star.dataset.value;
+          ratingInput.value = rating;
+        });
+      }); {% endcomment %}
+
+      var currentRating = 0;
+      var stars = document.querySelectorAll('.star-rating .star');
+      
+      function fillStars(el) {
+        // 호버한 별과 그 앞의 모든 별을 채운다.
+        var rating = el.getAttribute('data-value');
+        for (var i = 0; i < stars.length; i++) {
+          if (i < rating) {
+            stars[i].classList.add('filled');
+          } else {
+            stars[i].classList.remove('filled');
+          }
+        }
+      }
+      
+      function setRating(el) {
+        // 클릭한 별과 그 앞의 모든 별을 채운다.
+        var rating = el.getAttribute('data-value');
+        for (var i = 0; i < stars.length; i++) {
+          if (i < rating) {
+            stars[i].classList.add('selected');
+          } else {
+            stars[i].classList.remove('selected');
+          }
+        }
+        currentRating = rating;
+      
+        // rating 값을 form의 rating input 요소에 할당
+        var ratingInput = document.querySelector('input[name=rating]');
+        ratingInput.value = rating;
+      }
+      
+      function unfillStars() {
+        // 모든 별을 검은색으로 변경한다.
+        for (var i = 0; i < stars.length; i++) {
+          stars[i].classList.remove('filled');
+        }
+      }
+      
+      // 이벤트 리스너 추가
+      var starRating = document.querySelector('.star-rating');
+      starRating.addEventListener('mouseover', function(e) {
+        if (e.target.classList.contains('star')) {
+          fillStars(e.target);
+        }
+      });
+      
+      starRating.addEventListener('mouseout', function(e) {
+        if (e.target.classList.contains('star')) {
+          unfillStars();
+        }
+      });
+      
+      starRating.addEventListener('click', function(e) {
+        if (e.target.classList.contains('star')) {
+          setRating(e.target);
+        }
+      });
+    </script>
+    {% endblock content %}
+

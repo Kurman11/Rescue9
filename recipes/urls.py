@@ -10,8 +10,8 @@ urlpatterns = [
     path('<int:recipe_pk>/delete/', views.delete, name='delete'),
     path('<int:recipe_pk>/like/', views.recipe_like, name='recipe_like'),
     path('category/<str:subject>/', views.category, name='category'),
-    path('<int:recipe_pk>/comments', views.comment_create, name='comment_create'),
-    path('<int:recipe_pk>/comments/<int:comment_pk>/update/', views.comment_update, name='comment_update'),
-    path('<int:recipe_pk>/comments/<int:comment_pk>/delete/', views.comment_delete, name='comment_delete'),
-    path('<int:recipe_pk>/comments/<int:comment_pk>/like/', views.comment_like, name='comment_like'),
+    path('<int:recipe_pk>/reviews', views.review_create, name='review_create'),
+    path('<int:recipe_pk>/reviews/<int:review_pk>/update/', views.review_update, name='review_update'),
+    path('<int:recipe_pk>/reviews/<int:review_pk>/delete/', views.review_delete, name='review_delete'),
+    path('<int:recipe_pk>/reviews/<int:review_pk>/like/', views.review_like, name='review_like'),
 ]

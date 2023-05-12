@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from .models import Product, Review, Review_image
-from .forms import ProductForm, ReviewForm, Review_imageForm
+from .models import Product, Comment
+from .forms import ProductForm, CommentForm
 from django.http import JsonResponse
 from taggit.models import Tag
 
@@ -42,9 +42,9 @@ def create(request):
 
 def detail(request, product_pk):
     product = Product.objects.get(pk=product_pk)
-    review_form = ReviewForm()
-    review_img = Review_imageForm(request.POST, request.FILES)
-    reviews = product.review_set.all()
+    comment_form = CommentForm()
+    # review_img = Review_imageForm(request.POST, request.FILES)
+    comments = product.comment_set.all()
     tags = product.tags.all()
 
     session_key = 'product_{}_hits'.format(product_pk)
@@ -55,9 +55,9 @@ def detail(request, product_pk):
 
     context ={
         'product' : product,
-        'review_form' : review_form,
-        'reviews' : reviews,
-        'review_img' : review_img,
+        'comment_form' : comment_form,
+        'comments' : comments,
+        # 'review_img' : review_img,
         'tags': tags,
     }
     return render(request,'products/detail.html', context)
@@ -106,87 +106,62 @@ def likes(request, product_pk):
     return redirect('products:detail', product.pk)
 
 
-def review_create(request, product_pk):
+def comment_create(request, product_pk):
     product = Product.objects.get(pk=product_pk)
-    review_form = ReviewForm(request.POST)
-    review_img = Review_imageForm(request.POST, request.FILES)
-    if review_form.is_valid() and review_img.is_valid():
-        review = review_form.save(commit=False)
-        review.product = product
-        review.user = request.user
-        review.save()
+    comment_form = CommentForm(request.POST)
+    # review_img = Review_imageForm(request.POST, request.FILES)
+    if comment_form.is_valid():
+        comment = comment_form.save(commit=False)
+        comment.product = product
+        comment.user = request.user
+        comment.save()
 
         # Review_image 모델 저장
-        review_image = review_img.save(commit=False)
-        review_image.review = review
-        review_image.save()
+        # review_image = review_img.save(commit=False)
+        # review_image.review = review
+        # review_image.save()
         return redirect('products:detail', product.pk)
     context = {
         'product':product,
-        'review_form': review_form,
-        'review_img':review_img,
+        'comment_form': comment_form,
+        # 'review_img':review_img,
     }
     return render(request,'products/detail.html', context)
 
-def review_update(request, product_pk, review_pk):
-    review = Review.objects.get(pk=review_pk)
-    if request.user == review.user:
+def comment_update(request, product_pk, comment_pk):
+    comment = Comment.objects.get(pk=comment_pk)
+    if request.user == comment.user:
         if request.method == 'POST':
-            review_form = ReviewForm(request.POST, instance=review)
-            review_img = Review_imageForm(request.POST, request.FILES, instance=review.review_image_set.first())
-            if review_form.is_valid() and review_img.is_valid():
-                review_img.save()
-                review_form.save()
+            comment_form = CommentForm(request.POST, instance=comment)
+            # review_img = Review_imageForm(request.POST, request.FILES, instance=review.review_image_set.first())
+            if comment_form.is_valid():
+                # review_img.save()
+                comment_form.save()
                 return redirect('products:detail', product_pk)
         else:
-            review_form = ReviewForm(instance=review)
-            review_img = Review_imageForm(instance=review.review_image_set.first())
+            comment_form = CommentForm(instance=comment)
+            # review_img = Review_imageForm(instance=review.review_image_set.first())
         context = {
-            'review_img' : review_img,
-            'review_form': review_form,
-            'review': review,
+            # 'review_img' : review_img,
+            'comment_form': comment_form,
+            'comment': comment,
         }
         return render(request, 'products/detail.html', context)
 
-
-# def review_update(request, product_pk, review_pk):
-#     review = Review.objects.get(pk=review_pk)
-#     if request.user == review.user:
-#         review_form = ReviewForm(request.POST, request.FILES, instance=review)
-#         if review_form.is_valid():
-#             review_form.save()
-#             return redirect('products:detail', product_pk)
-#         else:
-#             review_form = ReviewForm(instance=review)
-#         context = {
-#             'review_form': review_form,
-#             'review': review,
-#         }
-#         return render(request, 'products/detail.html', context)
-    #     else:
-    #         review_form = ReviewForm(instance=review)
-    #     context = {
-    #         'review' : review,
-    #         'review_form' : review_form,
-    #     }
-    #     return render(request,'products/')
-
-    # return redirect('products/detail.html', product_pk)
-
-def review_delete(request,product_pk,review_pk):
-    review = Review.objects.get(pk=review_pk)
-    if request.user == review.user:
-        review.delete()
+def comment_delete(request,product_pk,comment_pk):
+    comment = Comment.objects.get(pk=comment_pk)
+    if request.user == comment.user:
+        comment.delete()
         return redirect('products:detail', product_pk)
         
 
-def review_likes(request,product_pk, review_pk):
-    review = Review.objects.get(pk=review_pk)
-    if review.like_users.filter(pk=request.user.pk).exists():
-        review.like_users.remove(request.user)
+def comment_likes(request,product_pk, comment_pk):
+    comment = Comment.objects.get(pk=comment_pk)
+    if comment.like_users.filter(pk=request.user.pk).exists():
+        comment.like_users.remove(request.user)
     else:
-        review.like_users.add(request.user)
+        comment.like_users.add(request.user)
     context={
-        'review.like_users' : review.like_users,
+        'comment.like_users' : comment.like_users,
     }
     return redirect('products:detail', product_pk)

@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from .models import Recipe, Comment, CommentImage
-from .forms import RecipeForm, CommentForm, CommentImageForm
+from .models import Recipe, Review
+from .forms import RecipeForm, ReviewForm
 from accounts.models import User
 from django.conf import settings
 
@@ -37,9 +37,9 @@ def create(request):
 
 def detail(request, recipe_pk: int):
     recipe = Recipe.objects.get(pk=recipe_pk)
-    comment_form = CommentForm()
-    comment_image_form = CommentImageForm(request.POST, request.FILES)
-    comments = recipe.comment_set.all().order_by('-pk')
+    review_form = ReviewForm()
+    # comment_image_form = CommentImageForm(request.POST, request.FILES)
+    reviews = recipe.review_set.all().order_by('-pk')
 
     session_key = 'recipe_{}_hits'.format(recipe_pk)
     if not request.session.get(session_key):
@@ -49,9 +49,9 @@ def detail(request, recipe_pk: int):
 
     context = {
         'recipe': recipe,
-        'comments': comments,
-        'comment_form': comment_form,
-        'comment_image_form': comment_image_form,
+        'reviews': reviews,
+        'review_form': review_form,
+        # 'comment_image_form': comment_image_form,
     }
     return render(request, 'recipes/detail.html', context)
 
@@ -99,64 +99,64 @@ def category(request, subject):
     return render(request, 'recipes/index.html', context)
 
 
-def comment_create(request, recipe_pk: int):
+def review_create(request, recipe_pk: int):
     recipe = Recipe.objects.get(pk=recipe_pk)
-    comment_form = CommentForm(request.POST)
-    comment_image_form = CommentImageForm(request.POST, request.FILES)
-    if comment_form.is_valid() and comment_image_form.is_valid():
-        comment = comment_form.save(commit=False)
-        comment.recipe = recipe
-        comment.user = request.user
-        comment.save()
+    review_form = ReviewForm(request.POST)
+    # comment_image_form = CommentImageForm(request.POST, request.FILES)
+    if review_form.is_valid():
+        review = review_form.save(commit=False)
+        review.recipe = recipe
+        review.user = request.user
+        review.save()
 
-        commentimage = comment_image_form.save(commit=False)
-        commentimage.comment = comment
-        commentimage.save()
-        return redirect(reverse('recipes:detail', kwargs={"recipe_pk": recipe_pk}) + '#comment-start')
+        # commentimage = comment_image_form.save(commit=False)
+        # commentimage.comment = comment
+        # commentimage.save()
+        return redirect(reverse('recipes:detail', kwargs={"recipe_pk": recipe_pk}) + '#review-start')
         
     context = {
         'recipe': recipe,
-        'comment_form': comment_form,
-        'comment_image_form': comment_image_form,
+        'review_form': review_form,
+        # 'comment_image_form': comment_image_form,
     }
     return render(request, 'recipes/detail.html', context)
 
 
-def comment_update(request, recipe_pk, comment_pk):
-    comment = Comment.objects.get(pk=comment_pk)
-    if request.user == comment.user:
+def review_update(request, recipe_pk, review_pk):
+    review = Review.objects.get(pk=review_pk)
+    if request.user == review.user:
         if request.method == 'POST':
-            comment_form = CommentForm(request.POST, instance=comment)
-            comment_image_form = CommentImageForm(request.POST, request.FILES, instance=comment.commentimage_set.first())
-            if comment_form.is_valid() and comment_image_form.is_valid():
-                comment_form.save()
-                comment_image_form.save()
+            review_form = ReviewForm(request.POST, instance=review)
+            # review_image_form = CommentImageForm(request.POST, request.FILES, instance=comment.commentimage_set.first())
+            if review_form.is_valid():
+                review_form.save()
+                # comment_image_form.save()
                 return redirect('recipes:detail', recipe_pk)
         else:
-            comment_form = CommentForm(instance=comment)
-            comment_image_form = CommentImageForm(instance=comment.commentimage_set.first())
+            review_form = ReviewForm(instance=review)
+            # comment_image_form = CommentImageForm(instance=comment.commentimage_set.first())
         context = {
-            'comment_form': comment_form,
-            'comment_image_form': comment_image_form,
-            'comment': comment,
+            'review_form': review_form,
+            # 'comment_image_form': comment_image_form,
+            'review': review,
         }
         return render(request, 'recipes/detail.html', context)
 
 
-def comment_delete(request, recipe_pk, comment_pk):
-    comment = Comment.objects.get(pk=comment_pk)
-    comment_images = comment.commentimage_set.all()
-    if request.user == comment.user:
-        for comment_image in comment_images:
-            comment_image.delete()
-        comment.delete()
+def review_delete(request, recipe_pk, review_pk):
+    review = Review.objects.get(pk=review_pk)
+    # comment_images = comment.commentimage_set.all()
+    if request.user == review.user:
+        # for comment_image in comment_images:
+        #     comment_image.delete()
+        review.delete()
     return redirect('recipes:detail', recipe_pk)
 
 
-def comment_like(request, recipe_pk, comment_pk):
-    comment = Comment.objects.get(pk=comment_pk)
-    if request.user in comment.like_user.all():
-        comment.like_user.remove(request.user)
+def review_like(request, recipe_pk, review_pk):
+    review = Review.objects.get(pk=review_pk)
+    if request.user in review.like_user.all():
+        review.like_user.remove(request.user)
     else:
-        comment.like_user.add(request.user)
+        review.like_user.add(request.user)
     return redirect('recipes:detail', recipe_pk)

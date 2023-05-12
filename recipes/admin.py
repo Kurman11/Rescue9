@@ -1,7 +1,6 @@
 from django.contrib import admin
-from .models import Recipe, Comment, CommentImage
+from .models import Recipe, Review
 
 # Register your models here.
 admin.site.register(Recipe)
-admin.site.register(Comment)
-admin.site.register(CommentImage)
+admin.site.register(Review)

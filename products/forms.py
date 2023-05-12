@@ -1,5 +1,5 @@
 from django import forms
-from .models import Product, Review, Review_image
+from .models import Product, Comment
 from taggit.forms import TagField, TagWidget
 from taggit.managers import TaggableManager
 from django.core.validators import MinValueValidator, MaxValueValidator
@@ -96,10 +96,10 @@ class ProductForm(forms.ModelForm):
     )
 
 
-class ReviewForm(forms.ModelForm):
+class CommentForm(forms.ModelForm):
     class Meta:
-        model = Review
-        fields =('content', 'rating',)
+        model = Comment
+        fields =('content',)
 
     content = forms.CharField(
         widget = forms.TextInput(
@@ -111,59 +111,5 @@ class ReviewForm(forms.ModelForm):
             }
         )
     )
-    
-    rating = forms.IntegerField(
-        label='rating',
-        widget=forms.NumberInput(
-            attrs={
-                'class': 'form-control',
-                'style' : 
-                    'width: 90%; outline: 1px solid #e0e0e0; border:1px solid #ffffff; border-radius:5px; padding:0.5rem; min-width: 100px;', 
-                'id' : 'rating',
-                'min': 1,
-                'max': 5,
-                'value':1,
-            }
-        )
-    )
-
-
-class Review_imageForm(forms.ModelForm):
-    class Meta:
-        model = Review_image
-        fields=('image',)
-    image = forms.ImageField(
-        label='image',
-        widget=forms.ClearableFileInput(
-            attrs={
-                'class': 'form-control',
-                'id' : 'image',
-            }
-        )
-    )
-
-# class Review_imageForm(forms.ModelForm):
-#     class Meta:
-#         model = Review_image
-#         fields = ('image',)
-#         widgets = {
-#             'image': forms.ClearableFileInput(attrs={'multiple': True}),
-#         }
-#         labels = {
-#             'image': 'Upload Images',
-#         }
-#         help_texts = {
-#             'image': 'Upload review images (Optional)',
-#         }
-#         enctype = 'multipart/form-data'
-
-
-# class Review_imageForm(forms.ModelForm):
-#     image = forms.ImageField(label='옵션1 이미지', label_suffix='', required=False, widget=forms.ClearableFileInput(
-#         attrs={'class': 'form-control-file'}))
-#     class Meta:
-#         model = Review_image
-#         fields = ('image',)
-
 
 

@@ -1,12 +1,13 @@
 from django.db import models
 from django.conf import settings
 from imagekit.models import ImageSpecField, ProcessedImageField
-from imagekit.processors import Thumbnail, ResizeToFit
+from imagekit.processors import Thumbnail, ResizeToFit, ResizeToFill
 from django_ckeditor_5.fields import CKEditor5Field
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 # Create your models here.
-def comment_img_path(instance, filename):
-    return f'images/comment/{instance.comment.user.username}/{filename}'
+def review_img_path(instance, filename):
+    return f'images/review/{instance.review.user.username}/{filename}'
 
 def recipe_thumbnail_path(instance, filename):
     return f'images/recipe/thumbnail/{instance.title}/{filename}'
@@ -22,6 +23,14 @@ class Recipe(models.Model):
         format='JPEG',
         options={'quality': 60},
         )
+    thumbnail_crop = ProcessedImageField(
+        blank=True, null=True,
+        upload_to='img/',
+        processors=[ResizeToFill(300, 300)],
+        format='JPEG',
+        options={'quality': 60}
+        )
+
     category = models.CharField(max_length=20)
     hits = models.PositiveIntegerField(default=0)
     like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="like_recipes")
@@ -34,22 +43,19 @@ class Recipe(models.Model):
         return self.title
 
 
-class Comment(models.Model):
+class Review(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
     content = models.TextField()
-    like_user = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="like_comments")
+    like_user = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="like_reviews")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-
-
-class CommentImage(models.Model):
-    comment = models.ForeignKey(Comment, blank=False, null=False, on_delete=models.CASCADE)
-    # name = models.CharField(max_length=255)
     image = ProcessedImageField(
         blank=True,
-        upload_to=comment_img_path,
+        upload_to=review_img_path,
         processors=[ResizeToFit(1080, 720)],
         format='JPEG',
         options={'quality': 60},
         )
+    rating = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
+    
