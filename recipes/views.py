@@ -82,11 +82,11 @@ def delete(request, recipe_pk):
 
 def recipe_like(request, recipe_pk):
     recipe = Recipe.objects.get(pk=recipe_pk)
-    if recipe.like_users.filter(pk=request.user.pk).exist():
+    if recipe.like_users.filter(pk=request.user.pk).exists():
         recipe.like_users.remove(request.user)
     else:
         recipe.like_users.add(request.user)
-    return redirect('recipes:detail')
+    return redirect('recipes:detail', recipe_pk)
 
 
 def category(request, subject):

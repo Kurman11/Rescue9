@@ -1,32 +1,52 @@
-.recipe__main-image {
-  width: 100%;
+.recipe__main-image__container {
+  display: flex;
+  justify-content: center;
 }
 
-.recipe__header{
+.recipe__main-image {
+  width: 110%;
+  margin: 0 auto;
+}
+
+.recipe__header {
   margin: 15px 0 15px 0;
 }
 
-.recipe__title{
-  word-break: keep-all;
-  overflow-wrap: break-word;
-  color: var(--main-color);
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 24px;
+.recipe__header__status {
+  display: flex;
+  justify-content: space-between;
 }
 
-.recipe__user-container {
+.recipe__title {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.recipe__rate {
+  font-size: 28px;
+}
+
+.recipe__rate > i {
+  color: var(--main-color);
+}
+
+.recipe__status {
+  color: var(--secondary-color);
+}
+
+.recipe__header-container {
   width: 100%;
   display: flex;
   justify-content: space-between;
   margin-bottom: 17px;
 }
 
-.recipe__user-container__left {
-  display: flex;
+.recipe__header-container__left {
 }
 
-.recipe__user__image__container{
+.recipe__header__user__container{
   height: 34px;
   margin-right: 10px;
 }
@@ -36,20 +56,26 @@
   border-radius: 50%;
 }
 
-.recipe__user__info{
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  font-size: 12px;
-}
-
-.recipe__user-container__right {
+.recipe__header-container__right {
   height: 32px;
+  text-align: right;
 }
 
-.recipe__user-container__follow-btn {
-  height: 90%;
+.recipe__header__userinfo {
+  display: flex;
+  align-items: center;
 }
+
+.recipe__date {
+  color: var(--subtle-color)
+}
+
+.recipe__header__btn-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+
 
 /* CK editor 작성 결과 화면  */
 .recipe__content{

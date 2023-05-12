@@ -8,62 +8,90 @@
 {% block content %} 
 {% comment %} <p>{{ recipe.id }}</p> {% endcomment %}
 {% comment %} 썸네일 이미지 {% endcomment %}
-<div class="container-fluid">
-  <img class="recipe__main-image" src="{{ recipe.thumbnail_upload.url}}" alt="{{ recipe.thumbnail_upload }}">
+<div class="recipe__main-image__container">
+  <img class="recipe__main-image" src="{{ recipe.thumbnail_crop.url}}" alt="{{ recipe.thumbnail_upload }}">
 </div>
 {% comment %} 레시피 header {% endcomment %}
 <div class="recipe__header">
-  <h1 class="recipe__title">{{ recipe.title }}</h1>
-  {% comment %} 유저 정보 {% endcomment %}
-  <div class="recipe__user-container">
-    <div class="recipe__user-container__left">
-      <div class="recipe__user__image__container">
-        {% if recipe.user.image %}
-        <img class="recipe__user__image" src="{{ recipe.user.image}}" alt="{{ recipe.user.username }}의 프로필 이미지">
-        {% else %}
-        <img class="recipe__user__image" src="{% static 'image/no_image432.png' %}" alt="유저 프로필 사진 없음">
-        {% endif %}
-      </div>
-      <div class="recipe__user__info">
-        <p>{{ recipe.user.username }}</p>
-        <p>{{ recipe.updated_at|date:'y. m. d' }}</p>
-      </div>
+  <div class="recipe__header__status">
+    <div class="recipe__header-container__left">
+      <h1 class="recipe__title">{{ recipe.title }}</h1>
+      <p class="recipe__rate"><i class="bi bi-star-fill"></i> 평균 별점</p>
+      <p class="recipe__status">
+        <i class="bi bi-eye-fill"></i> {{ recipe.hits }}
+        <i class="bi bi-bookmark-heart-fill"></i> {{ recipe.like_users.count }}
+      </p>
     </div>
-    <div class="recipe__user-container__right">
-      {% comment %} 유저 {% endcomment %}
-      <form action="">
-        <input class="btn btn-secondary recipe__user-container__follow-btn" type="submit" name="" id="" value="+ 팔로우">
-      </form>
+    <div class="recipe__header-container__right">
+      <a href="{% url 'accounts:profile' recipe.user.username %}">
+        <div class="recipe__header__userinfo">
+          <div class="recipe__header__user__container">
+            {% if recipe.user.image %}
+            <img class="recipe__user__image" src="{{ recipe.user.image }}" alt="{{ recipe.user.username }}의 프로필 이미지">
+            {% else %}
+            <img class="recipe__user__image" src="{% static 'image/no_image432.png' %}" alt="유저 프로필 사진 없음">
+            {% endif %}
+          </div>
+          <p>{{ recipe.user.username }}</p>
+        </div>
+      </a>
+      <p class="recipe__date">{{ recipe.updated_at|date:'y. m. d' }}</p>
     </div>
   </div>
-</div>
-{% comment %} 레시피 content (CK editor 작성 결과 화면) {% endcomment %}
-<div class="recipe__content">
-  <p>{{ recipe.content|safe }}</p>
+  {% comment %} 버튼 공간 {% endcomment %}
+  <div class="recipe__header__btn-container">
+    {% if request.user == recipe.user %}
+    <a class="button--color btn-hover__blue me-2" href="{% url 'recipes:update' recipe.pk %}">글 수정</a>
+    <button type="button" class="button--color btn-hover__blue me-2" data-bs-toggle="modal" data-bs-target="#recipeDeleteModal">
+      글 삭제
+    </button>
+    {% else %}
+    <form action="{% url 'recipes:recipe_like' recipe.pk %}" method="post">
+      {% csrf_token %}
+      {% if request.user in recipe.like_users.all %}
+      <input class="button--color btn-hover__blue" type="submit" value="레시피 팔로우 취소">
+      {% else %}
+      <input class="button--color btn-hover__blue" type="submit" value="레시피 팔로우">
+      {% endif %}
+    </form>
+    {% endif %}
+  </div>
 </div>
 
-{% comment %} 마지막 유저 정보 ,글 스테이터스 및 글 조작 {% endcomment %}
+{% comment %} 레시피에 들어가는 재료 캐루젤  {% endcomment %}
+<div>
+</div>
+
+
+
+{% comment %} 레시피 content (CK editor 작성 결과 화면) {% endcomment %}
+<div class="recipe__content">
+  {{ recipe.content|safe }}
+</div>
+{% include 'recipes/detail_delete_modal.html' %}
+
+
+{% comment %} 마지막 유저 정보, 글 스테이터스 및 글 조작 {% endcomment %}
+{% comment %}  
 <div class="recipe__footer__info">
   <div class="recipe__footer__info__left">
     <p class="recipe__footer__info__item">좋아요 {{ recipe.like_users.count }}</p>
     <p class="recipe__footer__info__item">댓글 {{ recipe.comment_set.count }}</p>
     <p class="recipe__footer__info__item">조회 {{ recipe.hits }}</p>
   </div>
-  <div class="recipe__footer__info__right">
-    <a class="btn btn-secondary me-2" href="{% url 'recipes:update' recipe.pk %}">글 수정</a>
-    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#recipeDeleteModal">
-      글 삭제하기
-    </button>
-  </div>
 </div>
+{% endcomment %}
 
-{% include 'recipes/detail_delete_modal.html' %}
+
+
 
 {% comment %} 레시피 댓글 {% endcomment %}
-<div class="recipe__comment">
-  <p class="recipe__comment__info">댓글 <span class="recipe__comment__info--figure">{{ recipe.comment_set.count }}</span></p>
-</div>
-{% comment %} 댓글 작성란 {% endcomment %}
+
+{% comment %} 
+{% endcomment %}
+{% comment %} 댓글 작성란 
+{% endcomment %}
+{% comment %}  
 <form class="recipe__comment__input-area" action="{% url 'recipes:comment_create' recipe.pk %}" method="post" enctype="multipart/form-data">
   {% csrf_token %}
   <div class="recipe__comment__input-area__input--text">
@@ -77,23 +105,20 @@
   </div>
   <input class="recipe__comment__input-area__input--submit" type="submit" value="작성">
 </form>
-    {% comment %} 여 {% endcomment %}
-    {% comment %} 기 {% endcomment %}
-    {% comment %} 까 {% endcomment %}
-    {% comment %} 지 {% endcomment %}
+{% endcomment %}
 {% comment %} 댓글 표시 {% endcomment %}
+
+{% comment %} 
 <div class="recipe__comment__list" id="comment-start">
   {% for comment in comments %}
   <div class="recipe__comment__item">
-    <div class="recipe__user__image__container">
+    <div class="recipe__header__image__container">
       {% if recipe.user.image %}
-      <img class="recipe__user__image" src="{{ comment.user.image}}" alt="{{ comment.user.username }}의 프로필 이미지">
+      <img class="recipe__header__image" src="{{ comment.user.image}}" alt="{{ comment.user.username }}의 프로필 이미지">
       {% else %}
-      <img class="recipe__user__image" src="{% static 'image/no_image432.png' %}" alt="유저 프로필 사진 없음">
+      <img class="recipe__header__image" src="{% static 'image/no_image432.png' %}" alt="유저 프로필 사진 없음">
       {% endif %}
     </div>
-    {% comment %} comment 이미지 구현 완료 {% endcomment %}
-    {% comment %} comment 삭제 구현 완료 {% endcomment %}
     <form action="{% url 'recipes:comment_delete' recipe.pk comment.pk %}" method='POST'>
       {% csrf_token %}
       <p>리뷰 내용 : {{ comment.content }}</p>
@@ -104,7 +129,6 @@
       {% endfor %}
         <input type="submit" value='삭제'>
     </form>
-    {% comment %} comment 따봉 구현 완료 {% endcomment %}
     <form action="{% url 'recipes:comment_like' recipe.pk comment.pk %}">
       {% csrf_token %}
       {% if request.user in comment.like_user.all %}
@@ -113,7 +137,6 @@
         <input type="submit" value='좋아요'>
       {% endif %}
     </form>
-    {% comment %} comment 업데이트 구현 완료 {% endcomment %}
     <form action="{% url 'recipes:comment_update' recipe.pk comment.pk %}" method="POST" enctype="multipart/form-data">
       {% csrf_token %}
       {{ comment_form.as_p }}
@@ -127,5 +150,6 @@
     </div>
   </div>
   {% endfor %}
-</div>
+</div> 
+{% endcomment %}
 {% endblock content %}
