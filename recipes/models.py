@@ -26,7 +26,7 @@ class Recipe(models.Model):
     
     thumbnail_crop = ImageSpecField(
         source = 'thumbnail_upload',
-        processors=[ResizeToFit(1080, 500)],
+        processors=[ResizeToFill(1080, 400)],
         format='JPEG',
         options={'quality': 60}
         )

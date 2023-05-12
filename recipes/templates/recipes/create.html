@@ -28,6 +28,7 @@
 
 {% block script %}
 <script>
+  {% comment %} 썸네일 미리보기 {% endcomment %}
   function previewThumbnail(event) {
     const preview = document.querySelector('#thumbnail_preview');
     const file = event.target.files[0];

@@ -21,7 +21,7 @@
   <p class='title--content--2'>강조/분류하고 싶은 항목</p>
   <div class='owl-carousel owl-theme recipes-owl'>
     {% for recipe in recipes %}
-    <div class='card--border'>
+    <div class='card--border card--border--gray'>
       <a href="{% url 'recipes:detail' recipe.pk %}">
         <img src="{{ recipe.thumbnail.url}}" class='card--border__image rounded' alt="{{ recipe.title }}의 이미지">  
         <div class='card--name--box'>
@@ -40,7 +40,7 @@
   <div class="row">
     {% for recipe in recipes %}
     <div class="col-6 col-md-3 col-xl-2">
-      <div class='card--border'>
+      <div class='card--border card--border--gray'>
         <a href="{% url 'recipes:detail' recipe.pk %}">
           <img src="{{ recipe.thumbnail.url }}" class='card--border__image rounded' alt="{{ recipe.title }}의 이미지">  
           <div class='card--name--box'>
