@@ -19,14 +19,14 @@ class Recipe(models.Model):
     thumbnail_upload = models.ImageField(upload_to=recipe_thumbnail_path)
     thumbnail = ImageSpecField(
         source = 'thumbnail_upload',
-        processors = [Thumbnail(100, 100)],
+        processors = [Thumbnail(300, 300)],
         format='JPEG',
         options={'quality': 60},
         )
-    thumbnail_crop = ProcessedImageField(
-        blank=True, null=True,
-        upload_to='img/',
-        processors=[ResizeToFill(300, 300)],
+    
+    thumbnail_crop = ImageSpecField(
+        source = 'thumbnail_upload',
+        processors=[ResizeToFit(1080, 500)],
         format='JPEG',
         options={'quality': 60}
         )
