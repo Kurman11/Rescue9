@@ -19,63 +19,66 @@
   <p class='title--content--2'>신상품</p>
     <div class='owl-carousel new_owl-carousel owl-theme' >
       {% for product in new_products %}
-      <div class='card--border'>
+      <div class='card--border card--border--gray'>
         <a href="{% url 'products:detail' product.pk %}">
-          <img src="{{product.photo.url}}" class='rounded' style='width: 170px; height: 170px;' alt="img">  
+          <img src="{{product.Thumbnail.url}}" class='rounded' alt="img">  
           <div class='card--name--box'>
             <strong class='card--name'>{{product.name}}</strong>
           </div>
-          <div class='card--tag--border'>
-            <p><i class="bi bi-star-fill card--rating__color"></i>{{product.hits}}</p>
+          <div class='card--tag--border pb-1'>
+            <p><i class="bi bi-heart-fill card--rating__color me-2"></i>{{product.like_users.count}}</p>
             <p>리뷰 {{product.review_set.count}}</p>
           </div>
-          <div>
-            <p>tag</p>
-            {% comment %} {{product.tags}} {% endcomment %} 
+          <div class='mt-1'>
+            {% for tag in product.tags.all %}
+              <span class='me-2'>#{{tag}}</span>
+            {% endfor %}
           </div>
         </a>  
       </div>
       {% endfor %}
   </div>
 
-  {% comment %} <p class='title--content--2'>최고 평점 5개</p>
+  <p class='title--content--2'>최고 평점 5개</p>
   <div class='owl-carousel hits_owl-carousel owl-theme' >
     {% for product in hits_products %}
-    <div class='card--border'>
+    <div class='card--border card--border--gray'>
       <a href="{% url 'products:detail' product.pk %}">
-        <img src="{{product.photo.url}}" class='rounded' style='width: 170px; height: 170px;' alt="img">  
+        <img src="{{product.Thumbnail.url}}" class='rounded' alt="img">  
         <div class='card--name--box'>
           <strong class='card--name'>{{product.name}}</strong>
         </div>
         <div class='card--tag--border'>
-          <p><i class="bi bi-star-fill card--rating__color"></i>{{product.hits}}</p>
+          <p><i class="bi bi-heart-fill card--rating__color me-2"></i>{{product.like_users.count}}</p>
           <p>리뷰 {{product.review_set.count}}</p>
         </div>
         <div>
-          <p>tag</p>
-          {{product.tags}}
+          {% for tag in product.tags.all %}
+            <span class='me-2'>#{{tag}}</span>
+          {% endfor %}
         </div>
       </a>  
     </div>
     {% endfor %}
-  </div> {% endcomment %}
+  </div>
 
   <p class='title--content--2'>인기순</p>
     <div class='owl-carousel like_owl-carousel owl-theme' >
       {% for product in like_products %}
-      <div class='card--border'>
+      <div class='card--border card--border--gray'>
         <a href="{% url 'products:detail' product.pk %}">
-          <img src="{{product.photo.url}}" class='rounded' style='width: 170px; height: 170px;' alt="img">  
+          <img src="{{product.Thumbnail.url}}" class='rounded' alt="img">  
           <div class='card--name--box'>
             <strong class='card--name'>{{product.name}}</strong>
           </div>
           <div class='card--tag--border'>
-            <p><i class="bi bi-star-fill card--rating__color"></i>{{product.hits}}</p>
+            <p><i class="bi bi-heart-fill card--rating__color me-2"></i>{{product.like_users.count}}</p>
             <p>리뷰 {{product.review_set.count}}</p>
           </div>
           <div>
-            <p>tag</p>
-            {% comment %} {{product.tags}} {% endcomment %} 
+            {% for tag in product.tags.all %}
+              <span class='me-2'>#{{tag}}</span>
+            {% endfor %}
           </div>
         </a>  
       </div>
@@ -85,19 +88,20 @@
     <p class='title--content'>모든 상품</p>
       <div class='owl-carousel owl-theme' >
         {% for product in products %}
-        <div class='card--border'>
+        <div class='card--border card--border--gray'>
           <a href="{% url 'products:detail' product.pk %}">
-            <img src="{{product.photo.url}}" class='rounded' style='width: 170px; height: 170px;' alt="img">  
+            <img src="{{product.Thumbnail.url}}" class='rounded' alt="img">  
             <div class='card--name--box'>
               <strong class='card--name'>{{product.name}}</strong>
             </div>
             <div class='card--tag--border'>
-              <p><i class="bi bi-star-fill card--rating__color"></i>{{product.hits}}</p>
+              <p><i class="bi bi-heart-fill card--rating__color me-2"></i>{{product.like_users.count}}</p>
               <p>리뷰 {{product.review_set.count}}</p>
             </div>
             <div>
-              <p>tag</p>
-              {% comment %} {{product.tags}} {% endcomment %} 
+              {% for tag in product.tags.all %}
+                <span class='me-2'>#{{tag}}</span>
+              {% endfor %}
             </div>
           </a>  
         </div>

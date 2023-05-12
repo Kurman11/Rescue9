@@ -4,6 +4,7 @@
 {% block link %}
   <link rel="stylesheet" href="{% static 'css/button.css' %}">
   <link rel="stylesheet" href="{% static 'css/products_detail.css' %}">
+  <link rel="stylesheet" href="{% static 'css/hover.css' %}">
 {% endblock link %}
 {% block style %}
 <style>
@@ -97,189 +98,181 @@
     content: '\2605';
     color: gold;
   }
+
 </style>
 {% endblock style %}
 
 
 {% block content %}
-<div class='d-flex row main--padding'>
-  <p class='category--style'>{{ product.category }}</p>
-  <div class='d-flex justify-content-between align-items-center'>
-    <p class='title--font title--style'>{{ product.name }}</p>
-    
-      <p>태그 :
-  {% for tag in tags %}
-     {{tag}},
-  {% endfor %}</p>
-
-    
-    {% comment %} <form class="like-form" data-product-id="{{ product.pk }}"> {% endcomment %}
-    <form action="{% url 'products:likes' product.pk %}" method='POST' >
-      {% csrf_token %}
-      {% if request.user in product.like_users.all %}
-        <button type='submit' class="bi bi-heart-fill title--likescount btn" id="like-btn"></button>
-        {% else %}
-        <button type='submit' class="bi bi-heart title--likescount btn" id="like-btn"></button>
-      {% endif %}
-      <span id="like-count">{{product.like_users.count}}</span> 
-    </form>
-  </div>
-  <hr>
-
-  {% if product.photo %}
-  <div class='text-center'>
-    <img src="{{product.photo.url}}" alt="image" class='content--image'>
-  </div>
-  {% endif %} 
-
-  <p class='content--style'>{{ product.content }}</p>
-  <hr>
-
-
-  <h5>댓글 <span class='review--color'>{{reviews|length}}</span></h5>
-  <div></div>
-  <div class='container'>
-    <form action="{% url 'products:review_create' product.pk %}" method="POST" enctype="multipart/form-data">
-      {% csrf_token %}
+<div class='main--padding'>
+  <div class='product--border mb-5'>
+    <div class='container'>
       <div class='row'>
-        <div class='col-10 p-0'>
-          {{ review_form.content }}
-          <div class='d-flex my-3 align-items-center'>
-            <div>{{ review_form.rating }}</div>
-            <div class='review--image__padding'>{{ review_img.image }}</div>
+        <div class='col-12 col-md-6 col-lg-5 p-0'>
+          <img src="{{product.photo.url}}" alt="product_image" class='w-100 rounded'>
+        </div>
+        <div class='col-12 col-md-6  col-lg-7'>
+          <div class='d-flex justify-content-between align-items-center ms-3'>
+            <p class='category--style'>{{ product.category }}</p>
+            {% if request.user == product.user %}
+              <div class="dropdown text-end">
+                <button class="btn dropdown pe-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="bi bi-three-dots-vertical"></i>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="{% url 'products:update' product.pk %}"><i class="bi bi-pencil-square"></i> 수정하기</a></li>
+                  <li><a class="dropdown-item" onclick="return confirm('게시글을 삭제하시겠습니까?')" href="{% url 'products:delete' product.pk %}"><i class="bi bi-trash3-fill"></i>삭제하기</a></li>
+                </ul>
+              </div>
+            {% endif %}
+          </div>
+          <div class='d-flex justify-content-between align-items-center ms-3'>
+            <div class='title--box'>
+              <p class='title--font title--style m-0'>{{ product.name }}</p>
+            </div>
+            <form class="like-form" data-product-id="{{ product.pk }}">
+              {% csrf_token %}
+              {% if request.user in product.like_users.all %}
+                <button type='submit' class="bi bi-heart-fill title--likescount btn p-0 m-0" id="like-btn"></button>
+                {% else %}
+                <button type='submit' class="bi bi-heart title--likescount btn m-0 p-0" id="like-btn"></button>
+              {% endif %}
+            </form> 
+          </div>
+          <p id="like-count" class='ms-3'> 좋아요 {{product.like_users.count}}</p> 
+          <hr>
+        <div class='ms-3'>
+          <p class='fs-5 mb-3'>{{ product.content }}</p>
+          {% for tag in tags %}
+          <span class='tag--stlye rounded'> <span class='tag--Hash'>#</span> {{tag}}</span>
+          {% endfor %}
+          <p class='fs-5 mt-3'>판매가격</p>
+          <strong class='fs-5 mt-3'>{{product.price}}원</strong>
+          
+        </div>
+      </div>
+      
+    </div>
+  
+  
+  
+  <h5 class='mt-5 mb-3'>리뷰 <span class='comment--color'>{{comments|length}}</span></h5>
+    <div class='container'>
+      <form action="{% url 'products:comment_create' product.pk %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class='row'>
+          <div class='col-10 p-0'>
+            {{ comment_form.content }}
+          </div>
+          <div class='col-2 p-0'>
+            <input type="submit" value="리뷰 작성" class='btn-hover__blue  button--color rounded btn--size'>
           </div>
         </div>
-        <div class='col-2 p-0'>
-          <input type="submit" value="리뷰 작성" class='button--color rounded btn--size'>
-        </div>
-      </div>
-    </form>
-  </div>
-
-  {% for review in reviews %}
-    <div class='container'>
-      <div class='row mb-2'>
-        <span class='col-2 review--user'>{{review.user}}</span>
-        <span class='col-8'>{{review.content}}</span>
-        <span class='col-2 review--updated_at'>{{review.updated_at|date:"Y-m-d"}}</span>
-
-      </div>
-      {% for review_img in review.review_image_set.all %}
-        {% if review_img.image %}
-          <div>
-            <img class='content--image' src="{{ review_img.image.url }}" alt="review.img">
+      </form>
+    </div>
+    
+    {% for comment in comments %}
+    <div class='container mt-3'>
+      <div class='row mb-3'>
+        <span class='col-2 comment--user ps-0'>
+          <a href="{% url 'accounts:profile' comment.user.username %}" class='text-dark align-middle'>
+            {% if comment.user.image %}
+            <img src="{{comment.user.image.url}}" class='comment--user--profile' alt="프로필">
+            {% else %}
+            <img src="{% static 'image/no_image432.png' %}" class='comment--user--profile' alt="no">
+            {% endif %}
+            {{comment.user}}
+          </a>
+        </span>
+        <span class='col-8 p-0'>
+          {{comment.content}}
+        </span>
+        <span class='col-2 d-flex comment--updated_at text-end'>
+          <p class='hidden'>{{comment.updated_at|date:"Y-m-d"}}</p>
+          {% if request.user == comment.user %}
+          <div class="dropdown text-end">
+            <button class="btn dropdown pt-0 pe-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-three-dots-vertical"></i>
+            </button>
+            <ul class="dropdown-menu">
+              <li>
+                <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#edit-{{comment.pk}}">
+                  <i class="bi bi-pencil-square"></i> 수정하기
+                </button>
+              </li>
+              <li><a class="dropdown-item" onclick="return confirm('리뷰를 삭제하시겠습니까?')" href="{% url 'products:comment_delete' product.pk comment.pk %}"><i class="bi bi-trash3-fill"></i>삭제하기</a></li>
+            </ul>
           </div>
           {% endif %}
-      {% endfor %}
+        </span>
+      </div>
+    </div>
+      
+    <div class='d-flex flex-row-reverse align-items-center'>
+      {% comment %} <form action="{% url 'products:comment_likes' product.pk comment.pk %}"> {% endcomment %}
+      <p id='r_likes_count_{{comment.pk}}' class='ms-2'> {{comment.like_users.count}} </p>
+      <form class="comment_like_forms" id="like-form-{{comment.pk}}"  data-product-id="{{product.pk}}" data-comment-id="{{comment.pk}}">
+        {% csrf_token %}
+        {% if request.user in comment.like_users.all %}
+        <button type='submit' class="bi bi-heart-fill title--likescount btn m-0 p-0  fs-5" id="comment-like-btn-{{comment.pk}}"></button>
+        {% else %}
+        <button type='submit' class="bi bi-heart title--likescount btn m-0 p-0 fs-5" id="comment-like-btn-{{comment.pk}}"></button>
+        {% endif %}
+      </form>
     </div>
 
-  <div class='d-flex justify-content-between'>
 
-    <form action="{% url 'products:review_likes' product.pk review.pk %}">
-      {% csrf_token %}
-      {% if request.user in review.like_users.all %}
-      <button type='submit' class="bi bi-heart-fill title--likescount btn fs-4" id="review-like-btn"></button>
-      {% else %}
-      <button type='submit' class="bi bi-heart title--likescount btn fs-4" id="review-like-btn"></button>
-      {% endif %}
-    </form>
-    
-    <div class='d-flex mb-2'>
-      {% if request.user == review.user %}
-      <form action="{% url 'products:review_delete' product.pk review.pk %}" method='POST'>
-        {% csrf_token %}
-        <button type="submit" class="subtle--button--color rounded me-2">삭제</button>
-      </form>
-      
-      <!-- Button trigger modal -->
-      <button type="button" class="button--color rounded edit--model--botton" data-bs-toggle="modal" data-bs-target="#edit">
-        수정
-      </button>
-    
-      <!-- Modal -->
-      <div class="modal fade" id="edit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="editLabel">리뷰 수정</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <form action="{% url 'products:review_update' product.pk review.pk %}" method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{ review_form.as_p }}
-                {{ review_img.as_p }}
-                {% comment %} <input type="submit"> {% endcomment %}
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="subtle--button--color rounded" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn button--color rounded">수정</button>
-              </form>
-            </div>
+  
+          {% comment %} 모달 {% endcomment %}
+          <div class="modal fade" id="edit-{{comment.pk}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="editLabel">리뷰 수정</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form action="{% url 'products:comment_update' product.pk comment.pk %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ comment_form.as_p }}
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="subtle--button--reversecolor rounded btn-hover__gray" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn button--color rounded">수정</button>
+            </form>
           </div>
         </div>
       </div>
-      {% endif %}
-      </div>
     </div>
-    <hr>
-    {% endfor %}
-
-    {% endblock content %}
-    {% block script %}
+  <hr>
+  {% endfor %}
+</div>
+  
+  {% endblock content %}
+  {% block script %}
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="{% static 'js/product_detail_like.js' %}"></script>
+    <script src="{% static 'js/product_detail_comment_like.js' %}"></script>
     <script>
 
-    {% comment %} const forms = document.querySelectorAll(".like-form")
-    const csrftokenLike = document.querySelector("[name=csrfmiddlewaretoken]").value
-
-    forms.forEach((form) => {
-      form.addEventListener('submit', function(e) {
-        e.preventDefault()
-        const productId = e.target.dataset.productId
-        axios({
-          method: 'post',
-          url: `/products/${productId}/likes/`,
-          headers: { "X-CSRFToken": csrftokenLike},
-        }).then((response) => {
-          const isLiked = response.data.is_liked
-          const likeBtn = form.querySelector(`#like-btn`)
-          if (isLiked){
-            likeBtn.className = 'bi bi-heart-fill'
-          } else{
-            likeBtn.className = 'bi bi-heart'
-          }
-
-          const likeCountTag = form.querySelector('#like-count')
-          const likeCountData = response.data.like_count
-          likeCountTag.textContent = likeCountData
-        })
-        .catch((error) => {
-          console.log(error.response)
-        })
-      })
-    }) {% endcomment %}
-
-
-  </script>
-  {% endblock script %}
-</body>
-</html>
-  <script>
 
     const starInputs = document.querySelectorAll('.star-input input');
     const starLabels = document.querySelectorAll('.star-input label');
-
+  
     for (let i = 0; i < starInputs.length; i++) {
       starInputs[i].addEventListener('click', function () {
         for (let j = 0; j <= i; j++) {
           starLabels[j].classList.add('checked');
         }
-
-        for (let j = i + 1; j < starInputs.length; j++) {
+  
+        for (let j = i + 1; j <scrip starInputs.length; j++) {
           starLabels[j].classList.remove('checked');
         }
       });
-    }
-  </script>
-{% endblock content %}
+    } 
+  </script> 
+
+  {% endblock script %}
+</body>
+</html>
+

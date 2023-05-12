@@ -16,7 +16,7 @@ def index(request):
         'products':products,
         'new_products': new_products,
         'like_products':like_products,
-        # 'hits_products' : hits_products,
+        'hits_products' : hits_products,
     }
     return render(request, 'products/index.html', content)
 
@@ -97,13 +97,12 @@ def likes(request, product_pk):
     else:
         product.like_users.add(request.user)
         is_liked = True
-    like_count = product.like_users.all().count()
     context = {
         'is_liked': is_liked,
-        'like_count': like_count,
+        'like_count': product.like_users.count(),
     }
-    # return JsonResponse(context)
-    return redirect('products:detail', product.pk)
+    return JsonResponse(context)
+    # return redirect('products:detail', product.pk)
 
 
 def review_create(request, product_pk):
@@ -184,9 +183,17 @@ def review_likes(request,product_pk, review_pk):
     review = Review.objects.get(pk=review_pk)
     if review.like_users.filter(pk=request.user.pk).exists():
         review.like_users.remove(request.user)
+        r_is_like = False
     else:
         review.like_users.add(request.user)
+        r_is_like = True
+    r_like_count = review.like_users.count()
+    like_users_list = list(review.like_users.all().values())
     context={
-        'review.like_users' : review.like_users,
+        # 'review.like_users' : review.like_users,
+        'like_users_list' : like_users_list,
+        'r_is_like' :  r_is_like,
+        'r_like_count' : r_like_count
     }
-    return redirect('products:detail', product_pk)
+    return JsonResponse(context)
+    # return redirect('products:detail', product_pk)
