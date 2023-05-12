@@ -25,10 +25,23 @@
           <div class='card--name--box'>
             <strong class='card--name'>{{product.name}}</strong>
           </div>
+          
+          
+          
+          
+          <div class='card--tag--border'>
+            <p><i class="bi bi-star-fill card--rating__color "></i>{{product.hits}}</p>
+            <p>리뷰 {{product.comment_set.count}}</p>
           <div class='card--tag--border pb-1'>
             <p><i class="bi bi-heart-fill card--rating__color me-2"></i>{{product.like_users.count}}</p>
             <p>리뷰 {{product.review_set.count}}</p>
           </div>
+            
+            
+            
+            
+            
+            
           <div class='mt-1'>
             {% for tag in product.tags.all %}
               <span class='me-2'>#{{tag}}</span>
@@ -72,8 +85,23 @@
             <strong class='card--name'>{{product.name}}</strong>
           </div>
           <div class='card--tag--border'>
+            
+            
+            
+            
+            
+
+            <p><i class="bi bi-star-fill card--rating__color"></i>{{product.hits}}</p>
+            <p>리뷰 {{product.comment_set.count}}</p>
+          
             <p><i class="bi bi-heart-fill card--rating__color me-2"></i>{{product.like_users.count}}</p>
             <p>리뷰 {{product.review_set.count}}</p>
+          
+          
+          
+            
+          
+          
           </div>
           <div>
             {% for tag in product.tags.all %}
@@ -95,8 +123,25 @@
               <strong class='card--name'>{{product.name}}</strong>
             </div>
             <div class='card--tag--border'>
+              
+              
+              
+              
+              
+              
+
+              <p><i class="bi bi-star-fill card--rating__color"></i>{{product.hits}}</p>
+              <p>리뷰 {{product.comment_set.count}}</p>
+
               <p><i class="bi bi-heart-fill card--rating__color me-2"></i>{{product.like_users.count}}</p>
               <p>리뷰 {{product.review_set.count}}</p>
+
+            
+            
+            
+            
+            
+            
             </div>
             <div>
               {% for tag in product.tags.all %}

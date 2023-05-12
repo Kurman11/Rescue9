@@ -8,89 +8,16 @@
 {% endblock link %}
 {% block style %}
 <style>
-  .button--color {
-    background-color: var(--main-color);
-    color: white;
-    padding: 10px;
-    border: solid 1px var(--main-color);
-  }
-
-  .star {
-    display: inline-block;
-    font-size: 25px;
-    color: #ccc;
-    cursor: pointer;
-  }
-
-  .star-filled {
-    color: #ffca08;
-  }
-  .star-filled-half {
-    color: #ffca08;
-    transform: scaleX(0.5);
-  }
-  .stars-inner {
-    position: absolute;
-    top: 0;
-    left: 0;
-    white-space: nowrap;
-    width: 0;
-    height: 100%;
-    overflow: hidden;
-    z-index: 1;
+  .star-rating {
+    font-size: 24px;
   }
   
-  .star-input {
-    display: inline-block;
-  }
-
-  .star-input input {
-    display: none;
-  }
-
-  .star-input label {
-    font-size: 30px;
-    color: gray;
-    display: inline-block;
+  .star {
     cursor: pointer;
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    line-height: 30px;
   }
-
-  .star-input label:before {
-    content: '\2605';
-    font-size: 30px;
-  }
-
-  .star-input input:checked ~ label:before,
-  .star-input label:hover:before {
-    content: '\2605';
-    color: gold;
-  }
-
-  .star-input input:checked ~ label {
-    color: gold;
-  }
-
-  .star-input input:checked ~ label:nth-child(1) ~ label:before {
-    content: '\2605';
-    color: gold;
-  }
-
-  .star-input input:checked ~ label:nth-child(1) ~ label:nth-child(2):before {
-    content: '\2605';
-    color: gold;
-  }
-
-  .star-input input:checked ~ label:nth-child(3) ~ label:nth-child(-n+3):before {
-    content: '\2605';
-    color: gold;
-  }
-
-  .star-input input:checked ~ label:nth-child(4) ~ label:nth-child(-n+4):before {
-    content: '\2605';
+  
+  .star.filled,
+  .star.selected {
     color: gold;
   }
 
@@ -149,6 +76,14 @@
           <p class='fs-5 mt-3'>판매가격</p>
           <strong class='fs-5 mt-3'>{{product.price}}원</strong>
           
+        </div>
+        <div class="star-rating" data-rating="0">
+          {% comment %} <input type="hidden" name="rating" value="0"> {% endcomment %}
+          <span class="star" data-value="1">&#9733;</span>
+          <span class="star" data-value="2">&#9733;</span>
+          <span class="star" data-value="3">&#9733;</span>
+          <span class="star" data-value="4">&#9733;</span>
+          <span class="star" data-value="5">&#9733;</span>
         </div>
       </div>
       
@@ -244,17 +179,17 @@
         </div>
       </div>
     </div>
-  <hr>
-  {% endfor %}
+    <hr>
+    {% endfor %}
+
 </div>
-  
+ 
   {% endblock content %}
   {% block script %}
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="{% static 'js/product_detail_like.js' %}"></script>
     <script src="{% static 'js/product_detail_comment_like.js' %}"></script>
     <script>
-
 
     const starInputs = document.querySelectorAll('.star-input input');
     const starLabels = document.querySelectorAll('.star-input label');
@@ -271,8 +206,5 @@
       });
     } 
   </script> 
-
   {% endblock script %}
-</body>
-</html>
 
