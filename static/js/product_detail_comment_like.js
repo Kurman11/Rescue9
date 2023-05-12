@@ -12,20 +12,24 @@ comment_like_forms.forEach(form => {
     })
     .then((response) => {
       const isLiked = response.data.r_is_like
+      console.log(isLiked)
       const likeBtn = document.querySelector(`#comment-like-btn-${commentId}`)
+      console.log(likeBtn)
       if (isLiked){
         likeBtn.className = "bi bi-heart-fill title--likescount  btn m-0 p-0 fs-5"
       } else {likeBtn.className = "bi bi-heart title--likescount  btn m-0 p-0 fs-5"}
-
       const likesCountData = response.data.r_like_count
-      console.log(response.data.r_like_count)  // 여기로 옮깁니다.
+      console.log(likesCountData)  // 여기로 옮깁니다.
       const likesCountTag = document.querySelector(`#r_likes_count_${commentId}`)
+      console.log(likesCountTag)
       likesCountTag.textContent = likesCountData
 
-      //location.reload();
+      // location.reload();
     })
-    .catch((error) => {
-      console.error(response.data);
+    // .catch((error) => {
+    //   console.error(response.data);
     });
   });
-});
+// });
+// r_is_like
+// r_like_count

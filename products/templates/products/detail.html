@@ -8,24 +8,6 @@
 {% endblock link %}
 {% block style %}
 <style>
-  .star-rating {
-    font-size: 24px;
-  }
-  
-  .star {
-    cursor: pointer;
-  }
-  
-  .star.filled,
-  .star.selected {
-    color: gold;
-  }
-
-  .star-input input:checked ~ label:nth-child(5) ~ label:before {
-    content: '\2605';
-    color: gold;
-  }
-
 </style>
 {% endblock style %}
 
@@ -76,17 +58,7 @@
           <p class='fs-5 mt-3'>판매가격</p>
           <strong class='fs-5 mt-3'>{{product.price}}원</strong>
           
-        </div>
-        <div class="star-rating" data-rating="0">
-          {% comment %} <input type="hidden" name="rating" value="0"> {% endcomment %}
-          <span class="star" data-value="1">&#9733;</span>
-          <span class="star" data-value="2">&#9733;</span>
-          <span class="star" data-value="3">&#9733;</span>
-          <span class="star" data-value="4">&#9733;</span>
-          <span class="star" data-value="5">&#9733;</span>
-        </div>
-      </div>
-      
+        </div>     
     </div>
   
   
@@ -122,11 +94,11 @@
         <span class='col-8 p-0'>
           {{comment.content}}
         </span>
-        <span class='col-2 d-flex comment--updated_at text-end'>
+        <span class='col-2 d-flex comment--updated_at  justify-content-end'>
           <p class='hidden'>{{comment.updated_at|date:"Y-m-d"}}</p>
           {% if request.user == comment.user %}
           <div class="dropdown text-end">
-            <button class="btn dropdown pt-0 pe-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <button class="btn dropdown pt-0 pe-0" type="button" data-bs-+toggle="dropdown" aria-expanded="false">
               <i class="bi bi-three-dots-vertical"></i>
             </button>
             <ul class="dropdown-menu">
@@ -156,8 +128,6 @@
       </form>
     </div>
 
-
-  
           {% comment %} 모달 {% endcomment %}
           <div class="modal fade" id="edit-{{comment.pk}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -189,22 +159,5 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="{% static 'js/product_detail_like.js' %}"></script>
     <script src="{% static 'js/product_detail_comment_like.js' %}"></script>
-    <script>
-
-    const starInputs = document.querySelectorAll('.star-input input');
-    const starLabels = document.querySelectorAll('.star-input label');
-  
-    for (let i = 0; i < starInputs.length; i++) {
-      starInputs[i].addEventListener('click', function () {
-        for (let j = 0; j <= i; j++) {
-          starLabels[j].classList.add('checked');
-        }
-  
-        for (let j = i + 1; j <scrip starInputs.length; j++) {
-          starLabels[j].classList.remove('checked');
-        }
-      });
-    } 
-  </script> 
   {% endblock script %}
 

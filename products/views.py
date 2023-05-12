@@ -156,8 +156,8 @@ def comment_delete(request,product_pk,comment_pk):
 
 
 
-def comment_likes(request,product_pk, review_pk):
-    comment = Comment.objects.get(pk=review_pk)
+def comment_likes(request,product_pk, comment_pk):
+    comment = Comment.objects.get(pk=comment_pk)
     if comment.like_users.filter(pk=request.user.pk).exists():
         comment.like_users.remove(request.user)
         r_is_like = False
@@ -170,8 +170,8 @@ def comment_likes(request,product_pk, review_pk):
         # 'review.like_users' : review.like_users,
         'like_users_list' : like_users_list,
         'r_is_like' :  r_is_like,
-        'r_like_count' : r_like_count
-
+        'r_like_count' : r_like_count,
     }
+
     return JsonResponse(context)
     # return redirect('products:detail', product_pk)
