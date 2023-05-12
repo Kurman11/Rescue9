@@ -1,11 +1,8 @@
 from django.db import models
 from django.conf import settings
-from imagekit.models import ProcessedImageField
-from imagekit.processors import ResizeToFill
 from imagekit.models import ImageSpecField
 from imagekit.processors import Thumbnail
 from taggit.managers import TaggableManager
-from django.core.validators import MinValueValidator, MaxValueValidator
 # Create your models here.
 
 def product_img_path(instance, filename):
@@ -29,19 +26,10 @@ class Product(models.Model):
     like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_product')
 
 
-class Review(models.Model):
+class Comment(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, blank=False, null=False, on_delete=models.CASCADE)
     crated_at = models.DateTimeField(auto_now=True)
     updated_at = models.DateTimeField(auto_now=True)
     content = models.CharField(max_length=600)
-    like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_review')
-    rating = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
-
-class Review_image(models.Model):
-    review = models.ForeignKey(Review,blank=False, null=False, on_delete=models.CASCADE)
-    image = ProcessedImageField(blank = True,  
-                                upload_to='review/', 
-                                processors=[ResizeToFill(300, 300)], 
-                                format = 'JPEG', 
-                                options={'quality': 90},)
+    like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_comment')

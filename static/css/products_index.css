@@ -39,7 +39,11 @@ a {
 }
 
 .card--tag--border {
-  border-bottom: solid 1px var(--subtle-color)
+  border-bottom: solid 1px var(--subtle-color);
+}
+
+.card--tag--background {
+  background-color: var(--subtle-color);
 }
 
 .card--rating__color {
@@ -88,4 +92,10 @@ a {
 }
 
 
+@media (max-width: 768px) {
+  .main--padding{
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
   

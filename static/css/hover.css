@@ -1,0 +1,25 @@
+/* 호버 */
+.btn-hover__gray:hover{
+  background-color: var(--subtle-color);
+}
+.btn-hover__reverseblue:hover{
+  background-color: var(--main-color);
+  color: white;
+}
+.btn-hover__blue:hover{
+  background-color: white;
+  color: var(--main-color);
+}
+.btn-hover__white:hover{
+  background-color: white;
+}
+.text-hover__white:hover{
+  color: white;
+}
+.text-hover__blue:hover{
+  color: var(--main-color);
+}
+
+.card--border--gray:hover{
+  box-shadow:  1px 20px 1rem var(--subtle-color);
+}

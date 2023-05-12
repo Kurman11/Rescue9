@@ -27,7 +27,7 @@ nav{
   height: 56px;
   border-bottom: 1px solid var(--subtle-color);
   margin-top: 0;
-  background-color: white;
+  background-color:  white;
   z-index: 100;
 }
 
@@ -128,6 +128,7 @@ footer {
 .footer__company {
   text-align: center;
 }
+
 
 /* hover */
 .nav--btn:hover{

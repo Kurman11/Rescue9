@@ -1,5 +1,5 @@
 from django import forms
-from .models import Recipe, Comment, CommentImage
+from .models import Recipe, Review
 from django_ckeditor_5.widgets import CKEditor5Widget
 
 
@@ -40,7 +40,7 @@ class RecipeForm(forms.ModelForm):
         }
    
 
-class CommentForm(forms.ModelForm):
+class ReviewForm(forms.ModelForm):
     content = forms.CharField(
         widget=forms.TextInput(
             attrs={
@@ -50,15 +50,7 @@ class CommentForm(forms.ModelForm):
         ),
     )
 
-
-
-    class Meta:
-        model = Comment
-        fields = ('content',)
-
-
-
-class CommentImageForm(forms.ModelForm):
+# 아래 CommentImageForm 내용을 옮겼습니다. 수정/삭제 하셔도 상관 없습니다.
     image = forms.ImageField(
         widget=forms.ClearableFileInput(
             attrs={
@@ -69,6 +61,39 @@ class CommentImageForm(forms.ModelForm):
         required=False,
     )
 
+# 일단 products에서 사용하던거 그대로 넣었습니다 안쓰신다면 그냥 지우셔도 상관 없습니다.
+    rating = forms.IntegerField(
+        label='rating',
+        widget=forms.NumberInput(
+            attrs={
+                'class': 'form-control',
+                'style' : 
+                    'width: 90%; outline: 1px solid #e0e0e0; border:1px solid #ffffff; border-radius:5px; padding:0.5rem; min-width: 100px;', 
+                'id' : 'rating',
+                'min': 1,
+                'max': 5,
+                'value':1,
+            }
+        )
+    )
+
     class Meta:
-        model = CommentImage
-        fields = ('image',)
+        model = Review
+        fields = ('content','image',)
+
+
+
+# class CommentImageForm(forms.ModelForm):
+#     image = forms.ImageField(
+#         widget=forms.ClearableFileInput(
+#             attrs={
+#                 'class': 'd-none',
+#                 'id': 'input-commentimage'
+#             },
+#         ),
+#         required=False,
+#     )
+
+#     class Meta:
+#         model = CommentImage
+#         fields = ('image',)
