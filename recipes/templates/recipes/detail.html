@@ -3,6 +3,8 @@
 
 {% block style %}
 <link rel="stylesheet" href="{% static 'css/recipes_detail.css' %}">
+<link href="{% static 'django_ckeditor_5/dist/styles.css' %}" type="text/css" media="all" rel="stylesheet">
+<script src="{% static 'django_ckeditor_5/dist/bundle.js' %}"></script>
 {% endblock style %}
 
 {% block content %} 
@@ -38,8 +40,8 @@
   </div>
 </div>
 {% comment %} 레시피 content (CK editor 작성 결과 화면) {% endcomment %}
-<div class="recipe__content">
-  <p>{{ recipe.content|safe }}</p>
+<div class="recipe__content ck ck-content">
+  {{ recipe.content|safe }}
 </div>
 
 {% comment %} 마지막 유저 정보 ,글 스테이터스 및 글 조작 {% endcomment %}
@@ -129,3 +131,6 @@
   {% endfor %}
 </div>
 {% endblock content %}
+{% block script %}
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+{% endblock script %}

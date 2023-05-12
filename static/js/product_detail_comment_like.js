@@ -31,5 +31,4 @@ comment_like_forms.forEach(form => {
     });
   });
 // });
-// r_is_like
-// r_like_count
+
