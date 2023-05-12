@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from products import views
+from custom_ckeditor import views
 from django.views.generic import TemplateView
 
 urlpatterns = [
@@ -26,6 +26,7 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('products/', include('products.urls')),
     path('recipes/', include('recipes.urls')),
+    path("ckeditor5/image_upload/", views.upload_file, name="ck_editor_5_upload_file"),
     path("ckeditor5/", include('django_ckeditor_5.urls')),
     path('', TemplateView.as_view(template_name='rescue/index.html'), name='index'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

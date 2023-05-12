@@ -42,11 +42,10 @@ class RecipeForm(forms.ModelForm):
 
 class CommentForm(forms.ModelForm):
     content = forms.CharField(
-        label='댓글 입력',
         widget=forms.TextInput(
             attrs={
                 'placeholder': '댓글 입력칸',
-                'class': 'form-control'
+                'class': 'recipe__comment__input-area--form'
             }
         ),
     )
@@ -61,10 +60,10 @@ class CommentForm(forms.ModelForm):
 
 class CommentImageForm(forms.ModelForm):
     image = forms.ImageField(
-        label='레시피 이미지 업로드',
         widget=forms.ClearableFileInput(
             attrs={
-                'class': 'form-control',
+                'class': 'd-none',
+                'id': 'input-commentimage'
             },
         ),
         required=False,

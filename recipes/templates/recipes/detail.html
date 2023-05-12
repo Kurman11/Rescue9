@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="{% static 'css/recipes_detail.css' %}">
 {% endblock style %}
 
-{% block content %}
+{% block content %} 
 {% comment %} <p>{{ recipe.id }}</p> {% endcomment %}
 {% comment %} 썸네일 이미지 {% endcomment %}
 <div class="container-fluid">
@@ -64,26 +64,25 @@
   <p class="recipe__comment__info">댓글 <span class="recipe__comment__info--figure">{{ recipe.comment_set.count }}</span></p>
 </div>
 {% comment %} 댓글 작성란 {% endcomment %}
-{% comment %} 현재 기능 미구현 이미지 첨부 고려 x 상태 {% endcomment %}
-
-<form class="recipe__comment__form" action="{% url 'recipes:comment_create' recipe.pk %}" method="post" enctype="multipart/form-data">
+<form class="recipe__comment__input-area" action="{% url 'recipes:comment_create' recipe.pk %}" method="post" enctype="multipart/form-data">
   {% csrf_token %}
-  {{ comment_form.as_p }}
-  {{ comment_image_form.as_p }}
-  <div class="recipe__comment__user__image">
-    {% if request.user.image %}
-    <img class="recipe__user__image" src="{{ request.user.image}}" alt="{{ request.user.username }}의 프로필 이미지">
-    {% else %}
-    <img class="recipe__user__image" src="{% static 'image/no_image432.png' %}" alt="유저 프로필 사진 없음">
-    {% endif %}
+  <div class="recipe__comment__input-area__input--text">
+    {{ comment_form.content }}
   </div>
-  <div class="recipe__comment__input-area">
-    <input class="recipe__comment__input-area__input--text"type="text" placeholder="칭찬과 격려의 댓글은 작성자에게 큰 힘이 됩니다 :)">
-    <input class="btn recipe__comment__input-area__input--submit" type="submit" name="" id="" value="제출">
+  <div class="recipe__comment__input-area__input--image">
+    <label for="input-commentimage">
+      <i class="bi bi-camera-fill"></i>
+    </label>
+    {{ comment_image_form.image }}
   </div>
+  <input class="recipe__comment__input-area__input--submit" type="submit" value="작성">
 </form>
+    {% comment %} 여 {% endcomment %}
+    {% comment %} 기 {% endcomment %}
+    {% comment %} 까 {% endcomment %}
+    {% comment %} 지 {% endcomment %}
 {% comment %} 댓글 표시 {% endcomment %}
-<div class="recipe__comment__list">
+<div class="recipe__comment__list" id="comment-start">
   {% for comment in comments %}
   <div class="recipe__comment__item">
     <div class="recipe__user__image__container">
@@ -93,15 +92,34 @@
       <img class="recipe__user__image" src="{% static 'image/no_image432.png' %}" alt="유저 프로필 사진 없음">
       {% endif %}
     </div>
-    {% for comment_img in comment.commentimage_set.all %}
-      {% if comment_img.image %}
-        <img src="{{ comment_img.image.url }}" alt="">
-        {% endif %}
-    {% endfor %}
-    {% comment %} 여 {% endcomment %}
-    {% comment %} 기 {% endcomment %}
-    {% comment %} 까 {% endcomment %}
-    {% comment %} 지 {% endcomment %}
+    {% comment %} comment 이미지 구현 완료 {% endcomment %}
+    {% comment %} comment 삭제 구현 완료 {% endcomment %}
+    <form action="{% url 'recipes:comment_delete' recipe.pk comment.pk %}" method='POST'>
+      {% csrf_token %}
+      <p>리뷰 내용 : {{ comment.content }}</p>
+      {% for comment_img in comment.commentimage_set.all %}
+        {% if comment_img.image %}
+          <img src="{{ comment_img.image.url }}" alt="">
+          {% endif %}
+      {% endfor %}
+        <input type="submit" value='삭제'>
+    </form>
+    {% comment %} comment 따봉 구현 완료 {% endcomment %}
+    <form action="{% url 'recipes:comment_like' recipe.pk comment.pk %}">
+      {% csrf_token %}
+      {% if request.user in comment.like_user.all %}
+        <input type="submit" value='종아요취소'>
+      {% else %}
+        <input type="submit" value='좋아요'>
+      {% endif %}
+    </form>
+    {% comment %} comment 업데이트 구현 완료 {% endcomment %}
+    <form action="{% url 'recipes:comment_update' recipe.pk comment.pk %}" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ comment_form.as_p }}
+      {{ comment_image_form.as_p }}
+      <input type="submit" value="수정">
+    </form>
     <div>
       <p>{{ comment.user.username }}</p>
       <p>{{ comment.user.content }}</p>
