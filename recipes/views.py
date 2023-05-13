@@ -23,6 +23,7 @@ def create(request):
             recipe = recipe_form.save(commit=False)
             recipe.user = request.user
             recipe.save()
+            recipe_form.save_m2m()
             return redirect('recipes:index')
         else:
             print(recipe_form.errors)
