@@ -153,6 +153,120 @@
   {% endfor %}
 </div> 
 {% endcomment %}
+
+<h5>댓글 <span class='review--color'>{{reviews|length}}</span></h5>
+  <div></div>
+  <div class='container'>
+    <form action="{% url 'recipes:review_create' recipe.pk %}" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class='row'>
+        <div class='col-10 p-0'>
+          {{ review_form.content }}
+          <div class='d-flex my-3 align-items-center'>
+            <div class='d-none' >{{ review_form.rating }}</div>
+            <div>{{ review_form.image }}</div>
+          </div>
+        </div>
+        <div class='col-2 p-0'>
+          <input type="submit" value="리뷰 작성" class='button--color rounded btn--size'>
+        </div>
+        <div class="star-rating" data-rating="0">
+          {% comment %} <input type="hidden" name="rating" value="0"> {% endcomment %}
+          <i class="bi bi-star-fill star filled" data-value="1"></i>
+          <i class="bi bi-star-fill star" data-value="2"></i>
+          <i class="bi bi-star-fill star" data-value="3"></i>
+          <i class="bi bi-star-fill star" data-value="4"></i>
+          <i class="bi bi-star-fill star" data-value="5"></i>
+        </div>
+      </div>
+    </form>
+    {% for review in reviews %}
+    <div class='row '>
+      <span>{{review.user}}</span>
+      <span>{{review.content}}</span>
+      <span>{{review.updated_at|date:"Y-m-d"}}</span>
+    </div>
+    <div class="star-rating">
+      <div>
+        <p>{{ review.comment }}</p>
+        {% for i in "12345" %}
+          {% if forloop.counter <= review.rating %}
+            {% with star_color="#0097F3" %}
+              <i class="bi bi-star-fill star_sub" style="color:{{ star_color }}"></i>
+            {% endwith %}
+          {% else %}
+            {% with star_color="#000" %}
+              <i class="bi bi-star-fill star_sub" style="color:{{ star_color }}"></i>
+            {% endwith %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  {% endfor %}
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    var currentRating = 0;
+    var stars = document.querySelectorAll('.star-rating .star')
+    
+    function fillStars(el) {
+      // 호버한 별과 그 앞의 모든 별을 채운다.
+      var rating = el.getAttribute('data-value')
+      for (var i = 0; i < stars.length; i++) {
+        if (i < rating) {
+          stars[i].classList.add('filled')
+        } else {
+          stars[i].classList.remove('filled')
+        }
+      }
+    }
+    
+    function setRating(el) {
+      // 클릭한 별과 그 앞의 모든 별을 채운다.
+      var rating = el.getAttribute('data-value')
+      for (var i = 0; i < stars.length; i++) {
+        if (i < rating) {
+          stars[i].classList.add('selected')
+        } else {
+          stars[i].classList.remove('selected')
+        }
+      }
+      currentRating = rating;
+    
+      // rating 값을 form의 rating input 요소에 할당
+      var ratingInput = document.querySelector('input[name=rating]')
+      ratingInput.value = rating
+    }
+    
+    function unfillStars() {
+      // 모든 별을 검은색으로 변경한다.
+      for (var i = 0; i < stars.length; i++) {
+        stars[i].classList.remove('filled')
+      }
+    }
+    
+    // 이벤트 리스너 추가
+    var starRating = document.querySelector('.star-rating');
+    starRating.addEventListener('mouseover', function(e) {
+      if (e.target.classList.contains('star')) {
+        fillStars(e.target);
+      }
+    })
+    
+    starRating.addEventListener('mouseout', function(e) {
+      if (e.target.classList.contains('star')) {
+        unfillStars();
+      }
+    })
+    
+    starRating.addEventListener('click', function(e) {
+      if (e.target.classList.contains('star')) {
+        setRating(e.target);
+      }
+    })
+  </script>
+
+  
+
 {% comment %} 댓글 삭제 모달 {% endcomment %}
 {% include 'recipes/detail_delete_modal.html' %}
 {% endblock content %}
