@@ -60,7 +60,8 @@
           
         </div>     
     </div>
-  
+  <hr>
+
   
   
   <h5 class='mt-5 mb-3'>리뷰 <span class='comment--color'>{{comments|length}}</span></h5>
@@ -97,8 +98,8 @@
         <span class='col-2 d-flex comment--updated_at  justify-content-end'>
           <p class='hidden'>{{comment.updated_at|date:"Y-m-d"}}</p>
           {% if request.user == comment.user %}
-          <div class="dropdown text-end">
-            <button class="btn dropdown pt-0 pe-0" type="button" data-bs-+toggle="dropdown" aria-expanded="false">
+          <div class="dropdown ">
+            <button class="btn dropdown pt-0 pe-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
               <i class="bi bi-three-dots-vertical"></i>
             </button>
             <ul class="dropdown-menu">
@@ -162,6 +163,6 @@
     <script src="{% static 'js/product_detail_comment_create.js' %}"></script>
     <script src="{% static 'js/product_detail_comment_delete.js' %}"></script>
     <script>
-  </script> 
+    </script> 
   {% endblock script %}
 

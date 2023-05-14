@@ -24,7 +24,12 @@
   <body>
     <nav>
       {% include 'nav.html' %}
+      {% block banner %}
+      {% endblock banner %}
     </nav>
+
+
+
     <main class="container">
       <div class="content--wrapper" >
         <div class="content" id="wrapper"> 
