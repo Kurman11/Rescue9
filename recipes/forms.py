@@ -1,17 +1,24 @@
 from django import forms
 from .models import Recipe, Review
 from django_ckeditor_5.widgets import CKEditor5Widget
-
+from products.models import Product
 
 
 
 
 class RecipeForm(forms.ModelForm):
+    used_products = forms.ModelMultipleChoiceField(
+        queryset=Product.objects.all(),
+        widget=forms.CheckboxSelectMultiple(attrs={'class': 'list-unstyled'}),
+        label='사용된 제품',
+        required=False
+    )
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         # it is required to set it False,
         # otherwise it will throw error in console
         self.fields["content"].required = False
+        self.fields['used_products'].label_from_instance = lambda obj: obj.name
 
     category = forms.ChoiceField(
         label='카테고리',
@@ -38,7 +45,15 @@ class RecipeForm(forms.ModelForm):
         widget = {
             'title': forms.TextInput(attrs={'class': 'form-control w-75'}),
         }
-   
+
+    def save(self, commit=True):
+        recipe = super().save(commit=False)
+        if commit:
+            recipe.save()
+            self.save_m2m()  # recipe 저장 후에 save_m2m() 메소드 호출
+        return recipe
+
+
 
 class ReviewForm(forms.ModelForm):
     content = forms.CharField(

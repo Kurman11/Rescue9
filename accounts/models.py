@@ -7,6 +7,7 @@ from imagekit.processors import Thumbnail, ResizeToFit
 
 # Create your models here.
 class User(AbstractUser):
+    followings = models.ManyToManyField('self', related_name='followers', symmetrical=False)
     nickname = models.CharField(max_length=20)
     image = ProcessedImageField(upload_to='users', 
                                 blank=True,

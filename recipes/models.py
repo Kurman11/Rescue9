@@ -5,6 +5,7 @@ from imagekit.processors import Thumbnail, ResizeToFit, ResizeToFill
 from django_ckeditor_5.fields import CKEditor5Field
 from django.core.validators import MinValueValidator, MaxValueValidator
 
+
 # Create your models here.
 def review_img_path(instance, filename):
     return f'images/review/{instance.review.user.username}/{filename}'
@@ -26,9 +27,9 @@ class Recipe(models.Model):
     
     thumbnail_crop = ImageSpecField(
         source = 'thumbnail_upload',
-        processors=[ResizeToFit(1080, 500)],
+        processors=[ResizeToFill(1080, 400)],
         format='JPEG',
-        options={'quality': 60}
+        options={'quality': 100}
         )
 
     category = models.CharField(max_length=20)

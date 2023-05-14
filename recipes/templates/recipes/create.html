@@ -15,11 +15,34 @@
         {{ field }}
         <div id="thumbnail_preview" style="max-width: 100px;"></div>
       </div>
-    {% else %}
-      <div>
-        {{ field.label_tag }}
-        {{ field }}
+    {% elif field.name == 'used_products' %}
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="dropdown mt-3 mb-3">
+            <button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
+              {{ field.label_tag }}
+            </button>
+            <ul class="dropdown-menu" style="max-height: 120px; overflow-y: auto;">
+              <input class="form-control dropdown-search" type="text" placeholder="검색">
+              {% for product in field %}
+                <li><a class="dropdown-item">{{ product }}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+        <div class="col">
+          {% comment %} 드랍다운에서 선택한 옵션 표시 {% endcomment %}
+          <div id="selected_products"></div>
+          
+        </div>
       </div>
+    </div>
+    {% else %}
+    <div>
+      {{ field.label_tag }}
+      {{ field }}
+    </div>
     {% endif %}
   {% endfor %}
 
@@ -28,6 +51,7 @@
 
 {% block script %}
 <script>
+  {% comment %} 썸네일 미리보기 {% endcomment %}
   function previewThumbnail(event) {
     const preview = document.querySelector('#thumbnail_preview');
     const file = event.target.files[0];
@@ -49,6 +73,105 @@
 
   const thumbnailUpload = document.querySelector('#id_thumbnail_upload');
   thumbnailUpload.addEventListener('change', previewThumbnail);
+
+
+  {% comment %} 사용된 제품 진짜 하.... {% endcomment %}
+  const dropdownMenuList = document.querySelectorAll('.dropdown-menu');
+  const selectedProducts = new Set();
+
+  
+  dropdownMenuList.forEach(function(dropdownMenu) {
+    const dropdownToggle = dropdownMenu.parentElement.querySelector('.dropdown-toggle');
+    const dropdownSearch = dropdownMenu.querySelector('.dropdown-search');
+    const dropdownItems = dropdownMenu.querySelectorAll('.dropdown-item');
+    
+
+    dropdownItems.forEach(function(dropdownItem) {
+      dropdownItem.addEventListener('click', function(event) {
+        const product = event.target.textContent;
+        if (selectedProducts.has(product)) {
+          selectedProducts.delete(product);
+          dropdownItem.querySelector('input[type="checkbox"]').checked = false;
+        } else {
+          selectedProducts.add(product);
+          dropdownItem.querySelector('input[type="checkbox"]').checked = true;
+        }
+
+        updateSelectedProducts();
+      });
+    
+    
+
+
+
+    dropdownSearch.addEventListener('input', function(event) {
+      const searchText = event.target.value.toLowerCase();
+      dropdownItems.forEach(function(dropdownItem) {
+        const itemText = dropdownItem.textContent.toLowerCase();
+        if (itemText.includes(searchText)) {
+          dropdownItem.style.display = '';
+        } else {
+          dropdownItem.style.display = 'none';
+        }
+      });
+    });
+  
+    dropdownToggle.addEventListener('click', function(event) {
+      dropdownSearch.value = '';
+      dropdownItems.forEach(function(dropdownItem) {
+        dropdownItem.style.display = '';
+      });
+    });
+  });
+});
+
+function updateSelectedProducts() {
+  const selectedProductsDiv = document.querySelector('#selected_products');
+  selectedProductsDiv.innerHTML = '';
+
+  // 이전 삭제 버튼들을 모두 삭제
+  document.querySelectorAll('.delete-product-btn').forEach(function(btn) {
+    btn.remove();
+  });
+
+  dropdownMenuList.forEach(function(dropdownMenu) {
+    dropdownMenu.querySelectorAll('.dropdown-item').forEach(function(dropdownItem) {
+      dropdownItem.querySelector('input[type="checkbox"]').checked = false;
+    });
+  });
+
+  if (selectedProducts.size > 0) {
+    const list = document.createElement('ul');
+    selectedProducts.forEach(function(product) {
+      const listItem = document.createElement('li');
+
+      listItem.textContent = product;
+
+      const deleteButton = document.createElement('button');
+      deleteButton.textContent = 'X';
+      deleteButton.classList.add('delete-product-btn');
+      deleteButton.addEventListener('click', function() {
+
+        selectedProducts.delete(product);
+
+        updateSelectedProducts();
+      });
+
+      // 선택된 옵션의 체크박스만 체크
+      dropdownMenuList.forEach(function(dropdownMenu) {
+        dropdownMenu.querySelectorAll('.dropdown-item').forEach(function(dropdownItem) {
+          if (dropdownItem.textContent === product) {
+            dropdownItem.querySelector('input[type="checkbox"]').checked = true;
+          }
+        });
+      });
+
+      listItem.appendChild(deleteButton);
+      list.appendChild(listItem);
+    });
+    selectedProductsDiv.appendChild(list);
+  }
+}
 </script>
 <style>
   #thumbnail_preview img {
