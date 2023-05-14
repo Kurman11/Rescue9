@@ -32,7 +32,7 @@
         <div class="recipe__header__userinfo">
           <div class="recipe__header__user__container">
             {% if recipe.user.image %}
-            <img class="recipe__user__image" src="{{ recipe.user.image }}" alt="{{ recipe.user.username }}의 프로필 이미지">
+            <img class="recipe__user__image" src="{{ recipe.user.image.url }}" alt="{{ recipe.user.username }}의 프로필 이미지">
             {% else %}
             <img class="recipe__user__image" src="{% static 'image/no_image432.png' %}" alt="유저 프로필 사진 없음">
             {% endif %}

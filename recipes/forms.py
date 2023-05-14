@@ -7,6 +7,26 @@ from products.models import Product
 
 
 class RecipeForm(forms.ModelForm):
+    title = forms.CharField(
+        label='레시피 이름',
+        widget = forms.TextInput(
+            attrs = {
+                'class': 'form-control',
+                'placeholder': '레시피 제목을 입력해주세요',
+            },
+        ),
+    )
+
+    thumbnail_upload = forms.ImageField(
+        label='썸네일 사진 첨부',
+        widget = forms.ClearableFileInput(
+            attrs = {
+                'class': 'form-control',
+            },
+        ),
+        required = True,
+    )
+
     used_products = forms.ModelMultipleChoiceField(
         queryset=Product.objects.all(),
         widget=forms.CheckboxSelectMultiple(attrs={'class': 'list-unstyled'}),
@@ -18,6 +38,7 @@ class RecipeForm(forms.ModelForm):
         # it is required to set it False,
         # otherwise it will throw error in console
         self.fields["content"].required = False
+        self.fields["content"].label = "요리 순서"
         self.fields['used_products'].label_from_instance = lambda obj: obj.name
 
     category = forms.ChoiceField(
@@ -36,15 +57,11 @@ class RecipeForm(forms.ModelForm):
         required=True,
     )
 
+
+
     class Meta:
         model = Recipe
         exclude = ('user', 'like_users', 'hits',)
-        labels = {
-            'title': '레시피 명',
-        }
-        widget = {
-            'title': forms.TextInput(attrs={'class': 'form-control w-75'}),
-        }
 
     def save(self, commit=True):
         recipe = super().save(commit=False)
