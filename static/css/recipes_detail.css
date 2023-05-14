@@ -9,7 +9,9 @@
 }
 
 .recipe__header {
-  margin: 15px 0 15px 0;
+  margin: 15px 0 30px 0;
+  padding: 0 0 10px 0;
+  border-bottom: 1px solid var(--subtle-color);
 }
 
 .recipe__header__status {
@@ -26,9 +28,6 @@
 
 .recipe__rate {
   font-size: 28px;
-}
-
-.recipe__rate > i {
   color: var(--main-color);
 }
 
@@ -75,6 +74,23 @@
   justify-content: flex-end;
 }
 
+/* Used product carousel */
+.recipe__used-product__container {
+  margin: 0 0 30px 0;
+  border-bottom: 1px solid var(--subtle-color);
+}
+
+.card-body {
+  padding: 0.5rem 1rem 0.5rem 1rem;
+}
+
+.card-text {
+  text-align: right;
+}
+
+.recipe__used-product__sum {
+  text-align: right;
+}
 
 
 /* CK editor 작성 결과 화면  */

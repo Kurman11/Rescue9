@@ -1,0 +1,23 @@
+.text--main {
+  color: var(--main-color)
+}
+
+.text--secondary {
+  color: var(--secondary-color)
+}
+
+.text--subtle {
+  color: var(--subtle-color)
+}
+
+.bg--main {
+  background-color: var(--main-color);
+}
+
+.bg--secondary {
+  background-color: var(--secondary-color);
+}
+
+.bg--subtle {
+  background-color: var(--subtle-color);
+}
