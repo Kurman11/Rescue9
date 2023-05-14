@@ -43,6 +43,13 @@ def detail(request, recipe_pk: int):
     review_form = ReviewForm()
     reviews = recipe.review_set.all().order_by('-pk')
     image_reviews = recipe.review_set.filter()
+    # 평균 별점 구하기
+    if reviews:
+        average_rate = sum(review.rating for review in reviews) / len(reviews)
+    else:
+        average_rate = 0
+    # recipe에 사용된 가격 총액 구하기
+    total_price = sum(product.price for product in recipe.used_products.all())
 
     session_key = 'recipe_{}_hits'.format(recipe_pk)
     if not request.session.get(session_key):
@@ -55,6 +62,8 @@ def detail(request, recipe_pk: int):
         'reviews': reviews,
         'review_form': review_form,
         'image_reviews': image_reviews,
+        'average_rate': average_rate,
+        'total_price': total_price,
     }
     return render(request, 'recipes/detail.html', context)
 
@@ -67,7 +76,7 @@ def update(request, recipe_pk: int):
             recipe_form = RecipeForm(data=request.POST, files=request.FILES, instance=recipe)
             if recipe_form.is_valid():
                 recipe = recipe_form.save()
-                return redirect('recipes:datail', recipe_pk)
+                return redirect('recipes:detail', recipe_pk)
         else:
             recipe_form = RecipeForm(instance=recipe)
 
