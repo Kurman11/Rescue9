@@ -5,6 +5,8 @@ from django.contrib.auth.decorators import login_required
 from .forms import CustomAuthenticationForm, CustomUserCreationForm, CustomUserChangeForm, CustomPasswordChangeForm
 from django.contrib.auth import get_user_model
 from django.contrib.auth import update_session_auth_hash
+from django.core.paginator import Paginator
+from recipes.models import Recipe, Review
 
 # Create your views here.
 
@@ -90,7 +92,19 @@ def change_password(request):
 def profile(request, username):
     User = get_user_model()
     person = User.objects.get(username=username)
+    recipes = Recipe.objects.filter(user=person).order_by('-pk')
+    review = Review.objects.filter(user=person).order_by('-pk')
+    page= request.GET.get('page', '1')
+    per_page = 1
+
+    paginator = Paginator(recipes, per_page)
+    paginator2 = Paginator(review, per_page)
+
+    page_obj = paginator.get_page(page)
+    page_obj2 = paginator2.get_page(page)
     context = {
         'person': person,
+        'recipes' : page_obj,
+        'reviews' : page_obj2,
     }
     return render(request, 'accounts/profile.html', context)

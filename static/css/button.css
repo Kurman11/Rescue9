@@ -12,7 +12,7 @@
     border: solid 1px var(--main-color);
   }
 
-.subtle--button--reversecolor {
+.subtle--button--reversecolor{
     background-color: var(--subtle-color);
     color: black;
     padding: 8px 16px;
