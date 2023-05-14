@@ -17,7 +17,7 @@
       </a>
   </div>
   <p class='title--content--2'>신상품</p>
-    <div class='owl-carousel new_owl-carousel owl-theme' >
+    <div class='owl-carousel owl-theme new_owl-carousel' >
       {% for product in new_products %}
       <div class='card--border card--border--gray'>
         <a href="{% url 'products:detail' product.pk %}">

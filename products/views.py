@@ -3,6 +3,8 @@ from .models import Product, Comment
 from .forms import ProductForm, CommentForm
 from django.http import JsonResponse
 from taggit.models import Tag
+from django.db.models import Count
+from recipes.models import Recipe
 
 # Create your views here.
 
@@ -47,6 +49,8 @@ def detail(request, product_pk):
     comments = product.comment_set.all()
     tags = product.tags.all()
 
+    recipes = Recipe.objects.annotate(num_likes=Count('like_users')).order_by('-num_likes')
+
     session_key = 'product_{}_hits'.format(product_pk)
     if not request.session.get(session_key):
         product.hits += 1
@@ -59,6 +63,7 @@ def detail(request, product_pk):
         'comments' : comments,
         # 'review_img' : review_img,
         'tags': tags,
+        'recipes': recipes
     }
     return render(request,'products/detail.html', context)
 
