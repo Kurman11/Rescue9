@@ -97,7 +97,7 @@ def profile(request, username):
     recipes = Recipe.objects.filter(user=person).order_by('-pk')
     review = Review.objects.filter(user=person).order_by('-pk')
     page= request.GET.get('page', '1')
-    per_page = 1
+    per_page = 5
 
     paginator = Paginator(recipes, per_page)
     paginator2 = Paginator(review, per_page)
