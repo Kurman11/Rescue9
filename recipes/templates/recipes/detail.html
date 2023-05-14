@@ -43,7 +43,7 @@
       <p class="recipe__date">{{ recipe.updated_at|date:'y. m. d' }}</p>
     </div>
   </div>
-  {% comment %} 버튼 공간 {% endcomment %}
+  {% comment %} 글수정/글삭제/팔로우 버튼 공간 {% endcomment %}
   <div class="recipe__header__btn-container">
     {% if request.user == recipe.user %}
     <a class="button--color btn-hover__blue me-2" href="{% url 'recipes:update' recipe.pk %}">글 수정</a>
@@ -63,9 +63,10 @@
   </div>
 </div>
 
-{% comment %} 레시피에 들어가는 재료 캐루젤  {% endcomment %}
+{% comment %} 레시피 재료 {% endcomment %}
 <div class="recipe__used-product__container">
   <h2>사용된 제품</h2>
+  {% comment %} 레시피에 들어가는 재료 캐루젤  {% endcomment %}
   <div class="owl-carousel owl-theme mb-3">
     {% for used_product in recipe.used_products.all %}
     <a href="{% url 'products:detail' used_product.pk %}">
@@ -79,40 +80,21 @@
     </a>  
     {% endfor %}
   </div>
+  {% comment %} 레시피 재료 총액 {% endcomment %}
   <div class="recipe__used-product__sum">
     <h3>총액: <span class="text--main">{{ total_price|intcomma }}</span>원</h3>
   </div>
 </div>
 
-{% comment %} ck eitor 작성 결과 {% endcomment %}
+{% comment %} ck editor로 작성된 화면 {% endcomment %}
 <div class="recipe__content ck ck-content">
-  {{ recipe.content|safe }}
-</div>
-{% include 'recipes/detail_delete_modal.html' %}
-
-
-{% comment %} 마지막 유저 정보, 글 스테이터스 및 글 조작 {% endcomment %}
-{% comment %}  
-<div class="recipe__footer__info">
-  <div class="recipe__footer__info__left">
-    <p class="recipe__footer__info__item">좋아요 {{ recipe.like_users.count }}</p>
-    <p class="recipe__footer__info__item">댓글 {{ recipe.comment_set.count }}</p>
-    <p class="recipe__footer__info__item">조회 {{ recipe.hits }}</p>
+  <div class="ck__content-container">
+    {{ recipe.content|safe }}
   </div>
 </div>
-{% endcomment %}
-
-
-
 
 {% comment %} 레시피 댓글 {% endcomment %}
-
-{% comment %} 
-{% endcomment %}
-{% comment %} 댓글 작성란 
-{% endcomment %}
-{% comment %}  
-<form class="recipe__comment__input-area" action="{% url 'recipes:comment_create' recipe.pk %}" method="post" enctype="multipart/form-data">
+{% comment %} <form class="recipe__comment__input-area" action="{% url 'recipes:comment_create' recipe.pk %}" method="post" enctype="multipart/form-data">
   {% csrf_token %}
   <div class="recipe__comment__input-area__input--text">
     {{ comment_form.content }}
@@ -124,8 +106,7 @@
     {{ comment_image_form.image }}
   </div>
   <input class="recipe__comment__input-area__input--submit" type="submit" value="작성">
-</form>
-{% endcomment %}
+</form> {% endcomment %}
 {% comment %} 댓글 표시 {% endcomment %}
 
 {% comment %} 
@@ -172,6 +153,8 @@
   {% endfor %}
 </div> 
 {% endcomment %}
+{% comment %} 댓글 삭제 모달 {% endcomment %}
+{% include 'recipes/detail_delete_modal.html' %}
 {% endblock content %}
 
 {% block script %}
