@@ -60,7 +60,8 @@
           
         </div>     
     </div>
-  
+  <hr>
+
   
   
   <h5 class='mt-5 mb-3'>리뷰 <span class='comment--color'>{{comments|length}}</span></h5>
@@ -97,8 +98,8 @@
         <span class='col-2 d-flex comment--updated_at  justify-content-end'>
           <p class='hidden'>{{comment.updated_at|date:"Y-m-d"}}</p>
           {% if request.user == comment.user %}
-          <div class="dropdown text-end">
-            <button class="btn dropdown pt-0 pe-0" type="button" data-bs-+toggle="dropdown" aria-expanded="false">
+          <div class="dropdown ">
+            <button class="btn dropdown pt-0 pe-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
               <i class="bi bi-three-dots-vertical"></i>
             </button>
             <ul class="dropdown-menu">
@@ -159,22 +160,6 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="{% static 'js/product_detail_like.js' %}"></script>
     <script src="{% static 'js/product_detail_comment_like.js' %}"></script>
-
-
-    //const starInputs = document.querySelectorAll('.star-input input');
-    //const starLabels = document.querySelectorAll('.star-input label');
-  
-    //for (let i = 0; i < starInputs.length; i++) {
-      //starInputs[i].addEventListener('click', function () {
-      //  for (let j = 0; j <= i; j++) {
-      //    starLabels[j].classList.add('checked');
-      //  }
-  
-      //  for (let j = i + 1; j <scrip starInputs.length; j++) {
-      //    starLabels[j].classList.remove('checked');
-      //  }
-    //  });
-  //  } 
-  </script> 
+    <script></script>
   {% endblock script %}
 
