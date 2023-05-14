@@ -105,27 +105,41 @@ def likes(request, product_pk):
     # return redirect('products:detail', product.pk)
 
 
+from django.http import JsonResponse
+
 def comment_create(request, product_pk):
     product = Product.objects.get(pk=product_pk)
     comment_form = CommentForm(request.POST)
-    # review_img = Review_imageForm(request.POST, request.FILES)
     if comment_form.is_valid():
         comment = comment_form.save(commit=False)
         comment.product = product
         comment.user = request.user
         comment.save()
+        return JsonResponse({'success': True})
+    else:
+        return JsonResponse({'success': False, 'errors': comment_form.errors})
 
-        # Review_image 모델 저장
-        # review_image = review_img.save(commit=False)
-        # review_image.review = review
-        # review_image.save()
-        return redirect('products:detail', product.pk)
-    context = {
-        'product':product,
-        'comment_form': comment_form,
-        # 'review_img':review_img,
-    }
-    return render(request,'products/detail.html', context)
+# def comment_create(request, product_pk):
+#     product = Product.objects.get(pk=product_pk)
+#     comment_form = CommentForm(request.POST)
+#     # review_img = Review_imageForm(request.POST, request.FILES)
+#     if comment_form.is_valid():
+#         comment = comment_form.save(commit=False)
+#         comment.product = product
+#         comment.user = request.user
+#         comment.save()
+
+#         # Review_image 모델 저장
+#         # review_image = review_img.save(commit=False)
+#         # review_image.review = review
+#         # review_image.save()
+#         return redirect('products:detail', product.pk)
+#     context = {
+#         'product':product,
+#         'comment_form': comment_form,
+#         # 'review_img':review_img,
+#     }
+#     return render(request,'products/detail.html', context)
 
 def comment_update(request, product_pk, comment_pk):
     comment = Comment.objects.get(pk=comment_pk)
@@ -147,11 +161,23 @@ def comment_update(request, product_pk, comment_pk):
         }
         return render(request, 'products/detail.html', context)
 
-def comment_delete(request,product_pk,comment_pk):
+def comment_delete(request, product_pk, comment_pk):
     comment = Comment.objects.get(pk=comment_pk)
     if request.user == comment.user:
         comment.delete()
-        return redirect('products:detail', product_pk)
+
+        # AJAX 요청에 대한 응답으로 JSON 객체를 반환합니다.
+        return JsonResponse({'status': 'ok'})
+    else:
+        # 권한이 없는 경우 에러를 반환합니다.
+        return JsonResponse({'status': 'error', 'message': '권한이 없습니다.'})
+
+
+# def comment_delete(request,product_pk,comment_pk):
+#     comment = Comment.objects.get(pk=comment_pk)
+#     if request.user == comment.user:
+#         comment.delete()
+#         return redirect('products:detail', product_pk)
         
 
 

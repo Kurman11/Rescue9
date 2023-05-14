@@ -65,7 +65,7 @@
   
   <h5 class='mt-5 mb-3'>리뷰 <span class='comment--color'>{{comments|length}}</span></h5>
     <div class='container'>
-      <form action="{% url 'products:comment_create' product.pk %}" method="POST" enctype="multipart/form-data">
+      <form id="comment-form" action="{% url 'products:comment_create' product.pk %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <div class='row'>
           <div class='col-10 p-0'>
@@ -159,22 +159,9 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="{% static 'js/product_detail_like.js' %}"></script>
     <script src="{% static 'js/product_detail_comment_like.js' %}"></script>
-
-
-    //const starInputs = document.querySelectorAll('.star-input input');
-    //const starLabels = document.querySelectorAll('.star-input label');
-  
-    //for (let i = 0; i < starInputs.length; i++) {
-      //starInputs[i].addEventListener('click', function () {
-      //  for (let j = 0; j <= i; j++) {
-      //    starLabels[j].classList.add('checked');
-      //  }
-  
-      //  for (let j = i + 1; j <scrip starInputs.length; j++) {
-      //    starLabels[j].classList.remove('checked');
-      //  }
-    //  });
-  //  } 
+    <script src="{% static 'js/product_detail_comment_create.js' %}"></script>
+    <script src="{% static 'js/product_detail_comment_delete.js' %}"></script>
+    <script>
   </script> 
   {% endblock script %}
 
