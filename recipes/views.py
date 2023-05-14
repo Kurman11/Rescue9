@@ -43,7 +43,14 @@ def detail(request, recipe_pk: int):
     review_form = ReviewForm()
     reviews = recipe.review_set.all().order_by('-pk')
     image_reviews = recipe.review_set.filter()
-
+    ratings = Review.objects.all()
+    total_rating = 0
+    cnt = 0
+    average_rating = 0
+    for i in ratings:
+        total_rating += i.rating
+        cnt += 1
+        average_rating = round((total_rating/cnt),1)
     session_key = 'recipe_{}_hits'.format(recipe_pk)
     if not request.session.get(session_key):
         recipe.hits += 1
@@ -55,6 +62,7 @@ def detail(request, recipe_pk: int):
         'reviews': reviews,
         'review_form': review_form,
         'image_reviews': image_reviews,
+        'average_rating' : average_rating,
     }
     return render(request, 'recipes/detail.html', context)
 

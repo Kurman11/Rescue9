@@ -197,3 +197,22 @@
 .recipe__comment__item {
   display: flex;
 }
+
+/* 별점 실험 */
+.star-rating {
+  font-size: 20px;
+}
+
+.star {
+  cursor: pointer;
+}
+
+.star i {
+  display: block;
+  margin: 0 auto;
+}
+
+.star.filled,
+.star.selected {
+  color: #0097F3;
+}
