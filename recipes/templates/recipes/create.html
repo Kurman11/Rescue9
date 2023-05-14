@@ -31,10 +31,10 @@
             </ul>
           </div>
         </div>
-        <div class="col">
+        <div class="col" id="selected_products_wrapper">
           {% comment %} 드랍다운에서 선택한 옵션 표시 {% endcomment %}
+          <h3>선택한 사용 제품</h3>
           <div id="selected_products"></div>
-          
         </div>
       </div>
     </div>
@@ -125,52 +125,51 @@
   });
 });
 
+
 function updateSelectedProducts() {
   const selectedProductsDiv = document.querySelector('#selected_products');
   selectedProductsDiv.innerHTML = '';
 
-  // 이전 삭제 버튼들을 모두 삭제
-  document.querySelectorAll('.delete-product-btn').forEach(function(btn) {
-    btn.remove();
-  });
-
   dropdownMenuList.forEach(function(dropdownMenu) {
     dropdownMenu.querySelectorAll('.dropdown-item').forEach(function(dropdownItem) {
-      dropdownItem.querySelector('input[type="checkbox"]').checked = false;
+      const product = dropdownItem.textContent;
+      const checkbox = dropdownItem.querySelector('input[type="checkbox"]');
+      
+      
+      if (checkbox.checked) {
+        // 선택된 제품에 대한 삭제 버튼이 없는 경우에만 추가
+        if (!selectedProducts[product]) {
+          const listItem = document.createElement('li');
+          listItem.textContent = product;
+
+          const deleteButton = document.createElement('button');
+          deleteButton.textContent = 'X';
+          deleteButton.classList.add('delete-product-btn');
+          deleteButton.addEventListener('click', function() {
+            checkbox.checked = false;
+            listItem.remove();
+            delete selectedProducts[product];
+          });
+
+          listItem.appendChild(deleteButton);
+          selectedProducts[product] = listItem;
+        }
+      } else {
+        // 선택이 취소된 경우, 해당 제품에 대한 삭제 버튼이 있으면 제거
+        if (selectedProducts[product]) {
+          selectedProducts[product].remove();
+          delete selectedProducts[product];
+        }
+      }
     });
   });
-
-  if (selectedProducts.size > 0) {
-    const list = document.createElement('ul');
-    selectedProducts.forEach(function(product) {
-      const listItem = document.createElement('li');
-
-      listItem.textContent = product;
-
-      const deleteButton = document.createElement('button');
-      deleteButton.textContent = 'X';
-      deleteButton.classList.add('delete-product-btn');
-      deleteButton.addEventListener('click', function() {
-
-        selectedProducts.delete(product);
-
-        updateSelectedProducts();
-      });
-
-      // 선택된 옵션의 체크박스만 체크
-      dropdownMenuList.forEach(function(dropdownMenu) {
-        dropdownMenu.querySelectorAll('.dropdown-item').forEach(function(dropdownItem) {
-          if (dropdownItem.textContent === product) {
-            dropdownItem.querySelector('input[type="checkbox"]').checked = true;
-          }
-        });
-      });
-
-      listItem.appendChild(deleteButton);
-      list.appendChild(listItem);
-    });
-    selectedProductsDiv.appendChild(list);
+  
+  // 선택된 제품 목록을 출력
+  const list = document.createElement('ul');
+  for (const product in selectedProducts) {
+    list.appendChild(selectedProducts[product]);
   }
+  selectedProductsDiv.appendChild(list);
 }
 </script>
 <style>
@@ -180,6 +179,27 @@ function updateSelectedProducts() {
     min-width: 100px;
     min-height: 100px;
   }
+  #selected_products ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  }
+
+  #selected_products li {
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border: 1px solid rgb(14, 135, 248);
+    padding: 5px;
+    border-radius: 0.5rem;
+  }
+  .delete-product-btn {
+  margin-left: 10px;
+  }
+  #selected_products_wrapper h3 {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
 </style>
 {% endblock script %}
 {% endblock content %}

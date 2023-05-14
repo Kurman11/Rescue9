@@ -1,6 +1,5 @@
-$(document).ready(function(){
   $('.new_owl-carousel').owlCarousel({
-    loop:true,
+    loop:false,
     margin:10,
     nav:true,
     navText: [
@@ -27,11 +26,10 @@ $(document).ready(function(){
     mouseDrag:true,
     touchDrag:true
   });
-});
 
-$(document).ready(function(){
+
   $('.owl-carousel').owlCarousel({
-    loop:true,
+    loop:false,
     margin:10,
     nav:true,
     navText: [
@@ -58,11 +56,10 @@ $(document).ready(function(){
     mouseDrag:true,
     touchDrag:true
   });
-});
 
-$(document).ready(function(){
+
   $('.like_owl-carousel').owlCarousel({
-    loop:true,
+    loop:false,
     margin:10,
     nav:true,
     navText: [
@@ -89,9 +86,8 @@ $(document).ready(function(){
     mouseDrag:true,
     touchDrag:true
   });
-});
 
-$(document).ready(function(){
+
   $('.hits_owl-carousel').owlCarousel({
     loop:false,
     margin:10,
@@ -120,4 +116,7 @@ $(document).ready(function(){
     mouseDrag:true,
     touchDrag:true
   });
-});
+
+
+
+

@@ -4,87 +4,11 @@
 <link rel="stylesheet" href="{% static 'css/button.css' %}">
 <link rel="stylesheet" href="{% static 'css/hover.css' %}">
 <link rel="stylesheet" href="{% static 'css/account_profile.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 {% endblock link %}
 {% block style %}
 <style>
-  .main--padding {
-    padding-left: 80px;
-    padding-right: 80px;
-    margin-top: 40px;
-  }
-  
-  .title--username {
-    font-weight: bold;
-    background-color: var(--subtle-color);
-    text-align: center;
-    padding: 10px 0px;
-  }
-  
-  .profile--box {
-    {% comment %} border: solid 3px var(--subtle-color); {% endcomment %}
-    background:  var(--subtle-color);
-    min-width: 210px; 
-    position: relative;
-    padding-bottom: 10px;
-  }
-  
-  .profile--back--image {
-    width: 100%;
-    filter: brightness(50%);
-  }
-
-  .profile--image {
-    width: 30%;
-    object-fit: cover;
-    border-radius: 60px;
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    box-shadow: 5px 5px 5px gray;
-    z-index: 2;
-  }
-
-
-  .profile--image--icon {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    z-index: 1;
-  }
-
-  .profile--image__same:hover{
-    filter: brightness(50%);
-    cursor: pointer;
-    z-index: 0;
-  }
-
-
-  
-
-  @media (max-width: 768px) {
-    .profile--image {
-      top: 50%;
-      min-width: 60px;
-    }
-    
-  .profile--image--icon {
-    top: 45%;
-  }
-  }
-
-
-  @media (max-width: 1380px) {
-    .main--padding{
-      padding-left: 0px;
-      padding-right: 0px;
-    }
-
-    }
-
-
 </style>
 {% endblock style %}
 
@@ -104,11 +28,35 @@
     <div class="col-12 col-md-7 col-lg-8">
       {% comment %} 내가 쓴 레시피 {% endcomment %}
       <h5>My recipes</h5>
-      {% for recipe in recipes %}
-        {{recipe.title}}
-      {% endfor %}
+      <table class='table'>
+        <thead>
+          <tr>
+            <th>no</th>
+            <th>title</th>
+            <th>bookmark</th>
+            <th>reivews</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for recipe in recipes %}
+            <tr onclick="window.location='{% url 'recipes:detail' recipe.pk %}'" class="list--detail">
+              <td>{{recipe.pk}}</td>
+              <td>{{recipe.title}}</td>
+              <td>{{recipe.like_users.count}}</td>
+              <td>{{ recipe.review_set.count }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+    </table>
+       
       <ul class="pagination justify-content-center">
         {% if  recipes.has_previous %}
+        <li class="page-item">
+          <a class="page-link" href="?page=1" aria-label="처음">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only"></span>
+          </a>
+        </li>
           <li class="page-item">
             <a class="page-link" href="?page={{   recipes.previous_page_number }}">이전</a>
           </li>
@@ -118,7 +66,7 @@
           </li>
         {% endif %}
         {% for page_number in   recipes.paginator.page_range %}
-          {% if page_number >=  recipes.number|add:-5 and page_number <=   recipes.number|add:5 %}
+          {% if page_number >=  recipes.number|add:-2 and page_number <=   recipes.number|add:2 %}
             {% if page_number ==  recipes.number %}
               <li class="page-item active" aria-current="page">
                 <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
@@ -134,6 +82,12 @@
           <li class="page-item">
             <a class="page-link" href="?page={{   recipes.next_page_number }}">다음</a>
           </li>
+          <li class="page-item">
+            <a class="page-link" href="?page={{ recipes.paginator.num_pages }}" aria-label="마지막">
+              <span aria-hidden="true">&raquo;</span>
+              <span class="sr-only"></span>
+            </a>
+          </li>
         {% else %}
           <li class="page-item disabled">
             <a class="page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
@@ -143,11 +97,35 @@
 
 
       <h5>My review</h5>
-      {% for review in reviews %}
-        {{review.title}}
-      {% endfor %}
+      <table class='table'>
+        <thead>
+          <tr>
+            <th>no</th>
+            <th>title</th>
+            <th>bookmark</th>
+            <th>reviews</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for review in reviews %}
+            <tr onclick="window.location='{% url 'recipes:detail' recipe.pk %}'" class="list--detail">
+              <td>{{recipe.pk}}</td>
+              <td>{{recipe.title}}</td>
+              <td>{{recipe.like_users.count}}</td>
+              <td>{{ recipe.review_set.count }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+     </table>
+
       <ul class="pagination justify-content-center">
         {% if  reviews.has_previous %}
+        <li class="page-item">
+          <a class="page-link" href="?page=1" aria-label="처음">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only"></span>
+          </a>
+        </li>
           <li class="page-item">
             <a class="page-link" href="?page={{   reviews.previous_page_number }}">이전</a>
           </li>
@@ -157,7 +135,7 @@
           </li>
         {% endif %}
         {% for page_number in reviews.paginator.page_range %}
-          {% if page_number >=  reviews.number|add:-5 and page_number <=   reviews.number|add:5 %}
+          {% if page_number >=  reviews.number|add:-2 and page_number <=   reviews.number|add:2 %}
             {% if page_number ==  reviews.number %}
               <li class="page-item active" aria-current="page">
                 <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
@@ -173,6 +151,12 @@
           <li class="page-item">
             <a class="page-link" href="?page={{   reviews.next_page_number }}">다음</a>
           </li>
+          <li class="page-item">
+            <a class="page-link" href="?page={{ recipes.paginator.num_pages }}" aria-label="마지막">
+              <span aria-hidden="true">&raquo;</span>
+              <span class="sr-only"></span>
+            </a>
+          </li>
         {% else %}
           <li class="page-item disabled">
             <a class="page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
@@ -182,69 +166,87 @@
 
     {% comment %} bookmark? likes? {% endcomment %}
     <h5>like recipes</h5>
-    {% for recipe in person.like_recipes.all  %}
-      {{recipe}}
-    {% endfor %}
-
-
-
+    <div class='owl-carousel owl-theme  recipes-owl'>
+      {% for recipe in person.like_recipes.all  %}
+      <div class='card--border card--border--gray'>
+        <a href="{% url 'recipes:detail' recipe.pk %}">
+          <img src="{{ recipe.thumbnail.url}}" class='card--border__image rounded' alt="{{ recipe.title }}의 이미지">  
+          <div class='card--name--box'>
+            <strong class='card--name'>{{ recipe.title }}</strong>
+          </div>
+          <div class='card--tag--border'>
+            <p>조회수 {{ recipe.hits }}</p>
+            <p>리뷰 {{ recipe.review_set.count }}</p>
+          </div>
+        </a>  
+      </div>
+      {% endfor %}
     </div>
-    <div class="col-12 col-md-5 col-lg-4">
-      <div class="profile--box">
-        <img src="{% static 'image/profilebackgroundimage.jpg' %}" class="profile--back--image"  alt="profile">
-        {% comment %} 프로필 수정 + 프로필 이미지 {% endcomment %}
-        {% if person.image %}
+  </div>
+
+  <div class="col-12 col-md-5 col-lg-4 ">
+    <div class="profile--box" id='profile-box'>
+      <img src="{% static 'image/profilebackgroundimage.jpg' %}" class="profile--back--image"  alt="profile">
+      {% comment %} 프로필 수정 + 프로필 이미지 {% endcomment %}
+      {% if person.image %}
+        {% if request.user.username == person.username %}
+          <a href="{% url 'accounts:update' %}">
+            <img src="{{person.image.url}}" class="profile--image profile--image__same" alt="profile">
+            <i class="bi bi-pencil-square profile--image--icon"></i>
+          </a>
+        {% else %}
+          <img src="{{person.image.url}}" class="profile--image" alt="profile">
+        {% endif %}
+        {% else %}
           {% if request.user.username == person.username %}
             <a href="{% url 'accounts:update' %}">
-              <img src="{{person.image.url}}" class="profile--image profile--image__same" alt="profile">
+              <img src="{% static 'image/no_image432.png' %}" class="profile--image profile--image__same" alt="no-profile">
               <i class="bi bi-pencil-square profile--image--icon"></i>
             </a>
           {% else %}
-            <img src="{{person.image.url}}" class="profile--image" alt="profile">
+          <img src="{% static 'image/no_image432.png' %}" class="profile--image" alt="no-profile">
           {% endif %}
-          {% else %}
-            {% if request.user.username == person.username %}
-              <a href="{% url 'accounts:update' %}">
-                <img src="{% static 'image/no_image432.png' %}" class="profile--image profile--image__same" alt="no-profile">
-                <i class="bi bi-pencil-square profile--image--icon"></i>
-              </a>
-            {% else %}
-            <img src="{% static 'image/no_image432.png' %}" class="profile--image" alt="no-profile">
-            {% endif %}
-        {% endif %}
-        {% comment %} 팔로워 {% endcomment %}
-          <div class="profile--bottom text-center">
-            <div class='mt-5'>
-              <p class='my-2'>{{ person.username }}</p>
-              {% if request.user != person %}
-                <form id="follow-form" data-user-id="{{person.pk}}">
-                  {% csrf_token %}
-                  {% if request.user in person.folloers.all %}
-                    <input type="submit" value="Unfollow" class="button--reversecolor rounded btn-hover__reverseblue text-center p-1">
-                    {% else %}
-                    <input type="submit" value="Follow" class="button--reversecolor rounded btn-hover__reverseblue text-center p-1">
-                  {% endif %}
-                </form>
-              {% endif %} 
-              {% comment %} 버튼 보기위해 만듬 삭제 필수 {% endcomment %}
-              <a href="{% url 'accounts:update' %}" class="button--reversecolor rounded btn-hover__reverseblue text-center p-1">follow</a>
+      {% endif %}
+      {% comment %} 팔로워 {% endcomment %}
+        <div class="profile--bottom text-center">
+          <div class='mt-5'>
+            <p class='my-2'>{{ person.username }}</p>
+            {% if request.user != person %}
+              <form id="follow-form" data-user-id="{{person.pk}}">
+                {% csrf_token %}
+                {% if request.user in person.folloers.all %}
+                  <input type="submit" value="Unfollow" class="button--reversecolor rounded btn-hover__reverseblue text-center p-1">
+                {% else %}
+                  <input type="submit" value="Follow" class="button--reversecolor rounded btn-hover__reverseblue text-center p-1">
+                {% endif %}
+              </form>
+            {% endif %} 
 
-              <div class='d-flex mt-2 justify-content-evenly'>
-                <p>팔로잉</p>
-                <p>팔로워</p>
-              </div>
-              <div class='d-flex mt-2 mb-4 justify-content-evenly'>
-                {% comment %} 모델을 받기 전이라 0 추가 {% endcomment %}
-                <p>{{person.following.count}} 0</p>
-                <p>{{person.folloers.count}} 0</p>
-              </div>
+            <div class='d-flex mt-2 justify-content-evenly'>
+              <p>팔로잉</p>
+              <p>팔로워</p>
+            </div>
+            <div class='d-flex mt-2 mb-4 justify-content-evenly'>
+              <p id="followings-count">{{person.followings.count}}</p>
+              <p id='followers-count'>{{person.followers.count}}</p>
             </div>
           </div>
         </div>
       </div>
     </div>
-
   </div>
+
 </content>
   
 {% endblock content %}
+
+{% block script %}
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="{% static 'js/accounts_profile_follow.js' %}"></script>
+  <script src="{% static 'js/recipes_index_owl.js' %}"></script>
+  <script src="{% static 'js/profile_carosuel.js' %}"></script>
+  <script src="{% static 'js/profile_scroll.js' %}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+{% endblock script %}

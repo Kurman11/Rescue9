@@ -1,10 +1,13 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static humanize %}
 
 {% block style %}
 <link rel="stylesheet" href="{% static 'css/recipes_detail.css' %}">
 <link href="{% static 'django_ckeditor_5/dist/styles.css' %}" type="text/css" media="all" rel="stylesheet">
 <script src="{% static 'django_ckeditor_5/dist/bundle.js' %}"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 {% endblock style %}
 
 {% block content %} 
@@ -18,7 +21,7 @@
   <div class="recipe__header__status">
     <div class="recipe__header-container__left">
       <h1 class="recipe__title">{{ recipe.title }}</h1>
-      <p class="recipe__rate"><i class="bi bi-star-fill"></i> {{average_rating}}</p>
+      <p class="recipe__rate"><i class="bi bi-star-fill"></i> {{ average_rate|floatformat:1 }}</p>
       <p class="recipe__status">
         <i class="bi bi-eye-fill"></i> {{ recipe.hits }}
         <i class="bi bi-bookmark-heart-fill"></i> {{ recipe.like_users.count }}
@@ -40,7 +43,7 @@
       <p class="recipe__date">{{ recipe.updated_at|date:'y. m. d' }}</p>
     </div>
   </div>
-  {% comment %} 버튼 공간 {% endcomment %}
+  {% comment %} 글수정/글삭제/팔로우 버튼 공간 {% endcomment %}
   <div class="recipe__header__btn-container">
     {% if request.user == recipe.user %}
     <a class="button--color btn-hover__blue me-2" href="{% url 'recipes:update' recipe.pk %}">글 수정</a>
@@ -60,42 +63,38 @@
   </div>
 </div>
 
-{% comment %} 레시피에 들어가는 재료 캐루젤  {% endcomment %}
-<div>
-</div>
-
-
-
-
-<div class="recipe__content ck ck-content">
-
-  {{ recipe.content|safe }}
-</div>
-{% include 'recipes/detail_delete_modal.html' %}
-
-
-{% comment %} 마지막 유저 정보, 글 스테이터스 및 글 조작 {% endcomment %}
-{% comment %}  
-<div class="recipe__footer__info">
-  <div class="recipe__footer__info__left">
-    <p class="recipe__footer__info__item">좋아요 {{ recipe.like_users.count }}</p>
-    <p class="recipe__footer__info__item">댓글 {{ recipe.comment_set.count }}</p>
-    <p class="recipe__footer__info__item">조회 {{ recipe.hits }}</p>
+{% comment %} 레시피 재료 {% endcomment %}
+<div class="recipe__used-product__container">
+  <h2>사용된 제품</h2>
+  {% comment %} 레시피에 들어가는 재료 캐루젤  {% endcomment %}
+  <div class="owl-carousel owl-theme mb-3">
+    {% for used_product in recipe.used_products.all %}
+    <a href="{% url 'products:detail' used_product.pk %}">
+      <div class="item card">
+        <img class="card-img-top" src="{{ used_product.Thumbnail.url }}" alt="{{ used_product.name }}의 사진">
+        <div class="card-body">
+          <h5 class="card-title">{{ used_product.name }}</h5>
+          <p class="card-text">{{ used_product.price|intcomma }}원</p>
+        </div>
+      </div> 
+    </a>  
+    {% endfor %}
+  </div>
+  {% comment %} 레시피 재료 총액 {% endcomment %}
+  <div class="recipe__used-product__sum">
+    <h3>총액: <span class="text--main">{{ total_price|intcomma }}</span>원</h3>
   </div>
 </div>
-{% endcomment %}
 
-
-
+{% comment %} ck editor로 작성된 화면 {% endcomment %}
+<div class="recipe__content ck ck-content">
+  <div class="ck__content-container">
+    {{ recipe.content|safe }}
+  </div>
+</div>
 
 {% comment %} 레시피 댓글 {% endcomment %}
-
-{% comment %} 
-{% endcomment %}
-{% comment %} 댓글 작성란 
-{% endcomment %}
-{% comment %}  
-<form class="recipe__comment__input-area" action="{% url 'recipes:comment_create' recipe.pk %}" method="post" enctype="multipart/form-data">
+{% comment %} <form class="recipe__comment__input-area" action="{% url 'recipes:comment_create' recipe.pk %}" method="post" enctype="multipart/form-data">
   {% csrf_token %}
   <div class="recipe__comment__input-area__input--text">
     {{ comment_form.content }}
@@ -107,8 +106,7 @@
     {{ comment_image_form.image }}
   </div>
   <input class="recipe__comment__input-area__input--submit" type="submit" value="작성">
-</form>
-{% endcomment %}
+</form> {% endcomment %}
 {% comment %} 댓글 표시 {% endcomment %}
 
 {% comment %} 
@@ -269,5 +267,12 @@
 
   
 
+{% comment %} 댓글 삭제 모달 {% endcomment %}
+{% include 'recipes/detail_delete_modal.html' %}
 {% endblock content %}
 
+{% block script %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="{% static 'js/recipes_detail_owl.js' %}"></script>
+
+{% endblock script %}
