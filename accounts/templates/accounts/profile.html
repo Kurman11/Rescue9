@@ -156,17 +156,15 @@
           <tr>
             <th>no</th>
             <th>title</th>
-            <th>bookmark</th>
-            <th>reviews</th>
+            <th>content</th>
           </tr>
         </thead>
         <tbody>
           {% for review in reviews %}
-            <tr onclick="window.location='{% url 'recipes:detail' recipe.pk %}'" class="list--detail">
-              <td>{{recipe.pk}}</td>
-              <td>{{recipe.title}}</td>
-              <td>{{recipe.like_users.count}}</td>
-              <td>{{ recipe.review_set.count }}</td>
+            <tr onclick="window.location='{% url 'recipes:detail' review.recipe.pk %}'" class="list--detail">
+              <td>{{review.recipe.pk}}</td>
+              <td>{{review.recipe.title}}</td>
+              <td>{{review.content}}</td>
             </tr>
           {% endfor %}
         </tbody>
