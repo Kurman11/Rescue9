@@ -1,4 +1,135 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rescue_9</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous"> 
+  <style>
+  * {
+    margin: 0;
+    padding: 0; 
+    box-sizing: content-box;
+  }
+  
+  body{
+    font-family: 'NanumSquareNeo-Variable';
+  }
+
+  .button--content {
+    width: 450px;
+    height: 450px;
+    {% comment %} overflow: hi/dden; {% endcomment %}
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .back--img {
+    position: absolute;
+    width: 100vw;
+    height: 100%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(1.15);
+    object-fit: cover;
+    filter: brightness(30%);
+  }
+
+  .back--wrap {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo {
+    position: absolute; 
+    {% comment %} width: 100%;
+    height: 100%; {% endcomment %}
+    transform: translateY(25px);
+    transition: all 0.1s;
+    {% comment %} left: 300px; {% endcomment %}
+  }
+  
+  .logo:hover {
+    transform: translateY(-0px);
+  }
+  .link:hover {
+    transform: translateY(-0px);
+  }
+
+
+  .link{
+    {% comment %} position: absolute;  {% endcomment %}
+    text-decoration: none;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    display: none;
+    transform: translateY(25px);
+    transition: all 0.1s;
+    }
+
+  .link--icon {
+    width: 250px;
+  }
+
+  @font-face {
+    font-family: 'NanumSquareNeo-Variable';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+
+
+  </style>
+</head>
+<body>
+  <div class='back--wrap'>
+    <img src="{% static 'image/background.webp' %}" class='back--img' alt="배경">
+    <div class='button--content'>
+      <img src="{% static 'image/logo2.png' %}" alt="logo" class='tdlogo logo' onclick='logo()'>      
+      <div class=''>
+      </div> 
+        <a href="{% url 'products:index' %}" class="link tdproducts">
+          <img src="{% static 'image/product.svg' %}" class="link--icon" alt="">
+          <p class="mt-3">다양한 제품을 한눈에</p>
+          <h2 class="mt-2">제품 보러가기</h2>
+        </a>
+        <a href="{% url 'recipes:index' %}" class="link tdrecipe">
+          <img src="{% static 'image/recipe.svg' %}" class="link--icon" alt="">
+          <p class="mt-3">맛있는 한끼를 위해</p>
+          <h2 class="mt-2">레시피 보러가기</h2>
+        </a>
+      </div>
+  </div>
+
+
+
+  <script>
+    let tdlogo = document.querySelector(`.tdlogo`)
+    let tdproducts = document.querySelector(`.tdproducts`)
+    let tdrecipe = document.querySelector(`.tdrecipe`)
+  
+    function logo() {
+      tdlogo.style.display = 'none';
+      tdproducts.style.display = 'inline-block';
+      tdrecipe.style.display = 'inline-block';
+    }
+  </script>
+
+  
+</body>
+</html>
+
+{% comment %} {% extends 'base.html' %}
+{% load static %}
 {% block style %}
 <style>
   .hidden{
@@ -7,9 +138,11 @@
 </style>
 {% endblock style %}
 {% block content %}
-  <button class='btn tdlogo' onclick='logo()'>대충 로고 버튼</button>
-  <a href="{% url 'products:index' %}" class="btn nav--button nav--btn hidden tdproducts">제품으로 바로가기</a>
-  <a href="{% url 'recipes:index' %}" class="btn nav--button nav--btn hidden tdrecipe">레시피로 바로가기</a>
+<button class='btn tdlogo' onclick='logo()'>
+  <img src="{% static 'image/logo2.png' %}" alt="logo" class="nav--image" >      
+</button>
+<a href="{% url 'products:index' %}" class="btn nav--button nav--btn hidden tdproducts">제품으로 바로가기</a>
+<a href="{% url 'recipes:index' %}" class="btn nav--button nav--btn hidden tdrecipe">레시피로 바로가기</a>
 {% endblock content %}
 
 {% block script %}
@@ -26,5 +159,5 @@
 
 
 </script>
-{% endblock script %}
+{% endblock script %} {% endcomment %}
 
