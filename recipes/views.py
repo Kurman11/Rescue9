@@ -5,6 +5,11 @@ from .models import Recipe, Review
 from .forms import RecipeForm, ReviewForm
 from accounts.models import User
 from django.conf import settings
+from PIL import Image
+import os
+from django.core.files import File
+from io import BytesIO
+
 
 # Create your views here.
 def index(request):
@@ -24,6 +29,21 @@ def create(request):
         if recipe_form.is_valid():
             recipe = recipe_form.save(commit=False)
             recipe.user = request.user
+            
+             # 이미지 crop 처리
+            image_file = request.FILES.get('thumbnail_upload')
+            crop_y = int(request.POST.get('crop_y'))
+            crop_height = int(request.POST.get('crop_height'))
+            # 이미지 업로드 및 crop
+            img = Image.open(image_file)
+            thumbnail_crop = img.crop((0, crop_y, img.width, crop_y + crop_height))
+            file_extension = os.path.splitext(image_file.name)[1]
+            save_path = f'thumbnail_crop/{img.filename}{file_extension}'
+            temp_file = BytesIO()
+            thumbnail_crop.save(temp_file, format='JPEG')
+            temp_file.seek(0)
+            recipe.thumbnail_crop.save(save_path, File(temp_file))
+
             recipe.save()
             recipe_form.save_m2m()
             return redirect('recipes:index')

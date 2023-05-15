@@ -38,7 +38,7 @@ class RecipeForm(forms.ModelForm):
 
     class Meta:
         model = Recipe
-        exclude = ('user', 'like_users', 'hits',)
+        exclude = ('user', 'like_users', 'hits', 'thumbnail_crop',)
         labels = {
             'title': '레시피 명',
         }

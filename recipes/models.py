@@ -25,12 +25,7 @@ class Recipe(models.Model):
         options={'quality': 60},
         )
     
-    thumbnail_crop = ImageSpecField(
-        source = 'thumbnail_upload',
-        processors=[ResizeToFill(1080, 400)],
-        format='JPEG',
-        options={'quality': 100}
-        )
+    thumbnail_crop = models.ImageField(upload_to='thumbnail_crop')
 
     category = models.CharField(max_length=20)
     hits = models.PositiveIntegerField(default=0)
