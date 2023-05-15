@@ -5,6 +5,7 @@ from django.http import JsonResponse
 from taggit.models import Tag
 from django.db.models import Count
 from recipes.models import Recipe
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -22,7 +23,7 @@ def index(request):
     }
     return render(request, 'products/index.html', content)
 
-
+@login_required
 def create(request):
     if request.method == 'POST':
         tags = request.POST.get('tags').split(',')
@@ -45,7 +46,6 @@ def create(request):
 def detail(request, product_pk):
     product = Product.objects.get(pk=product_pk)
     comment_form = CommentForm()
-    # review_img = Review_imageForm(request.POST, request.FILES)
     comments = product.comment_set.all()
     tags = product.tags.all()
 
@@ -61,13 +61,12 @@ def detail(request, product_pk):
         'product' : product,
         'comment_form' : comment_form,
         'comments' : comments,
-        # 'review_img' : review_img,
         'tags': tags,
         'recipes': recipes
     }
     return render(request,'products/detail.html', context)
 
-
+@login_required
 def update(request, product_pk):
     product = Product.objects.get(pk=product_pk)
     if request.method == 'POST':
@@ -86,14 +85,14 @@ def update(request, product_pk):
     }
     return render(request,'products/update.html',context)
 
-
+@login_required
 def delete(request,product_pk):
     product = Product.objects.get(pk=product_pk)
     if request.user == product.user:
         product.delete()
     return redirect('products:index')
 
-
+@login_required
 def likes(request, product_pk):
     product = Product.objects.get(pk=product_pk)
     if product.like_users.filter(pk=request.user.pk).exists():
@@ -107,11 +106,10 @@ def likes(request, product_pk):
         'like_count': product.like_users.count(),
     }
     return JsonResponse(context)
-    # return redirect('products:detail', product.pk)
 
 
 from django.http import JsonResponse
-
+@login_required
 def comment_create(request, product_pk):
     product = Product.objects.get(pk=product_pk)
     comment_form = CommentForm(request.POST)
@@ -124,69 +122,36 @@ def comment_create(request, product_pk):
     else:
         return JsonResponse({'success': False, 'errors': comment_form.errors})
 
-# def comment_create(request, product_pk):
-#     product = Product.objects.get(pk=product_pk)
-#     comment_form = CommentForm(request.POST)
-#     # review_img = Review_imageForm(request.POST, request.FILES)
-#     if comment_form.is_valid():
-#         comment = comment_form.save(commit=False)
-#         comment.product = product
-#         comment.user = request.user
-#         comment.save()
 
-#         # Review_image 모델 저장
-#         # review_image = review_img.save(commit=False)
-#         # review_image.review = review
-#         # review_image.save()
-#         return redirect('products:detail', product.pk)
-#     context = {
-#         'product':product,
-#         'comment_form': comment_form,
-#         # 'review_img':review_img,
-#     }
-#     return render(request,'products/detail.html', context)
-
+@login_required
 def comment_update(request, product_pk, comment_pk):
     comment = Comment.objects.get(pk=comment_pk)
     if request.user == comment.user:
         if request.method == 'POST':
             comment_form = CommentForm(request.POST, instance=comment)
-            # review_img = Review_imageForm(request.POST, request.FILES, instance=review.review_image_set.first())
             if comment_form.is_valid():
-                # review_img.save()
                 comment_form.save()
                 return redirect('products:detail', product_pk)
         else:
             comment_form = CommentForm(instance=comment)
-            # review_img = Review_imageForm(instance=review.review_image_set.first())
         context = {
-            # 'review_img' : review_img,
             'comment_form': comment_form,
             'comment': comment,
         }
         return render(request, 'products/detail.html', context)
-
+@login_required
 def comment_delete(request, product_pk, comment_pk):
     comment = Comment.objects.get(pk=comment_pk)
     if request.user == comment.user:
         comment.delete()
 
-        # AJAX 요청에 대한 응답으로 JSON 객체를 반환합니다.
         return JsonResponse({'status': 'ok'})
     else:
-        # 권한이 없는 경우 에러를 반환합니다.
         return JsonResponse({'status': 'error', 'message': '권한이 없습니다.'})
 
 
-# def comment_delete(request,product_pk,comment_pk):
-#     comment = Comment.objects.get(pk=comment_pk)
-#     if request.user == comment.user:
-#         comment.delete()
-#         return redirect('products:detail', product_pk)
-        
 
-
-
+@login_required
 def comment_likes(request,product_pk, comment_pk):
     comment = Comment.objects.get(pk=comment_pk)
     if comment.like_users.filter(pk=request.user.pk).exists():
@@ -198,11 +163,9 @@ def comment_likes(request,product_pk, comment_pk):
     r_like_count = comment.like_users.count()
     like_users_list = list(comment.like_users.all().values())
     context={
-        # 'review.like_users' : review.like_users,
         'like_users_list' : like_users_list,
         'r_is_like' :  r_is_like,
         'r_like_count' : r_like_count,
     }
 
     return JsonResponse(context)
-    # return redirect('products:detail', product_pk)
