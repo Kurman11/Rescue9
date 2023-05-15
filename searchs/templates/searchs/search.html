@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block link %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+{% endblock link %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/products_index.css' %}">
+
+{% endblock style %}
+
+{% block content %}
+
+<p class='title--content'>products</p>
+<div class="row">
+        
+{% for product in search_result_product %}
+    <div class="col-6 col-md-3 col-xl-2">
+        <div class='card--border card--border--gray'>
+        <a href="{% url 'products:detail' product.pk %}">
+            <img src="{{product.Thumbnail.url}}" class='card--border__image rounded' alt="img">  
+            <div class='card--name--box'>
+            <strong class='card--name'>{{ product.name }}</strong>
+            </div>
+            <div class='card--tag--border'>
+                <p><i class="bi bi-heart-fill card--rating__color me-2"></i>{{product.like_users.count}}</p>
+                <p>리뷰 {{ product.comment_set.count }}</p>
+                <p>
+                    {% for tag in product.tags.all %}
+                    <span>#{{tag}}</span>
+                    {% endfor %}
+                </p>
+            </div>
+          </div>
+        </a>
+      </div>
+</div>
+{% endfor %}
+
+  {% comment %} recipes {% endcomment %}
+<p class='title--content'>recipes</p>
+<div class="row">
+    {% for recipe in search_result_recipe %}
+    <div class="col-6 col-md-3 col-xl-2">
+        <div class='card--border card--border--gray'>
+            <a href="{% url 'recipes:detail' recipe.pk %}">
+            <img src="{{ recipe.thumbnail.url }}" class='card--border__image rounded' alt="{{ recipe.title }}의 이미지">  
+            <div class='card--name--box'>
+                <strong class='card--name'>{{ recipe.title }}</strong>
+            </div>
+            <div class='card--tag--border'>
+                <p>조회수 {{ recipe.hits }}</p>
+                <p>리뷰 {{ recipe.review_set.count }}</p>
+            </div>
+            </a>
+            {% comment %} </a>   {% endcomment %}
+        </div>
+    </div>
+</div>
+    {% endfor %}
+
+{% endblock content %}
+
+{% block script %}
+
+{% endblock script %}
+

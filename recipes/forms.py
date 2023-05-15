@@ -7,6 +7,26 @@ from products.models import Product
 
 
 class RecipeForm(forms.ModelForm):
+    title = forms.CharField(
+        label='레시피 이름',
+        widget = forms.TextInput(
+            attrs = {
+                'class': 'form-control',
+                'placeholder': '레시피 제목을 입력해주세요',
+            },
+        ),
+    )
+
+    thumbnail_upload = forms.ImageField(
+        label='썸네일 사진 첨부',
+        widget = forms.ClearableFileInput(
+            attrs = {
+                'class': 'form-control',
+            },
+        ),
+        required = True,
+    )
+
     used_products = forms.ModelMultipleChoiceField(
         queryset=Product.objects.all(),
         widget=forms.CheckboxSelectMultiple(attrs={'class': 'list-unstyled'}),
@@ -18,6 +38,7 @@ class RecipeForm(forms.ModelForm):
         # it is required to set it False,
         # otherwise it will throw error in console
         self.fields["content"].required = False
+        self.fields["content"].label = "요리 순서"
         self.fields['used_products'].label_from_instance = lambda obj: obj.name
 
     category = forms.ChoiceField(
@@ -36,15 +57,11 @@ class RecipeForm(forms.ModelForm):
         required=True,
     )
 
+
+
     class Meta:
         model = Recipe
         exclude = ('user', 'like_users', 'hits', 'thumbnail_crop',)
-        labels = {
-            'title': '레시피 명',
-        }
-        widget = {
-            'title': forms.TextInput(attrs={'class': 'form-control w-75'}),
-        }
 
     def save(self, commit=True):
         recipe = super().save(commit=False)
@@ -59,8 +76,8 @@ class ReviewForm(forms.ModelForm):
     content = forms.CharField(
         widget=forms.TextInput(
             attrs={
-                'placeholder': '댓글 입력칸',
-                'class': 'recipe__comment__input-area--form'
+                'placeholder': '레시피에 대한 리뷰를 작성해보세요',
+                'class': 'recipe__review__input-area--form'
             }
         ),
     )
@@ -70,7 +87,9 @@ class ReviewForm(forms.ModelForm):
         widget=forms.ClearableFileInput(
             attrs={
                 'class': 'd-none',
-                'id': 'input-commentimage'
+                'id': 'input-commentimage',
+                'onchange': 'previewImages(event)',
+                'name': 'images[]',
             },
         ),
         required=False,
@@ -94,7 +113,7 @@ class ReviewForm(forms.ModelForm):
 
     class Meta:
         model = Review
-        fields = ('content','image',)
+        fields = ('content','image','rating',)
 
 
 

@@ -104,113 +104,95 @@
 .ck__content-container {
   display: inline-block;
 }
-/* 레시피 footer */
-.recipe__footer__info {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 14px;
-  line-height: 20px;
-  border-bottom: 1px solid var(--subtle-color);
-  margin-bottom: 20px;
-  padding-bottom: 10px;
-}
 
-.recipe__footer__info__left{
-  display: flex;
-  align-items: center;
-}
-
-.recipe__footer__info__item {
-  margin-right: 10px;
-}
-
-.recipe__footer__info__right{
-  display: flex;
-  align-items: center
-}
 /* 레시피 댓글 */
-.recipe__comment {
-  
-}
-
-.recipe__comment__info{
-  margin: 0 0 16px;
-  font-size: 18px;
-  line-height: 24px;
-  font-weight: 700;
-}
-
-.recipe__comment__form{
-  display: flex;
-  align-items: center
-}
-
-.recipe__comment__info--figure{
-  color: var(--main-color);
-}
-
-.recipe__comment__user__image{
-  height: 34px;
-  margin-right: 10px;
-}
-
-.recipe__comment__input-area {
-  width: 100%;
-  display: flex;
-  border: 1px solid var(--subtle-color);
+.review-submit--container {
+  border: 1px solid var(--main-color);
   border-radius: 4px;
+  padding: 10px;
 }
 
-.recipe__comment__input-area__input--text{
-  min-width: 100px;
-  flex: 1 0 0%;
-  min-height: 24px;
-  margin: 9px 0px;
-}
-
-.recipe__comment__input-area--form {
+.recipe__review__input-area--form {
   margin: 0 5px 0 5px;
   width: 100%;
-  border: none;
+  border: 1px solid var(--subtle-color);
+  border-radius: 4px;
   outline: none;
   word-break: break-word;
   overflow-y: auto;
   cursor: text;
   font-size: 16px;
-  line-height: 24px;
+  line-height: 30px;
 }
 
-.recipe__comment__input-area__input--image {
-  width: 30px;
-  display: flex;
-  align-items: center;
+/* 별점 실험 */
+.star-rating--submit {
   font-size: 30px;
-  margin: 0 5px;
+  text-align: center;
 }
 
-.recipe__comment__input-area__input--image > label {
+.start-rating-descript {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+.star {
+  cursor: pointer;
+}
+
+.star i {
+  display: block;
+  margin: 0 auto;
+}
+
+.star.filled,
+.star.selected {
+  color: #0097F3;
+}
+
+.comment-content--container {
+  margin: 10px 0 10px 0;
+}
+
+/* 사진 업로드 미리보가 */
+.thumbnail-wrapper {
+  position: relative;
+  display: inline-block;
+  margin: 0 10px 10px 10px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+}
+
+.label--container {
+  width: 150px;
+  height: 150px;
+}
+
+.input-test-box {
   display: flex;
   align-items: center;
+  justify-content: center;
+  height: 150px;
+  width: 150px;
+  border: 1px solid var(--subtle-color);
+  font-size: 40px;
+  color: var(--subtle-color);
 }
 
-.recipe__comment__input-area__input--image > label > i:hover {
-  color: var(--main-color)
+.thumbnail {
+  width: 150px;
+  height: 150px;
 }
 
-.recipe__comment__input-area__input--submit {
-  border: none;
-  background-color: rgba(0,0,0,0);
-  font-weight: bold;
-}
-
-.recipe__comment__input-area__input--submit:hover{
-  color: var(--main-color)
-}
-
-.recipe__comment__list{
-}
-
-.recipe__comment__item {
-  display: flex;
+.submit-btn--container {
+  text-align: right;
+  margin: 10px 0 0 10px;
 }

@@ -70,7 +70,6 @@ def detail(request, recipe_pk: int):
         average_rate = 0
     # recipe에 사용된 가격 총액 구하기
     total_price = sum(product.price for product in recipe.used_products.all())
-
     session_key = 'recipe_{}_hits'.format(recipe_pk)
     if not request.session.get(session_key):
         recipe.hits += 1

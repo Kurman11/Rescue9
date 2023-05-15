@@ -26,6 +26,7 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('products/', include('products.urls')),
     path('recipes/', include('recipes.urls')),
+    path('searchs/', include('searchs.urls')),
     path("ckeditor5/image_upload/", views.upload_file, name="ck_editor_5_upload_file"),
     path("ckeditor5/", include('django_ckeditor_5.urls')),
     path('', TemplateView.as_view(template_name='rescue/index.html'), name='index'),

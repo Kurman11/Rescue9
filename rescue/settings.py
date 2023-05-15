@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'accounts',
     'products',
     'recipes',
+    'searchs',
     'django_extensions',
     'django_ckeditor_5',
     'django.contrib.admin',

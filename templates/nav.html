@@ -4,17 +4,17 @@
   <div class="nav--left__wrap">
     <div class="nav--left--image-container">
       <a href="http://127.0.0.1:8000/">
-        <img src="{% static 'image/logo.png' %}" alt="logo" class="nav--image" >             
+        <img src="{% static 'image/logo2.png' %}" alt="logo" class="nav--image" >             
       </a>
     </div>
     <div class="nav--left__wrap">
       <a href="{% url 'products:index' %}" class="btn nav--button nav--btn">제품</a>
       <a href="{% url 'recipes:index' %}" class="btn nav--button nav--btn">레시피</a>
-      <form class="search_hidden">
+      <form class="search_hidden" action="{% url 'searchs:search' %}" role="search">
         <div class='d-flex'>
           {% comment %} <span class="nave__search__icon"><i class="bi bi-search"></i></span> {% endcomment %}
           <button type='submit'class='button--reversecolor--clear btn-hover__reverseblue rounded'><i class="bi bi-search"></i></button>
-          <input type="search" placeholder="원하는 상품을 검색해보세요" class= 'form-control' name = "">
+          <input type="search" placeholder="원하는 상품을 검색해보세요" class= 'form-control' aria-label="Search" name='q'>
         </div>
       </form>
     </div>

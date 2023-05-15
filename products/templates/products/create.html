@@ -9,10 +9,15 @@
 {% endblock style %}
 
 {% block content  %}
-<h1>create</h1>
+<h1>제품 등록</h1>
 <form action="{% url 'products:create' %}" method = 'POST' enctype="multipart/form-data">
   {% csrf_token %}
-  {{form.as_p}}
+  {% for field in form %}
+  <div class="mb-3">
+    {{ field.label_tag}}
+    {{ field }}
+  </div>
+  {% endfor %}
   <button type="submit" class='button--color w-100 rounded'>등록</button> 
 </form>
 {% endblock content %}
