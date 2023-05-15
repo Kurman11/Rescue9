@@ -76,8 +76,8 @@ class ReviewForm(forms.ModelForm):
     content = forms.CharField(
         widget=forms.TextInput(
             attrs={
-                'placeholder': '댓글 입력칸',
-                'class': 'recipe__comment__input-area--form'
+                'placeholder': '레시피에 대한 리뷰를 작성해보세요',
+                'class': 'recipe__review__input-area--form'
             }
         ),
     )
@@ -87,7 +87,9 @@ class ReviewForm(forms.ModelForm):
         widget=forms.ClearableFileInput(
             attrs={
                 'class': 'd-none',
-                'id': 'input-commentimage'
+                'id': 'input-commentimage',
+                'onchange': 'previewImages(event)',
+                'name': 'images[]',
             },
         ),
         required=False,

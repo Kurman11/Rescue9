@@ -8,7 +8,7 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 
 # Create your models here.
 def review_img_path(instance, filename):
-    return f'images/review/{instance.review.user.username}/{filename}'
+    return f'images/review/{instance.user.username}/{filename}'
 
 def recipe_thumbnail_path(instance, filename):
     return f'images/recipe/thumbnail/{instance.title}/{filename}'
