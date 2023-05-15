@@ -1,7 +1,30 @@
 {% extends 'base.html' %}
-
+{% block style %}
+<style>
+  .hidden{
+  display: none;
+  }
+</style>
+{% endblock style %}
 {% block content %}
-  <p>main index</p>
-  <a href="{% url 'products:index' %}" class="btn nav--button nav--btn">제품</a>
-  <a href="{% url 'recipes:index' %}" class="btn nav--button nav--btn">레시피</a>
+  <button class='btn tdlogo' onclick='logo()'>대충 로고 버튼</button>
+  <a href="{% url 'products:index' %}" class="btn nav--button nav--btn hidden tdproducts">제품으로 바로가기</a>
+  <a href="{% url 'recipes:index' %}" class="btn nav--button nav--btn hidden tdrecipe">레시피로 바로가기</a>
 {% endblock content %}
+
+{% block script %}
+<script>
+  let tdlogo = document.querySelector(`.tdlogo`)
+  let tdproducts = document.querySelector(`.tdproducts`)
+  let tdrecipe = document.querySelector(`.tdrecipe`)
+
+  function logo() {
+    tdlogo.style.display = 'none';
+    tdproducts.style.display = 'inline-block';
+    tdrecipe.style.display = 'inline-block';
+  }
+
+
+</script>
+{% endblock script %}
+

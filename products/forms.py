@@ -17,25 +17,33 @@ class ProductForm(forms.ModelForm):
         model = Product
         fields = ('name','price', 'category', 'photo', 'is_new', 'content','tags',)
         widgets = {
-            'tags':TagWidget(attrs={'class': 'form-control', 'placeholder': "콤마 구분"}),
-            
+            'tags':TagWidget(
+                attrs={
+                    'class': 'form-control', 
+                    'placeholder': '콤마로 구분하여 입력해주세요',
+                }
+            ),        
         }
         help_texts = {
-            'tags': '콤마로 구분',
+            'tags': '콤마로 구분하여 입력해주세요',
         }
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['tags'].label = '태그'
+
     name = forms.CharField(
-        label='name',
+        label='제품 이름',
         widget=forms.TextInput(
             attrs={
                 'class': 'form-control',
-                'id' : 'name',
-                'placeholder' : '상품명을 입력해주세요.',
+                'id' : '제품 이름',
+                'placeholder' : '상품명을 입력해주세요',
             }
         )
     )
 
     category = forms.ChoiceField(
-        label='category',
+        label='카테고리',
         widget=forms.Select(
             attrs={
                 'class': 'form-control',
@@ -57,17 +65,18 @@ class ProductForm(forms.ModelForm):
     # )
 
     price = forms.IntegerField(
-        label='price',
+        label='제품 가격',
         widget=forms.NumberInput(
             attrs={
                 'class': 'form-control',
                 'id' : 'price',
+                'step': '100',
             }
         )
     )
 
     photo = forms.ImageField(
-        label='photo',
+        label='제품 사진 첨부',
         widget=forms.ClearableFileInput(
             attrs={
                 'class': 'form-control',
@@ -76,7 +85,7 @@ class ProductForm(forms.ModelForm):
         )
     )
     is_new = forms.BooleanField(
-        label='is_new',
+        label='신제품 여부',
         widget=forms.CheckboxInput(
             attrs={
                 'class': 'form-check-input',
@@ -86,7 +95,7 @@ class ProductForm(forms.ModelForm):
         ,required=False,
     )
     content = forms.CharField(
-        label='content',
+        label='제품 설명',
         widget=forms.Textarea(
             attrs={
                 'class': 'form-control',
@@ -94,7 +103,6 @@ class ProductForm(forms.ModelForm):
             }
         )
     )
-
 
 class CommentForm(forms.ModelForm):
     class Meta:

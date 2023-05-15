@@ -95,39 +95,16 @@
 
 /* CK editor 작성 결과 화면  */
 .recipe__content{
-  margin: 0 30px 30px 30px;
-}
-
-.recipe__content img {
-  /* width: 100% !important;
-  height: auto !important; */
-}
-
-/* 레시피 footer */
-.recipe__footer__info {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 14px;
-  line-height: 20px;
+  width: 100%;
+  margin: 0 0 30px 0;
   border-bottom: 1px solid var(--subtle-color);
-  margin-bottom: 20px;
-  padding-bottom: 10px;
+  padding: 15px
 }
 
-.recipe__footer__info__left{
-  display: flex;
-  align-items: center;
+.ck__content-container {
+  display: inline-block;
 }
 
-.recipe__footer__info__item {
-  margin-right: 10px;
-}
-
-.recipe__footer__info__right{
-  display: flex;
-  align-items: center
-}
 /* 레시피 댓글 */
 .recipe__comment {
   
@@ -212,4 +189,23 @@
 
 .recipe__comment__item {
   display: flex;
+}
+
+/* 별점 실험 */
+.star-rating {
+  font-size: 20px;
+}
+
+.star {
+  cursor: pointer;
+}
+
+.star i {
+  display: block;
+  margin: 0 auto;
+}
+
+.star.filled,
+.star.selected {
+  color: #0097F3;
 }

@@ -3,24 +3,24 @@
 
 {% block content %}
 {% block title %}
-<h1>나만의 레시피 작성</h1>
+<h1>나만의 레시피 등록</h1>
 {% endblock title %}
 <form action="{% block create_url %}{% url 'recipes:create' %}{% endblock create_url %}" method="POST" enctype="multipart/form-data">
   {% csrf_token %}
   {{ recipe_form.media }}
   {% for field in recipe_form %}
     {% if field.name == 'thumbnail_upload' %}
-      <div>
+      <div class="mb-3">
         {{ field.label_tag }}
         {{ field }}
         <div id="thumbnail_preview" style="max-width: 100px;"></div>
       </div>
     {% elif field.name == 'used_products' %}
-    <div class="container">
+    <div class="container used-products__container">
       <div class="row">
         <div class="col">
           <div class="dropdown mt-3 mb-3">
-            <button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
+            <button class="button--color btn-hover__blue dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
               {{ field.label_tag }}
             </button>
             <ul class="dropdown-menu" style="max-height: 120px; overflow-y: auto;">
@@ -39,14 +39,15 @@
       </div>
     </div>
     {% else %}
-    <div>
+    <div class="mb-3">
       {{ field.label_tag }}
       {{ field }}
     </div>
     {% endif %}
   {% endfor %}
-
-  <input type="submit" value="작성">
+  <div class="create__btn__container">
+    <input style="width:100%;" class="button--color btn-hover__blue" type="submit" value="등록">
+  </div>
 </form>
 
 {% block script %}
@@ -144,7 +145,7 @@ function updateSelectedProducts() {
 
           const deleteButton = document.createElement('button');
           deleteButton.textContent = 'X';
-          deleteButton.classList.add('delete-product-btn');
+          deleteButton.classList.add('delete-product-btn', 'btn', 'btn-outline-danger');
           deleteButton.addEventListener('click', function() {
             checkbox.checked = false;
             listItem.remove();
@@ -188,7 +189,7 @@ function updateSelectedProducts() {
   #selected_products li {
     margin-right: 10px;
     margin-bottom: 10px;
-    border: 1px solid rgb(14, 135, 248);
+    border: 1px solid var(--main-color);
     padding: 5px;
     border-radius: 0.5rem;
   }
@@ -198,6 +199,17 @@ function updateSelectedProducts() {
   #selected_products_wrapper h3 {
     font-size: 18px;
     font-weight: bold;
+  }
+
+  .used-products__container {
+    border-top: 1px solid var(--subtle-color);
+    border-bottom: 1px solid var(--subtle-color);    
+    padding: 15px;
+  }
+
+  .create__btn__container {
+    padding: 10px 0 0 0;
+    text-align: right;
   }
 
 </style>

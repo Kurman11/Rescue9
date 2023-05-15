@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login as auth_login
+from django.contrib.auth import login as auth_login, authenticate
 from django.contrib.auth import logout as auth_logout
 from django.contrib.auth.decorators import login_required
 from .forms import CustomAuthenticationForm, CustomUserCreationForm, CustomUserChangeForm, CustomPasswordChangeForm
@@ -8,7 +8,7 @@ from django.contrib.auth import update_session_auth_hash
 from django.core.paginator import Paginator
 from recipes.models import Recipe, Review
 from django.http import JsonResponse
-
+from django.urls import reverse
 
 # Create your views here.
 
@@ -21,9 +21,16 @@ def login(request):
         form = CustomAuthenticationForm(request, request.POST)
         if form.is_valid():
             auth_login(request, form.get_user())
+            prev_url = request.session.get('prev_url')
+            # 이전 페이지의 URL 정보가 있으면 해당 URL로 리다이렉트합니다.
+            if prev_url:
+                # 이전 페이지의 URL 정보를 삭제합니다.
+                del request.session['prev_url']
+                return redirect(prev_url)
             return redirect('products:index')
     else:
         form = CustomAuthenticationForm()
+    request.session['prev_url'] = request.META.get('HTTP_REFERER')
     context = {
         'form': form,
     }
@@ -33,6 +40,15 @@ def login(request):
 @login_required
 def logout(request):
     auth_logout(request)
+    request.session['prev_url'] = request.META.get('HTTP_REFERER')
+
+    # 로그아웃 후 이전 페이지의 URL 정보가 있으면 해당 페이지로 리다이렉트합니다.
+    prev_url = request.session.get('prev_url')
+    if prev_url:
+        # 이전 페이지의 URL 정보를 삭제합니다.
+        del request.session['prev_url']
+        return redirect(prev_url)
+        
     return redirect('products:index')
 
 
@@ -40,13 +56,24 @@ def signup(request):
     if request.user.is_authenticated:
         return redirect('products:index')
 
+    next_page = request.GET.get('next')
+
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=password)
+            auth_login(request, user)
+            prev_url = request.session.get('prev_url')
+            if prev_url:
+                del request.session['prev_url']
+                return redirect(prev_url)
             return redirect('products:index')
     else:
         form = CustomUserCreationForm()
+    request.session['prev_url'] = request.META.get('HTTP_REFERER')
     context = {
         'form': form,
     }
