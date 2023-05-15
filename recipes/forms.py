@@ -61,7 +61,7 @@ class RecipeForm(forms.ModelForm):
 
     class Meta:
         model = Recipe
-        exclude = ('user', 'like_users', 'hits',)
+        exclude = ('user', 'like_users', 'hits', 'thumbnail_crop',)
 
     def save(self, commit=True):
         recipe = super().save(commit=False)

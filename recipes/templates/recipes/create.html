@@ -1,5 +1,59 @@
 {% extends 'base.html' %}
 
+{% block link %}
+  <link rel="stylesheet" href="https://unpkg.com/jcrop/dist/jcrop.css">
+  <script src="https://unpkg.com/jcrop"></script>
+{% endblock link %}
+{% block style %}
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    #image-container {
+      width:100%;
+      max-width: 1080px;
+      position: relative;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    #image-container img {
+      max-width: 100%;
+      height: auto;
+      vertical-align: middle;
+    }
+
+    #crop-overlay {
+      position: absolute;
+      border: 2px solid blue;
+      pointer-events: auto;
+      width: 100%;
+      height: 300px;
+      z-index: 1;
+    }
+
+    #overlay-top {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 2;
+    }
+    
+    #overlay-bottom {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 2;
+    }
+  </style>
+{% endblock style %}
 
 {% block content %}
 {% block title %}
@@ -10,11 +64,17 @@
   {{ recipe_form.media }}
   {% for field in recipe_form %}
     {% if field.name == 'thumbnail_upload' %}
-      <div class="mb-3">
-        {{ field.label_tag }}
-        {{ field }}
-        <div id="thumbnail_preview" style="max-width: 100px;"></div>
+      <div id="image-container">
+        <img id="thumbnail_preview" src="" alt="Thumbnail Image">
+        <div id="overlay-top"></div>
+        <div id="crop-overlay"></div>
+        <div id="overlay-bottom"></div>
       </div>
+      {{ field.label_tag }}
+      {{ field }}
+      <input type="hidden" name="crop_y" id="crop-y-input">
+      <input type="hidden" name="crop_height" id="crop-height-input">
+
     {% elif field.name == 'used_products' %}
     <div class="container used-products__container">
       <div class="row">
@@ -46,35 +106,78 @@
     {% endif %}
   {% endfor %}
   <div class="create__btn__container">
-    <input style="width:100%;" class="button--color btn-hover__blue" type="submit" value="등록">
+    <input style="width:100%;" class="button--color btn-hover__blue" type="submit" value="등록" id="submit-button">
   </div>
 </form>
 
 {% block script %}
 <script>
   {% comment %} 썸네일 미리보기 {% endcomment %}
-  function previewThumbnail(event) {
-    const preview = document.querySelector('#thumbnail_preview');
-    const file = event.target.files[0];
-    const reader = new FileReader();
+  const imageContainer = document.getElementById('image-container')
+  const cropOverlay = document.getElementById('crop-overlay')
+  var startY, offsetY
+  var minTop, maxTop
 
-    reader.addEventListener('load', function() {
-      const image = new Image();
-      image.src = this.result;
-      preview.innerHTML = '';
-      preview.appendChild(image);
-    });
-
-    if (file) {
-      reader.readAsDataURL(file);
-    } else {
-      preview.innerHTML = '';
-    }
+  function adjustOverlayHeight() {
+    const overlayTop = cropOverlay.offsetTop
+    const overlayHeight = cropOverlay.offsetHeight
+    
+    document.getElementById('overlay-top').style.height = overlayTop + 'px'
+    document.getElementById('overlay-bottom').style.height = (imageContainer.offsetHeight - overlayTop - overlayHeight) + 'px'
   }
 
-  const thumbnailUpload = document.querySelector('#id_thumbnail_upload');
-  thumbnailUpload.addEventListener('change', previewThumbnail);
+  cropOverlay.addEventListener('mousedown', function(event) {
+    startY = event.clientY
+    offsetY = cropOverlay.offsetTop
+    minTop = 0
+    maxTop = imageContainer.offsetHeight - cropOverlay.offsetHeight
+  })
 
+  cropOverlay.addEventListener('mousemove', function(event) {
+    if (startY) {
+      var moveY = event.clientY - startY
+      var newTop = offsetY + moveY
+
+      if (newTop > maxTop) {
+        cropOverlay.style.top = maxTop + 'px'
+      } else if (newTop < minTop) {
+        cropOverlay.style.top = minTop + 'px'
+      } else {
+        cropOverlay.style.top = newTop + 'px'
+      }
+      adjustOverlayHeight()
+    }
+  })
+
+  cropOverlay.addEventListener('mouseup', function(event) {
+    startY = null
+    offsetY = null
+    minTop = null
+    maxTop = null
+  })
+
+  document.getElementById('id_thumbnail_upload').addEventListener('change', function(event) {
+    var file = event.target.files[0]
+    var reader = new FileReader()
+
+    reader.onload = function(e) {
+      var img = document.getElementById('thumbnail_preview')
+      img.src = e.target.result
+      cropOverlay.style.display = 'block'
+
+      img.onload = function() {
+        var containerHeight = imageContainer.offsetHeight
+        var overlayTopHeight  = (containerHeight - cropOverlay.offsetHeight) / 2
+        cropOverlay.style.top = overlayTopHeight + 'px'
+        maxTop = containerHeight - cropOverlay.offsetHeight
+        adjustOverlayHeight()
+        document.getElementById('crop-y-input').value = overlayTopHeight
+        document.getElementById('crop-height-input').value = cropOverlay.offsetHeight
+      }
+    }
+
+    reader.readAsDataURL(file)
+  })
 
   {% comment %} 사용된 제품 진짜 하.... {% endcomment %}
   const dropdownMenuList = document.querySelectorAll('.dropdown-menu');
