@@ -46,7 +46,7 @@
 }
 
 .recipe__header__user__container{
-  height: 34px;
+  height: 31px;
   margin-right: 10px;
 }
 
@@ -110,6 +110,7 @@
   border: 1px solid var(--main-color);
   border-radius: 4px;
   padding: 10px;
+  margin: 10px 10px 30px 10px;
 }
 
 .recipe__review__input-area--form {
@@ -172,27 +173,72 @@
 }
 
 .label--container {
-  width: 150px;
-  height: 150px;
+  width: 216px;
+  height: 144px;
 }
 
 .input-test-box {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 150px;
-  width: 150px;
+  width: 216px;
+  height: 144px;
   border: 1px solid var(--subtle-color);
   font-size: 40px;
   color: var(--subtle-color);
 }
 
 .thumbnail {
-  width: 150px;
-  height: 150px;
+  width: 216px;
+  height: 144px;
 }
 
 .submit-btn--container {
   text-align: right;
   margin: 10px 0 0 10px;
+}
+
+/* 리뷰 리스트 */
+.recipe__review__status {
+  border-bottom: 1px solid var(--subtle-color);
+}
+
+.recipe__review__container {
+  border-bottom: 1px solid var(--subtle-color);
+  padding: 15px;
+}
+
+.recipe__review__info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.recipe__review__info__left {
+  display: flex;
+  align-items: center;
+}
+
+.recipe__review__user__container {
+  height: 50px;
+  margin-right: 10px;
+}
+
+
+.review__content__container {
+  padding: 10px;
+}
+
+.recipe__review__image__container {
+  margin-top: 10px;
+  height: 144px;
+}
+
+.recipe__review__image {
+  height: 100%;
+}
+
+.recipe__review__like__button {
+  border: none;
+  padding: 0;
+  background-color: transparent;
 }
