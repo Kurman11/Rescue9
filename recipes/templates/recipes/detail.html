@@ -93,93 +93,49 @@
   </div>
 </div>
 
-{% comment %} 레시피 댓글 {% endcomment %}
-{% comment %} <form class="recipe__comment__input-area" action="{% url 'recipes:comment_create' recipe.pk %}" method="post" enctype="multipart/form-data">
-  {% csrf_token %}
-  <div class="recipe__comment__input-area__input--text">
-    {{ comment_form.content }}
-  </div>
-  <div class="recipe__comment__input-area__input--image">
-    <label for="input-commentimage">
-      <i class="bi bi-camera-fill"></i>
-    </label>
-    {{ comment_image_form.image }}
-  </div>
-  <input class="recipe__comment__input-area__input--submit" type="submit" value="작성">
-</form> {% endcomment %}
-{% comment %} 댓글 표시 {% endcomment %}
-
-{% comment %} 
-<div class="recipe__comment__list" id="comment-start">
-  {% for comment in comments %}
-  <div class="recipe__comment__item">
-    <div class="recipe__header__image__container">
-      {% if recipe.user.image %}
-      <img class="recipe__header__image" src="{{ comment.user.image}}" alt="{{ comment.user.username }}의 프로필 이미지">
-      {% else %}
-      <img class="recipe__header__image" src="{% static 'image/no_image432.png' %}" alt="유저 프로필 사진 없음">
-      {% endif %}
-    </div>
-    <form action="{% url 'recipes:comment_delete' recipe.pk comment.pk %}" method='POST'>
-      {% csrf_token %}
-      <p>리뷰 내용 : {{ comment.content }}</p>
-      {% for comment_img in comment.commentimage_set.all %}
-        {% if comment_img.image %}
-          <img src="{{ comment_img.image.url }}" alt="">
-          {% endif %}
-      {% endfor %}
-        <input type="submit" value='삭제'>
-    </form>
-    <form action="{% url 'recipes:comment_like' recipe.pk comment.pk %}">
-      {% csrf_token %}
-      {% if request.user in comment.like_user.all %}
-        <input type="submit" value='종아요취소'>
-      {% else %}
-        <input type="submit" value='좋아요'>
-      {% endif %}
-    </form>
-    <form action="{% url 'recipes:comment_update' recipe.pk comment.pk %}" method="POST" enctype="multipart/form-data">
-      {% csrf_token %}
-      {{ comment_form.as_p }}
-      {{ comment_image_form.as_p }}
-      <input type="submit" value="수정">
-    </form>
-    <div>
-      <p>{{ comment.user.username }}</p>
-      <p>{{ comment.user.content }}</p>
-      <p>{{ comment.content }}</p>
-    </div>
-  </div>
-  {% endfor %}
-</div> 
-{% endcomment %}
-
-<h5>댓글 <span class='review--color'>{{reviews|length}}</span></h5>
-  <div></div>
-  <div class='container'>
+{% comment %} 댓글 작성 {% endcomment %}
+<h2>레시피 리뷰 <span class='text--main'>{{reviews|length}}</span></h2>
+  <div class="review-submit--container">
     <form action="{% url 'recipes:review_create' recipe.pk %}" method="POST" enctype="multipart/form-data">
       {% csrf_token %}
-      <div class='row'>
-        <div class='col-10 p-0'>
-          {{ review_form.content }}
-          <div class='d-flex my-3 align-items-center'>
-            <div class='d-none' >{{ review_form.rating }}</div>
-            <div>{{ review_form.image }}</div>
-          </div>
-        </div>
-        <div class='col-2 p-0'>
-          <input type="submit" value="리뷰 작성" class='button--color rounded btn--size'>
-        </div>
-        <div class="star-rating" data-rating="0">
-          {% comment %} <input type="hidden" name="rating" value="0"> {% endcomment %}
-          <i class="bi bi-star-fill star filled" data-value="1"></i>
-          <i class="bi bi-star-fill star" data-value="2"></i>
-          <i class="bi bi-star-fill star" data-value="3"></i>
-          <i class="bi bi-star-fill star" data-value="4"></i>
-          <i class="bi bi-star-fill star" data-value="5"></i>
+      {% comment %}  별점 입력 {% endcomment %}
+      <div class="star-rating star-rating--submit" data-rating="0">
+        {% comment %} <input type="hidden" name="rating" value="0"> {% endcomment %}
+        <i class="bi bi-star-fill star filled" data-value="1"></i>
+        <i class="bi bi-star-fill star" data-value="2"></i>
+        <i class="bi bi-star-fill star" data-value="3"></i>
+        <i class="bi bi-star-fill star" data-value="4"></i>
+        <i class="bi bi-star-fill star" data-value="5"></i>
+        <div class="start-rating-descript">
+          <p>별을 클릭하여 리뷰를 평가해보세요</p>
         </div>
       </div>
+      {% comment %} review 본문 작성 {% endcomment %}
+      <div class="comment-content--container">
+        {{ review_form.content }}
+      </div>
+      {% comment %} 레이팅과 사진 실제 폼 (출력 x) {% endcomment %}
+      <div class='d-none'>
+        <div>{{ review_form.rating }}</div>
+        <div>{{ review_form.image }}</div>
+      </div>
+      {% comment %} preview image 표시되는 곳 {% endcomment %}
+      <div class="d-flex">
+        <div class="label--container">
+          <label class="input-test-box" for="input-commentimage">
+            <i class="bi bi-camera-fill"></i>
+          </label>
+        </div>
+        <div id="preview">
+        </div>
+      </div>
+      <div class="submit-btn--container">
+        <input type="submit" value="리뷰 작성" class='button--color'>
+      </div>
     </form>
+  </div>
+
+  {% comment %} 작성된 댓글 {% endcomment %}
     {% for review in reviews %}
     <div class='row '>
       <span>{{review.user}}</span>
@@ -263,6 +219,37 @@
         setRating(e.target);
       }
     })
+    // 사진 업로드 미리보기
+    function previewImages(event) {
+      var input = event.target;
+      var preview = document.getElementById('preview');
+      preview.innerHTML = ''; // clear previous preview images
+      if (input.files && input.files.length > 0) {
+          for (var i = 0; i < input.files.length; i++) {
+              var reader = new FileReader();
+              reader.onload = function(e) {
+                  var img = document.createElement('img');
+                  img.src = e.target.result;
+                  img.className = 'thumbnail';
+                  
+                  var closeBtn = document.createElement('button');
+                  closeBtn.innerText = 'x';
+                  closeBtn.className = 'close-btn';
+                  closeBtn.onclick = function() {
+                      preview.removeChild(wrapper);
+                      input.value = ''; // reset the file input to allow re-selection of the same file
+                  }
+                  
+                  var wrapper = document.createElement('div');
+                  wrapper.className = 'thumbnail-wrapper';
+                  wrapper.appendChild(closeBtn);
+                  wrapper.appendChild(img);
+                  preview.appendChild(wrapper);
+              }
+              reader.readAsDataURL(input.files[i]);
+          }
+      }
+    }
   </script>
 
   

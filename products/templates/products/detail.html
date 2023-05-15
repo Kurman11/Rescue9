@@ -80,7 +80,7 @@
       </div>
       <div class='card--tag--border'>    
         <p><i class="bi bi-heart-fill card--rating__color me-2"></i>{{recipe.like_users.count}}</p>
-        <p>리뷰 {{recipe.review_set.count}}</p>
+        <p>댓글 {{recipe.review_set.count}}</p>
       </div>
     </a>  
   </div>
@@ -90,7 +90,7 @@
 
   
   
-  <h5 class='mt-5 mb-3'>리뷰 <span class='comment--color'>{{comments|length}}</span></h5>
+  <h5 class='mt-5 mb-3'>댓글 <span class='comment--color'>{{comments|length}}</span></h5>
     <div class='container'>
       <form id="comment-form" action="{% url 'products:comment_create' product.pk %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
@@ -138,7 +138,9 @@
                   <i class="bi bi-pencil-square"></i> 수정하기
                 </button>
               </li>
+
               <li><a class="dropdown-item" href="#" onclick="deleteComment(event, {{ product.pk }}, {{ comment.pk }})"><i class="bi bi-trash3-fill"></i>삭제하기</a></li>
+
             </ul>
           </div>
           {% endif %}
@@ -168,7 +170,7 @@
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="editLabel">리뷰 수정</h1>
+                  <h1 class="modal-title fs-5" id="editLabel">댓글 수정</h1>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
