@@ -5,6 +5,8 @@ from .models import Recipe, Review
 from .forms import RecipeForm, ReviewForm
 from accounts.models import User
 from django.conf import settings
+from django.http import JsonResponse
+from django.db.models import Q
 
 # Create your views here.
 def index(request):
@@ -42,7 +44,8 @@ def detail(request, recipe_pk: int):
     recipe = Recipe.objects.get(pk=recipe_pk)
     review_form = ReviewForm()
     reviews = recipe.review_set.all().order_by('-pk')
-    image_reviews = recipe.review_set.filter()
+    # 사진 있는 리뷰 - ProcessedImageField를 쓸 경우 사진이 없을 경우 none이 아니라 ''이다
+    reviews_with_image = reviews.exclude(image='')
     # 평균 별점 구하기
     if reviews:
         average_rate = sum(review.rating for review in reviews) / len(reviews)
@@ -60,7 +63,7 @@ def detail(request, recipe_pk: int):
         'recipe': recipe,
         'reviews': reviews,
         'review_form': review_form,
-        'image_reviews': image_reviews,
+        'reviews_with_image': reviews_with_image,
         'average_rate': average_rate,
         'total_price': total_price,
     }
@@ -162,8 +165,16 @@ def review_delete(request, recipe_pk, review_pk):
 @login_required
 def review_like(request, recipe_pk, review_pk):
     review = Review.objects.get(pk=review_pk)
-    if request.user in review.like_user.all():
-        review.like_user.remove(request.user)
-    else:
-        review.like_user.add(request.user)
+    if request.user != review.user:
+        if request.user in review.like_user.all():
+            review.like_user.remove(request.user)
+            is_liked = False
+        else:
+            review.like_user.add(request.user)
+            is_liked = True
+        context = {
+            'is_liked': is_liked,
+            'likes_count': review.like_user.count(),
+        }
+        return JsonResponse(context)
     return redirect('recipes:detail', recipe_pk)
