@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login as auth_login
+from django.contrib.auth import login as auth_login, authenticate
 from django.contrib.auth import logout as auth_logout
 from django.contrib.auth.decorators import login_required
 from .forms import CustomAuthenticationForm, CustomUserCreationForm, CustomUserChangeForm, CustomPasswordChangeForm
@@ -56,13 +56,24 @@ def signup(request):
     if request.user.is_authenticated:
         return redirect('products:index')
 
+    next_page = request.GET.get('next')
+
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=password)
+            auth_login(request, user)
+            prev_url = request.session.get('prev_url')
+            if prev_url:
+                del request.session['prev_url']
+                return redirect(prev_url)
             return redirect('products:index')
     else:
         form = CustomUserCreationForm()
+    request.session['prev_url'] = request.META.get('HTTP_REFERER')
     context = {
         'form': form,
     }
