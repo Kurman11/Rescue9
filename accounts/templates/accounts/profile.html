@@ -25,6 +25,60 @@
 {% block content %}
 <div class="main--padding container">
   <div class="row">
+  <div class="d-flex flex-column flex-md-row-reverse">
+    <div class="col-12 col-md-5 col-lg-4 ">
+      <div class="profile--box" id='profile-box'>
+        <img src="{% static 'image/profilebackgroundimage.jpg' %}" class="profile--back--image"  alt="profile">
+        {% comment %} 프로필 수정 + 프로필 이미지 {% endcomment %}
+        {% if person.image %}
+          {% if request.user.username == person.username %}
+            <a href="{% url 'accounts:update' %}">
+              <img src="{{person.image.url}}" class="profile--image profile--image__same" alt="profile">
+              <i class="bi bi-pencil-square profile--image--icon"></i>
+            </a>
+          {% else %}
+            <img src="{{person.image.url}}" class="profile--image" alt="profile">
+          {% endif %}
+          {% else %}
+            {% if request.user.username == person.username %}
+              <a href="{% url 'accounts:update' %}">
+                <img src="{% static 'image/no_image432.png' %}" class="profile--image profile--image__same" alt="no-profile">
+                <i class="bi bi-pencil-square profile--image--icon"></i>
+              </a>
+            {% else %}
+            <img src="{% static 'image/no_image432.png' %}" class="profile--image" alt="no-profile">
+            {% endif %}
+        {% endif %}
+        {% comment %} 팔로워 {% endcomment %}
+          <div class="profile--bottom text-center">
+            <div class='mt-5'>
+              <p class='my-2'>{{ person.username }}</p>
+              {% if request.user != person %}
+                <form id="follow-form" data-user-id="{{person.pk}}">
+                  {% csrf_token %}
+                  {% if request.user in person.folloers.all %}
+                    <input type="submit" value="Unfollow" class="button--reversecolor rounded btn-hover__reverseblue text-center p-1">
+                  {% else %}
+                    <input type="submit" value="Follow" class="button--reversecolor rounded btn-hover__reverseblue text-center p-1">
+                  {% endif %}
+                </form>
+              {% endif %} 
+
+              <div class='d-flex mt-2 justify-content-evenly'>
+                <p>팔로잉</p>
+                <p>팔로워</p>
+              </div>
+              <div class='d-flex mt-2 mb-4 justify-content-evenly'>
+                <p id="followings-count">{{person.followings.count}}</p>
+                <p id='followers-count'>{{person.followers.count}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% comment %} </div> {% endcomment %}
+
+  
     <div class="col-12 col-md-7 col-lg-8">
       {% comment %} 내가 쓴 레시피 {% endcomment %}
       <h5>My recipes</h5>
@@ -48,7 +102,7 @@
           {% endfor %}
         </tbody>
     </table>
-       
+      
       <ul class="pagination justify-content-center">
         {% if  recipes.has_previous %}
         <li class="page-item">
@@ -116,7 +170,7 @@
             </tr>
           {% endfor %}
         </tbody>
-     </table>
+    </table>
 
       <ul class="pagination justify-content-center">
         {% if  reviews.has_previous %}
@@ -178,65 +232,13 @@
             <p>조회수 {{ recipe.hits }}</p>
             <p>리뷰 {{ recipe.review_set.count }}</p>
           </div>
-        </a>  
-      </div>
-      {% endfor %}
-    </div>
-  </div>
-
-  <div class="col-12 col-md-5 col-lg-4 ">
-    <div class="profile--box" id='profile-box'>
-      <img src="{% static 'image/profilebackgroundimage.jpg' %}" class="profile--back--image"  alt="profile">
-      {% comment %} 프로필 수정 + 프로필 이미지 {% endcomment %}
-      {% if person.image %}
-        {% if request.user.username == person.username %}
-          <a href="{% url 'accounts:update' %}">
-            <img src="{{person.image.url}}" class="profile--image profile--image__same" alt="profile">
-            <i class="bi bi-pencil-square profile--image--icon"></i>
-          </a>
-        {% else %}
-          <img src="{{person.image.url}}" class="profile--image" alt="profile">
-        {% endif %}
-        {% else %}
-          {% if request.user.username == person.username %}
-            <a href="{% url 'accounts:update' %}">
-              <img src="{% static 'image/no_image432.png' %}" class="profile--image profile--image__same" alt="no-profile">
-              <i class="bi bi-pencil-square profile--image--icon"></i>
-            </a>
-          {% else %}
-          <img src="{% static 'image/no_image432.png' %}" class="profile--image" alt="no-profile">
-          {% endif %}
-      {% endif %}
-      {% comment %} 팔로워 {% endcomment %}
-        <div class="profile--bottom text-center">
-          <div class='mt-5'>
-            <p class='my-2'>{{ person.username }}</p>
-            {% if request.user != person %}
-              <form id="follow-form" data-user-id="{{person.pk}}">
-                {% csrf_token %}
-                {% if request.user in person.folloers.all %}
-                  <input type="submit" value="Unfollow" class="button--reversecolor rounded btn-hover__reverseblue text-center p-1">
-                {% else %}
-                  <input type="submit" value="Follow" class="button--reversecolor rounded btn-hover__reverseblue text-center p-1">
-                {% endif %}
-              </form>
-            {% endif %} 
-
-            <div class='d-flex mt-2 justify-content-evenly'>
-              <p>팔로잉</p>
-              <p>팔로워</p>
-            </div>
-            <div class='d-flex mt-2 mb-4 justify-content-evenly'>
-              <p id="followings-count">{{person.followings.count}}</p>
-              <p id='followers-count'>{{person.followers.count}}</p>
-            </div>
-          </div>
+          </a>  
         </div>
+        {% endfor %}
       </div>
     </div>
   </div>
-
-</content>
+</div>
   
 {% endblock content %}
 
