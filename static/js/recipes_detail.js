@@ -156,3 +156,7 @@ function closeModal() {
   var modal = document.getElementById("modal");
   modal.style.display = "none";
 }
+
+$('#recipeDeleteModal').modal('show').on('shown.bs.modal', function() {
+  $('recipeDeleteModal').focus();
+});

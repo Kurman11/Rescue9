@@ -226,11 +226,12 @@
       </div>
     </div>
     {% endfor %}
-
-{% comment %} 댓글 삭제 모달 {% endcomment %}
-{% include 'recipes/detail_delete_modal.html' %}
+  </div>
 {% comment %} 이미지 상세 모달 {% endcomment %}
 {% include 'recipes/detail_image_modal.html' %}
+{% comment %} 글 삭제 모달 {% endcomment %}
+{% include 'recipes/detail_delete_modal.html' %}
+
 
 {% endblock content %}
 
