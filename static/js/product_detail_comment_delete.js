@@ -1,7 +1,7 @@
 const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
 function deleteComment(event, product_pk, comment_pk) {
   event.preventDefault();
-  if (confirm('리뷰를 삭제하시겠습니까?')) {
+  if (confirm('댓글을 삭제하시겠습니까?')) {
     fetch(`/products/${product_pk}/comments/${comment_pk}/comment_delete/`, {
       method: 'DELETE',
       headers: {
