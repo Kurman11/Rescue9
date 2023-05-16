@@ -35,14 +35,15 @@ nav{
 footer {
   width: 100%;
   height: 192px;
-  background: var(--secondary-color);
+  background: var(--subtle-color);
 
 }
 
 :root {
   --main-color: #0097F3;
-  --secondary-color: #FFB43B;
+  --secondary-color: #00DC92;
   --subtle-color: #e0e0e0;
+  --sub-color: #828C94;
 }
 
 /* nav */

@@ -136,15 +136,23 @@
   </div>
   {% comment %} 작성된 포토 리뷰 {% endcomment %}
   <div id="review-start">
-    <h3>포토 리뷰 모아보기</h3>
-    <div class="owl-carousel owl-theme mb-3">
-      {% for review_with_image in reviews_with_image.all %}
-        <div>
-          <img src="{{ review_with_image.image.url }}" alt="{{ review_with_image.contentn }}의 이미지">
-        </div> 
-      {% endfor %}
+    <div class="photo-review__container">
+      <div class="recipe__review__status mb-3">
+        <h3>포토 리뷰 모아보기</h3>
+      </div>
+      <div class="owl-carousel owl-theme mb-3">
+        {% for review_with_image in reviews_with_image.all %}
+          <div>
+            <img class="photo__review" src="{{ review_with_image.image.url }}" alt="{{ review_with_image.contentn }}의 이미지" onclick="openModal('{{ review_with_image.image.url }}', '{{ review_with_image.content }}', '{{ review_with_image.user.username }}')">
+          </div> 
+        {% endfor %}
+      </div>
     </div>
 
+
+
+
+    {% comment %}  작성된 리뷰 {% endcomment %}
     <div class="recipe__review__status">
       <h3>작성된 리뷰  <span class='text--main'>{{ reviews|length }}</span></h3>
     </div>
@@ -181,7 +189,7 @@
                   {% endfor %}
                 </div>
               </div>
-              <span class="text--subtle">{{ review.updated_at|date:"Y-m-d" }}</span>
+              <span class="text--sub">{{ review.updated_at|date:"Y-m-d" }}</span>
             </div>
           </div>
         </div>
@@ -212,7 +220,7 @@
         </div>
         {% if review.image %}
         <div class="recipe__review__image__container">
-          <img class="recipe__review__image" src="{{ review.image.url }}" alt="">
+          <img class="recipe__review__image" src="{{ review.image.url }}" alt="" onclick="openModal('{{ review.image.url }}', '{{ review.content }}', '{{ review.user.username }}')">
         </div>
         {% endif %}
       </div>
@@ -221,6 +229,9 @@
 
 {% comment %} 댓글 삭제 모달 {% endcomment %}
 {% include 'recipes/detail_delete_modal.html' %}
+{% comment %} 이미지 상세 모달 {% endcomment %}
+{% include 'recipes/detail_image_modal.html' %}
+
 {% endblock content %}
 
 {% block script %}

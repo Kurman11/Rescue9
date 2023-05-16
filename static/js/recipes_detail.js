@@ -119,11 +119,40 @@ function previewImages(event) {
               
               var wrapper = document.createElement('div');
               wrapper.className = 'thumbnail-wrapper';
-              wrapper.appendChild(closeBtn);
+            wrapper.appendChild(closeBtn);
               wrapper.appendChild(img);
               preview.appendChild(wrapper);
           }
           reader.readAsDataURL(input.files[i]);
       }
   }
+}
+
+
+// 작성된 포토리뷰 
+// 모달 창이 켜졌을 때 closeModal 실행 
+window.addEventListener("click", function(event) {
+  var modal = document.getElementById("modal");
+  if (event.target === modal) {
+    closeModal();
+  }
+});
+
+// 이미지를 눌렀을 경우 모달창 켜기
+function openModal(imageUrl, content, username) {
+  console.log(imageUrl)
+  console.log(content)
+  var modal = document.getElementById("modal");
+  var modalImage = document.getElementById("modalImage");
+  var modalContent = document.getElementById("modalContent");
+  var modalUser = document.getElementById("modalUser");
+  modal.style.display = "block";
+  modalImage.src = imageUrl;
+  modalContent.textContent = content;
+  modalUser.textContent = username;
+}
+// 모달 창 끄기
+function closeModal() {
+  var modal = document.getElementById("modal");
+  modal.style.display = "none";
 }
