@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% load static %}
+{% load static humanize %}
 {% block link %}
   <link rel="stylesheet" href="{% static 'css/button.css' %}">
   <link rel="stylesheet" href="{% static 'css/products_detail.css' %}">
@@ -63,7 +63,7 @@
           <span class='tag--stlye rounded'> <span class='tag--Hash'>#</span> {{tag}}</span>
           {% endfor %}
           <p class='fs-5 mt-3'>판매가격</p>
-          <strong class='fs-5 mt-3'>{{product.price}}원</strong>
+          <strong class='fs-5 mt-3'>{{product.price|intcomma}}원</strong>
           
         </div>     
     </div>
@@ -100,9 +100,9 @@
           </div>
           <div class='col-2 p-0'>
             {% if request.user.is_authenticated %}
-              <input type="submit" value="리뷰 작성" class='btn-hover__blue  button--color rounded btn--size'>
+              <input type="submit" value="댓글 작성" class='btn-hover__blue  button--color rounded btn--size'>
             {% else %}
-              <a href="{% url 'accounts:login' %}"><input type="button" value="리뷰 작성" class='btn-hover__blue  button--color rounded btn--size'></a>
+              <a href="{% url 'accounts:login' %}"><input type="button" value="댓글 작성" class='btn-hover__blue  button--color rounded btn--size'></a>
             {% endif %}
           </div>
         </div>
