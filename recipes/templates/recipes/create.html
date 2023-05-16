@@ -19,6 +19,7 @@
     }
 
     #image-container img {
+      width: 100%;
       max-width: 100%;
       height: auto;
       vertical-align: middle;
@@ -29,7 +30,7 @@
       border: 2px solid blue;
       pointer-events: auto;
       width: 100%;
-      height: 300px;
+      height: 400px;
       z-index: 1;
     }
 
@@ -73,7 +74,7 @@
       {{ field.label_tag }}
       {{ field }}
       <input type="hidden" name="crop_y" id="crop-y-input">
-      <input type="hidden" name="crop_height" id="crop-height-input">
+      <input type="hidden" name="container_height" id="container-height-input">
 
     {% elif field.name == 'used_products' %}
     <div class="container used-products__container">
@@ -124,6 +125,7 @@
     
     document.getElementById('overlay-top').style.height = overlayTop + 'px'
     document.getElementById('overlay-bottom').style.height = (imageContainer.offsetHeight - overlayTop - overlayHeight) + 'px'
+    document.getElementById('crop-y-input').value = overlayTop
   }
 
   cropOverlay.addEventListener('mousedown', function(event) {
@@ -171,8 +173,7 @@
         cropOverlay.style.top = overlayTopHeight + 'px'
         maxTop = containerHeight - cropOverlay.offsetHeight
         adjustOverlayHeight()
-        document.getElementById('crop-y-input').value = overlayTopHeight
-        document.getElementById('crop-height-input').value = cropOverlay.offsetHeight
+        document.getElementById('container-height-input').value = containerHeight
       }
     }
 
