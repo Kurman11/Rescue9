@@ -38,7 +38,7 @@ def create(request):
             # 이미지 업로드 및 crop
             img = Image.open(image_file)
             real_y = (crop_y * img.height) / container_height
-            real_crop_height = (img.height * 300) / container_height
+            real_crop_height = (img.height * 400) / container_height
             thumbnail_crop = img.crop((0, real_y, img.width, real_y + real_crop_height))
             file_extension = os.path.splitext(image_file.name)[1]
             save_path = f'thumbnail_crop/{os.path.basename(image_file.name)}{file_extension}'
