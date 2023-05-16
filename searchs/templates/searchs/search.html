@@ -3,65 +3,57 @@
 {% block link %}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-{% endblock link %}
-{% block style %}
 <link rel="stylesheet" href="{% static 'css/products_index.css' %}">
-
-{% endblock style %}
+{% endblock link %}
 
 {% block content %}
-
-<p class='title--content'>products</p>
-<div class="row">
-        
-{% for product in search_result_product %}
-    <div class="col-6 col-md-3 col-xl-2">
-        <div class='card--border card--border--gray'>
-        <a href="{% url 'products:detail' product.pk %}">
-            <img src="{{product.Thumbnail.url}}" class='card--border__image rounded' alt="img">  
-            <div class='card--name--box'>
-            <strong class='card--name'>{{ product.name }}</strong>
-            </div>
-            <div class='card--tag--border'>
-                <p><i class="bi bi-heart-fill card--rating__color me-2"></i>{{product.like_users.count}}</p>
-                <p>리뷰 {{ product.comment_set.count }}</p>
-                <p>
-                    {% for tag in product.tags.all %}
-                    <span>#{{tag}}</span>
-                    {% endfor %}
-                </p>
-            </div>
-          </div>
-        </a>
+<p class='title--content--2 mt-0'>products</p>
+<div class='owl-carousel owl-theme new_owl-carousel' >
+   {% for product in search_result_product %}
+  <div class='card--border card--border--gray'>
+    <a href="{% url 'products:detail' product.pk %}">
+      <img src="{{product.Thumbnail.url}}" class='rounded' alt="img">  
+      <div class='card--name--box'>
+        <strong class='card--name'>{{product.name}}</strong>
       </div>
+      <div class='card--tag--border pb-1'>
+        <p><i class="bi bi-heart-fill card--rating__color me-2"></i>{{product.like_users.count}}</p>
+        <p>리뷰 {{product.review_set.count}}</p>
+      </div>  
+      <div class='mt-1'>
+        {% for tag in product.tags.all %}
+          <span class='me-2'>#{{tag}}</span>
+        {% endfor %}
+      </div>
+    </a>  
+  </div>
+  {% endfor %}
 </div>
-{% endfor %}
 
-  {% comment %} recipes {% endcomment %}
-<p class='title--content'>recipes</p>
-<div class="row">
+<p class='title--content--2'>recipes</p>
+<div class='owl-carousel owl-theme recipes-owl'>
     {% for recipe in search_result_recipe %}
-    <div class="col-6 col-md-3 col-xl-2">
-        <div class='card--border card--border--gray'>
-            <a href="{% url 'recipes:detail' recipe.pk %}">
-            <img src="{{ recipe.thumbnail.url }}" class='card--border__image rounded' alt="{{ recipe.title }}의 이미지">  
-            <div class='card--name--box'>
-                <strong class='card--name'>{{ recipe.title }}</strong>
-            </div>
-            <div class='card--tag--border'>
-                <p>조회수 {{ recipe.hits }}</p>
-                <p>리뷰 {{ recipe.review_set.count }}</p>
-            </div>
-            </a>
-            {% comment %} </a>   {% endcomment %}
+    <div class='card--border card--border--gray'>
+    <a href="{% url 'recipes:detail' recipe.pk %}">
+        <img src="{{ recipe.thumbnail.url}}" class='card--border__image rounded' alt="{{ recipe.title }}의 이미지">  
+        <div class='card--name--box'>
+        <strong class='card--name'>{{ recipe.title }}</strong>
         </div>
+        <div class='card--tag--border'>
+        <p>조회수 {{ recipe.hits }}</p>
+        <p>리뷰 {{ recipe.comment_set.count }}</p>
+        </div>
+    </a>  
     </div>
-</div>
     {% endfor %}
+</div>
 
 {% endblock content %}
 
 {% block script %}
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="{% static 'js/products_index.js' %}"></script>
+<script src="{% static 'js/recipes_index_owl.js' %}"></script>
 {% endblock script %}
 
