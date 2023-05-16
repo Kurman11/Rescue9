@@ -3,13 +3,13 @@
 <div class="container nav__flex nav--div ">
   <div class="nav--left__wrap">
     <div class="nav--left--image-container">
-      <a href="http://127.0.0.1:8000/">
-        <img src="{% static 'image/logo2.png' %}" alt="logo" class="nav--image" >             
+      <a href="{% url 'recipes:index' %}">
+        <img src="{% static 'image/logo_t.png' %}" alt="logo" class="nav--image" >             
       </a>
     </div>
     <div class="nav--left__wrap">
-      <a href="{% url 'products:index' %}" class="btn nav--button nav--btn">제품</a>
       <a href="{% url 'recipes:index' %}" class="btn nav--button nav--btn">레시피</a>
+      <a href="{% url 'products:index' %}" class="btn nav--button nav--btn">제품</a>
       <form class="search_hidden" action="{% url 'searchs:search' %}" role="search">
         <div class='d-flex'>
           {% comment %} <span class="nave__search__icon"><i class="bi bi-search"></i></span> {% endcomment %}

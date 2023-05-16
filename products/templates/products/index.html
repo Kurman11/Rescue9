@@ -6,6 +6,38 @@
 {% endblock link %}
 {% block style %}
 <link rel="stylesheet" href="{% static 'css/products_index.css' %}">
+<style>
+  @keyframes blink {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  .blink {
+    animation: blink 1.25s infinite;
+    color: var(--main-color);
+    font-weight: bold;
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+  }
+
+  .img--container {
+    position: relative;
+  }
+  
+</style>
 {% endblock style %}
 
 {% block content %}
@@ -21,7 +53,12 @@
       {% for product in new_products %}
       <div class='card--border card--border--gray'>
         <a href="{% url 'products:detail' product.pk %}">
-          <img src="{{product.Thumbnail.url}}" class='rounded' alt="img">  
+          <div class="img--container">
+            <img src="{{product.Thumbnail.url}}" class='rounded' alt="img">  
+            {% if product.is_new %}   
+            <p class="blink">New</p>
+            {% endif %}
+          </div>
           <div class='card--name--box'>
             <strong class='card--name'>{{product.name}}</strong>
           </div>
@@ -44,7 +81,12 @@
     {% for product in hits_products %}
     <div class='card--border card--border--gray'>
       <a href="{% url 'products:detail' product.pk %}">
-        <img src="{{product.Thumbnail.url}}" class='rounded' alt="img">  
+        <div class="img--container">
+          <img src="{{product.Thumbnail.url}}" class='rounded' alt="img">  
+          {% if product.is_new %}   
+          <p class="blink">New</p>
+          {% endif %}
+        </div>
         <div class='card--name--box'>
           <strong class='card--name'>{{product.name}}</strong>
         </div>
@@ -67,7 +109,12 @@
       {% for product in like_products %}
       <div class='card--border card--border--gray'>
         <a href="{% url 'products:detail' product.pk %}">
-          <img src="{{product.Thumbnail.url}}" class='rounded' alt="img">  
+          <div class="img--container">
+            <img src="{{product.Thumbnail.url}}" class='rounded' alt="img">  
+            {% if product.is_new %}   
+            <p class="blink">New</p>
+            {% endif %}
+          </div>
           <div class='card--name--box'>
             <strong class='card--name'>{{product.name}}</strong>
           </div>
@@ -90,7 +137,12 @@
         {% for product in products %}
         <div class='card--border card--border--gray'>
           <a href="{% url 'products:detail' product.pk %}">
-            <img src="{{product.Thumbnail.url}}" class='rounded' alt="img">  
+            <div class="img--container">
+              <img src="{{product.Thumbnail.url}}" class='rounded' alt="img">  
+              {% if product.is_new %}   
+              <p class="blink">New</p>
+              {% endif %}
+            </div>
             <div class='card--name--box'>
               <strong class='card--name'>{{product.name}}</strong>
             </div>

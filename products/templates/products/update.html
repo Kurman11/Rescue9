@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
-<form action="{% url 'products:update' product.pk %}" method='POST'>
+<form action="{% url 'products:update' product.pk %}" method='POST'  enctype="multipart/form-data">
   {% csrf_token %}
   {{form.as_p}}
-  <input type="submit">
+  <button type="submit" class='button--color w-100 rounded'>수정</button> 
 </form>
 {% endblock content %}  

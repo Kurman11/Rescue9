@@ -132,6 +132,7 @@ def comment_update(request, product_pk, comment_pk):
             if comment_form.is_valid():
                 comment_form.save()
                 return redirect('products:detail', product_pk)
+                # return JsonResponse({'status': 'success'})
         else:
             comment_form = CommentForm(instance=comment)
         context = {
@@ -139,6 +140,8 @@ def comment_update(request, product_pk, comment_pk):
             'comment': comment,
         }
         return render(request, 'products/detail.html', context)
+    
+
 @login_required
 def comment_delete(request, product_pk, comment_pk):
     comment = Comment.objects.get(pk=comment_pk)
