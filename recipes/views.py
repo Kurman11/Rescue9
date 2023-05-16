@@ -10,6 +10,7 @@ from PIL import Image
 import os
 from django.core.files import File
 from io import BytesIO
+from products.models import Product
 
 # Create your views here.
 def index(request):
@@ -24,6 +25,7 @@ def index(request):
 
 @login_required
 def create(request):
+    products = Product.objects.all()
     if request.method == 'POST':
         recipe_form = RecipeForm(data=request.POST, files=request.FILES)
         if recipe_form.is_valid():
@@ -54,6 +56,7 @@ def create(request):
     context = {
         'recipe_form': recipe_form,
         'media_url': settings.MEDIA_URL,
+        'products': products,
     }
     return render(request, 'recipes/create.html', context)
 
