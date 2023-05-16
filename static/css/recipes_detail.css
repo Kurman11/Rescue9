@@ -66,7 +66,7 @@
 }
 
 .recipe__date {
-  color: var(--subtle-color)
+  color: var(--sub-color)
 }
 
 .recipe__header__btn-container {
@@ -110,7 +110,7 @@
   border: 1px solid var(--main-color);
   border-radius: 4px;
   padding: 10px;
-  margin: 10px 10px 30px 10px;
+  margin: 10px 10px 40px 10px;
 }
 
 .recipe__review__input-area--form {
@@ -198,6 +198,52 @@
   margin: 10px 0 0 10px;
 }
 
+/* 포토 리뷰 리스트 */
+.photo-review__container {
+  margin: 0 0 40px 0;
+}
+
+.photo__review {
+  cursor: pointer;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modalImage {
+  display: block;
+  margin: 100px auto 0;
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.close {
+  color: #fff;
+  position: absolute;
+  top: 50px;
+  right: 35px;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.modalUser{
+  font-size: 40px;
+}
+.modalContent__container{
+  font-size: 20px;
+  color: white;
+  padding: 5% 20%;
+}
 /* 리뷰 리스트 */
 .recipe__review__status {
   border-bottom: 1px solid var(--subtle-color);
@@ -235,6 +281,7 @@
 
 .recipe__review__image {
   height: 100%;
+  cursor: pointer;
 }
 
 .recipe__review__like__button {
