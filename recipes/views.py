@@ -18,10 +18,20 @@ from django.db.models import Count, Avg, Sum
 def index(request):
     recipes = Recipe.objects.all()
     recipes_like = Recipe.objects.annotate(num_likes=Count('like_users')).order_by('-num_likes')[:20]
+    for recipe in recipes_like:
+        recipe.mean_rating = Review.objects.filter(recipe=recipe).aggregate(Avg('rating'))['rating__avg']
     recipes_rating = Recipe.objects.annotate(avg_rating=Avg('review__rating')).order_by('-avg_rating')[:20]
+    for recipe in recipes_rating:
+        recipe.mean_rating = Review.objects.filter(recipe=recipe).aggregate(Avg('rating'))['rating__avg']
     recipes_newproduct = Recipe.objects.filter(used_products__is_new=True).distinct()[:20]
+    for recipe in recipes_newproduct:
+        recipe.mean_rating = Review.objects.filter(recipe=recipe).aggregate(Avg('rating'))['rating__avg']
     recipes_pricehigh = Recipe.objects.annotate(total_price=Sum('used_products__price')).order_by('-total_price')[:20]
+    for recipe in recipes_pricehigh:
+        recipe.mean_rating = Review.objects.filter(recipe=recipe).aggregate(Avg('rating'))['rating__avg']
     recipes_pricelow = Recipe.objects.annotate(total_price=Sum('used_products__price')).order_by('total_price')[:20]
+    for recipe in recipes_pricelow:
+        recipe.mean_rating = Review.objects.filter(recipe=recipe).aggregate(Avg('rating'))['rating__avg']
 
     # 페이지 네이터 관련 항목
     page= request.GET.get('page', '1')

@@ -27,9 +27,11 @@
         <div class='card--name--box'>
           <strong class='card--name'>{{ recipe.title }}</strong>
         </div>
-        <div class='card--tag--border'>
-          <p>조회수 {{ recipe.hits }}</p>
-          <p>리뷰 {{ recipe.comment_set.count }}</p>
+        <div class='card--tag--border--recipe'>
+          <p><i class="bi bi-star-fill"></i> {{ recipe.mean_rating|default:"0.0"|floatformat:1 }}</p>
+          <p><i class="bi bi-heart-fill"></i> {{ recipe.like_users.count }}</p>
+          <p><i class="bi bi-chat-fill"></i> {{ recipe.review_set.count }}</p>
+          {% comment %} <p><i class="bi bi-eye-fill ms-2"></i> {{ recipe.hits }}</p> {% endcomment %}
         </div>
       </a>  
     </div>
@@ -45,9 +47,11 @@
         <div class='card--name--box'>
           <strong class='card--name'>{{ recipe.title }}</strong>
         </div>
-        <div class='card--tag--border'>
-          <p>조회수 {{ recipe.hits }}</p>
-          <p>리뷰 {{ recipe.comment_set.count }}</p>
+        <div class='card--tag--border--recipe'>
+          <p><i class="bi bi-star-fill"></i> {{ recipe.mean_rating|default:"0.0"|floatformat:1 }}</p>
+          <p><i class="bi bi-heart-fill"></i> {{ recipe.like_users.count }}</p>
+          <p><i class="bi bi-chat-fill"></i> {{ recipe.review_set.count }}</p>
+          {% comment %} <p><i class="bi bi-eye-fill ms-2"></i> {{ recipe.hits }}</p> {% endcomment %}
         </div>
       </a>  
     </div>
@@ -63,9 +67,11 @@
         <div class='card--name--box'>
           <strong class='card--name'>{{ recipe.title }}</strong>
         </div>
-        <div class='card--tag--border'>
-          <p>조회수 {{ recipe.hits }}</p>
-          <p>리뷰 {{ recipe.comment_set.count }}</p>
+        <div class='card--tag--border--recipe'>
+          <p><i class="bi bi-star-fill"></i> {{ recipe.mean_rating|default:"0.0"|floatformat:1 }}</p>
+          <p><i class="bi bi-heart-fill"></i> {{ recipe.like_users.count }}</p>
+          <p><i class="bi bi-chat-fill"></i> {{ recipe.review_set.count }}</p>
+          {% comment %} <p><i class="bi bi-eye-fill ms-2"></i> {{ recipe.hits }}</p> {% endcomment %}
         </div>
       </a>  
     </div>
@@ -81,9 +87,11 @@
         <div class='card--name--box'>
           <strong class='card--name'>{{ recipe.title }}</strong>
         </div>
-        <div class='card--tag--border'>
-          <p>조회수 {{ recipe.hits }}</p>
-          <p>리뷰 {{ recipe.comment_set.count }}</p>
+        <div class='card--tag--border--recipe'>
+          <p><i class="bi bi-star-fill"></i> {{ recipe.mean_rating|default:"0.0"|floatformat:1 }}</p>
+          <p><i class="bi bi-heart-fill"></i> {{ recipe.like_users.count }}</p>
+          <p><i class="bi bi-chat-fill"></i> {{ recipe.review_set.count }}</p>
+          {% comment %} <p><i class="bi bi-eye-fill ms-2"></i> {{ recipe.hits }}</p> {% endcomment %}
         </div>
       </a>  
     </div>
@@ -99,9 +107,11 @@
         <div class='card--name--box'>
           <strong class='card--name'>{{ recipe.title }}</strong>
         </div>
-        <div class='card--tag--border'>
-          <p>조회수 {{ recipe.hits }}</p>
-          <p>리뷰 {{ recipe.comment_set.count }}</p>
+        <div class='card--tag--border--recipe'>
+          <p><i class="bi bi-star-fill"></i> {{ recipe.mean_rating|default:"0.0"|floatformat:1 }}</p>
+          <p><i class="bi bi-heart-fill"></i> {{ recipe.like_users.count }}</p>
+          <p><i class="bi bi-chat-fill"></i> {{ recipe.review_set.count }}</p>
+          {% comment %} <p><i class="bi bi-eye-fill ms-2"></i> {{ recipe.hits }}</p> {% endcomment %}
         </div>
       </a>  
     </div>
@@ -118,9 +128,11 @@
           <div class='card--name--box'>
             <strong class='card--name'>{{ recipe.title }}</strong>
           </div>
-          <div class='card--tag--border'>
-            <p>조회수 {{ recipe.hits }}</p>
-            <p>리뷰 {{ recipe.comment_set.count }}</p>
+          <div class='card--tag--border--recipe'>
+            <p><i class="bi bi-star-fill"></i> {{ recipe.mean_rating|default:"0.0"|floatformat:1 }}</p>
+            <p><i class="bi bi-heart-fill"></i> {{ recipe.like_users.count }}</p>
+            <p><i class="bi bi-chat-fill"></i> {{ recipe.review_set.count }}</p>
+            {% comment %} <p><i class="bi bi-eye-fill ms-2"></i> {{ recipe.hits }}</p> {% endcomment %}
           </div>
         </a>  
       </div>
