@@ -133,32 +133,80 @@
   </div>
 
     <p class='title--content'>모든 상품</p>
-      <div class='owl-carousel owl-theme' >
+      <div class='row' >
         {% for product in products %}
-        <div class='card--border card--border--gray'>
-          <a href="{% url 'products:detail' product.pk %}">
-            <div class="img--container">
-              <img src="{{product.Thumbnail.url}}" class='rounded' alt="img">  
-              {% if product.is_new %}   
-              <p class="blink">New</p>
-              {% endif %}
-            </div>
-            <div class='card--name--box'>
-              <strong class='card--name'>{{product.name}}</strong>
-            </div>
-            <div class='card--tag--border'>
-              <p><i class="bi bi-heart-fill card--rating__color me-2"></i>{{product.like_users.count}}</p>
-              <p>리뷰 {{product.review_set.count}}</p>
-            </div>
-            <div>
-              {% for tag in product.tags.all %}
-                <span class='me-2'>#{{tag}}</span>
-              {% endfor %}
-            </div>
-          </a>  
+        <div class="col-6 col-md-4 col-lg-3">
+          <div class='card--border card--border--gray'>
+            <a href="{% url 'products:detail' product.pk %}">
+              <div class="img--container">
+                <img style="width:100%;" src="{{product.Thumbnail.url}}" class='rounded' alt="img">  
+                {% if product.is_new %}   
+                <p class="blink">New</p>
+                {% endif %}
+              </div>
+              <div class='card--name--box'>
+                <strong class='card--name'>{{product.name}}</strong>
+              </div>
+              <div class='card--tag--border'>
+                <p><i class="bi bi-heart-fill card--rating__color me-2"></i>{{product.like_users.count}}</p>
+                <p>리뷰 {{product.review_set.count}}</p>
+              </div>
+              <div>
+                {% for tag in product.tags.all %}
+                  <span class='me-2'>#{{tag}}</span>
+                {% endfor %}
+              </div>
+            </a>  
+          </div>
         </div>
         {% endfor %}
     </div>
+    {% comment %} 페이지네이터 {% endcomment %}
+    <ul class="pagination justify-content-center">
+      {% if  products.has_previous %}
+      <li class="page-item">
+        <a class="page-link" href="?page=1" aria-label="처음">
+          <span aria-hidden="true">&laquo;</span>
+          <span class="sr-only"></span>
+        </a>
+      </li>
+        <li class="page-item">
+          <a class="page-link" href="?page={{   products.previous_page_number }}">이전</a>
+        </li>
+      {% else %}
+        <li class="page-item disabled">
+          <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
+        </li>
+      {% endif %}
+      {% for page_number in   products.paginator.page_range %}
+        {% if page_number >=  products.number|add:-2 and page_number <=   products.number|add:2 %}
+          {% if page_number ==  products.number %}
+            <li class="page-item active" aria-current="page">
+              <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+            </li>
+          {% else %}
+            <li class="page-item">
+              <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+            </li>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+      {% if   products.has_next %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{   products.next_page_number }}">다음</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="?page={{ products.paginator.num_pages }}" aria-label="마지막">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only"></span>
+          </a>
+        </li>
+      {% else %}
+        <li class="page-item disabled">
+          <a class="page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
+        </li>
+      {% endif %}
+    </ul>
 </div>
 {% endblock content %}
 

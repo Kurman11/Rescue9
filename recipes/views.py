@@ -11,14 +11,21 @@ import os
 from django.core.files import File
 from io import BytesIO
 from products.models import Product
+from django.core.paginator import Paginator
 
 # Create your views here.
 def index(request):
     recipes = Recipe.objects.all()
-    subject = '전체'
+
+    # 페이지 네이터 관련 항목
+    page= request.GET.get('page', '1')
+    per_page = 12
+    paginator = Paginator(recipes, per_page)
+    page_obj = paginator.get_page(page)
+
     context = {
-        'subject': subject,
         'recipes': recipes,
+        'recipes_page': page_obj,
     }
     return render(request, 'recipes/index.html', context)
 
