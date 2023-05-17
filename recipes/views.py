@@ -30,7 +30,6 @@ def index(request):
     page_obj = paginator.get_page(page)
 
     context = {
-        'recipes': recipes,
         'recipes_like': recipes_like,
         'recipes_rating': recipes_rating,
         'recipes_newproduct': recipes_newproduct,
