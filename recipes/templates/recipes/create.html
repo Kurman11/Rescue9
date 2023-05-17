@@ -193,6 +193,8 @@
 
     dropdownItems.forEach(function(dropdownItem) {
       dropdownItem.addEventListener('click', function(event) {
+        event.preventDefault();
+        event.stopPropagation();
         const product = event.target.textContent;
         if (selectedProducts.has(product)) {
           selectedProducts.delete(product);
@@ -240,12 +242,14 @@ function updateSelectedProducts() {
       const product = dropdownItem.textContent;
       const checkbox = dropdownItem.querySelector('input[type="checkbox"]');
       
-      
       if (checkbox.checked) {
         // 선택된 제품에 대한 삭제 버튼이 없는 경우에만 추가
         if (!selectedProducts[product]) {
           const listItem = document.createElement('li');
           listItem.textContent = product;
+
+          const image = dropdownItem.querySelector('img'); // 이미지 요소 가져오기
+          const imageClone = image.cloneNode(true); // 이미지 요소 복제
 
           const deleteButton = document.createElement('button');
           deleteButton.textContent = 'X';
@@ -256,6 +260,7 @@ function updateSelectedProducts() {
             delete selectedProducts[product];
           });
 
+          listItem.appendChild(imageClone); // 이미지 요소 추가
           listItem.appendChild(deleteButton);
           selectedProducts[product] = listItem;
         }
@@ -316,7 +321,17 @@ function updateSelectedProducts() {
     padding: 10px 0 0 0;
     text-align: right;
   }
-
+  .dropdown-item .product-image {
+    width: 50px;
+    height: 50px;
+  }
+  #selected_products .product-image {
+    width: 200px;
+    height: 200px;
+  }
+  .dropdown-item {
+    z-index: 1500;
+  }
 </style>
 {% endblock script %}
 {% endblock content %}

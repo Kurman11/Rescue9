@@ -2,8 +2,8 @@ from django import forms
 from .models import Recipe, Review
 from django_ckeditor_5.widgets import CKEditor5Widget
 from products.models import Product
-
-
+from django.utils.safestring import mark_safe
+from django.utils.html import format_html
 
 
 class RecipeForm(forms.ModelForm):
@@ -33,14 +33,23 @@ class RecipeForm(forms.ModelForm):
         label='사용된 제품',
         required=False
     )
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        # it is required to set it False,
-        # otherwise it will throw error in console
         self.fields["content"].required = False
         self.fields["content"].label = "요리 순서"
         self.fields['used_products'].label_from_instance = lambda obj: obj.name
+        self.fields['used_products'].widget.choices = self.product_choices_with_images()
 
+    def product_choices_with_images(self):
+        choices = []
+        for product in self.fields['used_products'].queryset:
+            image_html = mark_safe(f'<img src="{product.photo.url}" alt="{product.name}" class="product-image">')
+            choices.append((product.pk, mark_safe(f'{product.name} - {image_html}')))
+        return choices
+        
+    
+    
     category = forms.ChoiceField(
         label='카테고리',
         widget=forms.Select(
