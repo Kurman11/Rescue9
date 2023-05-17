@@ -39,6 +39,8 @@ def index(request):
     per_page = 12
     paginator = Paginator(recipes, per_page)
     page_obj = paginator.get_page(page)
+    for recipe in page_obj:
+        recipe.mean_rating = Review.objects.filter(recipe=recipe).aggregate(Avg('rating'))['rating__avg']
 
     context = {
         'recipes_like': recipes_like,
