@@ -8,6 +8,13 @@ from taggit.managers import TaggableManager
 def product_img_path(instance, filename):
     return f'images/product/{instance.name}/{filename}'
 
+class ConvenienceStore(models.Model):
+    name = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.name
+    
+
 class Product(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
@@ -24,6 +31,11 @@ class Product(models.Model):
     is_new = models.BooleanField(default=False)
     content = models.TextField()
     like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_product')
+    convenience_stores = models.ManyToManyField(ConvenienceStore)
+
+    def __str__(self):
+        return self.name
+
 
 
 class Comment(models.Model):

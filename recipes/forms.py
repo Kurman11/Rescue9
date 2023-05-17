@@ -4,6 +4,7 @@ from django_ckeditor_5.widgets import CKEditor5Widget
 from products.models import Product
 from django.utils.safestring import mark_safe
 from django.utils.html import format_html
+from products.models import ConvenienceStore
 
 
 class RecipeForm(forms.ModelForm):
@@ -49,22 +50,28 @@ class RecipeForm(forms.ModelForm):
         return choices
         
     
-    
-    category = forms.ChoiceField(
-        label='카테고리',
-        widget=forms.Select(
-            attrs={
-                'placeholder': '카테고리 선택',
-                'class': 'form-select',
-            }
-        ),
-        choices = (
-            ('라면', '라면'), ('', ''), 
-            ('', ''), ('', ''), 
-            ('', ''), ('', ''),
-        ),
-        required=True,
+    convenience_stores = forms.ModelMultipleChoiceField(
+        label='편의점 선택',
+        widget=forms.CheckboxSelectMultiple(attrs={'placeholder': '분류'}),
+        queryset=ConvenienceStore.objects.all(),
     )
+
+    
+    # category = forms.ChoiceField(
+    #     label='카테고리',
+    #     widget=forms.Select(
+    #         attrs={
+    #             'placeholder': '카테고리 선택',
+    #             'class': 'form-select',
+    #         }
+    #     ),
+    #     choices = (
+    #         ('라면', '라면'), ('', ''), 
+    #         ('', ''), ('', ''), 
+    #         ('', ''), ('', ''),
+    #     ),
+    #     required=True,
+    # )
 
 
 
