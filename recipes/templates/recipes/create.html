@@ -1,9 +1,5 @@
 {% extends 'base.html' %}
 
-{% block link %}
-  <link rel="stylesheet" href="https://unpkg.com/jcrop/dist/jcrop.css">
-  <script src="https://unpkg.com/jcrop"></script>
-{% endblock link %}
 {% block style %}
   <style>
     * {
@@ -116,8 +112,9 @@
   {% comment %} 썸네일 미리보기 {% endcomment %}
   const imageContainer = document.getElementById('image-container')
   const cropOverlay = document.getElementById('crop-overlay')
-  var startY, offsetY
-  var minTop, maxTop
+  let startY, offsetY
+  let minTop, maxTop
+  document.getElementById('thumbnail_preview').style.display = 'none'
 
   function adjustOverlayHeight() {
     const overlayTop = cropOverlay.offsetTop
@@ -136,19 +133,17 @@
   })
 
   cropOverlay.addEventListener('mousemove', function(event) {
-    if (startY) {
-      var moveY = event.clientY - startY
-      var newTop = offsetY + moveY
+    const moveY = event.clientY - startY
+    const newTop = offsetY + moveY
 
-      if (newTop > maxTop) {
-        cropOverlay.style.top = maxTop + 'px'
-      } else if (newTop < minTop) {
-        cropOverlay.style.top = minTop + 'px'
-      } else {
-        cropOverlay.style.top = newTop + 'px'
-      }
-      adjustOverlayHeight()
+    if (newTop > maxTop) {
+      cropOverlay.style.top = maxTop + 'px'
+    } else if (newTop < minTop) {
+      cropOverlay.style.top = minTop + 'px'
+    } else {
+      cropOverlay.style.top = newTop + 'px'
     }
+    adjustOverlayHeight()
   })
 
   cropOverlay.addEventListener('mouseup', function(event) {
@@ -157,19 +152,23 @@
     minTop = null
     maxTop = null
   })
+  
 
   document.getElementById('id_thumbnail_upload').addEventListener('change', function(event) {
-    var file = event.target.files[0]
-    var reader = new FileReader()
+    const file = event.target.files[0]
+    const reader = new FileReader()
 
     reader.onload = function(e) {
-      var img = document.getElementById('thumbnail_preview')
-      img.src = e.target.result
+      const thumbnailPreviewBox = document.getElementById('thumbnail-preview-box')
+      const thumbnailPreview = document.getElementById('thumbnail_preview')
+
+      thumbnailPreview.src = e.target.result
+      thumbnailPreview.style.display = 'block'
       cropOverlay.style.display = 'block'
 
-      img.onload = function() {
-        var containerHeight = imageContainer.offsetHeight
-        var overlayTopHeight  = (containerHeight - cropOverlay.offsetHeight) / 2
+      thumbnailPreview.onload = function() {
+        const containerHeight = imageContainer.offsetHeight
+        const overlayTopHeight  = (containerHeight - cropOverlay.offsetHeight) / 2
         cropOverlay.style.top = overlayTopHeight + 'px'
         maxTop = containerHeight - cropOverlay.offsetHeight
         adjustOverlayHeight()
