@@ -4,7 +4,6 @@ from .forms import ProductForm, CommentForm
 from django.http import JsonResponse
 from taggit.models import Tag
 from django.db.models import Count
-from recipes.models import Recipe
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 
@@ -56,8 +55,8 @@ def detail(request, product_pk):
     comment_form = CommentForm()
     comments = product.comment_set.all()
     tags = product.tags.all()
+    recipes = product.used_recipes.all().order_by('-like_users')
 
-    recipes = Recipe.objects.annotate(num_likes=Count('like_users')).order_by('-num_likes')
 
     session_key = 'product_{}_hits'.format(product_pk)
     if not request.session.get(session_key):

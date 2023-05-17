@@ -74,7 +74,7 @@
   <hr>
 {% comment %} 인기순 관련 레시피 정렬 {% endcomment %}
 <h5 class='mt-5 mb-3'>연관 레시피 <span class='comment--color'>{{recipes|length}}</span></h5>
-  <div class='owl-carousel new_owl-carousel  owl-theme' >
+  <div class='owl-carousel owl-theme' >
   {% for recipe  in recipes %}
   <div class='card--border card--border--gray'>
     <a href="{% url 'recipes:detail' recipe.pk %}">
@@ -208,8 +208,7 @@
     <script src="{% static 'js/product_detail_comment_delete.js' %}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="{% static 'js/products_index.js' %}"></script>
-    <script src="{% static 'js/products_index.js' %}"></script>
+    <script src="{% static 'js/recipes_detail_owl.js' %}"></script>
     <script>
     </script>
   {% endblock script %}

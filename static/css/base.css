@@ -47,6 +47,10 @@ footer {
 }
 
 /* nav */
+nav {
+  background-color: rgb(201, 232, 255);
+}
+
 .nav--left__wrap{
   display: flex;
   align-items: center;
@@ -84,8 +88,13 @@ footer {
   padding-bottom: 10px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 950px) {
   .search_hidden {
+    display: none;
+  }
+}
+@media (max-width: 768px) {
+  .name_hidden {
     display: none;
   }
 }
