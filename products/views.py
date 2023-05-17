@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Product, Comment
+from .models import Product, Comment, ConvenienceStore
 from .forms import ProductForm, CommentForm
 from django.http import JsonResponse
 from taggit.models import Tag
@@ -13,8 +13,12 @@ from django.core.paginator import Paginator
 def index(request):
     products = Product.objects.all()[::-1]
     new_products = Product.objects.filter(is_new=True)[::-1]
-    like_products = Product.objects.order_by('-like_users')
-    hits_products = Product.objects.order_by('-price')[:5]
+    gs_store = ConvenienceStore.objects.get(name='GS25')
+    GS_products = Product.objects.filter(convenience_stores=gs_store)[::-1]
+    cu_store = ConvenienceStore.objects.get(name='CU')
+    CU_products = Product.objects.filter(convenience_stores=cu_store)[::-1]
+    seven_store = ConvenienceStore.objects.get(name='Seven Eleven')
+    Seven_Eleven_products = Product.objects.filter(convenience_stores=seven_store)[::-1]
 
     # 페이지 네이터 관련 항목
     page= request.GET.get('page', '1')
@@ -25,8 +29,9 @@ def index(request):
     content = {
         'products':page_obj,
         'new_products': new_products,
-        'like_products':like_products,
-        'hits_products' : hits_products,
+        'GS_products' : GS_products,
+        'CU_products' : CU_products,
+        'Seven_Eleven_products' : Seven_Eleven_products,
     }
     return render(request, 'products/index.html', content)
 
@@ -34,9 +39,18 @@ def index(request):
 def filter_products(request, category):
     products = Product.objects.filter(category=category)[::-1]
     new_products = Product.objects.filter(category=category).filter(is_new=True)[::-1]
+    gs_store = ConvenienceStore.objects.get(name='GS25')
+    GS_products = Product.objects.filter(category=category).filter(convenience_stores=gs_store)[::-1]
+    cu_store = ConvenienceStore.objects.get(name='CU')
+    CU_products = Product.objects.filter(category=category).filter(convenience_stores=cu_store)[::-1]
+    seven_store = ConvenienceStore.objects.get(name='Seven Eleven')
+    Seven_Eleven_products = Product.objects.filter(category=category).filter(convenience_stores=seven_store)[::-1]
     content ={
         'products':products,
         'new_products':new_products,
+        'GS_products' : GS_products,
+        'CU_products' : CU_products,
+        'Seven_Eleven_products' : Seven_Eleven_products,
     }
     return render(request, 'products/index.html', content)
 
