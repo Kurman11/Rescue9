@@ -193,6 +193,8 @@
 
     dropdownItems.forEach(function(dropdownItem) {
       dropdownItem.addEventListener('click', function(event) {
+        event.preventDefault();
+        event.stopPropagation();
         const product = event.target.textContent;
         if (selectedProducts.has(product)) {
           selectedProducts.delete(product);
@@ -320,11 +322,14 @@ function updateSelectedProducts() {
   }
   .dropdown-item .product-image {
     width: 50px;
-    height: 50px; 
+    height: 50px;
   }
   #selected_products .product-image {
     width: 200px;
     height: 200px;
+  }
+  .dropdown-item {
+    z-index: 1500;
   }
 </style>
 {% endblock script %}
