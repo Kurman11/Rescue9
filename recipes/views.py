@@ -14,6 +14,7 @@ from products.models import Product
 from django.core.paginator import Paginator
 from django.db.models import Count, Avg, Sum
 
+
 # Create your views here.
 def index(request):
     recipes = Recipe.objects.all()
@@ -200,7 +201,10 @@ def review_delete(request, recipe_pk, review_pk):
     review = Review.objects.get(pk=review_pk)
     if request.user == review.user:
         review.delete()
-    return redirect('recipes:detail', recipe_pk)
+
+        return JsonResponse({'status': 'ok'})
+    else:
+        return JsonResponse({'status': 'error', 'message': '권한이 없습니다.'})
 
 
 @login_required

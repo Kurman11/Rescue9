@@ -86,7 +86,8 @@ class ReviewForm(forms.ModelForm):
         widget=forms.TextInput(
             attrs={
                 'placeholder': '레시피에 대한 리뷰를 작성해보세요',
-                'class': 'recipe__review__input-area--form'
+                'class': 'recipe__review__input-area--form mb-2',
+                'style' : 'width: 88%;',
             }
         ),
     )

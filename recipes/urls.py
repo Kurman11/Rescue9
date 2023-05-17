@@ -11,7 +11,7 @@ urlpatterns = [
     path('<int:recipe_pk>/like/', views.recipe_like, name='recipe_like'),
     path('category/<str:subject>/', views.category, name='category'),
     path('<int:recipe_pk>/reviews', views.review_create, name='review_create'),
-    path('<int:recipe_pk>/reviews/<int:review_pk>/update/', views.review_update, name='review_update'),
-    path('<int:recipe_pk>/reviews/<int:review_pk>/delete/', views.review_delete, name='review_delete'),
+    path('<int:recipe_pk>/reviews/<int:review_pk>/review_update/', views.review_update, name='review_update'),
+    path('<int:recipe_pk>/reviews/<int:review_pk>/review_delete/', views.review_delete, name='review_delete'),
     path('<int:recipe_pk>/reviews/<int:review_pk>/like/', views.review_like, name='review_like'),
 ]
