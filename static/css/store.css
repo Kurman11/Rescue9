@@ -1,11 +1,29 @@
 .gs {
-  color: rgb(0, 124, 255);
+  background: linear-gradient(to bottom, rgb(0, 124, 255), rgb(0, 212, 234));
+  color: white;
+  text-shadow:
+  -1px -1px 0 rgb(0, 124, 255),
+  1px -1px 0 rgb(0, 124, 255),
+  -1px 1px 0 rgb(0, 124, 255),
+  1px 1px 0 rgb(0, 124, 255);
 }
 
 .seven {
-  color: rgb(20, 155, 80);
+  background: linear-gradient(to bottom, rgb(255, 108, 0), rgb(235, 15, 42));
+  color: white;
+  text-shadow:
+  -1px -1px 0 rgb(20, 155, 80),
+  1px -1px 0 rgb(20, 155, 80),
+  -1px 1px 0 rgb(20, 155, 80),
+  1px 1px 0 rgb(20, 155, 80);
 }
 
 .cu {
+  background-color: rgb(170, 206, 55);
   color: rgb(101, 45, 141);
+  text-shadow:
+  -0.5px -0.5px 0 rgb(101, 45, 141),
+  0.5px -0.5px 0 rgb(101, 45, 141),
+  -0.5px 0.5px 0 rgb(101, 45, 141),
+  0.5px 0.5px 0 rgb(101, 45, 141);
 }

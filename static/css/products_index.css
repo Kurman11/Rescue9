@@ -40,6 +40,7 @@ a {
 
 .card--tag--border {
   border-bottom: solid 1px var(--subtle-color);
+  padding-left: 10px;
 }
 
 .card--tag--border--recipe {
@@ -64,7 +65,8 @@ a {
 .card--name--box {
   width: 120px;
   font-size: 20px;
-  margin-bottom : 20px
+  margin-bottom : 20px;
+  padding-left: 10px;
 }
 
 .card--name{
@@ -108,5 +110,43 @@ a {
     padding-left: 0px;
     padding-right: 0px;
   }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.blink {
+  animation: blink 1.25s infinite;
+  color: var(--main-color);
+  font-weight: bold;
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  text-shadow:
+  -1px -1px 0 #000,
+  1px -1px 0 #000,
+  -1px 1px 0 #000,
+  1px 1px 0 #000;
+}
+
+.store {
+  font-weight: bold;
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  padding: 5px;
+}
+
+.img--container {
+  position: relative;
 }
   

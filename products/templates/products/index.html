@@ -6,37 +6,8 @@
 {% endblock link %}
 {% block style %}
 <link rel="stylesheet" href="{% static 'css/products_index.css' %}">
+<link rel="stylesheet" href="{% static 'css/store.css' %}">
 <style>
-  @keyframes blink {
-    0% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-  
-  .blink {
-    animation: blink 1.25s infinite;
-    color: var(--main-color);
-    font-weight: bold;
-    position: absolute;
-    top: 5%;
-    right: 5%;
-    text-shadow:
-    -1px -1px 0 #000,
-    1px -1px 0 #000,
-    -1px 1px 0 #000,
-    1px 1px 0 #000;
-  }
-
-  .img--container {
-    position: relative;
-  }
-  
 </style>
 {% endblock style %}
 
@@ -48,7 +19,17 @@
       새 상품 등록하러 가기
       </a>
   </div>
-  <p class='title--content--2'>신상품</p>
+  <ul class="d-flex mt-5">
+    <a href="{% url 'products:index' %}"><li class="btn filter">모두 보기</li></a>
+    <a href="{% url 'products:filter_products' '간편 식사' %}"><li class="btn filter">간편 식사</li></a>
+    <a href="{% url 'products:filter_products' '과자류' %}"><li class="btn filter">과자류</li></a>
+    <a href="{% url 'products:filter_products' '냉동 식품' %}"><li class="btn filter">냉동 식품</li></a>
+    <a href="{% url 'products:filter_products' '빵' %}"><li class="btn filter">빵</li></a>
+    <a href="{% url 'products:filter_products' '아이스크림' %}"><li class="btn filter">아이스크림</li></a>
+    <a href="{% url 'products:filter_products' '음료' %}"><li class="btn filter">음료</li></a>
+  </ul>
+  
+  <p class='title--content--2 mt-5'>신상품</p>
     <div class='owl-carousel owl-theme new_owl-carousel' >
       {% for product in new_products %}
       <div class='card--border card--border--gray'>
@@ -64,7 +45,7 @@
           </div>
           <div class='card--tag--border pb-1'>
             <p><i class="bi bi-heart-fill card--rating__color me-2"></i>{{product.like_users.count}}</p>
-            <p>댓글 {{product.review_set.count}}</p>
+            <p>댓글 {{product.comment_set.count}}</p>
           </div>  
           <div class='mt-1'>
             {% for tag in product.tags.all %}
@@ -86,14 +67,14 @@
           {% if product.is_new %}   
           <p class="blink">New</p>
           {% endif %}
-          <p>Gs25</p>
+          <p class='gs store'>Gs25</p>
         </div>
         <div class='card--name--box'>
           <strong class='card--name'>{{product.name}}</strong>
         </div>
         <div class='card--tag--border'>
           <p><i class="bi bi-heart-fill card--rating__color me-2"></i>{{product.like_users.count}}</p>
-          <p>댓글 {{product.review_set.count}}</p>
+          <p>댓글 {{product.comment_set.count}}</p>
         </div>
         <div>
           {% for tag in product.tags.all %}
@@ -115,13 +96,14 @@
             {% if product.is_new %}   
             <p class="blink">New</p>
             {% endif %}
+            <p class='cu store'>CU</p>
           </div>
           <div class='card--name--box'>
             <strong class='card--name'>{{product.name}}</strong>
           </div>
           <div class='card--tag--border'>    
             <p><i class="bi bi-heart-fill card--rating__color me-2"></i>{{product.like_users.count}}</p>
-            <p>댓글 {{product.review_set.count}}</p>
+            <p>댓글 {{product.comment_set.count}}</p>
           </div>
           <div>
             {% for tag in product.tags.all %}
@@ -143,13 +125,16 @@
             {% if product.is_new %}   
             <p class="blink">New</p>
             {% endif %}
+            <p class='store p-0'>
+              <img src="{% static 'image/seven.png' %}" style="width: 34px;" alt="">
+            </p>
           </div>
           <div class='card--name--box'>
             <strong class='card--name'>{{product.name}}</strong>
           </div>
           <div class='card--tag--border'>    
             <p><i class="bi bi-heart-fill card--rating__color me-2"></i>{{product.like_users.count}}</p>
-            <p>댓글 {{product.review_set.count}}</p>
+            <p>댓글 {{product.comment_set.count}}</p>
           </div>
           <div>
             {% for tag in product.tags.all %}
@@ -161,36 +146,38 @@
       {% endfor %}
   </div>
 
-    <p class='title--content'>모든 상품</p>
-      <div class='row' >
-        {% for product in products %}
 
-        <div class="col-6 col-md-4 col-lg-3">
-          <div class='card--border card--border--gray'>
-            <a href="{% url 'products:detail' product.pk %}">
-              <div class="img--container">
-                <img style="width:100%;" src="{{product.Thumbnail.url}}" class='rounded' alt="img">  
-                {% if product.is_new %}   
-                <p class="blink">New</p>
-                {% endif %}
-              </div>
-              <div class='card--name--box'>
-                <strong class='card--name'>{{product.name}}</strong>
-              </div>
-              <div class='card--tag--border'>
-                <p><i class="bi bi-heart-fill card--rating__color me-2"></i>{{product.like_users.count}}</p>
-                <p>댓글 {{product.review_set.count}}</p>
-              </div>
-              <div>
-                {% for tag in product.tags.all %}
-                  <span class='me-2'>#{{tag}}</span>
-                {% endfor %}
-              </div>
-            </a>  
-          </div>
+
+  <p class='title--content'>전체 상품</p>
+  <div class='row' >
+    {% for product in products %}
+
+    <div class="col-6 col-md-4 col-lg-3">
+      <div class='card--border card--border--gray'>
+        <a href="{% url 'products:detail' product.pk %}">
+          <div class="img--container">
+            <img style="width:100%;" src="{{product.Thumbnail.url}}" class='rounded' alt="img">  
+            {% if product.is_new %}   
+            <p class="blink">New</p>
+            {% endif %}
+            </div>
+            <div class='card--name--box'>
+              <strong class='card--name'>{{product.name}}</strong>
+            </div>
+            <div class='card--tag--border'>
+              <p><i class="bi bi-heart-fill card--rating__color me-2"></i>{{product.like_users.count}}</p>
+              <p>댓글 {{product.comment_set.count}}</p>
+            </div>
+            <div>
+              {% for tag in product.tags.all %}
+                <span class='me-2'>#{{tag}}</span>
+              {% endfor %}
+            </div>
+          </a>  
         </div>
-        {% endfor %}
-    </div>
+      </div>
+      {% endfor %}
+  </div>
     {% comment %} 페이지네이터 {% endcomment %}
     <ul class="pagination justify-content-center">
       {% if  products.has_previous %}
@@ -244,4 +231,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="{% static 'js/products_index.js' %}"></script>
+
+
+<script>
+</script>
 {% endblock script %}
