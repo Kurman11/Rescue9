@@ -200,7 +200,8 @@
             {% if request.user == review.user %}
               <div class="text--secondary">
                 <i class="bi bi-heart-fill me-1"></i><span>{{ review.like_user.count }}</span>
-              </div>  
+              </div>
+                
             {% else %}
             <button type="submit" class="text--main recipe__review__like__button">
               {% if request.user in review.like_user.all %}
@@ -212,6 +213,21 @@
             </button>
             {% endif %}
           </form>
+          {% if request.user == review.user %}
+          <div class="dropdown ">
+            <button class="btn dropdown pt-0 pe-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-three-dots-vertical"></i>
+            </button>
+            <ul class="dropdown-menu">
+              <li>
+                <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#edit-{{review.pk}}">
+                  <i class="bi bi-pencil-square"></i> 수정하기
+                </button>
+              </li>
+              <li><a class="dropdown-item" href="#" onclick="deleteReview(event, {{ recipe.pk }}, {{ review.pk }})"><i class="bi bi-trash3-fill"></i>삭제하기</a></li>
+            </ul>
+          </div>
+          {% endif %}
         </div>
       </div>
       <div class="review__content__container">
@@ -225,6 +241,38 @@
         {% endif %}
       </div>
     </div>
+    {% comment %} 모달 {% endcomment %}
+          <div class="modal fade" id="edit-{{review.pk}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editLabel" aria-hidden="true" style="z-index: 1100;">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="editLabel">댓글 수정</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form action="{% url 'recipes:review_update' recipe.pk review.pk %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {% for field in review_form %}
+                      {% if field.name == 'image' %}
+                      <div class="hidden">{{ field }}</div>
+                      {% else %}
+                      {% endif %}
+                      {{ field }}
+                    {% endfor %}
+                    <div>
+                      <label for="id_image">이미지</label>
+                      <input type="file" name="image" id="id_image">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="subtle--button--reversecolor rounded btn-hover__gray" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn button--color rounded">수정</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr>
     {% endfor %}
   </div>
 {% comment %} 이미지 상세 모달 {% endcomment %}
@@ -240,4 +288,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="{% static 'js/recipes_detail_owl.js' %}"></script>
 <script src="{% static 'js/recipes_detail.js' %}"></script>
+
+
 {% endblock script %}

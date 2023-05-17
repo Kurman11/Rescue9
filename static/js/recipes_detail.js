@@ -160,3 +160,35 @@ function closeModal() {
 $('#recipeDeleteModal').modal('show').on('shown.bs.modal', function() {
   $('recipeDeleteModal').focus();
 });
+
+
+// 리뷰 삭제
+function deleteReview(event, recipe_pk, review_pk) {
+  event.preventDefault();
+  if (confirm('리뷰를 삭제하시겠습니까?')) {
+    fetch(`/recipes/${recipe_pk}/reviews/${review_pk}/review_delete/`, {
+      method: 'DELETE',
+      headers: {
+        'X-CSRFToken': csrftoken,
+      },
+    })
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error('서버 에러');
+      }
+    })
+    .then(data => {
+      if (data.status === 'ok') {
+        // Reload the page to reflect the updated reviews
+        location.reload();
+      } else {
+        alert(data.message);
+      }
+    })
+    .catch(error => {
+      alert(error.message);
+    });
+  }
+}
