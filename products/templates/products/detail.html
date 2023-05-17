@@ -44,11 +44,15 @@
             </div>
             <form class="like-form" data-product-id="{{ product.pk }}">
               {% csrf_token %}
-              {% if request.user.is_authenticated %}           
-                {% if request.user in product.like_users.all %}
-                  <button type='submit' class="bi bi-heart-fill title--likescount btn p-0 m-0" id="like-btn"></button>
-                  {% else %}
-                  <button type='submit' class="bi bi-heart title--likescount btn m-0 p-0" id="like-btn"></button>
+              {% if request.user.is_authenticated %}  
+                {% if request.user == product.user %}
+                    <div class="bi bi-heart-fill title--likescount p-0 m-0" disable></div>
+                {% else %}
+                  {% if request.user in product.like_users.all %}
+                    <button type='submit' class="bi bi-heart-fill title--likescount btn p-0 m-0" id="like-btn"></button>
+                    {% else %}
+                    <button type='submit' class="bi bi-heart title--likescount btn m-0 p-0" id="like-btn"></button>
+                  {% endif %}
                 {% endif %}
               {% else %}
                 <a href="{% url 'accounts:login' %}" class="bi bi-heart title--likescount btn m-0 p-0" id="like-btn"></a>
@@ -154,10 +158,14 @@
       <form class="comment_like_forms" id="like-form-{{comment.pk}}"  data-product-id="{{product.pk}}" data-comment-id="{{comment.pk}}">
         {% csrf_token %}
         {% if request.user.is_authenticated %}
-          {% if request.user in comment.like_users.all %}
-          <button type='submit' class="bi bi-heart-fill title--likescount btn m-0 p-0  fs-5" id="comment-like-btn-{{comment.pk}}"></button>
+          {% if request.user == product.user %}
+            <div class="bi bi-heart-fill title--likescount m-0 p-0  fs-5"></div>
           {% else %}
-          <button type='submit' class="bi bi-heart title--likescount btn m-0 p-0 fs-5" id="comment-like-btn-{{comment.pk}}"></button>
+            {% if request.user in comment.like_users.all %}
+            <button type='submit' class="bi bi-heart-fill title--likescount btn m-0 p-0  fs-5" id="comment-like-btn-{{comment.pk}}"></button>
+            {% else %}
+            <button type='submit' class="bi bi-heart title--likescount btn m-0 p-0 fs-5" id="comment-like-btn-{{comment.pk}}"></button>
+            {% endif %}
           {% endif %}
         {% else %}
           <a href="{% url 'accounts:login' %}" class="bi bi-heart title--likescount btn m-0 p-0 fs-5"></a>
