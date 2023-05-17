@@ -6,14 +6,14 @@
 
 .title--username {
   font-weight: bold;
-  background-color: var(--subtle-color);
+  background-color: #F8F9FA;
   text-align: center;
   padding: 10px 0px;
 }
 
 .profile--box {
  /* border: solid 3px var(--subtle-color);  */
-  background:  var(--subtle-color);
+  background: #F8F9FA;
   min-width: 210px; 
   position: relative;
   padding-bottom: 10px;
