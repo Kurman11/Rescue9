@@ -45,7 +45,7 @@ class RecipeForm(forms.ModelForm):
     def product_choices_with_images(self):
         choices = []
         for product in self.fields['used_products'].queryset:
-            image_html = mark_safe(f'<img src="{product.photo.url}" alt="{product.name}" class="product-image">')
+            image_html = mark_safe(f'<img src="{product.Thumbnail.url}" alt="{product.name}" class="product-image">')
             choices.append((product.pk, mark_safe(f'{product.name} - {image_html}')))
         return choices
         
