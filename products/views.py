@@ -6,6 +6,8 @@ from taggit.models import Tag
 from django.db.models import Count
 from recipes.models import Recipe
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
+
 
 # Create your views here.
 
@@ -15,8 +17,14 @@ def index(request):
     like_products = Product.objects.order_by('-like_users')
     hits_products = Product.objects.order_by('-price')[:5]
 
+    # 페이지 네이터 관련 항목
+    page= request.GET.get('page', '1')
+    per_page = 12
+    paginator = Paginator(products, per_page)
+    page_obj = paginator.get_page(page)
+
     content = {
-        'products':products,
+        'products':page_obj,
         'new_products': new_products,
         'like_products':like_products,
         'hits_products' : hits_products,

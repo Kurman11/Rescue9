@@ -36,10 +36,10 @@
     {% endfor %}
   </div>
   {% comment %} 전체 상품 나열 {% endcomment %}
-  <p class='title--content'>모든 상품</p>
+  <p class='title--content'>모든 레시피</p>
   <div class="row">
-    {% for recipe in recipes %}
-    <div class="col-6 col-md-3 col-xl-2">
+    {% for recipe in recipes_page %}
+    <div class="col-6 col-md-4 col-lg-3">
       <div class='card--border card--border--gray'>
         <a href="{% url 'recipes:detail' recipe.pk %}">
           <img src="{{ recipe.thumbnail.url }}" class='card--border__image rounded' alt="{{ recipe.title }}의 이미지">  
@@ -55,6 +55,53 @@
     </div>
     {% endfor %}
   </div>
+  {% comment %} 페이지네이터 {% endcomment %}
+  <ul class="pagination justify-content-center">
+    {% if  recipes_page.has_previous %}
+    <li class="page-item">
+      <a class="page-link" href="?page=1" aria-label="처음">
+        <span aria-hidden="true">&laquo;</span>
+        <span class="sr-only"></span>
+      </a>
+    </li>
+      <li class="page-item">
+        <a class="page-link" href="?page={{   recipes_page.previous_page_number }}">이전</a>
+      </li>
+    {% else %}
+      <li class="page-item disabled">
+        <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
+      </li>
+    {% endif %}
+    {% for page_number in   recipes_page.paginator.page_range %}
+      {% if page_number >=  recipes_page.number|add:-2 and page_number <=   recipes_page.number|add:2 %}
+        {% if page_number ==  recipes_page.number %}
+          <li class="page-item active" aria-current="page">
+            <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+          </li>
+        {% else %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+          </li>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+    {% if   recipes_page.has_next %}
+      <li class="page-item">
+        <a class="page-link" href="?page={{   recipes_page.next_page_number }}">다음</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="?page={{ recipes_page.paginator.num_pages }}" aria-label="마지막">
+          <span aria-hidden="true">&raquo;</span>
+          <span class="sr-only"></span>
+        </a>
+      </li>
+    {% else %}
+      <li class="page-item disabled">
+        <a class="page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
+      </li>
+    {% endif %}
+  </ul>
+
 </div>
 {% endblock content %}
 
