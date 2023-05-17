@@ -24,7 +24,7 @@
       <p class="recipe__rate"><i class="bi bi-star-fill"></i> {{ average_rate|floatformat:1 }}</p>
       <p class="recipe__status">
         <i class="bi bi-eye-fill"></i> {{ recipe.hits }}
-        <i class="bi bi-bookmark-heart-fill"></i> {{ recipe.like_users.count }}
+        <i class="bi bi-heart-fill"></i> {{ recipe.like_users.count }}
       </p>
     </div>
     <div class="recipe__header-container__right">
@@ -272,7 +272,6 @@
         </div>
       </div>
     </div>
-    <hr>
     {% endfor %}
   </div>
 {% comment %} 이미지 상세 모달 {% endcomment %}
