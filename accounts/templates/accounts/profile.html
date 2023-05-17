@@ -42,11 +42,11 @@
           {% else %}
             {% if request.user.username == person.username %}
               <a href="{% url 'accounts:update' %}">
-                <img src="{% static 'image/no_image432.png' %}" class="profile--image profile--image__same" alt="no-profile">
+                <img src="{% static 'image/solo.png' %}" class="profile--image profile--image__same" alt="no-profile">
                 <i class="bi bi-pencil-square profile--image--icon"></i>
               </a>
             {% else %}
-            <img src="{% static 'image/no_image432.png' %}" class="profile--image" alt="no-profile">
+            <img src="{% static 'image/solo.png' %}" class="profile--image" alt="no-profile">
             {% endif %}
         {% endif %}
         {% comment %} 팔로워 {% endcomment %}
@@ -81,20 +81,20 @@
   
     <div class="col-12 col-md-7 col-lg-8 mt-2">
       {% comment %} 내가 쓴 레시피 {% endcomment %}
-      <h5>My recipes</h5>
+      <h5>내가 쓴 레시피</h5>
       <table class='table'>
         <thead>
           <tr>
-            <th>no</th>
-            <th>title</th>
-            <th>bookmark</th>
-            <th>reivews</th>
+            <th> </th>
+            <th>제목</th>
+            <th>북마크</th>
+            <th>리뷰</th>
           </tr>
         </thead>
         <tbody>
           {% for recipe in recipes %}
             <tr onclick="window.location='{% url 'recipes:detail' recipe.pk %}'" class="list--detail">
-              <td>{{recipe.pk}}</td>
+              <td>{{forloop.revcounter}}</td>
               <td>{{recipe.title}}</td>
               <td>{{recipe.like_users.count}}</td>
               <td>{{ recipe.review_set.count }}</td>
@@ -150,19 +150,17 @@
       </ul>
 
 
-      <h5>My review</h5>
+      <h5>리뷰</h5>
       <table class='table'>
         <thead>
           <tr>
-            <th>no</th>
-            <th>title</th>
-            <th>content</th>
+            <th>제목</th>
+            <th>리뷰 내용</th>
           </tr>
         </thead>
         <tbody>
           {% for review in reviews %}
             <tr onclick="window.location='{% url 'recipes:detail' review.recipe.pk %}'" class="list--detail">
-              <td>{{review.recipe.pk}}</td>
               <td>{{review.recipe.title}}</td>
               <td>{{review.content}}</td>
             </tr>
@@ -217,7 +215,7 @@
       </ul>
 
     {% comment %} bookmark? likes? {% endcomment %}
-    <h5>like recipes</h5>
+    <h5>좋아요한 레시피</h5>
     <div class='owl-carousel owl-theme  recipes-owl'>
       {% for recipe in person.like_recipes.all  %}
       <div class='card--border card--border--gray'>
