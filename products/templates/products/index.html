@@ -59,7 +59,7 @@
 
   <p class='title--content--2'>Gs25 상품</p>
   <div class='owl-carousel hits_owl-carousel owl-theme' >
-    {% for product in hits_products %}
+    {% for product in GS_products %}
     <div class='card--border card--border--gray'>
       <a href="{% url 'products:detail' product.pk %}">
         <div class="img--container">
@@ -88,7 +88,7 @@
 
   <p class='title--content--2'>CU 상품</p>
     <div class='owl-carousel like_owl-carousel owl-theme' >
-      {% for product in like_products %}
+      {% for product in CU_products %}
       <div class='card--border card--border--gray'>
         <a href="{% url 'products:detail' product.pk %}">
           <div class="img--container">
@@ -117,7 +117,7 @@
 
   <p class='title--content--2'>7-eleven 상품</p>
     <div class='owl-carousel like_owl-carousel owl-theme' >
-      {% for product in like_products %}
+      {% for product in Seven_Eleven_products %}
       <div class='card--border card--border--gray'>
         <a href="{% url 'products:detail' product.pk %}">
           <div class="img--container">
