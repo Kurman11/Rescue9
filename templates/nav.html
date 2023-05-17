@@ -4,7 +4,7 @@
   <div class="nav--left__wrap">
     <div class="nav--left--image-container">
       <a href="{% url 'recipes:index' %}">
-        <img src="{% static 'image/logo_t.png' %}" alt="logo" class="nav--image" >             
+        <img src="{% static 'image/logo_top2.png' %}" alt="logo" class="nav--image" >            
       </a>
     </div>
     <div class="nav--left__wrap">
@@ -22,7 +22,7 @@
   
   <div class="nav--right__wrap">
     {% if request.user.is_authenticated %}
-      <a href="{% url 'accounts:profile' request.user.username %}"> {{request.user.username}} 님</a> 
+      <a href="{% url 'accounts:profile' request.user.username %}" class="name_hidden"> {{request.user.username}} 님</a> 
       <form action="{% url 'accounts:logout' %}" method="POST">
         {% csrf_token %}
         <button class="btn nav--button nav--btn" type="submit">Logout</button> 

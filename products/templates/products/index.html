@@ -64,7 +64,7 @@
           </div>
           <div class='card--tag--border pb-1'>
             <p><i class="bi bi-heart-fill card--rating__color me-2"></i>{{product.like_users.count}}</p>
-            <p>리뷰 {{product.review_set.count}}</p>
+            <p>댓글 {{product.review_set.count}}</p>
           </div>  
           <div class='mt-1'>
             {% for tag in product.tags.all %}
@@ -76,7 +76,7 @@
       {% endfor %}
   </div>
 
-  <p class='title--content--2'>최고 평점 5개</p>
+  <p class='title--content--2'>Gs25 상품</p>
   <div class='owl-carousel hits_owl-carousel owl-theme' >
     {% for product in hits_products %}
     <div class='card--border card--border--gray'>
@@ -86,13 +86,14 @@
           {% if product.is_new %}   
           <p class="blink">New</p>
           {% endif %}
+          <p>Gs25</p>
         </div>
         <div class='card--name--box'>
           <strong class='card--name'>{{product.name}}</strong>
         </div>
         <div class='card--tag--border'>
           <p><i class="bi bi-heart-fill card--rating__color me-2"></i>{{product.like_users.count}}</p>
-          <p>리뷰 {{product.review_set.count}}</p>
+          <p>댓글 {{product.review_set.count}}</p>
         </div>
         <div>
           {% for tag in product.tags.all %}
@@ -104,7 +105,7 @@
     {% endfor %}
   </div>
 
-  <p class='title--content--2'>인기순</p>
+  <p class='title--content--2'>CU 상품</p>
     <div class='owl-carousel like_owl-carousel owl-theme' >
       {% for product in like_products %}
       <div class='card--border card--border--gray'>
@@ -120,7 +121,35 @@
           </div>
           <div class='card--tag--border'>    
             <p><i class="bi bi-heart-fill card--rating__color me-2"></i>{{product.like_users.count}}</p>
-            <p>리뷰 {{product.review_set.count}}</p>
+            <p>댓글 {{product.review_set.count}}</p>
+          </div>
+          <div>
+            {% for tag in product.tags.all %}
+              <span class='me-2'>#{{tag}}</span>
+            {% endfor %}
+          </div>
+        </a>  
+      </div>
+      {% endfor %}
+  </div>
+
+  <p class='title--content--2'>7-eleven 상품</p>
+    <div class='owl-carousel like_owl-carousel owl-theme' >
+      {% for product in like_products %}
+      <div class='card--border card--border--gray'>
+        <a href="{% url 'products:detail' product.pk %}">
+          <div class="img--container">
+            <img src="{{product.Thumbnail.url}}" class='rounded' alt="img">  
+            {% if product.is_new %}   
+            <p class="blink">New</p>
+            {% endif %}
+          </div>
+          <div class='card--name--box'>
+            <strong class='card--name'>{{product.name}}</strong>
+          </div>
+          <div class='card--tag--border'>    
+            <p><i class="bi bi-heart-fill card--rating__color me-2"></i>{{product.like_users.count}}</p>
+            <p>댓글 {{product.review_set.count}}</p>
           </div>
           <div>
             {% for tag in product.tags.all %}
@@ -148,7 +177,7 @@
             </div>
             <div class='card--tag--border'>
               <p><i class="bi bi-heart-fill card--rating__color me-2"></i>{{product.like_users.count}}</p>
-              <p>리뷰 {{product.review_set.count}}</p>
+              <p>댓글 {{product.review_set.count}}</p>
             </div>
             <div>
               {% for tag in product.tags.all %}
