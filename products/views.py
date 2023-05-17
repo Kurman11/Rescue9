@@ -32,6 +32,8 @@ def create(request):
             product = form.save(commit=False)
             product.user = request.user
             product.save()
+            for convenience_store in form.cleaned_data['convenience_stores']:
+                product.convenience_stores.add(convenience_store)
             for tag in tags:
                 product.tags.add(tag.strip())
             return redirect('products:detail', product.pk)

@@ -4,6 +4,7 @@ from imagekit.models import ImageSpecField, ProcessedImageField
 from imagekit.processors import Thumbnail, ResizeToFit, ResizeToFill
 from django_ckeditor_5.fields import CKEditor5Field
 from django.core.validators import MinValueValidator, MaxValueValidator
+from products.models import ConvenienceStore
 
 
 # Create your models here.
@@ -26,8 +27,8 @@ class Recipe(models.Model):
         )
     
     thumbnail_crop = models.ImageField(upload_to='thumbnail_crop')
-
-    category = models.CharField(max_length=20)
+    convenience_stores = models.ManyToManyField(ConvenienceStore)
+    # category = models.CharField(max_length=20)
     hits = models.PositiveIntegerField(default=0)
     like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="like_recipes")
     content = CKEditor5Field('Content', config_name='extends')

@@ -1,5 +1,5 @@
 from django import forms
-from .models import Product, Comment
+from .models import Product, Comment, ConvenienceStore
 from taggit.forms import TagField, TagWidget
 from taggit.managers import TaggableManager
 from django.core.validators import MinValueValidator, MaxValueValidator
@@ -15,7 +15,7 @@ category_choices = (
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = ('name','price', 'category', 'photo', 'is_new', 'content','tags',)
+        fields = ('name','price','convenience_stores' ,'category', 'photo', 'is_new', 'content','tags',)
         widgets = {
             'tags':TagWidget(
                 attrs={
@@ -54,15 +54,12 @@ class ProductForm(forms.ModelForm):
         choices=category_choices,
     )
 
-    # hits = forms.IntegerField(
-    #     label='hits',
-    #     widget=forms.NumberInput(
-    #         attrs={
-    #             'class': 'form-control',
-    #             'id' : 'hits',
-    #         }
-    #     )
-    # )
+    convenience_stores = forms.ModelMultipleChoiceField(
+        label='편의점 선택',
+        widget=forms.CheckboxSelectMultiple(attrs={'placeholder': '분류'}),
+        queryset=ConvenienceStore.objects.all(),
+    )
+
 
     price = forms.IntegerField(
         label='제품 가격',
