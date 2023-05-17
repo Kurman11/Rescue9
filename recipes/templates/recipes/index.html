@@ -18,9 +18,81 @@
     </a>
   </div>
   {% comment %} Carousel 나열 {% endcomment %}
-  <p class='title--content--2'>강조/분류하고 싶은 항목</p>
+  <p class='title--content--2'>가장 많이 찾은 레시피👍</p>
   <div class='owl-carousel owl-theme recipes-owl'>
-    {% for recipe in recipes %}
+    {% for recipe in recipes_like %}
+    <div class='card--border card--border--gray'>
+      <a href="{% url 'recipes:detail' recipe.pk %}">
+        <img src="{{ recipe.thumbnail.url}}" class='card--border__image rounded' alt="{{ recipe.title }}의 이미지">  
+        <div class='card--name--box'>
+          <strong class='card--name'>{{ recipe.title }}</strong>
+        </div>
+        <div class='card--tag--border'>
+          <p>조회수 {{ recipe.hits }}</p>
+          <p>리뷰 {{ recipe.comment_set.count }}</p>
+        </div>
+      </a>  
+    </div>
+    {% endfor %}
+  </div>
+
+  <p class='title--content--2'>가장 평이 좋은 레시피🏆</p>
+  <div class='owl-carousel owl-theme recipes-owl'>
+    {% for recipe in recipes_rating %}
+    <div class='card--border card--border--gray'>
+      <a href="{% url 'recipes:detail' recipe.pk %}">
+        <img src="{{ recipe.thumbnail.url}}" class='card--border__image rounded' alt="{{ recipe.title }}의 이미지">  
+        <div class='card--name--box'>
+          <strong class='card--name'>{{ recipe.title }}</strong>
+        </div>
+        <div class='card--tag--border'>
+          <p>조회수 {{ recipe.hits }}</p>
+          <p>리뷰 {{ recipe.comment_set.count }}</p>
+        </div>
+      </a>  
+    </div>
+    {% endfor %}
+  </div>
+
+  <p class='title--content--2'>신제품이 들어간 레시피🆕</p>
+  <div class='owl-carousel owl-theme recipes-owl'>
+    {% for recipe in recipes_newproduct %}
+    <div class='card--border card--border--gray'>
+      <a href="{% url 'recipes:detail' recipe.pk %}">
+        <img src="{{ recipe.thumbnail.url}}" class='card--border__image rounded' alt="{{ recipe.title }}의 이미지">  
+        <div class='card--name--box'>
+          <strong class='card--name'>{{ recipe.title }}</strong>
+        </div>
+        <div class='card--tag--border'>
+          <p>조회수 {{ recipe.hits }}</p>
+          <p>리뷰 {{ recipe.comment_set.count }}</p>
+        </div>
+      </a>  
+    </div>
+    {% endfor %}
+  </div>
+
+  <p class='title--content--2'>가성비 좋은 레시피🤔</p>
+  <div class='owl-carousel owl-theme recipes-owl'>
+    {% for recipe in recipes_pricelow %}
+    <div class='card--border card--border--gray'>
+      <a href="{% url 'recipes:detail' recipe.pk %}">
+        <img src="{{ recipe.thumbnail.url}}" class='card--border__image rounded' alt="{{ recipe.title }}의 이미지">  
+        <div class='card--name--box'>
+          <strong class='card--name'>{{ recipe.title }}</strong>
+        </div>
+        <div class='card--tag--border'>
+          <p>조회수 {{ recipe.hits }}</p>
+          <p>리뷰 {{ recipe.comment_set.count }}</p>
+        </div>
+      </a>  
+    </div>
+    {% endfor %}
+  </div>
+
+  <p class='title--content--2'>호화끝판왕 레시피🤑</p>
+  <div class='owl-carousel owl-theme recipes-owl'>
+    {% for recipe in recipes_pricehigh %}
     <div class='card--border card--border--gray'>
       <a href="{% url 'recipes:detail' recipe.pk %}">
         <img src="{{ recipe.thumbnail.url}}" class='card--border__image rounded' alt="{{ recipe.title }}의 이미지">  
@@ -36,7 +108,7 @@
     {% endfor %}
   </div>
   {% comment %} 전체 상품 나열 {% endcomment %}
-  <p class='title--content'>모든 레시피</p>
+  <p class='title--content'>모든 레시피📜</p>
   <div class="row">
     {% for recipe in recipes_page %}
     <div class="col-6 col-md-4 col-lg-3">

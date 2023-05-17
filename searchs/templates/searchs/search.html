@@ -7,7 +7,7 @@
 {% endblock link %}
 
 {% block content %}
-<p class='title--content--2 mt-0'>products</p>
+<p class='title--content--2 mt-0'>검색된 제품</p>
 <div class='owl-carousel owl-theme new_owl-carousel' >
    {% for product in search_result_product %}
   <div class='card--border card--border--gray'>
@@ -30,7 +30,7 @@
   {% endfor %}
 </div>
 
-<p class='title--content--2'>recipes</p>
+<p class='title--content--2'>검색된 레시피</p>
 <div class='owl-carousel owl-theme recipes-owl'>
     {% for recipe in search_result_recipe %}
     <div class='card--border card--border--gray'>
