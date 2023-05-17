@@ -30,6 +30,17 @@ def index(request):
     }
     return render(request, 'products/index.html', content)
 
+
+def filter_products(request, category):
+    products = Product.objects.filter(category=category)[::-1]
+    new_products = Product.objects.filter(category=category).filter(is_new=True)[::-1]
+    content ={
+        'products':products,
+        'new_products':new_products,
+    }
+    return render(request, 'products/index.html', content)
+
+
 @login_required
 def create(request):
     if request.method == 'POST':
@@ -57,7 +68,6 @@ def detail(request, product_pk):
     tags = product.tags.all()
     recipes = product.used_recipes.all().order_by('-like_users')
 
-
     session_key = 'product_{}_hits'.format(product_pk)
     if not request.session.get(session_key):
         product.hits += 1
@@ -72,6 +82,7 @@ def detail(request, product_pk):
         'recipes': recipes
     }
     return render(request,'products/detail.html', context)
+
 
 @login_required
 def update(request, product_pk):
@@ -92,12 +103,14 @@ def update(request, product_pk):
     }
     return render(request,'products/update.html',context)
 
+
 @login_required
 def delete(request,product_pk):
     product = Product.objects.get(pk=product_pk)
     if request.user == product.user:
         product.delete()
     return redirect('products:index')
+
 
 @login_required
 def likes(request, product_pk):
@@ -158,7 +171,6 @@ def comment_delete(request, product_pk, comment_pk):
         return JsonResponse({'status': 'ok'})
     else:
         return JsonResponse({'status': 'error', 'message': '권한이 없습니다.'})
-
 
 
 @login_required

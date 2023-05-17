@@ -6,12 +6,14 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 category_choices = (
+    ('간편 식사', '간편 식사'),
+    ('과자류', '과자류'),
+    ('냉동 식품', '냉동 식품'),
+    ('빵', '빵'),
+    ('아이스크림', '아이스크림'),
     ('음료', '음료'),
-    ('', ''),
-    ('', ''),
-    ('', ''),
-    ('', ''),
 )
+
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
