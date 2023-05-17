@@ -12,10 +12,16 @@ from django.core.files import File
 from io import BytesIO
 from products.models import Product
 from django.core.paginator import Paginator
+from django.db.models import Count, Avg, Sum
 
 # Create your views here.
 def index(request):
     recipes = Recipe.objects.all()
+    recipes_like = Recipe.objects.annotate(num_likes=Count('like_users')).order_by('-num_likes')[:20]
+    recipes_rating = Recipe.objects.annotate(avg_rating=Avg('review__rating')).order_by('-avg_rating')[:20]
+    recipes_newproduct = Recipe.objects.filter(used_products__is_new=True).distinct()[:20]
+    recipes_pricehigh = Recipe.objects.annotate(total_price=Sum('used_products__price')).order_by('-total_price')[:20]
+    recipes_pricelow = Recipe.objects.annotate(total_price=Sum('used_products__price')).order_by('total_price')[:20]
 
     # 페이지 네이터 관련 항목
     page= request.GET.get('page', '1')
@@ -25,6 +31,11 @@ def index(request):
 
     context = {
         'recipes': recipes,
+        'recipes_like': recipes_like,
+        'recipes_rating': recipes_rating,
+        'recipes_newproduct': recipes_newproduct,
+        'recipes_pricehigh': recipes_pricehigh,
+        'recipes_pricelow': recipes_pricelow,
         'recipes_page': page_obj,
     }
     return render(request, 'recipes/index.html', context)
