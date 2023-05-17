@@ -42,6 +42,17 @@ a {
   border-bottom: solid 1px var(--subtle-color);
 }
 
+.card--tag--border--recipe {
+  border-bottom: solid 1px var(--subtle-color);
+  display: flex;
+  justify-content: right;
+  color: var(--sub-color)
+}
+
+.card--tag--border--recipe > p {
+  margin: 0 10px 5px 10px;
+}
+
 .card--tag--background {
   background-color: var(--subtle-color);
 }
