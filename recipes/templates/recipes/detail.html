@@ -99,16 +99,16 @@
     <form action="{% url 'recipes:review_create' recipe.pk %}" method="POST" enctype="multipart/form-data">
       {% csrf_token %}
       {% comment %}  별점 입력 {% endcomment %}
-      <div class="star-rating star-rating--submit" data-rating="0">
+      <div class="d-flex star-rating star-rating--submit gap-0 justify-content-center" data-rating="0">
         {% comment %} <input type="hidden" name="rating" value="0"> {% endcomment %}
         <i class="bi bi-star-fill star filled" data-value="1"></i>
         <i class="bi bi-star-fill star" data-value="2"></i>
         <i class="bi bi-star-fill star" data-value="3"></i>
         <i class="bi bi-star-fill star" data-value="4"></i>
         <i class="bi bi-star-fill star" data-value="5"></i>
-        <div class="start-rating-descript">
-          <p>별을 클릭하여 리뷰를 평가해보세요</p>
-        </div>
+      </div>
+      <div class="start-rating-descript text-center">
+        <p>별을 클릭하여 리뷰를 평가해보세요</p>
       </div>
       {% comment %} review 본문 작성 {% endcomment %}
       <div class="comment-content--container">
