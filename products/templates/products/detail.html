@@ -75,7 +75,7 @@
 {% comment %} 인기순 관련 레시피 정렬 {% endcomment %}
 <h5 class='mt-5 mb-3'>연관 레시피 <span class='comment--color'>{{recipes|length}}</span></h5>
   <div class='owl-carousel owl-theme' >
-  {% for recipe  in recipes %}
+  {% for recipe  in  product.used_recipes.all %}
   <div class='card--border card--border--gray'>
     <a href="{% url 'recipes:detail' recipe.pk %}">
       <img src="{{recipe.thumbnail.url}}" class='rounded' alt="img">  
