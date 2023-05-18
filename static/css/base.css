@@ -156,16 +156,3 @@ footer {
   font-style: normal;
 }
 
-body::-webkit-scrollbar {
-  width: 8px; 
-}
-
-body::-webkit-scrollbar-thumb {
-  height: 30%; 
-  background: var(--main-color);
-  border-radius: 10px;
-}
-
-body::-webkit-scrollbar-track {
-  background:   var(--subtle-color);
-}
