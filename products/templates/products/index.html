@@ -8,26 +8,40 @@
 <link rel="stylesheet" href="{% static 'css/products_index.css' %}">
 <link rel="stylesheet" href="{% static 'css/store.css' %}">
 <style>
+  .btn_active {
+    font-weight: bold;
+    border-bottom: solid 1px var(--main-color);
+  }
+
+
 </style>
 {% endblock style %}
 
 {% block content %}
 <div class='container main--padding'>
-  <div class='mt-3'> 
-    <a href="{% url 'products:create' %}" class='button--color p-3 rounded'>
-      <i class="bi bi-cloud-plus me-2 ms-1"></i>
-      새 상품 등록하러 가기
-      </a>
-  </div>
-  <ul class="d-flex mt-5">
-    <a href="{% url 'products:index' %}"><li class="btn filter">모두 보기</li></a>
-    <a href="{% url 'products:filter_products' '간편 식사' %}"><li class="btn filter">간편 식사</li></a>
-    <a href="{% url 'products:filter_products' '과자류' %}"><li class="btn filter">과자류</li></a>
-    <a href="{% url 'products:filter_products' '냉동 식품' %}"><li class="btn filter">냉동 식품</li></a>
-    <a href="{% url 'products:filter_products' '빵' %}"><li class="btn filter">빵</li></a>
-    <a href="{% url 'products:filter_products' '아이스크림' %}"><li class="btn filter">아이스크림</li></a>
-    <a href="{% url 'products:filter_products' '음료' %}"><li class="btn filter">음료</li></a>
-  </ul>
+  {% if request.user.is_superuser %}
+    <div class='mt-3 mb-5'> 
+      <a href="{% url 'products:create' %}" class='button--color p-3 rounded'>
+        <i class="bi bi-cloud-plus me-2 ms-1"></i>
+        새 상품 등록하러 가기
+        </a>
+    </div>
+  {% endif %}
+  <ul class="d-flex mt-2 justify-content-center">
+    {% comment %} <a href="{% url 'products:index' %}"><li class="btn ">전체 보기</li></a> {% endcomment %}
+    {% url 'products:index' as index_url %}
+    <a href="{% url 'products:index' %}" class='d-flex'>
+      <li class="btn {% if request.path == index_url %}btn_active{% endif %}">전체 보기</li>
+    </a>
+    <a href="{% url 'products:filter_products' '간편식사' %}">
+      <li class="btn {% if '/간편식사/' in request.path %}btn_active{% endif %}">간편 식사</li></a>
+      
+      <a href="{% url 'products:filter_products' '과자류' %}"><li class="btn {% if '/과자류/' in request.path %}btn_active{% endif %}">과자류</li></a>
+      <a href="{% url 'products:filter_products' '냉동식품' %}"><li class="btn  {% if '/냉동식품/' in request.path %}btn_active{% endif %}">냉동식품</li></a>
+      <a href="{% url 'products:filter_products' '빵' %}"><li class="btn  {% if '/빵/' in request.path %}btn_active{% endif %}">빵</li></a>
+      <a href="{% url 'products:filter_products' '아이스크림' %}"><li class="btn {% if '/아이스크림/' in request.path %}btn_active{% endif %}">아이스크림</li></a>
+      <a href="{% url 'products:filter_products' '음료' %}"><li class="btn btn--nomal {% if '/음료/' in request.path %}btn_active{% endif %}">음료</li></a>
+    </ul>
   
   <p class='title--content--2 mt-5'>신상품</p>
     <div class='owl-carousel owl-theme new_owl-carousel' >
@@ -198,7 +212,7 @@
       {% for page_number in   products.paginator.page_range %}
         {% if page_number >=  products.number|add:-2 and page_number <=   products.number|add:2 %}
           {% if page_number ==  products.number %}
-            <li class="page-item active" aria-current="page">
+            <li class="page-item btn_active" aria-current="page">
               <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
             </li>
           {% else %}
