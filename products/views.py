@@ -82,7 +82,8 @@ def detail(request, product_pk):
     comment_form = CommentForm()
     comments = product.comment_set.all()
     tags = product.tags.all()
-    recipes = product.used_recipes.all().order_by('-like_users')
+    products = Product.objects.all().order_by('like_users')
+   
 
     session_key = 'product_{}_hits'.format(product_pk)
     if not request.session.get(session_key):
@@ -95,7 +96,7 @@ def detail(request, product_pk):
         'comment_form' : comment_form,
         'comments' : comments,
         'tags': tags,
-        'recipes': recipes
+        'products': products,
     }
     return render(request,'products/detail.html', context)
 
@@ -115,7 +116,7 @@ def update(request, product_pk):
         form = ProductForm(instance=product)
     context = {
         'product':product,
-        'form' : form
+        'form' : form,
     }
     return render(request,'products/update.html',context)
 

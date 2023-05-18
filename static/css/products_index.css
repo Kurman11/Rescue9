@@ -63,13 +63,16 @@ a {
 }
 
 .card--name--box {
-  width: 120px;
+  width: 100%;
   font-size: 20px;
   margin-bottom : 20px;
   padding-left: 10px;
 }
 
 .card--name{
+  display: block;
+  overflow: hidden;
+  width: 100%;
   white-space: nowrap;
   text-overflow: ellipsis;
 }

@@ -39,6 +39,7 @@
       <a href="{% url 'products:filter_products' '과자류' %}"><li class="btn {% if '/과자류/' in request.path %}btn_active{% endif %}">과자류</li></a>
       <a href="{% url 'products:filter_products' '냉동식품' %}"><li class="btn  {% if '/냉동식품/' in request.path %}btn_active{% endif %}">냉동식품</li></a>
       <a href="{% url 'products:filter_products' '빵' %}"><li class="btn  {% if '/빵/' in request.path %}btn_active{% endif %}">빵</li></a>
+      <a href="{% url 'products:filter_products' '식재료' %}"><li class="btn  {% if '/식재료/' in request.path %}btn_active{% endif %}">식재료</li></a>
       <a href="{% url 'products:filter_products' '아이스크림' %}"><li class="btn {% if '/아이스크림/' in request.path %}btn_active{% endif %}">아이스크림</li></a>
       <a href="{% url 'products:filter_products' '음료' %}"><li class="btn btn--nomal {% if '/음료/' in request.path %}btn_active{% endif %}">음료</li></a>
     </ul>
@@ -63,7 +64,9 @@
           </div>  
           <div class='mt-1'>
             {% for tag in product.tags.all %}
-              <span class='me-2'>#{{tag}}</span>
+              {% if forloop.counter <= 2 %}
+                <span class='me-2'>#{{tag}}</span>
+              {% endif %}
             {% endfor %}
           </div>
         </a>  
@@ -92,7 +95,9 @@
         </div>
         <div>
           {% for tag in product.tags.all %}
-            <span class='me-2'>#{{tag}}</span>
+            {% if forloop.counter <= 2 %}
+              <span class='me-2'>#{{tag}}</span>
+             {% endif %}
           {% endfor %}
         </div>
       </a>  
@@ -121,7 +126,9 @@
           </div>
           <div>
             {% for tag in product.tags.all %}
-              <span class='me-2'>#{{tag}}</span>
+              {% if forloop.counter <= 2 %}
+                <span class='me-2'>#{{tag}}</span>
+              {% endif %}
             {% endfor %}
           </div>
         </a>  
@@ -152,7 +159,9 @@
           </div>
           <div>
             {% for tag in product.tags.all %}
-              <span class='me-2'>#{{tag}}</span>
+              {% if forloop.counter <= 2 %}
+                <span class='me-2'>#{{tag}}</span>
+              {% endif %}
             {% endfor %}
           </div>
         </a>  
@@ -184,7 +193,9 @@
             </div>
             <div>
               {% for tag in product.tags.all %}
-                <span class='me-2'>#{{tag}}</span>
+                {% if forloop.counter <= 2 %}
+                  <span class='me-2'>#{{tag}}</span>
+                {% endif %}
               {% endfor %}
             </div>
           </a>  

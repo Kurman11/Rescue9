@@ -9,6 +9,7 @@ category_choices = (
     ('간편식사', '간편 식사'),
     ('과자류', '과자류'),
     ('냉동식품', '냉동 식품'),
+    ('식재료', '식재료'),
     ('빵', '빵'),
     ('아이스크림', '아이스크림'),
     ('음료', '음료'),
@@ -69,7 +70,7 @@ class ProductForm(forms.ModelForm):
             attrs={
                 'class': 'form-control',
                 'id' : 'price',
-                'step': '100',
+                'step': '50',
             }
         )
     )

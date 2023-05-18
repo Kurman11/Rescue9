@@ -1,0 +1,2978 @@
+[
+{
+    "model": "accounts.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$260000$U5Vs6cxKhXGElqVQwa4nCz$kOGbXoTaSQrRurVZhyJ+CNrb+IHsX7k6X5xA9eJ8A64=",
+        "last_login": "2023-05-18T05:24:11.062Z",
+        "is_superuser": true,
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2023-05-18T00:26:32.693Z",
+        "nickname": "",
+        "image": "",
+        "groups": [],
+        "user_permissions": [],
+        "followings": []
+    }
+},
+{
+    "model": "accounts.user",
+    "pk": 2,
+    "fields": {
+        "password": "pbkdf2_sha256$260000$DwDSXfcc8NqMD8VSWgSE7J$RbKPMpPTOXBw1zYhfT/a0XXgP/JHDM1wKYgIL6nbfcw=",
+        "last_login": "2023-05-18T05:01:55.333Z",
+        "is_superuser": false,
+        "username": "test",
+        "first_name": "",
+        "last_name": "",
+        "email": "adfs@adad.kr",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2023-05-18T04:31:53.096Z",
+        "nickname": "test",
+        "image": "users/dev-jeans.jpg",
+        "groups": [],
+        "user_permissions": [],
+        "followings": [
+            6
+        ]
+    }
+},
+{
+    "model": "accounts.user",
+    "pk": 3,
+    "fields": {
+        "password": "pbkdf2_sha256$260000$XMjAjxAkRLrwmSKIaID2yf$NeD01OJ25o2PnpLqcuCafO29Qs0y1BHgGY5wzDJjqgw=",
+        "last_login": "2023-05-18T04:44:00.519Z",
+        "is_superuser": false,
+        "username": "yong",
+        "first_name": "",
+        "last_name": "",
+        "email": "yong@abc.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2023-05-18T04:32:58.027Z",
+        "nickname": "kurman11",
+        "image": "users/강아지.jpg",
+        "groups": [],
+        "user_permissions": [],
+        "followings": [
+            2,
+            4,
+            5,
+            6
+        ]
+    }
+},
+{
+    "model": "accounts.user",
+    "pk": 4,
+    "fields": {
+        "password": "pbkdf2_sha256$260000$ogq1mYdc2FoTakYilVMdFy$A0sKlLDO1e2QlkMXlS47GSDNUtY/P5dhhS15PTBKfwM=",
+        "last_login": "2023-05-18T04:43:14.774Z",
+        "is_superuser": false,
+        "username": "illson97",
+        "first_name": "",
+        "last_name": "",
+        "email": "gone_789@naver.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2023-05-18T04:33:45.278Z",
+        "nickname": "돌돌이",
+        "image": "users/집앞_고냥이2.jpg",
+        "groups": [],
+        "user_permissions": [],
+        "followings": [
+            3,
+            6
+        ]
+    }
+},
+{
+    "model": "accounts.user",
+    "pk": 5,
+    "fields": {
+        "password": "pbkdf2_sha256$260000$53oFKfYQSQDY3hCePLagN7$Hr5brIBtnu9s0DFM2sj+4eTO9haGJSj+6U2pVO9+SzA=",
+        "last_login": "2023-05-18T04:52:22.234Z",
+        "is_superuser": false,
+        "username": "gktjd425",
+        "first_name": "",
+        "last_name": "",
+        "email": "gktjd425@naver.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2023-05-18T04:34:21.674Z",
+        "nickname": "편도리",
+        "image": "",
+        "groups": [],
+        "user_permissions": [],
+        "followings": []
+    }
+},
+{
+    "model": "accounts.user",
+    "pk": 6,
+    "fields": {
+        "password": "pbkdf2_sha256$260000$Odx84U1P0quU4REMXcVFzO$dviIsSOl0HysJNqLgZEALKktvULRwu6vZbxhFngeXVc=",
+        "last_login": "2023-05-18T04:45:24.729Z",
+        "is_superuser": false,
+        "username": "hyndrome1",
+        "first_name": "",
+        "last_name": "",
+        "email": "hyndrome1@naver.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2023-05-18T04:42:01.107Z",
+        "nickname": "편돌이홍얍",
+        "image": "users/토르발즈.jpg",
+        "groups": [],
+        "user_permissions": [],
+        "followings": []
+    }
+},
+{
+    "model": "products.conveniencestore",
+    "pk": 1,
+    "fields": {
+        "name": "GS25"
+    }
+},
+{
+    "model": "products.conveniencestore",
+    "pk": 2,
+    "fields": {
+        "name": "CU"
+    }
+},
+{
+    "model": "products.conveniencestore",
+    "pk": 3,
+    "fields": {
+        "name": "Seven Eleven"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 1,
+    "fields": {
+        "user": 1,
+        "name": "오!감자 치즈그라탕맛",
+        "price": 1400,
+        "category": "과자류",
+        "hits": 1,
+        "photo": "images/product/오!감자 치즈그라탕맛/KakaoTalk_20220615_161111596.jpg",
+        "is_new": false,
+        "content": "감자스낵시장에 펠렛(원료를 성형 건조한 후 튀겨낸 제품)이라는 새로운 개념을 선보인 맛과 모양이 범상치 않은 특이한 감자스낵",
+        "like_users": [],
+        "convenience_stores": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 2,
+    "fields": {
+        "user": 1,
+        "name": "정통 크림빵",
+        "price": 1500,
+        "category": "빵",
+        "hits": 1,
+        "photo": "images/product/정통 크림빵/cream-product-001.jpg",
+        "is_new": false,
+        "content": "구멍이 송송 뚤린 부드러운 빵 생지 사이에 아련한 추억의 크림맛을 그대로 살린 그리운 크림이 듬뿍 담긴 제품",
+        "like_users": [],
+        "convenience_stores": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 3,
+    "fields": {
+        "user": 1,
+        "name": "코코팜피치핑크복숭아240ML",
+        "price": 1300,
+        "category": "음료",
+        "hits": 2,
+        "photo": "images/product/코코팜피치핑크복숭아240ML/코코팜피치핑크복숭아240ML.jpg",
+        "is_new": false,
+        "content": "복숭아 주스에 나타드 코코를 더해 씹는 재미를 더한 코코팜피치캔",
+        "like_users": [],
+        "convenience_stores": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 4,
+    "fields": {
+        "user": 1,
+        "name": "서울)체다치즈3매입",
+        "price": 2000,
+        "category": "식재료",
+        "hits": 1,
+        "photo": "images/product/서울)체다치즈3매입/8801115691181.jpg",
+        "is_new": false,
+        "content": "누구나 좋아하는 고소하고 부드러운 체다 슬라이스 치즈, 간편한 3개 용량의 서울우유 체다치즈",
+        "like_users": [],
+        "convenience_stores": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 5,
+    "fields": {
+        "user": 1,
+        "name": "연양갱",
+        "price": 900,
+        "category": "과자류",
+        "hits": 3,
+        "photo": "images/product/연양갱/acb92e4272bcd.jpg",
+        "is_new": false,
+        "content": "1945년부터 만들어온 연양갱의 참맛! 할아버지, 할머니, 아빠, 엄마도 먹어온 '원조'연양갱 팥이 듬뿍 들어있고 타우린이 함유된 쫄깃한 연양갱",
+        "like_users": [],
+        "convenience_stores": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 6,
+    "fields": {
+        "user": 1,
+        "name": "유어스)하늘가득자몽330ML",
+        "price": 2100,
+        "category": "음료",
+        "hits": 1,
+        "photo": "images/product/유어스)하늘가득자몽330ML/유어스하늘가득자몽330ML.jpg",
+        "is_new": false,
+        "content": "붉은 과육을 가진 자몽 베이스로 만든 달콤상큼한 에이드",
+        "like_users": [],
+        "convenience_stores": [
+            1
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 7,
+    "fields": {
+        "user": 1,
+        "name": "찰떡아이스",
+        "price": 2200,
+        "category": "아이스크림",
+        "hits": 1,
+        "photo": "images/product/찰떡아이스/3f82a0310feb4a00cc10d495aae61796.jpg",
+        "is_new": false,
+        "content": "찰떡아이스",
+        "like_users": [],
+        "convenience_stores": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 8,
+    "fields": {
+        "user": 1,
+        "name": "불닭볶음면",
+        "price": 1250,
+        "category": "간편식사",
+        "hits": 1,
+        "photo": "images/product/불닭볶음면/불닭.jpg",
+        "is_new": false,
+        "content": "화끈한 불닭볶음소스와 고소한 김가루와 참깨를 즐길 수 있습니다.\r\n 대한민국 마니아 라면 TOP7중 가장 먹고 싶은 라면으로 선정!",
+        "like_users": [],
+        "convenience_stores": [
+            2
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 9,
+    "fields": {
+        "user": 1,
+        "name": "해태) 고향만두 415g",
+        "price": 5300,
+        "category": "냉동식품",
+        "hits": 1,
+        "photo": "images/product/해태) 고향만두 415g/사골만둣국-고향만두.jpeg",
+        "is_new": false,
+        "content": "언제나 당신 곁에 고향만두 Since 1987!\r\n국산 돼지고기로 정성을 더한 고향만두!\r\n\r\n국산 돼지고기 사용으로 고기 잡내 NO!\r\n만두피에 콩가루를 첨가하여 고소함 UP!\r\n얇은 만두피로 풍부한 맛과 식감 up!",
+        "like_users": [],
+        "convenience_stores": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 10,
+    "fields": {
+        "user": 1,
+        "name": "솔의눈",
+        "price": 1300,
+        "category": "음료",
+        "hits": 1,
+        "photo": "images/product/솔의눈/8801056831011.jpg",
+        "is_new": false,
+        "content": "상쾌한 솔향이 가득한 솔의눈 캔",
+        "like_users": [],
+        "convenience_stores": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 11,
+    "fields": {
+        "user": 1,
+        "name": "청포도에이드",
+        "price": 1100,
+        "category": "음료",
+        "hits": 2,
+        "photo": "images/product/청포도에이드/GD_8809184809087_002.jpg",
+        "is_new": true,
+        "content": "청포도에이드",
+        "like_users": [],
+        "convenience_stores": [
+            1
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 12,
+    "fields": {
+        "user": 1,
+        "name": "삼양)불닭볶음면컵",
+        "price": 1800,
+        "category": "간편식사",
+        "hits": 1,
+        "photo": "images/product/삼양)불닭볶음면컵/불닭.jpg",
+        "is_new": false,
+        "content": "1. 청양고추에 버금가는 화끈하고, 매운불닭소스에 면을 비벼먹는 형태의 상품입니다. \r\n2. 김가루가 가미되어 더욱 고소하고, 감칠맛나는 맛을 즐길 수 있습니다.",
+        "like_users": [],
+        "convenience_stores": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 13,
+    "fields": {
+        "user": 1,
+        "name": "농심)사리곰탕 큰사발면",
+        "price": 1400,
+        "category": "간편식사",
+        "hits": 5,
+        "photo": "images/product/사리곰탕 큰사발면/사골만둣국-사리곰탕_큰사발면.jpeg",
+        "is_new": false,
+        "content": "짜장 큰사발면과 튀김우동 큰사발면을 제외하면 매운 종류의 라면뿐이었던 컵라면계에 2001년 혜성처럼 등장한 맵지 않은 라면. \r\n초반에는 '맵지 않은 라면이 라면이냐?' 라는 시큰둥한 반응이 많았지만, \r\n이후 독서실족과 피시방족 등 음지에서 인기를 얻더니 어느 정도 평가가 올라간 컵라면계의 이단아!",
+        "like_users": [],
+        "convenience_stores": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 14,
+    "fields": {
+        "user": 1,
+        "name": "빙그레)통모짜스트링치즈",
+        "price": 1400,
+        "category": "간편식사",
+        "hits": 1,
+        "photo": "images/product/빙그레)통모짜스트링치즈/스트링치즈.jpg",
+        "is_new": false,
+        "content": "그냥 먹어도, 매운음식과 함께 먹어도 맛있는 스트링 치즈 신상품",
+        "like_users": [],
+        "convenience_stores": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 15,
+    "fields": {
+        "user": 1,
+        "name": "삼양)로제불닭납작당면",
+        "price": 3500,
+        "category": "간편식사",
+        "hits": 2,
+        "photo": "images/product/로제불닭납작당면/로제납작당면-로제납작.jpg",
+        "is_new": false,
+        "content": "로제 불닭을 납작당면으로 만나보세요!!\r\n\r\n매콤하고 달달한 맛을 쫀득한 납작당면과 함께!!",
+        "like_users": [],
+        "convenience_stores": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 16,
+    "fields": {
+        "user": 1,
+        "name": "공화춘",
+        "price": 1800,
+        "category": "간편식사",
+        "hits": 1,
+        "photo": "images/product/공화춘/공화춘.jpg",
+        "is_new": false,
+        "content": ".",
+        "like_users": [],
+        "convenience_stores": [
+            1
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 17,
+    "fields": {
+        "user": 1,
+        "name": "자이언트 라볶이",
+        "price": 3300,
+        "category": "간편식사",
+        "hits": 1,
+        "photo": "images/product/자이언트 라볶이/자이언트_라볶이.jpg",
+        "is_new": false,
+        "content": "다시 돌아온 자이언트 시리즈! 매콤한 라볶이 출시! 매콤한 소스와 쫄깃쫄깃한 떡과 라면사리 조화를 이룬 라볶이! 매콤한 국물에 삼각김밥과 치즈를 버무려 렌지업을 하면 자이언트 상품을 더욱 맛있게 즐길 수 있습니다.",
+        "like_users": [],
+        "convenience_stores": [
+            2
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 19,
+    "fields": {
+        "user": 1,
+        "name": "삼각)참치마요",
+        "price": 1000,
+        "category": "간편식사",
+        "hits": 1,
+        "photo": "images/product/삼각)참치마요/삼각참치마요.jpg",
+        "is_new": false,
+        "content": "참치마요가 들어가 있는 삼각 김밥",
+        "like_users": [],
+        "convenience_stores": [
+            1
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 20,
+    "fields": {
+        "user": 1,
+        "name": "스파게티컵",
+        "price": 1700,
+        "category": "간편식사",
+        "hits": 1,
+        "photo": "images/product/스파게티컵/스파게티_콕.jpg",
+        "is_new": false,
+        "content": "쫄깃하고 부드러운면에 로스팅된 토마토 소스의 새콤달톰한 맛이 살아있는 정통 스파게티 맛",
+        "like_users": [],
+        "convenience_stores": [
+            2
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 21,
+    "fields": {
+        "user": 1,
+        "name": "의성마늘핫바70g",
+        "price": 2400,
+        "category": "간편식사",
+        "hits": 2,
+        "photo": "images/product/의성마늘핫바70g/의성마늘_프랑크.jpg",
+        "is_new": false,
+        "content": "부드러운 육질에 의성마늘로 맛을 내어 첫맛도 끝맛도 깔끔하게 맛있는 프리미엄 프랑크. 천연돈장으로 만들어 톡 터지는 맛 속에 진하게 느껴지는 풍미가 일품인 상품입니다.",
+        "like_users": [],
+        "convenience_stores": [
+            2
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 22,
+    "fields": {
+        "user": 1,
+        "name": "롯데)의성마늘직꾸닭100g",
+        "price": 3000,
+        "category": "간편식사",
+        "hits": 1,
+        "photo": "images/product/롯데)의성마늘직꾸닭100g/로제납작당면-직꾸닭.jpg",
+        "is_new": false,
+        "content": "의성 마늘 직꾸닭\r\n직화맛 핫바",
+        "like_users": [],
+        "convenience_stores": [
+            3
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 23,
+    "fields": {
+        "user": 1,
+        "name": "CJ)오뎅 한그릇",
+        "price": 3000,
+        "category": "간편식사",
+        "hits": 2,
+        "photo": "images/product/CJ)오뎅 한그릇/튀김우동_오뎅-오뎅한그릇.jpg",
+        "is_new": false,
+        "content": "뜨끈한 오뎅탕\r\n이제 만들지 말고 전자레인지에 데워 드세요!",
+        "like_users": [],
+        "convenience_stores": [
+            1,
+            2
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 24,
+    "fields": {
+        "user": 1,
+        "name": "치즈파티모짜렐라",
+        "price": 1200,
+        "category": "식재료",
+        "hits": 3,
+        "photo": "images/product/치즈파티모짜렐라/뿌려뿌려_치즈파티.jpg",
+        "is_new": false,
+        "content": "기존 상품대비 100원 차이에 중량 33% UP,이익률 약 3% UP한 100% 자연치즈",
+        "like_users": [],
+        "convenience_stores": [
+            2
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 25,
+    "fields": {
+        "user": 1,
+        "name": "주)2XL스팸마요",
+        "price": 1400,
+        "category": "간편식사",
+        "hits": 2,
+        "photo": "images/product/주)2XL스팸마요/주2XL스팸마요.jpg",
+        "is_new": false,
+        "content": "[리뉴얼 출시!] 풍부한 스팸마요 토핑이 가득 들어있는 토핑왕 삼각김밥 일반삼각김밥 대비 1.5배 큰사이즈!!",
+        "like_users": [],
+        "convenience_stores": [
+            2
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 26,
+    "fields": {
+        "user": 1,
+        "name": "촉촉치즈후레쉬팡",
+        "price": 2300,
+        "category": "빵",
+        "hits": 3,
+        "photo": "images/product/촉촉치즈후레쉬팡/8801068086225.jpg",
+        "is_new": false,
+        "content": "겹겹이 촉촉한 빵 생지사이에 고소한 치즈롤",
+        "like_users": [],
+        "convenience_stores": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 27,
+    "fields": {
+        "user": 1,
+        "name": "리코타앤베리샐러드",
+        "price": 2900,
+        "category": "간편식사",
+        "hits": 3,
+        "photo": "images/product/리코타앤베리샐러드/GD_8809923410062_002.jpg",
+        "is_new": true,
+        "content": "리코타앤베리샐러드",
+        "like_users": [
+            2
+        ],
+        "convenience_stores": [
+            1
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 28,
+    "fields": {
+        "user": 1,
+        "name": "자이언트)떡볶이컵",
+        "price": 2400,
+        "category": "간편식사",
+        "hits": 2,
+        "photo": "images/product/자이언트)떡볶이컵/자이언트떡볶이.jpg",
+        "is_new": false,
+        "content": "[CU 단독]다시 돌아온 자이언트 시리즈! 매콤한 국물 떡볶이 출시! 매콤한 소스와 쫄깃쫄깃한 떡과 조화를 이루어 매콤한 국물이 특징인 자이언트 떡볶이! 매콤한 국물에 삼각김밥과 치즈를 버무려 렌지업을 하면 자이언트 상품을 더욱 맛있게 즐길 수 있습니다.",
+        "like_users": [],
+        "convenience_stores": [
+            2
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 29,
+    "fields": {
+        "user": 1,
+        "name": "요구르트플레인275ml",
+        "price": 2200,
+        "category": "음료",
+        "hits": 2,
+        "photo": "images/product/요구르트플레인275ml/플레인_요거트.jpg",
+        "is_new": false,
+        "content": ".",
+        "like_users": [],
+        "convenience_stores": [
+            1
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 30,
+    "fields": {
+        "user": 1,
+        "name": "농심)튀김 우동",
+        "price": 1400,
+        "category": "간편식사",
+        "hits": 2,
+        "photo": "images/product/농심)튀김 우동/튀김우동_오뎅-튀김우동.jpg",
+        "is_new": false,
+        "content": "농심 튀김 우동",
+        "like_users": [],
+        "convenience_stores": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 31,
+    "fields": {
+        "user": 1,
+        "name": "수박에이드",
+        "price": 1800,
+        "category": "음료",
+        "hits": 4,
+        "photo": "images/product/수박에이드/딸기_수박에이드-_수박에이드.jpg",
+        "is_new": false,
+        "content": "편의점 수박에이드",
+        "like_users": [],
+        "convenience_stores": [
+            2
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 32,
+    "fields": {
+        "user": 1,
+        "name": "델몬트오렌지400ml",
+        "price": 2200,
+        "category": "음료",
+        "hits": 1,
+        "photo": "images/product/델몬트오렌지400ml/오렌지주스.jpg",
+        "is_new": false,
+        "content": "남녀노소 즐길 수 있는 소용량 델몬트 주스",
+        "like_users": [],
+        "convenience_stores": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 33,
+    "fields": {
+        "user": 1,
+        "name": "서울우유) 딸기 우유",
+        "price": 1200,
+        "category": "음료",
+        "hits": 1,
+        "photo": "images/product/서울우유) 딸기 우유/딸기_수박에이드-서울우유.jpeg",
+        "is_new": false,
+        "content": "서울우유 딸기우유",
+        "like_users": [],
+        "convenience_stores": [
+            2
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 34,
+    "fields": {
+        "user": 1,
+        "name": "컵얼음180g",
+        "price": 700,
+        "category": "음료",
+        "hits": 9,
+        "photo": "images/product/컵얼음180g/얼음컵.jpg",
+        "is_new": true,
+        "content": "아이스드링크 180G 컵얼음(일반사이즈)",
+        "like_users": [
+            3,
+            6
+        ],
+        "convenience_stores": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 35,
+    "fields": {
+        "user": 1,
+        "name": "자이언트피자",
+        "price": 2700,
+        "category": "냉동식품",
+        "hits": 1,
+        "photo": "images/product/자이언트피자/자이언트피자.jpg",
+        "is_new": false,
+        "content": "20~30대 젊은 남성이 맛있고 배부르게 즐길 수 있는 풍부한 토핑! 고품질 대규격 냉장피자!",
+        "like_users": [],
+        "convenience_stores": [
+            2
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 36,
+    "fields": {
+        "user": 1,
+        "name": "마가렛트8입",
+        "price": 3300,
+        "category": "과자류",
+        "hits": 1,
+        "photo": "images/product/마가렛트8입/8801062873418.jpg",
+        "is_new": false,
+        "content": "마가렛트",
+        "like_users": [],
+        "convenience_stores": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 37,
+    "fields": {
+        "user": 1,
+        "name": "훈제닭다리180g",
+        "price": 4700,
+        "category": "간편식사",
+        "hits": 8,
+        "photo": "images/product/훈제닭다리180g/훈제닭다리.jpg",
+        "is_new": true,
+        "content": "훈연향이 그윽한 쫄깃쫄깃 통닭다리를 쉽고 간편하게 즐기실수 있습니다.",
+        "like_users": [
+            3
+        ],
+        "convenience_stores": [
+            2
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 38,
+    "fields": {
+        "user": 1,
+        "name": "몰티져스밀크사각",
+        "price": 3500,
+        "category": "과자류",
+        "hits": 3,
+        "photo": "images/product/몰티져스밀크사각/9300682036665.jpg",
+        "is_new": false,
+        "content": "화제의 상품! 종이케이스에 담긴 90g 중량의 몰티저스 초콜릿",
+        "like_users": [],
+        "convenience_stores": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 39,
+    "fields": {
+        "user": 1,
+        "name": "안주야불막창160g",
+        "price": 9500,
+        "category": "냉동식품",
+        "hits": 4,
+        "photo": "images/product/안주야불막창160g/안주야불막창160g.jpg",
+        "is_new": false,
+        "content": "간편하게 즐기는 전문점 안주메뉴",
+        "like_users": [],
+        "convenience_stores": [
+            2
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 40,
+    "fields": {
+        "user": 1,
+        "name": "CJ)비비고찐만두육즙불고기168g",
+        "price": 4400,
+        "category": "냉동식품",
+        "hits": 1,
+        "photo": "images/product/CJ)비비고찐만두육즙불고기168g/CJ비비고찐만두육즙불고기168g.png",
+        "is_new": false,
+        "content": "간편만두",
+        "like_users": [],
+        "convenience_stores": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 41,
+    "fields": {
+        "user": 1,
+        "name": "하겐다즈 바닐라파인트",
+        "price": 15900,
+        "category": "아이스크림",
+        "hits": 1,
+        "photo": "images/product/하겐다즈 바닐라파인트/3415581101294.jpg",
+        "is_new": false,
+        "content": "① 바닐라의 깊고 진한 부드러운 맛을 느낄 수 있는 아이스크림 ② 크림39%,탈지연유 25%, 바닐라0.65%",
+        "like_users": [],
+        "convenience_stores": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 43,
+    "fields": {
+        "user": 1,
+        "name": "베트남쌀국수컵",
+        "price": 2000,
+        "category": "간편식사",
+        "hits": 1,
+        "photo": "images/product/베트남쌀국수컵/베트남쌀국수.jpg",
+        "is_new": false,
+        "content": "푹 끓인 진한 쇠고기 육수와 특유의 향신료가 조화되어 전문점 수준의 베트남 쌀국수의 맛을 느낄수 있는 상품",
+        "like_users": [],
+        "convenience_stores": [
+            2
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 44,
+    "fields": {
+        "user": 1,
+        "name": "T.O.P 더블랙캔",
+        "price": 2400,
+        "category": "음료",
+        "hits": 1,
+        "photo": "images/product/T.O.P 더블랙캔/8801037087741.jpg",
+        "is_new": false,
+        "content": "고급 원두의 100% 맛과 향을 설탕과 크림없이 진한 그대로 즐길 수 있는 블랙커피",
+        "like_users": [],
+        "convenience_stores": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 45,
+    "fields": {
+        "user": 1,
+        "name": "폴바셋스윗밀크티",
+        "price": 2800,
+        "category": "음료",
+        "hits": 7,
+        "photo": "images/product/폴바셋스윗밀크티/8809505142633.jpg",
+        "is_new": true,
+        "content": "폴바셋 매장용 원재료를 동일하게 사용한 상품! 폴바셋 시그니처 스윗 밀크티의 진하고 달콤한 맛. 동종 최대 원유 함유를 통한 부드럽고 고소한 풍미. 세계 3대 우바산 홍차의 깊고 진한 풍미가 특징.",
+        "like_users": [
+            3
+        ],
+        "convenience_stores": [
+            2
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 46,
+    "fields": {
+        "user": 1,
+        "name": "까르보불닭큰컵",
+        "price": 1800,
+        "category": "간편식사",
+        "hits": 3,
+        "photo": "images/product/까르보불닭큰컵/550.jfif",
+        "is_new": false,
+        "content": "불닭브랜드의 고유의 불맛과 부드러운 크림 맛이 어우러진 볶음면",
+        "like_users": [
+            4
+        ],
+        "convenience_stores": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 47,
+    "fields": {
+        "user": 1,
+        "name": "하선정쌈무새콤200g",
+        "price": 1800,
+        "category": "식재료",
+        "hits": 4,
+        "photo": "images/product/하선정쌈무새콤200g/20210223180458415.webp",
+        "is_new": false,
+        "content": "한 입에 먹기 좋은 사이즈로 자를 필요없이 간편하고 깔끔하게 즐길 수 있습니다.",
+        "like_users": [],
+        "convenience_stores": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 48,
+    "fields": {
+        "user": 1,
+        "name": "농심)멸치칼국수",
+        "price": 1100,
+        "category": "간편식사",
+        "hits": 6,
+        "photo": "images/product/농심)멸치칼국수/농심멸치칼국수.jpg",
+        "is_new": false,
+        "content": "① 담백하고 시원한 전통 시골 칼국수 맛을 그대로 재현한 멸치 칼국수 ② 고향 어머니 손끝의 시원한 별미인 칼국수를 가정에서 간편하게 즐길 수 있게 만든 제품",
+        "like_users": [],
+        "convenience_stores": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 49,
+    "fields": {
+        "user": 1,
+        "name": "농심)사리곰탕면",
+        "price": 1200,
+        "category": "간편식사",
+        "hits": 8,
+        "photo": "images/product/농심)사리곰탕면/사리곰탕면.jpg",
+        "is_new": false,
+        "content": "① 구수하고 진한 국물맛의 사골곰탕면 ② 매운 맛을 잘 못드시는 분들과 부드럽고 구수한 국물맛을 좋아하시는 소비자에게 인기",
+        "like_users": [
+            3
+        ],
+        "convenience_stores": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 50,
+    "fields": {
+        "user": 1,
+        "name": "모찌롤(티라미수)",
+        "price": 3200,
+        "category": "빵",
+        "hits": 3,
+        "photo": "images/product/모찌롤(티라미수)/GD_8801068402902_002.jpg",
+        "is_new": false,
+        "content": ".",
+        "like_users": [],
+        "convenience_stores": [
+            1
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 51,
+    "fields": {
+        "user": 1,
+        "name": "누텔라",
+        "price": 5000,
+        "category": "빵",
+        "hits": 4,
+        "photo": "images/product/누텔라/0000080776468.jpg",
+        "is_new": false,
+        "content": "헤이즐넛, 저지방 코코아, 탈지분유 등의 엄선된 재료로 만들어진 특별한 맛의 경험! 전세계에서 사랑받는 헤이즐넛 코코아 스프레드 브랜드.",
+        "like_users": [
+            2,
+            3
+        ],
+        "convenience_stores": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 52,
+    "fields": {
+        "user": 1,
+        "name": "초코송이",
+        "price": 1000,
+        "category": "과자류",
+        "hits": 4,
+        "photo": "images/product/초코송이/8801117446901.jpg",
+        "is_new": false,
+        "content": "바삭바삭한 송이 비스킷과 부드러운 초콜릿의 고유한 풍미가 더해진 초콜릿 복합제품으로 1984년 출시이후 꾸준한 소비자의 사랑을 받아온 장수제품",
+        "like_users": [
+            6
+        ],
+        "convenience_stores": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 54,
+    "fields": {
+        "user": 1,
+        "name": "농심)카구리큰사발",
+        "price": 1800,
+        "category": "간편식사",
+        "hits": 5,
+        "photo": "images/product/농심)카구리큰사발/농심카구리큰사발.jpg",
+        "is_new": true,
+        "content": "Pc방에서 실제로 판매하는 인기메뉴를 컵라면으로 만든 신제품입니다",
+        "like_users": [
+            3
+        ],
+        "convenience_stores": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 55,
+    "fields": {
+        "user": 1,
+        "name": "서울)흰우유200ml",
+        "price": 1100,
+        "category": "음료",
+        "hits": 4,
+        "photo": "images/product/서울)흰우유200ml/서울흰우유200ml.jpg",
+        "is_new": false,
+        "content": "서울)흰우유200ml",
+        "like_users": [
+            3,
+            6
+        ],
+        "convenience_stores": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 56,
+    "fields": {
+        "user": 1,
+        "name": "덴마크피자치즈25g",
+        "price": 1200,
+        "category": "식재료",
+        "hits": 5,
+        "photo": "images/product/덴마크피자치즈25g/8801155737580.jpg",
+        "is_new": false,
+        "content": "떡볶이, 피자 등 어디에도 잘 어울리는 뿌려먹는 100% 자연치즈",
+        "like_users": [],
+        "convenience_stores": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 57,
+    "fields": {
+        "user": 1,
+        "name": "슈넬치킨",
+        "price": 5300,
+        "category": "냉동식품",
+        "hits": 5,
+        "photo": "images/product/슈넬치킨/고추참치_치킨마요-슈넬치킨.png",
+        "is_new": false,
+        "content": "슈넬치킨, 군대의 맛",
+        "like_users": [
+            6
+        ],
+        "convenience_stores": [
+            1
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 58,
+    "fields": {
+        "user": 1,
+        "name": "동원)고추참치",
+        "price": 4000,
+        "category": "식재료",
+        "hits": 4,
+        "photo": "images/product/동원)고추참치/고추참치_치킨마요-고추참치.jpg",
+        "is_new": false,
+        "content": "고추참치 맛있따.",
+        "like_users": [
+            6
+        ],
+        "convenience_stores": [
+            1,
+            2
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 59,
+    "fields": {
+        "user": 1,
+        "name": "CJ) 햇반 130g",
+        "price": 1700,
+        "category": "간편식사",
+        "hits": 5,
+        "photo": "images/product/CJ) 햇반 130g/고추참치_치킨마요-햇반.jpeg",
+        "is_new": false,
+        "content": "햇반 130",
+        "like_users": [],
+        "convenience_stores": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 60,
+    "fields": {
+        "user": 1,
+        "name": "오레오화이트크림",
+        "price": 2000,
+        "category": "과자류",
+        "hits": 6,
+        "photo": "images/product/오레오화이트크림/8801037088168.jpg",
+        "is_new": false,
+        "content": "100년간 전세계인의 사랑을 받아온 쿠키 브랜드로 가장 대표적 제품인 오레오화이트크림",
+        "like_users": [
+            3
+        ],
+        "convenience_stores": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 62,
+    "fields": {
+        "user": 1,
+        "name": "HEYROO계란샐러드",
+        "price": 2300,
+        "category": "간편식사",
+        "hits": 3,
+        "photo": "images/product/HEYROO계란샐러드/8805684005639.jpg",
+        "is_new": false,
+        "content": "[CU 단독]영양가득 계란이 가득 들어간 고소한 계란샐러드",
+        "like_users": [],
+        "convenience_stores": [
+            2
+        ]
+    }
+},
+{
+    "model": "products.comment",
+    "pk": 1,
+    "fields": {
+        "user": 2,
+        "product": 51,
+        "crated_at": "2023-05-18T05:09:23.482Z",
+        "updated_at": "2023-05-18T05:09:23.482Z",
+        "content": "이거 빵 아님?",
+        "like_users": []
+    }
+},
+{
+    "model": "recipes.recipe",
+    "pk": 1,
+    "fields": {
+        "user": 5,
+        "title": "오지치즈후라이",
+        "thumbnail_upload": "images/recipe/thumbnail/오지치즈후라이/31792_1506661191_Ej7uPLFo.jpg",
+        "thumbnail_crop": "thumbnail_crop/thumbnail_crop/31792_1506661191_Ej7uPLFo.jpg.jpg",
+        "hits": 11,
+        "content": "<p style=\"margin-left:240px;\"><img class=\"image\" src=\"/media/31792_1506661190_l3a2BZPE.jpg\"></p><p style=\"margin-left:520px;\">오감자와 치즈를를 준비해 줍니다.</p><figure class=\"image\"><img src=\"/media/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202023-05-18%20094528.png\"></figure><p style=\"margin-left:520px;\">접시 위에 오감자를 올려줍니다.</p><p>&nbsp;</p><p>&nbsp;</p><figure class=\"image\"><img src=\"/media/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202023-05-18%20094637.png\"></figure><p style=\"margin-left:560px;\">치즈를 위에 올려줍니다.</p><p style=\"margin-left:560px;\">전자레인지에 30초 찡하면~</p><figure class=\"image\"><img src=\"/media/31792_1506661191_Ej7uPLFo.jpg\"></figure><p style=\"margin-left:560px;\">짠! 간단하게 완성!</p>",
+        "created_at": "2023-05-18T00:48:07.585Z",
+        "updated_at": "2023-05-18T05:03:13.585Z",
+        "convenience_stores": [
+            1,
+            2,
+            3
+        ],
+        "like_users": [
+            6
+        ],
+        "used_products": [
+            1,
+            4
+        ]
+    }
+},
+{
+    "model": "recipes.recipe",
+    "pk": 2,
+    "fields": {
+        "user": 5,
+        "title": "코코 자몽에이드",
+        "thumbnail_upload": "images/recipe/thumbnail/코코 자몽에이/코코자몽에이드_1.jpg",
+        "thumbnail_crop": "thumbnail_crop/thumbnail_crop/코코자몽에이드_1.jpg.jpg",
+        "hits": 9,
+        "content": "<p><span class=\"text-big\">얼음을 채워준 잔에 잘 흔들어준 코코팜을 반 정도 채워준다</span></p><figure class=\"image image-style-align-center image_resized\" style=\"width:44.52%;\"><img src=\"/media/image.png\"></figure><p><span class=\"text-big\">자몽에이드를 부어준다 1:1 비율</span></p><figure class=\"image image_resized\" style=\"width:43.29%;\"><img src=\"/media/image_pEQEStX.png\"></figure><p><span class=\"text-big\">코코팜이 자몽 특유의 쌉사름한 맛을 줄여줘 맛있게 먹을 수 있다!</span><br>&nbsp;</p><figure class=\"image image-style-align-center image_resized\" style=\"width:54.58%;\"><img src=\"/media/image_QCmnZml.png\"></figure>",
+        "created_at": "2023-05-18T00:49:08.960Z",
+        "updated_at": "2023-05-18T04:59:18.089Z",
+        "convenience_stores": [
+            1
+        ],
+        "like_users": [
+            4
+        ],
+        "used_products": [
+            3,
+            6
+        ]
+    }
+},
+{
+    "model": "recipes.recipe",
+    "pk": 3,
+    "fields": {
+        "user": 5,
+        "title": "모히또에서 솔의눈 한 잔",
+        "thumbnail_upload": "images/recipe/thumbnail/모히또에서 솔의눈 한 잔/5장.jpg",
+        "thumbnail_crop": "thumbnail_crop/thumbnail_crop/5장.jpg.jpg",
+        "hits": 10,
+        "content": "<figure class=\"image\"><img src=\"/media/4%EC%9E%A5.jpg\"></figure><p style=\"margin-left:400px;\">얼음 컵에 솔의 눈과 청포도 에이드를 반씩 넣어줍니다</p><p style=\"margin-left:560px;\">&nbsp;</p><figure class=\"image\"><img src=\"/media/5%EC%9E%A5_zr0SoNY.jpg\"></figure><p style=\"margin-left:560px;\">간단하게 모히또 완성~</p>",
+        "created_at": "2023-05-18T01:01:40.155Z",
+        "updated_at": "2023-05-18T04:51:25.087Z",
+        "convenience_stores": [
+            1
+        ],
+        "like_users": [
+            3
+        ],
+        "used_products": [
+            10,
+            11
+        ]
+    }
+},
+{
+    "model": "recipes.recipe",
+    "pk": 4,
+    "fields": {
+        "user": 5,
+        "title": "불닭볶음밥",
+        "thumbnail_upload": "images/recipe/thumbnail/불닭볶음밥/불닭볶음밥_1.jpg",
+        "thumbnail_crop": "thumbnail_crop/thumbnail_crop/불닭볶음밥_1.jpg.jpg",
+        "hits": 8,
+        "content": "<p style=\"-webkit-font-smoothing:antialiased !important;-webkit-text-stroke-width:0px;background-color:rgb(250, 250, 250);border-width:0px;box-sizing:border-box;color:rgb(102, 102, 102);font-family:Pretendard, &quot;Segoe UI&quot;, -apple-system, BlinkMacSystemFont, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-feature-settings:inherit;font-kerning:inherit;font-optical-sizing:inherit;font-size:16px;font-stretch:inherit;font-style:normal;font-variant-alternates:inherit;font-variant-caps:normal;font-variant-east-asian:inherit;font-variant-ligatures:normal;font-variant-numeric:inherit;font-variation-settings:inherit;font-weight:300;letter-spacing:normal;line-height:1.5;margin:0px;orphans:2;padding:0px;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;vertical-align:baseline;white-space:normal;widows:2;word-break:break-word;word-spacing:0px;\">불닭 컵라면, 삼각김밥, 스트링치즈<br>원래 불닭의 완성은 불닭볶음밥이징~!<br>초간단 레시피로 밥 한끼를 뚝딱 할 수 이따 &gt;.&lt;</p><figure class=\"image\"><img src=\"/media/image_5lPNfEY.png\"></figure><article class=\"dq-post-detail-content-card\" style=\"-webkit-font-smoothing:antialiased !important;-webkit-text-stroke-width:0px;border-width:0px;box-sizing:border-box;color:rgb(51, 51, 51);display:block;font-family:Pretendard, &quot;Segoe UI&quot;, -apple-system, BlinkMacSystemFont, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-feature-settings:inherit;font-kerning:inherit;font-optical-sizing:inherit;font-size:0px;font-stretch:inherit;font-style:normal;font-variant-alternates:inherit;font-variant-caps:normal;font-variant-east-asian:inherit;font-variant-ligatures:normal;font-variant-numeric:inherit;font-variation-settings:inherit;font-weight:400;letter-spacing:normal;line-height:inherit;margin:0px auto;max-width:767px;orphans:2;padding:0px;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;vertical-align:baseline;white-space:normal;widows:2;word-break:break-word;word-spacing:0px;\"><div class=\"dq-post-detail-content-card-text m0-0-8\" style=\"-webkit-font-smoothing:antialiased !important;border-width:0px;box-sizing:border-box;font:inherit;margin:0px 0px 64px;padding:0px;vertical-align:baseline;word-break:break-word;\"><h4 style=\"-webkit-font-smoothing:antialiased !important;border-width:0px;box-sizing:border-box;color:rgb(102, 102, 102);font-family:inherit;font-feature-settings:inherit;font-kerning:inherit;font-optical-sizing:inherit;font-size:16px;font-stretch:inherit;font-style:inherit;font-variant:inherit;font-variation-settings:inherit;font-weight:300;line-height:1.5;margin:0px;padding:0px;vertical-align:baseline;word-break:break-word;\">먹기좋게 면은 가위로 미리 잘라주는 센스 ㅎㅅㅎ<br>불닭볶음면에 들어있는 김가루까지 뿌려주면 완벽 그자체..♥<img src=\"/media/image_hPtFkNd.png\"></h4><article class=\"dq-post-detail-content-card\" style=\"-webkit-font-smoothing:antialiased !important;-webkit-text-stroke-width:0px;border-width:0px;box-sizing:border-box;color:rgb(51, 51, 51);display:block;font-family:Pretendard, &quot;Segoe UI&quot;, -apple-system, BlinkMacSystemFont, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-feature-settings:inherit;font-kerning:inherit;font-optical-sizing:inherit;font-size:0px;font-stretch:inherit;font-style:normal;font-variant-alternates:inherit;font-variant-caps:normal;font-variant-east-asian:inherit;font-variant-ligatures:normal;font-variant-numeric:inherit;font-variation-settings:inherit;font-weight:400;letter-spacing:normal;line-height:inherit;margin:0px auto;max-width:767px;orphans:2;padding:0px;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;vertical-align:baseline;white-space:normal;widows:2;word-break:break-word;word-spacing:0px;\"><div class=\"dq-post-detail-content-card-text m0-0-8\" style=\"-webkit-font-smoothing:antialiased !important;border-width:0px;box-sizing:border-box;font:inherit;margin:0px 0px 64px;padding:0px;vertical-align:baseline;word-break:break-word;\"><h4 style=\"-webkit-font-smoothing:antialiased !important;border-width:0px;box-sizing:border-box;color:rgb(102, 102, 102);font-family:inherit;font-feature-settings:inherit;font-kerning:inherit;font-optical-sizing:inherit;font-size:16px;font-stretch:inherit;font-style:inherit;font-variant:inherit;font-variation-settings:inherit;font-weight:300;line-height:1.5;margin:0px;padding:0px;vertical-align:baseline;word-break:break-word;\">와..치즈 좀 봐 ㅠ.ㅠ 쭉쭉 잘 늘어난당 bb<br>누구나 해 먹을 수 있는 간단 레시피 추천이용 ㅎ.ㅎ</h4><figure class=\"image\"><img src=\"/media/image_IIjuCyH.png\"></figure></div></article></div></article><article class=\"dq-post-detail-content-card\" style=\"-webkit-font-smoothing:antialiased !important;-webkit-text-stroke-width:0px;border-width:0px;box-sizing:border-box;color:rgb(51, 51, 51);display:block;font-family:Pretendard, &quot;Segoe UI&quot;, -apple-system, BlinkMacSystemFont, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-feature-settings:inherit;font-kerning:inherit;font-optical-sizing:inherit;font-size:0px;font-stretch:inherit;font-style:normal;font-variant-alternates:inherit;font-variant-caps:normal;font-variant-east-asian:inherit;font-variant-ligatures:normal;font-variant-numeric:inherit;font-variation-settings:inherit;font-weight:400;letter-spacing:normal;line-height:inherit;margin:0px auto;max-width:767px;orphans:2;padding:0px;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;vertical-align:baseline;white-space:normal;widows:2;word-break:break-word;word-spacing:0px;\"><div class=\"dq-post-detail-content-card-img\" style=\"-webkit-font-smoothing:antialiased !important;border-width:0px;box-sizing:border-box;font:inherit;height:auto;margin:16px auto 0px;max-width:560px;padding:0px;position:relative;vertical-align:baseline;width:560px;word-break:break-word;\"><br>&nbsp;</div></article>",
+        "created_at": "2023-05-18T01:04:52.256Z",
+        "updated_at": "2023-05-18T04:57:03.722Z",
+        "convenience_stores": [
+            1
+        ],
+        "like_users": [
+            4
+        ],
+        "used_products": [
+            8,
+            14,
+            19
+        ]
+    }
+},
+{
+    "model": "recipes.recipe",
+    "pk": 5,
+    "fields": {
+        "user": 5,
+        "title": "편의점 재료로 만드는 찰떡크림빵",
+        "thumbnail_upload": "images/recipe/thumbnail/편의점 재료로 만드는 찰떡크림빵/화면_캡처_2023-05-18_095120.jpg",
+        "thumbnail_crop": "thumbnail_crop/thumbnail_crop/화면_캡처_2023-05-18_095120.jpg.jpg",
+        "hits": 7,
+        "content": "<p style=\"text-align:center;\"><span style=\"color:hsl(0,0%,0%);\"><span style=\"-webkit-text-stroke-width:0px;display:inline !important;float:none;font-family:&quot;Noto Sans KR&quot;, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">편의점재료로 만드는 꿀조합</span></span><br><br><span style=\"color:hsl(0,0%,0%);\"><span style=\"-webkit-text-stroke-width:0px;display:inline !important;float:none;font-family:&quot;Noto Sans KR&quot;, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">소보로빵과 크림빵 사이에</span></span><br><span style=\"color:hsl(0,0%,0%);\"><span style=\"-webkit-text-stroke-width:0px;display:inline !important;float:none;font-family:&quot;Noto Sans KR&quot;, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">찰떡아이스를 쏘옥 넣었어요</span></span><br><br><span style=\"color:hsl(0,0%,0%);\"><span style=\"-webkit-text-stroke-width:0px;display:inline !important;float:none;font-family:&quot;Noto Sans KR&quot;, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">찰떡아이스가 사르르 녹으면서</span></span><br><span style=\"color:hsl(0,0%,0%);\"><span style=\"-webkit-text-stroke-width:0px;display:inline !important;float:none;font-family:&quot;Noto Sans KR&quot;, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">쫄깃함, 부드러움, 달콤함까지 선사해요</span></span></p><p style=\"text-align:center;\">&nbsp;</p><p style=\"text-align:center;\"><span style=\"background-color:rgb(241,241,242);color:rgb(51,51,51);\"><span style=\"-webkit-text-stroke-width:0px;display:inline !important;float:none;font-family:&quot;Noto Sans KR&quot;, sans-serif;font-size:22px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">1. 소보로빵, 크림빵은 반으로 가른다.</span></span></p><figure class=\"image\"><img src=\"/media/eefa12aae7059f830e52c65aa65630c61_uV4mtjN.jpg\"></figure><p style=\"text-align:center;\"><span style=\"background-color:rgb(241,241,242);color:rgb(51,51,51);\"><span style=\"-webkit-text-stroke-width:0px;display:inline !important;float:none;font-family:&quot;Noto Sans KR&quot;, sans-serif;font-size:22px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">2. 팥 양갱은 빵 크기에 맞춰 자른 후 얇게 슬라이스 한다.</span></span></p><figure class=\"image image_resized\" style=\"width:55.79%;\"><img src=\"/media/72a50e7e694f3c792a39a3382ed80f2a1_mNnB5Yx.jpg\"></figure><p style=\"text-align:center;\"><span style=\"background-color:rgb(241,241,242);color:rgb(51,51,51);\"><span style=\"-webkit-text-stroke-width:0px;display:inline !important;float:none;font-family:&quot;Noto Sans KR&quot;, sans-serif;font-size:22px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">3. 소보로빵, 크림빵 사이에 찰떡아이스, 자른 팥 양갱을 올리고 각각 빵으로 다시 덮어 완성한다.</span></span></p><figure class=\"image image_resized\" style=\"width:55.99%;\"><img src=\"/media/da60341bfa617feef2cd129975de7ad91_KrVwMdK.jpg\"></figure><p style=\"text-align:center;\"><span style=\"background-color:rgb(241,241,242);color:rgb(51,51,51);\"><span style=\"-webkit-text-stroke-width:0px;display:inline !important;float:none;font-family:&quot;Noto Sans KR&quot;, sans-serif;font-size:22px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">4. 완성~</span></span></p><figure class=\"image image_resized\" style=\"width:64.43%;\"><img src=\"/media/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202023-05-18%20095120.jpg\"></figure>",
+        "created_at": "2023-05-18T01:09:59.149Z",
+        "updated_at": "2023-05-18T05:07:44.902Z",
+        "convenience_stores": [
+            1,
+            2,
+            3
+        ],
+        "like_users": [
+            3
+        ],
+        "used_products": [
+            2,
+            5,
+            7
+        ]
+    }
+},
+{
+    "model": "recipes.recipe",
+    "pk": 6,
+    "fields": {
+        "user": 4,
+        "title": "꿀떡버거",
+        "thumbnail_upload": "images/recipe/thumbnail/꿀떡버거/ae46746ac92413916801ada7c100a5601.jpg",
+        "thumbnail_crop": "thumbnail_crop/thumbnail_crop/ae46746ac92413916801ada7c100a5601.jpg.jpg",
+        "hits": 10,
+        "content": "<figure class=\"image\"><img src=\"/media/f5e2bf320ac204faab3595249184cc0e1.jpg\"></figure><p style=\"margin-left:200px;\"><span style=\"background-color:rgb(241,241,242);color:rgb(51,51,51);\"><span style=\"-webkit-text-stroke-width:0px;display:inline !important;float:none;font-family:&quot;Noto Sans KR&quot;, sans-serif;font-size:22px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">치즈빵은 전자레인지에 15초간 데우고, 소시지바는 30초간 데운다.</span></span></p><p style=\"margin-left:200px;\">&nbsp;</p><p style=\"margin-left:200px;\">&nbsp;</p><figure class=\"image\"><img src=\"/media/05f50a9ae06e12f808e64f77b15d4eb81_GeRnBph.jpg\"></figure><p style=\"margin-left:200px;\"><span style=\"background-color:rgb(241,241,242);color:rgb(51,51,51);\"><span style=\"-webkit-text-stroke-width:0px;display:inline !important;float:none;font-family:&quot;Noto Sans KR&quot;, sans-serif;font-size:22px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">치즈빵은 반으로 슬라이스 하고, 소세지는 길게 반으로 잘라 2등분한다.</span></span></p><p style=\"margin-left:200px;\">&nbsp;</p><p style=\"margin-left:200px;\">&nbsp;</p><figure class=\"image\"><img src=\"/media/79d32abbf09c715f61a4db79fb0984e31.jpg\"></figure><p style=\"margin-left:400px;\"><span style=\"background-color:rgb(241,241,242);color:rgb(51,51,51);\"><span style=\"-webkit-text-stroke-width:0px;display:inline !important;float:none;font-family:&quot;Noto Sans KR&quot;, sans-serif;font-size:22px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">샐러드는 소스를 넣어 버무린다.</span></span></p><p style=\"margin-left:200px;\">&nbsp;</p><figure class=\"image\"><img src=\"/media/30ef648c5ccf3c9cf79cf9f98ea87ae61.jpg\"></figure><p style=\"margin-left:200px;\">&nbsp;</p><p style=\"margin-left:200px;\"><span style=\"background-color:rgb(241,241,242);color:rgb(51,51,51);\"><span style=\"-webkit-text-stroke-width:0px;display:inline !important;float:none;font-family:&quot;Noto Sans KR&quot;, sans-serif;font-size:22px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">반 가른 치즈빵에 샐러드, 소시지를 넣고 머스타드소스를 뿌려 완성한다.</span></span></p><p class=\"step_add add_tip2\" style=\"-webkit-text-stroke-width:0px;background-color:rgb(241, 241, 242);box-sizing:border-box;color:rgb(136, 136, 136);font-family:&quot;Noto Sans KR&quot;, sans-serif;font-size:16px !important;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;line-height:1.6;margin:14px 0px 0px 200px;orphans:2;padding:0px 0px 0px 32px;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">TIP. 좋아하는 소스를 뿌려 드세요.</p><p>&nbsp;</p>",
+        "created_at": "2023-05-18T01:13:26.598Z",
+        "updated_at": "2023-05-18T04:57:29.070Z",
+        "convenience_stores": [
+            1
+        ],
+        "like_users": [
+            5
+        ],
+        "used_products": [
+            21,
+            26,
+            27
+        ]
+    }
+},
+{
+    "model": "recipes.recipe",
+    "pk": 7,
+    "fields": {
+        "user": 4,
+        "title": "떡볶이 치즈 리조또",
+        "thumbnail_upload": "images/recipe/thumbnail/떡볶이 치즈 리조또/떡볶이치즈리조또.jpg",
+        "thumbnail_crop": "thumbnail_crop/thumbnail_crop/떡볶이치즈리조또.jpg.jpg",
+        "hits": 5,
+        "content": "<h4 style=\"-webkit-font-smoothing:antialiased !important;-webkit-text-stroke-width:0px;background-color:rgb(250, 250, 250);border-width:0px;box-sizing:border-box;color:rgb(102, 102, 102);font-family:Pretendard, &quot;Segoe UI&quot;, -apple-system, BlinkMacSystemFont, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-feature-settings:inherit;font-kerning:inherit;font-optical-sizing:inherit;font-size:16px;font-stretch:inherit;font-style:normal;font-variant-alternates:inherit;font-variant-caps:normal;font-variant-east-asian:inherit;font-variant-ligatures:normal;font-variant-numeric:inherit;font-variation-settings:inherit;font-weight:300;letter-spacing:normal;line-height:1.5;margin:0px;orphans:2;padding:0px;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;vertical-align:baseline;white-space:normal;widows:2;word-break:break-word;word-spacing:0px;\">자이언트 떡볶이, 삼각김밥, 스트링치즈<br>존맛이라는 CU 자이언트 떡볶이를 이용한<br>리조또를 만들어보쟈 ㅎ.ㅎ</h4><figure class=\"image\"><img src=\"/media/image_o3MsEhv.png\"></figure><article class=\"dq-post-detail-content-card\" style=\"-webkit-font-smoothing:antialiased !important;-webkit-text-stroke-width:0px;border-width:0px;box-sizing:border-box;color:rgb(51, 51, 51);display:block;font-family:Pretendard, &quot;Segoe UI&quot;, -apple-system, BlinkMacSystemFont, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-feature-settings:inherit;font-kerning:inherit;font-optical-sizing:inherit;font-size:0px;font-stretch:inherit;font-style:normal;font-variant-alternates:inherit;font-variant-caps:normal;font-variant-east-asian:inherit;font-variant-ligatures:normal;font-variant-numeric:inherit;font-variation-settings:inherit;font-weight:400;letter-spacing:normal;line-height:inherit;margin:0px auto;max-width:767px;orphans:2;padding:0px;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;vertical-align:baseline;white-space:normal;widows:2;word-break:break-word;word-spacing:0px;\"><div class=\"dq-post-detail-content-card-text m0-0-8\" style=\"-webkit-font-smoothing:antialiased !important;border-width:0px;box-sizing:border-box;font:inherit;margin:0px 0px 64px;padding:0px;vertical-align:baseline;word-break:break-word;\"><h4 style=\"-webkit-font-smoothing:antialiased !important;border-width:0px;box-sizing:border-box;color:rgb(102, 102, 102);font-family:inherit;font-feature-settings:inherit;font-kerning:inherit;font-optical-sizing:inherit;font-size:16px;font-stretch:inherit;font-style:inherit;font-variant:inherit;font-variation-settings:inherit;font-weight:300;line-height:1.5;margin:0px;padding:0px;vertical-align:baseline;word-break:break-word;\">재료를 전부 넣고 전자레인지에 돌리기만 하면~!<br>짜잔~ 금방 완성된다구 bb</h4><figure class=\"image\"><img src=\"/media/image_M600ULk.png\"></figure></div></article><article class=\"dq-post-detail-content-card\" style=\"-webkit-font-smoothing:antialiased !important;-webkit-text-stroke-width:0px;border-width:0px;box-sizing:border-box;color:rgb(51, 51, 51);display:block;font-family:Pretendard, &quot;Segoe UI&quot;, -apple-system, BlinkMacSystemFont, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-feature-settings:inherit;font-kerning:inherit;font-optical-sizing:inherit;font-size:0px;font-stretch:inherit;font-style:normal;font-variant-alternates:inherit;font-variant-caps:normal;font-variant-east-asian:inherit;font-variant-ligatures:normal;font-variant-numeric:inherit;font-variation-settings:inherit;font-weight:400;letter-spacing:normal;line-height:inherit;margin:0px auto;max-width:767px;orphans:2;padding:0px;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;vertical-align:baseline;white-space:normal;widows:2;word-break:break-word;word-spacing:0px;\"><h4 style=\"-webkit-font-smoothing:antialiased !important;-webkit-text-stroke-width:0px;background-color:rgb(250, 250, 250);border-width:0px;box-sizing:border-box;color:rgb(102, 102, 102);font-family:Pretendard, &quot;Segoe UI&quot;, -apple-system, BlinkMacSystemFont, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;font-feature-settings:inherit;font-kerning:inherit;font-optical-sizing:inherit;font-size:16px;font-stretch:inherit;font-style:normal;font-variant-alternates:inherit;font-variant-caps:normal;font-variant-east-asian:inherit;font-variant-ligatures:normal;font-variant-numeric:inherit;font-variation-settings:inherit;font-weight:300;letter-spacing:normal;line-height:1.5;margin:0px;orphans:2;padding:0px;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;vertical-align:baseline;white-space:normal;widows:2;word-break:break-word;word-spacing:0px;\">떡볶이를 좀 더 맛있게 먹을 수 있는 비법이얌<br>리조또가 이렇게 쉬웠다니! 매일 먹을랭 &gt;.&lt;<br><img src=\"/media/image_cNyuw2Q.png\"></h4></article>",
+        "created_at": "2023-05-18T01:15:37.833Z",
+        "updated_at": "2023-05-18T05:01:08.421Z",
+        "convenience_stores": [
+            2
+        ],
+        "like_users": [
+            3
+        ],
+        "used_products": [
+            8,
+            14,
+            25
+        ]
+    }
+},
+{
+    "model": "recipes.recipe",
+    "pk": 8,
+    "fields": {
+        "user": 4,
+        "title": "딸기 수박 에이드",
+        "thumbnail_upload": "images/recipe/thumbnail/딸기 수박 에이드/딸기_수박에이드-_수박에이드.jpg",
+        "thumbnail_crop": "thumbnail_crop/thumbnail_crop/딸기_수박에이드-_수박에이드.jpg.jpg",
+        "hits": 11,
+        "content": "<p>준비물) Cu 수박에이드, 서울우유 딸기우유, 얼음컵 180g</p><p>&nbsp;</p><figure class=\"image\"><img src=\"/media/%EB%94%B8%EA%B8%B0%20%EC%88%98%EB%B0%95%EC%97%90%EC%9D%B4%EB%93%9C.jpeg\"></figure><p>&nbsp;</p><p>이 친구들 준비해주시고 1L짜리 큰 컵을 준비해줍니다</p><p>&nbsp;</p><figure class=\"image\"><img src=\"/media/%EB%94%B8%EA%B8%B0%20%EC%88%98%EB%B0%95%EC%97%90%EC%9D%B4%EB%93%9C-%EC%96%BC%EC%9D%8C%20%EC%9E%91%EC%9D%80%EC%BB%B5.jpeg\"></figure><p>&nbsp;</p><p>그리고 다 때려넣으신 후에 구매한 얼음컵의 얼음들도 때려넣어 줍니다</p><p>&nbsp;</p><p>맛있겠다 그죠</p>",
+        "created_at": "2023-05-18T01:20:29.119Z",
+        "updated_at": "2023-05-18T05:29:59.866Z",
+        "convenience_stores": [
+            2
+        ],
+        "like_users": [
+            2,
+            3,
+            6
+        ],
+        "used_products": [
+            31,
+            33,
+            34
+        ]
+    }
+},
+{
+    "model": "recipes.recipe",
+    "pk": 9,
+    "fields": {
+        "user": 4,
+        "title": "사골만둣국",
+        "thumbnail_upload": "images/recipe/thumbnail/사골만둣국/사골만둣국-1.jpeg",
+        "thumbnail_crop": "thumbnail_crop/thumbnail_crop/사골만둣국-1.jpeg.jpeg",
+        "hits": 6,
+        "content": "<p>준비물) 사리곰탕, 고향만두</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;<img class=\"image_resized\" style=\"width:22.04%;\" src=\"/media/%EC%82%AC%EA%B3%A8%EB%A7%8C%EB%91%A3%EA%B5%AD-%EA%B3%A0%ED%96%A5%EB%A7%8C%EB%91%90.jpeg\"></p><p>&nbsp;</p><p>먼저 고향만두 구매 후 드시고 싶은 만큼 조리해주세요.</p><p>&nbsp;</p><figure class=\"image image_resized\" style=\"width:23.14%;\"><img src=\"/media/%EC%82%AC%EA%B3%A8%EB%A7%8C%EB%91%A3%EA%B5%AD-%EC%82%AC%EB%A6%AC%EA%B3%B0%ED%83%95%20%ED%81%B0%EC%82%AC%EB%B0%9C%EB%A9%B4_AAXvgZP.jpeg\"></figure><p>그 후에 사리곰탕에 뜨거운 물 부어주시고&nbsp;</p><p>&nbsp;</p><p>사리곰탕이 조리가 완료되면 부어주시면 됩니다.</p><p>&nbsp;</p><p>그 후 플레이팅 해주면?</p><p>&nbsp;</p><figure class=\"image\"><img src=\"/media/%EC%82%AC%EA%B3%A8%EB%A7%8C%EB%91%A3%EA%B5%AD.jpeg\"></figure><p>짠 참 쉽죠?</p><p>&nbsp;</p><p>남은 만두는 나중에 또 드세요~~</p>",
+        "created_at": "2023-05-18T01:26:42.142Z",
+        "updated_at": "2023-05-18T05:03:43.754Z",
+        "convenience_stores": [
+            1,
+            2
+        ],
+        "like_users": [
+            3
+        ],
+        "used_products": [
+            9,
+            13
+        ]
+    }
+},
+{
+    "model": "recipes.recipe",
+    "pk": 12,
+    "fields": {
+        "user": 4,
+        "title": "버블티와 마카롱으로 홈카페",
+        "thumbnail_upload": "images/recipe/thumbnail/올라가/1d1e2f08850874d6a9889cefb392eba21.jpg",
+        "thumbnail_crop": "thumbnail_crop/thumbnail_crop/1d1e2f08850874d6a9889cefb392eba21.jpg.jpg",
+        "hits": 7,
+        "content": "<figure class=\"image\"><img src=\"/media/e1b94ffad6a7807b416ab10c9a753a901.jpg\"></figure><p style=\"margin-left:440px;\"><span style=\"background-color:rgb(241,241,242);color:rgb(51,51,51);\"><span style=\"-webkit-text-stroke-width:0px;display:inline !important;float:none;font-family:&quot;Noto Sans KR&quot;, sans-serif;font-size:22px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">마카롱부터 만들어 볼까요?</span></span></p><p style=\"margin-left:440px;\"><span style=\"background-color:rgb(241,241,242);color:rgb(51,51,51);\"><span style=\"-webkit-text-stroke-width:0px;display:inline !important;float:none;font-family:&quot;Noto Sans KR&quot;, sans-serif;font-size:22px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">마가렛트, 아이스크림, 몰티져스를 준비한다.</span></span></p><p style=\"margin-left:440px;\">&nbsp;</p><figure class=\"image\"><img src=\"/media/5c61d1b158cc63a4e68ec29bb4d30f6c1.jpg\"></figure><p style=\"margin-left:440px;\"><span style=\"background-color:rgb(241,241,242);color:rgb(51,51,51);\"><span style=\"-webkit-text-stroke-width:0px;display:inline !important;float:none;font-family:&quot;Noto Sans KR&quot;, sans-serif;font-size:22px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">올려준 아이스크림 위에 다시 마가렛트를 올려준다.</span></span></p><p style=\"margin-left:440px;\">&nbsp;</p><figure class=\"image\"><img src=\"/media/1d1e2f08850874d6a9889cefb392eba21.jpg\"></figure><p style=\"margin-left:440px;\"><span style=\"background-color:rgb(241,241,242);color:rgb(51,51,51);\"><span style=\"-webkit-text-stroke-width:0px;display:inline !important;float:none;font-family:&quot;Noto Sans KR&quot;, sans-serif;font-size:22px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">데코레이션으로 초코볼을 꽂아주면 완성이다.</span></span></p><p style=\"margin-left:440px;\">&nbsp;</p><p style=\"margin-left:440px;\"><span style=\"background-color:rgb(241,241,242);color:rgb(51,51,51);\"><span style=\"-webkit-text-stroke-width:0px;display:inline !important;float:none;font-family:&quot;Noto Sans KR&quot;, sans-serif;font-size:22px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">다음은 버블티를 만들어 볼까요??</span></span></p><figure class=\"image\"><img src=\"/media/b9bc15c52ead6b28a7b1b1cbbd27b3b31.jpg\"></figure><p style=\"margin-left:440px;\"><span style=\"background-color:rgb(241,241,242);color:rgb(51,51,51);\"><span style=\"-webkit-text-stroke-width:0px;display:inline !important;float:none;font-family:&quot;Noto Sans KR&quot;, sans-serif;font-size:22px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">밀크티, 커피, 몰티져스를 준비한다.</span></span></p><p style=\"margin-left:440px;\">&nbsp;</p><figure class=\"image\"><img src=\"/media/ae6464d7e358765ed1633a67d5a112941.jpg\"></figure><p style=\"margin-left:440px;\"><span style=\"background-color:rgb(241,241,242);color:rgb(51,51,51);\"><span style=\"-webkit-text-stroke-width:0px;display:inline !important;float:none;font-family:&quot;Noto Sans KR&quot;, sans-serif;font-size:22px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">컵에 몰티져스를 원하는 만큼 넣어준다..3</span></span></p><p style=\"margin-left:440px;\">&nbsp;</p><figure class=\"image\"><img src=\"/media/236f1ecd016472dd68aae1177d9fcfe21.jpg\"></figure><p style=\"margin-left:440px;\"><span style=\"background-color:rgb(241,241,242);color:rgb(51,51,51);\"><span style=\"-webkit-text-stroke-width:0px;display:inline !important;float:none;font-family:&quot;Noto Sans KR&quot;, sans-serif;font-size:22px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">커피를 컵의 3분의 1정도 따라준다.</span></span></p><p style=\"margin-left:440px;\">&nbsp;</p><figure class=\"image\"><img src=\"/media/aad92a90f490602d226354246dd8601e1.jpg\"></figure><p style=\"margin-left:440px;\"><span style=\"background-color:rgb(241,241,242);color:rgb(51,51,51);\"><span style=\"-webkit-text-stroke-width:0px;display:inline !important;float:none;font-family:&quot;Noto Sans KR&quot;, sans-serif;font-size:22px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">그리고 나머지 3분의 2를 밀크티로 채워주면 완성이다!</span></span></p>",
+        "created_at": "2023-05-18T01:36:38.832Z",
+        "updated_at": "2023-05-18T04:53:20.068Z",
+        "convenience_stores": [
+            1
+        ],
+        "like_users": [
+            3
+        ],
+        "used_products": [
+            36,
+            38,
+            41,
+            44,
+            45
+        ]
+    }
+},
+{
+    "model": "recipes.recipe",
+    "pk": 13,
+    "fields": {
+        "user": 6,
+        "title": "마크정식",
+        "thumbnail_upload": "images/recipe/thumbnail/마크정식/마크정식_ZmeV0lG.jpg",
+        "thumbnail_crop": "thumbnail_crop/thumbnail_crop/마크정식.jpg.jpg",
+        "hits": 10,
+        "content": "<figure class=\"image image-style-align-center image_resized\" style=\"width:31.66%;\"><img src=\"/media/%EC%A4%80%EB%B9%84%EC%82%AC%EC%A7%84_P7Qt6Nd.jpg\"></figure><p style=\"text-align:center;\">재료 - 자이언트 떡볶이(혹은 자이언트 라볶이), 스파게티 컵라면, 치즈, 소시지</p><figure class=\"image image-style-align-center image_resized\" style=\"width:32.02%;\"><img src=\"/media/%EB%A7%88%ED%81%AC-%EC%A4%80%EB%B9%84.jpg\"></figure><figure class=\"image image_resized\" style=\"width:31.79%;\"><img src=\"/media/%EB%A7%88%ED%81%AC-%EC%86%8C%EC%8B%9C%EC%A7%80.jpg\"></figure><p style=\"text-align:center;\">액체소스,가루소스를 소세지 위에 뿌려줘요</p><figure class=\"image image_resized\" style=\"width:31.21%;\"><img src=\"/media/%EB%A7%88%ED%81%AC-%EC%95%A1%EC%B2%B4%2C%EA%B0%80%EB%A3%A8.jpg\"></figure><p style=\"text-align:center;\">빈틈이 보이지 않게 치즈를 아낌없이 뿌려둡니다.</p><figure class=\"image image_resized\" style=\"width:31.19%;\"><img src=\"/media/%EB%A7%88%ED%81%AC%EC%A0%95%EC%8B%9D.jpg\"></figure><p style=\"text-align:center;\">완성</p>",
+        "created_at": "2023-05-18T01:39:04.293Z",
+        "updated_at": "2023-05-18T05:03:10.752Z",
+        "convenience_stores": [
+            2
+        ],
+        "like_users": [
+            5
+        ],
+        "used_products": [
+            17,
+            20,
+            21,
+            24
+        ]
+    }
+},
+{
+    "model": "recipes.recipe",
+    "pk": 14,
+    "fields": {
+        "user": 6,
+        "title": "나혼자산다 전현무라면",
+        "thumbnail_upload": "images/recipe/thumbnail/나혼자산다 전현무라/전현무라면.jpg",
+        "thumbnail_crop": "thumbnail_crop/thumbnail_crop/전현무라면.jpg.jpg",
+        "hits": 8,
+        "content": "<figure class=\"image\"><img src=\"/media/image_aGnUNUA.png\"></figure><figure class=\"image\"><img src=\"/media/image_6cxHYk1.png\"></figure><figure class=\"image\"><img src=\"/media/image_yy5b1ST.png\"></figure><figure class=\"image\"><img src=\"/media/image_GRPMVFt.png\"></figure><figure class=\"image\"><img src=\"/media/image_SdhEhQ6.png\"></figure>",
+        "created_at": "2023-05-18T01:48:21.544Z",
+        "updated_at": "2023-05-18T05:26:41.120Z",
+        "convenience_stores": [
+            1,
+            2,
+            3
+        ],
+        "like_users": [
+            2,
+            4,
+            5
+        ],
+        "used_products": [
+            48,
+            49
+        ]
+    }
+},
+{
+    "model": "recipes.recipe",
+    "pk": 15,
+    "fields": {
+        "user": 6,
+        "title": "요거트 만난 지 얼마나 오렌지",
+        "thumbnail_upload": "images/recipe/thumbnail/요거트 만난 지 얼마나 오렌지/요거트-만난-지-얼마나-오렌지_rsTpP6Z.jpeg",
+        "thumbnail_crop": "thumbnail_crop/thumbnail_crop/요거트-만난-지-얼마나-오렌지.jpeg.jpeg",
+        "hits": 8,
+        "content": "<figure class=\"image\"><img src=\"/media/%EC%98%A4%EB%A0%8C%EC%A7%80-%EC%9E%AC%EB%A3%8C.jpeg\"></figure><p style=\"text-align:center;\">#재료준비</p><p style=\"text-align:center;\">오렌지주스,플레인 요구르트, 얼음컵</p><p style=\"text-align:center;\"># 시청자가 알려준 요거트 만난 지 얼마나 오렌지 레시피</p><figure class=\"image image_resized\" style=\"width:68.61%;\"><img src=\"/media/%EC%98%A4%EB%A0%8C%EC%A7%80-%EB%B0%A9%EB%B2%95.jpeg\"></figure><p style=\"text-align:center;\">&lt;사진 출처: 코미디 TV 맛있는 녀석들 캡쳐&gt;</p><p style=\"text-align:center;\">1. 얼음컵에 오렌지주스를 종이컵 기준 1컵을 넣습니다.</p><p style=\"text-align:center;\">2. 플레인 요구르트는 종이컵 기준 2/3컵을 넣습니다.</p><p style=\"text-align:center;\">3. 잘 섞으면 요거트 만난 지 얼마나 오렌지 완성입니다.</p>",
+        "created_at": "2023-05-18T01:49:06.294Z",
+        "updated_at": "2023-05-18T05:30:06.308Z",
+        "convenience_stores": [
+            1,
+            2
+        ],
+        "like_users": [
+            2,
+            3,
+            4
+        ],
+        "used_products": [
+            29,
+            32,
+            34
+        ]
+    }
+},
+{
+    "model": "recipes.recipe",
+    "pk": 16,
+    "fields": {
+        "user": 6,
+        "title": "까르보불닭무쌈말이",
+        "thumbnail_upload": "images/recipe/thumbnail/까르보불닭무쌈말이/655f0118b76dfa7afbd040bafe3432711.jpg",
+        "thumbnail_crop": "thumbnail_crop/thumbnail_crop/655f0118b76dfa7afbd040bafe3432711.jpg.jpg",
+        "hits": 5,
+        "content": "<p style=\"text-align:center;\"><span style=\"background-color:rgb(241,241,242);color:rgb(51,51,51);\"><span style=\"-webkit-text-stroke-width:0px;display:inline !important;float:none;font-family:&quot;Noto Sans KR&quot;, sans-serif;font-size:22px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">1. 소시지바는 전자레인지에 30초간 데운 후 어슷썬다.</span></span></p><figure class=\"image image_resized\" style=\"width:72.08%;\"><img src=\"/media/977ac3c851dc4517092c1e745fac46061.jpg\"></figure><p style=\"text-align:center;\"><span style=\"background-color:rgb(241,241,242);color:rgb(51,51,51);\"><span style=\"-webkit-text-stroke-width:0px;display:inline !important;float:none;font-family:&quot;Noto Sans KR&quot;, sans-serif;font-size:22px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">2. 까르보불닭의 면에 뜨거운 물을 부어 4분간 익힌다.</span></span></p><figure class=\"image image_resized\" style=\"width:71.56%;\"><img src=\"/media/e0ed73cae4b7db39b475010c4d2510931.jpg\"></figure><p style=\"text-align:center;\">&nbsp;<span style=\"background-color:rgb(241,241,242);color:rgb(51,51,51);\"><span style=\"-webkit-text-stroke-width:0px;display:inline !important;float:none;font-family:&quot;Noto Sans KR&quot;, sans-serif;font-size:22px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">3. 면이 익으면 물을 버린 후 액상스프와 분말스프를 넣고 섞는다.</span></span></p><figure class=\"image image_resized\" style=\"width:71.13%;\"><img src=\"/media/422c782cb4c05ffb4ab99a9cdbca00521.jpg\"></figure><p style=\"text-align:center;\"><span style=\"background-color:rgb(241,241,242);color:rgb(51,51,51);\"><span style=\"-webkit-text-stroke-width:0px;display:inline !important;float:none;font-family:&quot;Noto Sans KR&quot;, sans-serif;font-size:22px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">4. 쌈무 위에 면과 소시지를 올린 후 말아 먹는다.</span></span></p><figure class=\"image image_resized\" style=\"width:70.58%;\"><img src=\"/media/c462d8c5be760cc5c2c776d13cdb59e91.jpg\"></figure><p style=\"text-align:center;\"><span style=\"background-color:rgb(241,241,242);color:rgb(51,51,51);\"><span style=\"-webkit-text-stroke-width:0px;display:inline !important;float:none;font-family:&quot;Noto Sans KR&quot;, sans-serif;font-size:22px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">5. 완성~</span></span></p><figure class=\"image image_resized\" style=\"width:70.83%;\"><img src=\"/media/655f0118b76dfa7afbd040bafe3432711.jpg\"></figure>",
+        "created_at": "2023-05-18T01:49:57.941Z",
+        "updated_at": "2023-05-18T04:57:14.587Z",
+        "convenience_stores": [
+            1,
+            2,
+            3
+        ],
+        "like_users": [
+            5
+        ],
+        "used_products": [
+            21,
+            46,
+            47
+        ]
+    }
+},
+{
+    "model": "recipes.recipe",
+    "pk": 17,
+    "fields": {
+        "user": 6,
+        "title": "로제직꾸불닭납작당면",
+        "thumbnail_upload": "images/recipe/thumbnail/로제직꾸불닭납작당면/로제납작당면-로제납작.jpg",
+        "thumbnail_crop": "thumbnail_crop/thumbnail_crop/로제납작당면-로제납작.jpg.jpg",
+        "hits": 7,
+        "content": "<figure class=\"image image_resized\" style=\"width:61.64%;\"><img src=\"/media/%EB%A1%9C%EC%A0%9C%EB%82%A9%EC%9E%91%EB%8B%B9%EB%A9%B4-%EB%A1%9C%EC%A0%9C%EB%82%A9%EC%9E%91_oRYEY8I.jpg\"></figure><p style=\"text-align:center;\">자자 맛깔진거 하나 들고왔습니다.</p><p style=\"text-align:center;\">쉽고 맛있는 레시피 들어가 봅시다.</p><p style=\"text-align:center;\">일단 면꺼내서 뜨거운물 붓고 소스 부어줍니다</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><figure class=\"image image_resized\" style=\"width:61.96%;\"><img src=\"/media/%EB%A1%9C%EC%A0%9C%EB%82%A9%EC%9E%91%EB%8B%B9%EB%A9%B4-%EC%A7%81%EA%BE%B8%EB%8B%AD_sQBd7d6.jpg\"></figure><p style=\"text-align:center;\">그 후에 직꾸닭 넣어주고 뚜껑 닫고</p><p style=\"text-align:center;\">1분 50초 돌려줍니다.</p><p style=\"text-align:center;\">&nbsp;</p><figure class=\"image\"><img src=\"/media/%EB%A1%9C%EC%A0%9C%EB%82%A9%EC%9E%91%EB%8B%B9%EB%A9%B4-%EB%BF%8C%EB%A0%A4%EB%BF%8C%EB%A0%A4%EC%B9%98%EC%A6%88%ED%8C%8C%ED%8B%B0_BagZfYn.jpeg\"></figure><p>&nbsp;</p><p style=\"text-align:center;\">그 후에 이것도 넣고 30초 추가로 돌려줍니다.</p><p style=\"text-align:center;\">지렸다 개존맛</p>",
+        "created_at": "2023-05-18T01:50:57.219Z",
+        "updated_at": "2023-05-18T05:06:42.679Z",
+        "convenience_stores": [
+            1,
+            2
+        ],
+        "like_users": [
+            4
+        ],
+        "used_products": [
+            15,
+            22,
+            24
+        ]
+    }
+},
+{
+    "model": "recipes.recipe",
+    "pk": 18,
+    "fields": {
+        "user": 3,
+        "title": "크리스마스 통나무케이크! 부쉬드노엘",
+        "thumbnail_upload": "images/recipe/thumbnail/크리스마스 통나무케이크! 부쉬드노엘/906fddcce968a37599c277a1aa73c8641.png",
+        "thumbnail_crop": "thumbnail_crop/thumbnail_crop/906fddcce968a37599c277a1aa73c8641.png.png",
+        "hits": 12,
+        "content": "<figure class=\"image\"><img src=\"/media/69b1a3a6b27a2f73303617879b6252e41.png\"></figure><p style=\"margin-left:480px;\"><span style=\"background-color:rgb(241,241,242);color:rgb(51,51,51);\"><span style=\"-webkit-text-stroke-width:0px;display:inline !important;float:none;font-family:&quot;Noto Sans KR&quot;, sans-serif;font-size:22px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">롤케이크의 한조각 분량은 빼둔다.</span></span></p><p style=\"margin-left:480px;\">&nbsp;</p><figure class=\"image\"><img src=\"/media/b0ddfbad52367be07e164d562e5f6b321.png\"></figure><p style=\"margin-left:320px;\"><span style=\"background-color:rgb(241,241,242);color:rgb(51,51,51);\"><span style=\"-webkit-text-stroke-width:0px;display:inline !important;float:none;font-family:&quot;Noto Sans KR&quot;, sans-serif;font-size:22px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">롤케이크 윗부분에 누텔라를 약간 바르고 빼둔 롤케이크를 붙인다</span></span></p><p style=\"margin-left:480px;\">&nbsp;</p><figure class=\"image\"><img src=\"/media/b8d3e4cbdaebff0af153ef4b5d40deca1.png\"></figure><p style=\"margin-left:400px;\"><span style=\"background-color:rgb(241,241,242);color:rgb(51,51,51);\"><span style=\"-webkit-text-stroke-width:0px;display:inline !important;float:none;font-family:&quot;Noto Sans KR&quot;, sans-serif;font-size:22px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">롤케이크 전체적으로 누텔라를 바른 후 포크로 모양을 낸다.</span></span></p><p class=\"step_add add_tool\" style=\"-webkit-text-stroke-width:0px;background-color:rgb(241, 241, 242);box-sizing:border-box;color:rgb(136, 136, 136);font-family:&quot;Noto Sans KR&quot;, sans-serif;font-size:16px !important;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;line-height:1.6;margin:14px 0px 0px 400px;orphans:2;padding:0px 0px 0px 32px;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><a style=\"background-color:transparent;box-sizing:border-box;color:rgb(116, 178, 67);text-decoration:none;\">Tip </a><a style=\"background-color:transparent;box-sizing:border-box;color:rgb(116, 178, 67);text-decoration:none;\" href=\"javascript:buyMaterial2('%ED%8F%AC%ED%81%AC','cooker');\">포크</a></p><figure class=\"image\"><img src=\"/media/b0b1dca9458dbc3751aea76d86e24b311.jpg\"></figure><p style=\"margin-left:480px;\"><span style=\"background-color:rgb(241,241,242);color:rgb(51,51,51);\"><span style=\"-webkit-text-stroke-width:0px;display:inline !important;float:none;font-family:&quot;Noto Sans KR&quot;, sans-serif;font-size:22px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">초콜릿, 초코송이로 장식하여 완성한다.</span></span></p><p class=\"step_add add_tip2\" style=\"-webkit-text-stroke-width:0px;background-color:rgb(241, 241, 242);box-sizing:border-box;color:rgb(136, 136, 136);font-family:&quot;Noto Sans KR&quot;, sans-serif;font-size:16px !important;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;line-height:1.6;margin:14px 0px 0px 480px;orphans:2;padding:0px 0px 0px 32px;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><a style=\"background-color:transparent;box-sizing:border-box;color:rgb(116, 178, 67);text-decoration:none;\">Tip </a>슈가파우더를 뿌려 주어도 좋아요.</p>",
+        "created_at": "2023-05-18T01:51:48.713Z",
+        "updated_at": "2023-05-18T04:59:40.476Z",
+        "convenience_stores": [
+            1
+        ],
+        "like_users": [
+            5
+        ],
+        "used_products": [
+            50,
+            51,
+            52
+        ]
+    }
+},
+{
+    "model": "recipes.recipe",
+    "pk": 19,
+    "fields": {
+        "user": 3,
+        "title": "호치민 막창국수",
+        "thumbnail_upload": "images/recipe/thumbnail/호치민 막창국수/호치민-완성.jpg",
+        "thumbnail_crop": "thumbnail_crop/thumbnail_crop/호치민-완성.jpg.jpg",
+        "hits": 9,
+        "content": "<figure class=\"image\"><img src=\"/media/%ED%98%B8%EC%B9%98%EB%AF%BC-%EC%9E%AC%EB%A3%8C.jpg\"></figure><p style=\"text-align:center;\">이따금씩 보게 되는 맛있는 녀석들</p><p style=\"text-align:center;\">편의점 꿀조합 추천이 궁금해서 먹어봄</p><p style=\"text-align:center;\">오뚜기 베트남 쌀국수랑</p><p style=\"text-align:center;\">안주야 직화불막창이 필요하다</p><figure class=\"image\"><img src=\"/media/%ED%98%B8%EC%B9%98%EB%AF%BC-%EC%8C%80%EA%B5%AD%EC%88%98.jpg\"></figure><figure class=\"image\"><img src=\"/media/%ED%98%B8%EC%B9%98%EB%AF%BC-%EC%99%84%EC%84%B1.jpg\"></figure><p style=\"text-align:center;\">쌀국수 면만 건져서 썩는다</p><p style=\"text-align:center;\">비빈다.</p><p style=\"text-align:center;\">완성.</p><p style=\"text-align:center;\">맛있음</p><p style=\"text-align:center;\">사실 누가 봐도 맛 없을 수가 없는 재료들이라</p><p style=\"text-align:center;\">ㅋㅋㅋ 취향 타는거 아니면</p><p style=\"text-align:center;\">다들 잘 먹을 맛</p>",
+        "created_at": "2023-05-18T01:55:12.459Z",
+        "updated_at": "2023-05-18T05:04:52.140Z",
+        "convenience_stores": [
+            1,
+            2,
+            3
+        ],
+        "like_users": [
+            6
+        ],
+        "used_products": [
+            39,
+            43
+        ]
+    }
+},
+{
+    "model": "recipes.recipe",
+    "pk": 20,
+    "fields": {
+        "user": 3,
+        "title": "튀김 오뎅 우동",
+        "thumbnail_upload": "images/recipe/thumbnail/튀김 오뎅 우동/오뎅우동.jpeg",
+        "thumbnail_crop": "thumbnail_crop/thumbnail_crop/오뎅우동.jpeg.jpeg",
+        "hits": 5,
+        "content": "<p style=\"text-align:center;\">&nbsp;</p><p style=\"text-align:center;\">미안하다 썸네일은 어그로였다.</p><p style=\"text-align:center;\">이 정도 퀄리티는 아니지만 그만큼 맛있는</p><p style=\"text-align:center;\">오뎅 튀김 우동 드가겠습니다.</p><p style=\"text-align:center;\">&nbsp;</p><figure class=\"image image_resized\" style=\"width:44.04%;\"><img src=\"/media/%ED%8A%80%EA%B9%80%EC%9A%B0%EB%8F%99%20%EC%98%A4%EB%8E%85-%EC%98%A4%EB%8E%85%ED%95%9C%EA%B7%B8%EB%A6%87.jpg\"></figure><p style=\"text-align:center;\">자자 보이시는 것처럼 1분 30초 정도 데워주시면 되겠습니다.&nbsp;</p><p style=\"text-align:center;\">이거 그냥 이것만 먹을 때는 간장 0.5스푼 넣어주면 더 맛있습니다.</p><figure class=\"image image_resized\" style=\"width:43.29%;\"><img src=\"/media/%ED%8A%80%EA%B9%80%EC%9A%B0%EB%8F%99%20%EC%98%A4%EB%8E%85-%ED%8A%80%EA%B9%80%EC%9A%B0%EB%8F%99.jpg\"></figure><p style=\"text-align:center;\">그 후에 뜨거운물 받아서 라면 끓여주시면 끝!</p><p style=\"text-align:center;\">라면 끓여서 큰사발컵에 넣어주세요</p><p style=\"text-align:center;\">&nbsp;</p><p style=\"text-align:center;\">이거이거 만들고 소주까면 눈뜨면 다음 날 아침입니다.</p>",
+        "created_at": "2023-05-18T01:56:59.161Z",
+        "updated_at": "2023-05-18T04:54:19.620Z",
+        "convenience_stores": [
+            1,
+            2
+        ],
+        "like_users": [
+            4
+        ],
+        "used_products": [
+            23,
+            30
+        ]
+    }
+},
+{
+    "model": "recipes.recipe",
+    "pk": 21,
+    "fields": {
+        "user": 2,
+        "title": "밴쯔 정식",
+        "thumbnail_upload": "images/recipe/thumbnail/밴쯔 정식/밴쯔-완성.jpg",
+        "thumbnail_crop": "thumbnail_crop/thumbnail_crop/밴쯔-완성.jpg.jpg",
+        "hits": 9,
+        "content": "<figure class=\"image\"><img src=\"/media/%EB%B0%B4%EC%AF%94-%EC%9E%AC%EB%A3%8C.jpg\"></figure><p style=\"text-align:center;\">밴쯔정식에 만들기에 앞서 필요한 재료는</p><p style=\"text-align:center;\">자이언트 피자, 자이언트 떡볶이, 훈제 닭다리, 스트링치즈, 케찹 !</p><figure class=\"image\"><img src=\"/media/%EB%B0%B4%EC%AF%94-%EC%9E%90%EC%9D%B4%EC%96%B8%ED%8A%B8.jpg\"></figure><figure class=\"image\"><img src=\"/media/%EB%B0%B4%EC%AF%94-%EB%8B%AD%EB%8B%A4%EB%A6%AC%EB%A7%8E%EC%9D%B4.jpg\"></figure><p style=\"text-align:center;\">물을 넣어 국물을 만들어준다.</p><p>&nbsp;</p><p style=\"text-align:center;\">훈제닭다리를 찢어 담군다.</p><p style=\"text-align:center;\">&nbsp;</p><p style=\"text-align:center;\">이후 섞는다.</p><figure class=\"image\"><img src=\"/media/%EB%B0%B4%EC%AF%94-%EC%98%AC%EB%A6%B0%EB%8B%A4.jpg\"></figure><p style=\"text-align:center;\">다 섞은 후 자이언트 피자에 올려준다.</p><figure class=\"image\"><img src=\"/media/%EB%B0%B4%EC%AF%94-%EC%99%84%EC%84%B1.jpg\"></figure><p style=\"text-align:center;\">전자레인지에 2분정도 돌렸다</p><p style=\"text-align:center;\">완성!</p><p style=\"text-align:center;\">&nbsp;</p><p style=\"text-align:center;\">그리고 밴쯔정식 만들고 난 후 꿀팁으로</p><p style=\"text-align:center;\">소스 밑에 깔려있는 피자를 잘라먹어야되기 때문에</p><p style=\"text-align:center;\">쇠 숟가락은 필수!!</p>",
+        "created_at": "2023-05-18T02:02:06.998Z",
+        "updated_at": "2023-05-18T04:59:10.640Z",
+        "convenience_stores": [
+            2
+        ],
+        "like_users": [
+            1
+        ],
+        "used_products": [
+            4,
+            28,
+            35,
+            37
+        ]
+    }
+},
+{
+    "model": "recipes.recipe",
+    "pk": 22,
+    "fields": {
+        "user": 2,
+        "title": "공화춘+불닭볶음면",
+        "thumbnail_upload": "images/recipe/thumbnail/공화춘+불닭볶음면/공화춘-완성.jpg",
+        "thumbnail_crop": "thumbnail_crop/thumbnail_crop/공화춘-완성.jpg.jpg",
+        "hits": 6,
+        "content": "<figure class=\"image\"><img src=\"/media/%EA%B3%B5%ED%99%94%EC%B6%98-%EC%9E%AC%EB%A3%8C.jpg\"></figure><p style=\"-webkit-text-stroke-width:0px;color:rgb(51, 51, 51);font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><span style=\"color:rgb(0,0,0);\"><span style=\"font-size:14pt;\"><strong>1. 저는 김밥도 같이 샀어요 공화춘 곱빼기+불닭볶음면이지만</strong></span></span></p><p style=\"-webkit-text-stroke-width:0px;color:rgb(51, 51, 51);font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><span style=\"color:rgb(0,0,0);\"><span style=\"font-size:12pt;\">성에 안찰것같아서 오로나민씨는 깁밥이랑 행사라서 구매했구요</span></span></p><p style=\"-webkit-text-stroke-width:0px;color:rgb(51, 51, 51);font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><span style=\"color:rgb(0,0,0);\"><span style=\"font-size:12pt;\">오늘 여러분께 소개할 레시피는 공화춘 불닭볶음면 섞어먹는 조합이므로</span></span></p><p style=\"-webkit-text-stroke-width:0px;color:rgb(51, 51, 51);font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><span style=\"color:rgb(0,0,0);\"><span style=\"font-size:12pt;\">김밥이랑&nbsp;오로나민씨&nbsp;신경꺼주세요 ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ</span></span></p><p style=\"-webkit-text-stroke-width:0px;color:rgb(51, 51, 51);font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><span style=\"color:rgb(0,0,0);\"><span style=\"font-size:12pt;\">이렇게 다먹으면 너무 배부르고 돼지됩니다</span></span></p><p style=\"-webkit-text-stroke-width:0px;color:rgb(51, 51, 51);font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><span style=\"color:rgb(0,0,0);\"><span style=\"font-size:12pt;\">여러분은 김밥까진 드시지마세욧!</span></span></p><figure class=\"image\"><img src=\"/media/%EA%B3%B5%ED%99%94%EC%B6%98-%EC%9E%AC%EB%A3%8C%EB%B0%A9%EB%B2%95.jpg\"></figure><p style=\"-webkit-text-stroke-width:0px;color:rgb(51, 51, 51);font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><span style=\"font-size:14pt;\"><strong>1. 불닭볶음면을 공화춘컵에 합쳐주세요</strong></span></p><p style=\"-webkit-text-stroke-width:0px;color:rgb(51, 51, 51);font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><span style=\"font-size:12pt;\">그리고 물을 넣어줍니다</span></p><p style=\"-webkit-text-stroke-width:0px;color:rgb(51, 51, 51);font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><span style=\"font-size:12pt;\">원래 넣어야 되는 물양에서 조금&nbsp; 더넣어주세요</span></p><p style=\"-webkit-text-stroke-width:0px;color:rgb(51, 51, 51);font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><span style=\"font-size:12pt;\">어느정도냐면 눌렀을때 공화춘면이 잡기고 불닭볶음면</span></p><p style=\"-webkit-text-stroke-width:0px;color:rgb(51, 51, 51);font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><span style=\"font-size:12pt;\">도 3/1정도 잠길정도로 물을 넣어주시면 됩니다</span></p><p style=\"-webkit-text-stroke-width:0px;color:rgb(51, 51, 51);font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><span style=\"font-size:12pt;\">나중에 밑에 면이 익고나면 살짝 뒤집어주시면 됩니다~</span></p><figure class=\"image\"><img src=\"/media/%EA%B3%B5%ED%99%94%EC%B6%98-%EC%A4%80%EB%B9%842.jpg\"></figure><p style=\"-webkit-text-stroke-width:0px;color:rgb(51, 51, 51);font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><span style=\"color:rgb(0,0,0);\"><span style=\"font-size:14pt;\"><strong>2. 자장소스는 컵라면 용기 위에 올려줍니다</strong></span></span></p><p style=\"-webkit-text-stroke-width:0px;color:rgb(51, 51, 51);font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><span style=\"color:rgb(0,0,0);\"><span style=\"font-size:12pt;\">이렇게 해주면 자장소스가 따뜻해져서 잘 풀어집니다</span></span></p><p style=\"-webkit-text-stroke-width:0px;color:rgb(51, 51, 51);font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><span style=\"color:rgb(0,0,0);\"><span style=\"font-size:12pt;\">나중에 섞어먹을때도 아주 편해요</span></span></p><p style=\"-webkit-text-stroke-width:0px;color:rgb(51, 51, 51);font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><span style=\"color:rgb(0,0,0);\"><span style=\"font-size:12pt;\">따뜻한 소스라니 너무 매력적이죠 ㅋㅋㅋ</span></span></p><p style=\"-webkit-text-stroke-width:0px;color:rgb(51, 51, 51);font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><span style=\"color:rgb(0,0,0);\"><span style=\"font-size:12pt;\">다른컵라면 드실때도 액상스프가 있다면 이렇게 드시는것도</span></span></p><p style=\"-webkit-text-stroke-width:0px;color:rgb(51, 51, 51);font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><span style=\"color:rgb(0,0,0);\"><span style=\"font-size:12pt;\">정말 좋겠네요 예를들어 불닭볶음면 같은경우에도</span></span></p><p style=\"-webkit-text-stroke-width:0px;color:rgb(51, 51, 51);font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><span style=\"color:rgb(0,0,0);\"><span style=\"font-size:12pt;\">제가 해봤는데 뚜껑에 올리고 액상스프를 쓰면</span></span></p><p style=\"-webkit-text-stroke-width:0px;color:rgb(51, 51, 51);font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><span style=\"color:rgb(0,0,0);\"><span style=\"font-size:12pt;\">잘풀어지드라구요~</span></span></p><figure class=\"image\"><img src=\"/media/%EA%B3%B5%ED%99%94%EC%B6%98-%EC%A4%80%EB%B9%843.jpg\"></figure><p style=\"-webkit-text-stroke-width:0px;color:rgb(0, 0, 0);font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><span style=\"color:rgb(0,0,0);\"><span style=\"font-size:14pt;\"><strong>3. 총 5분동안 면을 담궈놓으시면 되구요 따뜻~</strong></span></span></p><p style=\"-webkit-text-stroke-width:0px;color:rgb(0, 0, 0);font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><span style=\"color:rgb(0,0,0);\"><span style=\"font-size:12pt;\">사진을 보시면 아시겠지만~!</span></span></p><p style=\"-webkit-text-stroke-width:0px;color:rgb(0, 0, 0);font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><span style=\"color:rgb(0,0,0);\"><span style=\"font-size:12pt;\">2분30초에 공화춘 면과 불닭볶음면 면의 층수를 바꿔주세요 ㅋㅋ</span></span></p><p style=\"-webkit-text-stroke-width:0px;color:rgb(0, 0, 0);font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><span style=\"color:rgb(0,0,0);\"><span style=\"font-size:12pt;\">이사~!~! 그리고 4분정도에 면이 잘 익었나 섞어주시구요</span></span></p><p style=\"-webkit-text-stroke-width:0px;color:rgb(0, 0, 0);font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><span style=\"color:rgb(0,0,0);\"><span style=\"font-size:12pt;\">그러면 아주 잘익은 면을 드실 수있답니다</span></span></p><figure class=\"image\"><img src=\"/media/%EA%B3%B5%ED%99%94%EC%B6%98-%EC%A4%80%EB%B9%844.jpg\"></figure><p style=\"-webkit-text-stroke-width:0px;color:rgb(0, 0, 0);font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><span style=\"color:rgb(0,0,0);\"><span style=\"font-size:14pt;\"><strong>4. 물버려주시구요</strong></span></span></p><p style=\"-webkit-text-stroke-width:0px;color:rgb(0, 0, 0);font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><span style=\"color:rgb(0,0,0);\"><span style=\"font-size:12pt;\">이때 중요한게 있는데 물은 한방울도 남기지 말고 다 비워주세요~</span></span></p><p style=\"-webkit-text-stroke-width:0px;color:rgb(0, 0, 0);font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><span style=\"color:rgb(0,0,0);\"><span style=\"font-size:12pt;\">이게 약간 느낌인데</span></span></p><p style=\"-webkit-text-stroke-width:0px;color:rgb(0, 0, 0);font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><span style=\"color:rgb(0,0,0);\"><span style=\"font-size:12pt;\">액상+액상스프 라면은 물이 있으면 좀 맛이 연해져요</span></span></p><p style=\"-webkit-text-stroke-width:0px;color:rgb(0, 0, 0);font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><span style=\"color:rgb(0,0,0);\"><span style=\"font-size:12pt;\">근데 액상+분말 (섞어먹을때)라면은 물이 없으면 너무 안섞이거든요</span></span></p><p style=\"-webkit-text-stroke-width:0px;color:rgb(0, 0, 0);font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><span style=\"color:rgb(0,0,0);\"><span style=\"font-size:12pt;\">액상+액상일때는 다 부어주세요!</span></span></p><figure class=\"image\"><img src=\"/media/%EA%B3%B5%ED%99%94%EC%B6%98-%EC%A4%80%EB%B9%845.jpg\"></figure><p style=\"-webkit-text-stroke-width:0px;color:rgb(0, 0, 0);font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><span style=\"color:rgb(0,0,0);\"><span style=\"font-size:14pt;\"><strong>5. 불닭볶음면 액상 소스와 공화춘 액상소스를 부어줍니다</strong></span></span></p><p style=\"-webkit-text-stroke-width:0px;color:rgb(0, 0, 0);font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><span style=\"color:rgb(0,0,0);\"><span style=\"font-size:12pt;\">소스를 부으시고 먼저 소스 먼저 서로 섞이게 잘비벼주세요</span></span></p><p style=\"-webkit-text-stroke-width:0px;color:rgb(0, 0, 0);font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><span style=\"color:rgb(0,0,0);\"><span style=\"font-size:12pt;\">그후에 면과 함께 소스를 잘섞어주세요</span></span></p><p style=\"-webkit-text-stroke-width:0px;color:rgb(0, 0, 0);font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><span style=\"color:rgb(0,0,0);\"><span style=\"font-size:12pt;\">라면 섞어먹기의 가장 중요한 단계입니다.</span></span></p><p style=\"-webkit-text-stroke-width:0px;color:rgb(0, 0, 0);font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><span style=\"color:rgb(0,0,0);\"><span style=\"font-size:12pt;\">다들 긴장하고 하시라구요!ㅋㅋ</span></span></p><p style=\"-webkit-text-stroke-width:0px;color:rgb(0, 0, 0);font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><span style=\"color:rgb(0,0,0);\"><span style=\"font-size:12pt;\">소스먼저 섞는이유는 나중에 맛이 따로놀지 않게 하기 위함입니다요!</span></span></p><figure class=\"image\"><img src=\"/media/%EA%B3%B5%ED%99%94%EC%B6%98-%EC%99%84%EC%84%B1.jpg\"></figure><p style=\"-webkit-text-stroke-width:0px;color:rgb(0, 0, 0);font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><span style=\"color:rgb(0,0,0);\"><span style=\"font-size:14pt;\"><strong>6.짜쟌~ 완성</strong></span></span></p><p style=\"-webkit-text-stroke-width:0px;color:rgb(0, 0, 0);font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><span style=\"color:rgb(0,0,0);\"><span style=\"font-size:12pt;\">김가루까지 뿌려주시면 너무 완성이고?!?!?</span></span></p><p style=\"-webkit-text-stroke-width:0px;color:rgb(0, 0, 0);font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><span style=\"color:rgb(0,0,0);\"><span style=\"font-size:12pt;\">이제 맛있게 먹어주세요</span></span></p><p style=\"-webkit-text-stroke-width:0px;color:rgb(0, 0, 0);font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><span style=\"color:rgb(0,0,0);\"><span style=\"font-size:12pt;\">아까도 설명 드렸다싶이 gs25 공화춘 곱빼기에는</span></span></p><p style=\"-webkit-text-stroke-width:0px;color:rgb(0, 0, 0);font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><span style=\"color:rgb(0,0,0);\"><span style=\"font-size:12pt;\">고기, 감자, 양파가 들어있답니다</span></span></p><p style=\"-webkit-text-stroke-width:0px;color:rgb(0, 0, 0);font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><span style=\"color:rgb(0,0,0);\"><span style=\"font-size:12pt;\">그래서 풍미가 더 좋아요~~</span></span></p><p style=\"-webkit-text-stroke-width:0px;clear:none;color:rgb(0, 0, 0);float:none;font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><span style=\"font-size:14pt;\"><strong>1. 맛: </strong></span><font size=\"5\"><span style=\"font-size:14pt;\"><strong>★★★★☆</strong></span></font></p><p style=\"-webkit-text-stroke-width:0px;clear:none;color:rgb(0, 0, 0);float:none;font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><span style=\"font-size:12pt;\">맛은요.. 두개를 섞은맛이에요ㅋㅋㅋ</span></p><p style=\"-webkit-text-stroke-width:0px;clear:none;color:rgb(0, 0, 0);float:none;font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><span style=\"font-size:12pt;\">맛은 정말있는데요 맛이 따로 놀지는 않아요!</span></p><p style=\"-webkit-text-stroke-width:0px;clear:none;color:rgb(0, 0, 0);float:none;font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><span style=\"font-size:12pt;\">사실 이렇게 먹는건 라면 섞어먹기를 좋아하는 분들..</span></p><p style=\"-webkit-text-stroke-width:0px;clear:none;color:rgb(0, 0, 0);float:none;font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><span style=\"font-size:12pt;\">에게 추천드리구요 그런걸 싫어하시는 분들은 별로일수도...</span></p><p style=\"-webkit-text-stroke-width:0px;clear:none;color:rgb(0, 0, 0);float:none;font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><span style=\"font-size:12pt;\">호불호가 좀 있을 수 있습니다 두가지 라면이 섞이기 때문에!</span></p><p style=\"-webkit-text-stroke-width:0px;clear:none;color:rgb(0, 0, 0);float:none;font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><span style=\"font-size:12pt;\">저는 옛날 추억도 되새기고 넘 맛있었어요 ㅋㅋㅋ</span></p><p style=\"-webkit-text-stroke-width:0px;clear:none;color:rgb(0, 0, 0);float:none;font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">&nbsp;</p><p style=\"-webkit-text-stroke-width:0px;clear:none;color:rgb(0, 0, 0);float:none;font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">&nbsp;</p><p style=\"-webkit-text-stroke-width:0px;clear:none;color:rgb(0, 0, 0);float:none;font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><span style=\"font-size:14pt;\"><strong>2. 비쥬얼: </strong></span><font size=\"5\"><span style=\"font-size:14pt;\"><strong>★★★★☆</strong></span></font></p><p style=\"-webkit-text-stroke-width:0px;clear:none;color:rgb(0, 0, 0);float:none;font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><font size=\"5\"><span style=\"font-size:12pt;\">비쥬얼도 굳! 고기 양파 감자가 들어있는 라면이라니..</span></font></p><p style=\"-webkit-text-stroke-width:0px;clear:none;color:rgb(0, 0, 0);float:none;font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><font size=\"5\"><span style=\"font-size:12pt;\">너무 먹음직 스럽잖아?!</span></font></p><p style=\"-webkit-text-stroke-width:0px;clear:none;color:rgb(0, 0, 0);float:none;font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">&nbsp;</p><p style=\"-webkit-text-stroke-width:0px;clear:none;color:rgb(0, 0, 0);float:none;font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><font size=\"5\"><span style=\"font-size:14pt;\"><strong>3. 양: ★★★★★</strong></span></font></p><p style=\"-webkit-text-stroke-width:0px;clear:none;color:rgb(0, 0, 0);float:none;font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">한끼 식사보다!&nbsp;살짝 많을 수 있습니다</p><p style=\"-webkit-text-stroke-width:0px;clear:none;color:rgb(0, 0, 0);float:none;font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">김밥이랑은 절대 같이 드시지마세요 다른 메뉴까지</p><p style=\"-webkit-text-stroke-width:0px;clear:none;color:rgb(0, 0, 0);float:none;font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">드실려면 그냥 공화춘에 불닭 볶음면이면 족할듯..</p><p style=\"-webkit-text-stroke-width:0px;clear:none;color:rgb(0, 0, 0);float:none;font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">&nbsp;</p><p style=\"-webkit-text-stroke-width:0px;clear:none;color:rgb(0, 0, 0);float:none;font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><font size=\"5\"><span style=\"font-size:14pt;\"><strong>4. 가성비: ★★★★★</strong></span></font></p><p style=\"-webkit-text-stroke-width:0px;clear:none;color:rgb(0, 0, 0);float:none;font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><font size=\"5\"><span style=\"font-size:12pt;\">가성비 갑! 저의 입장에서 바라봤을때</span></font></p><p style=\"-webkit-text-stroke-width:0px;clear:none;color:rgb(0, 0, 0);float:none;font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><font size=\"5\"><span style=\"font-size:12pt;\">일단 맛있고, 가격면에서도 합계를 보셨다싶이</span></font></p><p style=\"-webkit-text-stroke-width:0px;clear:none;color:rgb(0, 0, 0);float:none;font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><span style=\"font-size:12pt;\">2.850 한끼로 가성비 갑~</span></p><p style=\"-webkit-text-stroke-width:0px;clear:none;color:rgb(0, 0, 0);float:none;font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><span style=\"font-size:12pt;\">라면이 생각날때 섞어먹는 라면이 생각날때</span></p><p style=\"-webkit-text-stroke-width:0px;clear:none;color:rgb(0, 0, 0);float:none;font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><span style=\"font-size:12pt;\">밥보다 라면이 먹고싶을때!@</span></p><p style=\"-webkit-text-stroke-width:0px;clear:none;color:rgb(0, 0, 0);float:none;font-family:&quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, &quot;맑은 고딕&quot;, Dotum, 돋움, &quot;Noto Sans KR&quot;, &quot;Nanum Gothic&quot;, Lato, Helvetica, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0px 0px 20px;orphans:2;padding:0px !important;text-align:center;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><span style=\"font-size:12pt;\">추천드립니다.</span></p>",
+        "created_at": "2023-05-18T02:11:33.159Z",
+        "updated_at": "2023-05-18T05:03:27.706Z",
+        "convenience_stores": [
+            1
+        ],
+        "like_users": [
+            2,
+            3
+        ],
+        "used_products": [
+            8,
+            16
+        ]
+    }
+},
+{
+    "model": "recipes.recipe",
+    "pk": 23,
+    "fields": {
+        "user": 2,
+        "title": "막창떡볶이",
+        "thumbnail_upload": "images/recipe/thumbnail/막창떡볶이/a9e872970df03f83c1f6942fb38402981.jpg",
+        "thumbnail_crop": "thumbnail_crop/thumbnail_crop/a9e872970df03f83c1f6942fb38402981.jpg.jpg",
+        "hits": 7,
+        "content": "<p style=\"text-align:center;\"><span style=\"background-color:rgb(241,241,242);color:rgb(51,51,51);\"><span style=\"-webkit-text-stroke-width:0px;display:inline !important;float:none;font-family:&quot;Noto Sans KR&quot;, sans-serif;font-size:22px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">1. 막창은 전자레인지에 2분간 돌려 데운다.</span></span></p><figure class=\"image\"><img src=\"/media/79caebf7afb7c8e0a9f50e962a046a3b1_7hwudci.jpg\"></figure><p style=\"text-align:center;\"><span style=\"background-color:rgb(241,241,242);color:rgb(51,51,51);\"><span style=\"-webkit-text-stroke-width:0px;display:inline !important;float:none;font-family:&quot;Noto Sans KR&quot;, sans-serif;font-size:22px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">2. 떡볶이 떡에 소스, 뜨거운 물을 붓고 전자레인지에 2분간 돌려 조리한다.</span></span></p><figure class=\"image\"><img src=\"/media/ad6e0f973603372f2d703831bbc5e6fb1.jpg\"></figure><p style=\"text-align:center;\"><span style=\"background-color:rgb(241,241,242);color:rgb(51,51,51);\"><span style=\"-webkit-text-stroke-width:0px;display:inline !important;float:none;font-family:&quot;Noto Sans KR&quot;, sans-serif;font-size:22px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">3. 데운 막창에 떡볶이를 부어 섞는다.</span></span></p><figure class=\"image\"><img src=\"/media/c7c388f67289830123be83c0653e85181.jpg\"></figure><p style=\"text-align:center;\"><span style=\"background-color:rgb(241,241,242);color:rgb(51,51,51);\"><span style=\"-webkit-text-stroke-width:0px;display:inline !important;float:none;font-family:&quot;Noto Sans KR&quot;, sans-serif;font-size:22px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">4. 치즈를 올린 후 전자레인지에 30초씩 2번 돌려 완성한다.</span></span></p><figure class=\"image\"><img src=\"/media/ead1ec6dfa7f1b235ec634692afadecf1.jpg\"></figure><p style=\"text-align:center;\"><span style=\"background-color:rgb(241,241,242);color:rgb(51,51,51);\"><span style=\"-webkit-text-stroke-width:0px;display:inline !important;float:none;font-family:&quot;Noto Sans KR&quot;, sans-serif;font-size:22px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">5. 완성</span></span></p><figure class=\"image\"><img src=\"/media/a9e872970df03f83c1f6942fb38402981.jpg\"></figure>",
+        "created_at": "2023-05-18T02:11:38.800Z",
+        "updated_at": "2023-05-18T04:58:01.786Z",
+        "convenience_stores": [
+            1,
+            2,
+            3
+        ],
+        "like_users": [
+            2
+        ],
+        "used_products": [
+            14,
+            28,
+            39,
+            56
+        ]
+    }
+},
+{
+    "model": "recipes.recipe",
+    "pk": 24,
+    "fields": {
+        "user": 2,
+        "title": "고추참치치킨마요",
+        "thumbnail_upload": "images/recipe/thumbnail/고추참치치킨마요/고추참치.jpeg",
+        "thumbnail_crop": "thumbnail_crop/thumbnail_crop/고추참치.jpeg.jpeg",
+        "hits": 6,
+        "content": "<p style=\"text-align:center;\">고추참치 치킨마요</p><p style=\"text-align:center;\">너란 녀석 날 살찌우는구나</p><p style=\"text-align:center;\">체중 걱정 없으신 분만 드세요</p><p style=\"text-align:center;\">눈뜨면 5kg 쪄있을 테니까..</p><p style=\"text-align:center;\">&nbsp;</p><figure class=\"image image_resized\" style=\"width:49.25%;\"><img src=\"/media/%EA%B3%A0%EC%B6%94%EC%B0%B8%EC%B9%98%20%EC%B9%98%ED%82%A8%EB%A7%88%EC%9A%94-%EC%8A%88%EB%84%AC%EC%B9%98%ED%82%A8.png\"></figure><p style=\"text-align:center;\">슈넬치킨 데워줍니다. 전역하고 먹으니 좀 맛이 덜하긴 한데 추억여행 조지기</p><p style=\"text-align:center;\">&nbsp;</p><figure class=\"image image_resized\" style=\"width:48.23%;\"><img src=\"/media/%EA%B3%A0%EC%B6%94%EC%B0%B8%EC%B9%98%20%EC%B9%98%ED%82%A8%EB%A7%88%EC%9A%94-%ED%96%87%EB%B0%98.jpeg\"></figure><p style=\"text-align:center;\">슈넬 치킨 데우는 동안에 다른 전자레인지에다가 밥도 돌려줍니다.</p><p style=\"text-align:center;\">난 작은 공기는 아쉽더라</p><p style=\"text-align:center;\">&nbsp;</p><figure class=\"image image_resized\" style=\"width:40.82%;\"><img src=\"/media/%EA%B3%A0%EC%B6%94%EC%B0%B8%EC%B9%98%20%EC%B9%98%ED%82%A8%EB%A7%88%EC%9A%94-%EA%B3%A0%EC%B6%94%EC%B0%B8%EC%B9%98.jpg\"></figure><p style=\"text-align:center;\">전자레인지 다 돌아가면 슈넬치킨 가위로 조사주시고</p><p style=\"text-align:center;\">고추참치랑 같이 밥 그릇에 투하</p><p style=\"text-align:center;\">&nbsp;</p><p style=\"text-align:center;\">그 후에 마요네즈 좀 뿌려주시고 김가루도 뿌려주시면 맛이 좋습니다!</p><p style=\"text-align:center;\">&nbsp;</p><p style=\"text-align:center;\">맛점!</p>",
+        "created_at": "2023-05-18T02:13:12.044Z",
+        "updated_at": "2023-05-18T04:55:42.117Z",
+        "convenience_stores": [
+            1,
+            2
+        ],
+        "like_users": [
+            1
+        ],
+        "used_products": [
+            57,
+            58,
+            59
+        ]
+    }
+},
+{
+    "model": "recipes.recipe",
+    "pk": 25,
+    "fields": {
+        "user": 3,
+        "title": "오레오 빙수",
+        "thumbnail_upload": "images/recipe/thumbnail/오레오 빙수/09f469f2b6f6f733f34406b185d3d1411.jpg",
+        "thumbnail_crop": "thumbnail_crop/thumbnail_crop/09f469f2b6f6f733f34406b185d3d1411.jpg.jpg",
+        "hits": 10,
+        "content": "<p style=\"text-align:center;\"><span style=\"color:hsl(0,0%,0%);\"><span style=\"-webkit-text-stroke-width:0px;display:inline !important;float:none;font-family:&quot;Noto Sans KR&quot;, sans-serif;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">요즘처럼 더운날은 시원한 빙수가 최고인데요. 집에서 초간단 재료로 만들수 있는 시원하고 달콤한 '오레오 빙수'레시피를 소개할께요.</span></span></p><p style=\"text-align:center;\">&nbsp;</p><p style=\"text-align:center;\"><span style=\"background-color:rgb(241,241,242);color:rgb(51,51,51);\"><span style=\"-webkit-text-stroke-width:0px;display:inline !important;float:none;font-family:&quot;Noto Sans KR&quot;, sans-serif;font-size:22px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">1. 먼저 우유를 냉동실에 얼려 줍니다.</span></span></p><p style=\"text-align:center;\"><span style=\"background-color:rgb(241,241,242);color:rgb(51,51,51);\"><span style=\"-webkit-text-stroke-width:0px;display:inline !important;float:none;font-family:&quot;Noto Sans KR&quot;, sans-serif;font-size:22px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">우유양이 너무 많으시면 지퍼백에 약간만 부어 주신뒤 넓게 펴서 얼려 주셔도 됩니다.</span></span></p><figure class=\"image\"><img src=\"/media/af6820c3ca069ab5c053adf3cce0f2201.jpg\"></figure><p style=\"text-align:center;\"><span style=\"background-color:rgb(241,241,242);color:rgb(51,51,51);\"><span style=\"-webkit-text-stroke-width:0px;display:inline !important;float:none;font-family:&quot;Noto Sans KR&quot;, sans-serif;font-size:22px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">2. 오레오를 부셔주시되 가루처럼 너무 잘게 부시면 맛없으니</span></span><br><span style=\"background-color:rgb(241,241,242);color:rgb(51,51,51);\"><span style=\"-webkit-text-stroke-width:0px;display:inline !important;float:none;font-family:&quot;Noto Sans KR&quot;, sans-serif;font-size:22px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">약간 덩어리 있게 부셔 주세요.마지막에 데코용으로 오레오 1-2조각 남겨 두세요.</span></span></p><figure class=\"image\"><img src=\"/media/05ae1a23116bfb50818591645f03264a1.jpg\"></figure><p style=\"text-align:center;\"><span style=\"background-color:rgb(241,241,242);color:rgb(51,51,51);\"><span style=\"-webkit-text-stroke-width:0px;display:inline !important;float:none;font-family:&quot;Noto Sans KR&quot;, sans-serif;font-size:22px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">3. 이제 얼린 우유를 꺼내 손으로 살짝 비틀어 주세요.너무 꽁꽁 얼려졌다면 조금 녹이셨다가 비틀어 주심 돼요.</span></span></p><figure class=\"image\"><img src=\"/media/999749674b0258bf029a757279b345c91.jpg\"></figure><p style=\"text-align:center;\"><span style=\"background-color:rgb(241,241,242);color:rgb(51,51,51);\"><span style=\"-webkit-text-stroke-width:0px;display:inline !important;float:none;font-family:&quot;Noto Sans KR&quot;, sans-serif;font-size:22px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">4. 빙수 그릇에 얼린 우유를 깔아 주세요.</span></span></p><figure class=\"image\"><img src=\"/media/e426cfdfad5c0aee28af0eedf8ae6c161.jpg\"></figure><p style=\"text-align:center;\"><span style=\"background-color:rgb(241,241,242);color:rgb(51,51,51);\"><span style=\"-webkit-text-stroke-width:0px;display:inline !important;float:none;font-family:&quot;Noto Sans KR&quot;, sans-serif;font-size:22px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">5. 그위에 오레오를 깔아주시고 달콤한 연유를 솔솔 뿌려 줍니다!</span></span></p><p style=\"text-align:center;\"><span style=\"background-color:rgb(241,241,242);color:rgb(51,51,51);\"><span style=\"-webkit-text-stroke-width:0px;display:inline !important;float:none;font-family:&quot;Noto Sans KR&quot;, sans-serif;font-size:22px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">마지막으로 남겨두었던 오레오를 위에 꽂아 장식해주시면 끝!</span></span></p><figure class=\"image\"><img src=\"/media/09c2211e88471daf4c172cb683e310a21.jpg\"></figure><p style=\"text-align:center;\"><span style=\"background-color:rgb(241,241,242);color:rgb(51,51,51);\"><span style=\"-webkit-text-stroke-width:0px;display:inline !important;float:none;font-family:&quot;Noto Sans KR&quot;, sans-serif;font-size:22px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">6. 초간단 재료로 만든 시원달콤 오레오 우유빙수가 완성됐어요.</span></span></p><p style=\"text-align:center;\"><span style=\"background-color:rgb(241,241,242);color:rgb(51,51,51);\"><span style=\"-webkit-text-stroke-width:0px;display:inline !important;float:none;font-family:&quot;Noto Sans KR&quot;, sans-serif;font-size:22px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">아이스크림 있으시면 한 스쿱 올려주시면 비쥬얼이 더 살고 맛있어 보인답니다.</span></span></p><figure class=\"image\"><img src=\"/media/09f469f2b6f6f733f34406b185d3d1411.jpg\"></figure><p style=\"text-align:center;\"><span style=\"background-color:rgb(241,241,242);color:rgb(51,51,51);\"><span style=\"-webkit-text-stroke-width:0px;display:inline !important;float:none;font-family:&quot;Noto Sans KR&quot;, sans-serif;font-size:22px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">7. 한입 먹어보니 고소한 우유빙수에 바삭한 오레오가 어우려져 넘 맛있어요.</span></span></p><p style=\"text-align:center;\"><span style=\"background-color:rgb(241,241,242);color:rgb(51,51,51);\"><span style=\"-webkit-text-stroke-width:0px;display:inline !important;float:none;font-family:&quot;Noto Sans KR&quot;, sans-serif;font-size:22px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">재료가 복잡하지 않아 누구나 부담없이 쉽게 만들어 먹을 수 있어 좋답니다. 아이들 간식으로도 좋아요.</span></span></p><figure class=\"image\"><img src=\"/media/3945024595c04c2c101a4b9ab35054901.jpg\"></figure>",
+        "created_at": "2023-05-18T04:20:34.210Z",
+        "updated_at": "2023-05-18T05:04:40.161Z",
+        "convenience_stores": [
+            1,
+            2,
+            3
+        ],
+        "like_users": [
+            2
+        ],
+        "used_products": [
+            55,
+            60
+        ]
+    }
+},
+{
+    "model": "recipes.recipe",
+    "pk": 26,
+    "fields": {
+        "user": 3,
+        "title": "직꾸닭x카구리",
+        "thumbnail_upload": "images/recipe/thumbnail/직꾸닭x카구리/직꾸닭카구리.jpg",
+        "thumbnail_crop": "thumbnail_crop/thumbnail_crop/직꾸닭카구리.jpg.jpg",
+        "hits": 4,
+        "content": "<figure class=\"image\"><img src=\"/media/image_YfWziYB.png\"></figure><figure class=\"image\"><img src=\"/media/image_Q1FcvSH.png\"></figure><figure class=\"image\"><img src=\"/media/image_nD8eq2T.png\"></figure><figure class=\"image\"><img src=\"/media/image_UcKYGOG.png\"></figure>",
+        "created_at": "2023-05-18T04:40:05.801Z",
+        "updated_at": "2023-05-18T04:57:20.257Z",
+        "convenience_stores": [
+            1,
+            2,
+            3
+        ],
+        "like_users": [
+            6
+        ],
+        "used_products": [
+            4,
+            22,
+            54,
+            55
+        ]
+    }
+},
+{
+    "model": "recipes.recipe",
+    "pk": 27,
+    "fields": {
+        "user": 2,
+        "title": "에그머니빵",
+        "thumbnail_upload": "images/recipe/thumbnail/에그머니빵/b9e42f621cd8595ed541712575c497f41.jpg",
+        "thumbnail_crop": "thumbnail_crop/thumbnail_crop/b9e42f621cd8595ed541712575c497f41.jpg.jpg",
+        "hits": 6,
+        "content": "<p style=\"text-align:center;\"><span style=\"background-color:rgb(241,241,242);color:rgb(51,51,51);\"><span style=\"-webkit-text-stroke-width:0px;display:inline !important;float:none;font-family:&quot;Noto Sans KR&quot;, sans-serif;font-size:22px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">1. 빵은 봉지를 살짝 뜯은 후 전자레인지에 1분간 돌린다.</span></span></p><figure class=\"image\"><img src=\"/media/ce00232fb285da5cbe03e2272818541d1.png\"></figure><p style=\"text-align:center;\"><span style=\"background-color:rgb(241,241,242);color:rgb(51,51,51);\"><span style=\"-webkit-text-stroke-width:0px;display:inline !important;float:none;font-family:&quot;Noto Sans KR&quot;, sans-serif;font-size:22px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">2. 데운 빵은 반으로 자른다.</span></span></p><figure class=\"image\"><img src=\"/media/b895608b98bf8c3776c0d713ef1674771.png\"></figure><p style=\"text-align:center;\"><span style=\"background-color:rgb(241,241,242);color:rgb(51,51,51);\"><span style=\"-webkit-text-stroke-width:0px;display:inline !important;float:none;font-family:&quot;Noto Sans KR&quot;, sans-serif;font-size:22px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">3. 달걀샐러드를 으깬 후 빵 속에 넣어 에그머니빵을 완성한다.</span></span></p><figure class=\"image\"><img src=\"/media/a50cbfb8b14e28fe10f9aaac16d87f081.png\"></figure><p style=\"text-align:center;\"><span style=\"background-color:rgb(241,241,242);color:rgb(51,51,51);\"><span style=\"-webkit-text-stroke-width:0px;display:inline !important;float:none;font-family:&quot;Noto Sans KR&quot;, sans-serif;font-size:22px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\">4. 완성</span></span></p><figure class=\"image\"><img src=\"/media/2e563eb38c8a5d4b0a671a7c9b2b635b1.jpg\"></figure>",
+        "created_at": "2023-05-18T04:48:58.929Z",
+        "updated_at": "2023-05-18T05:12:32.126Z",
+        "convenience_stores": [
+            1,
+            2,
+            3
+        ],
+        "like_users": [
+            1
+        ],
+        "used_products": [
+            26,
+            62
+        ]
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 1,
+    "fields": {
+        "user": 1,
+        "recipe": 18,
+        "content": "저의 아버지 생신에 좀 특별한 케이크를 만들고 싶어서 만들었는데 아버지께서 기뻐하세요. 맛난 레시피 감사해요!",
+        "created_at": "2023-05-18T01:55:48.530Z",
+        "updated_at": "2023-05-18T04:40:06.695Z",
+        "image": "images/review/admin/4a13a349f1f9300f7ba1d6e715c5dafb.jpg",
+        "rating": 5,
+        "like_user": [
+            2,
+            4
+        ]
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 2,
+    "fields": {
+        "user": 6,
+        "recipe": 1,
+        "content": "간단하고 만들기도 쉬운데 눅눅해요",
+        "created_at": "2023-05-18T04:47:59.652Z",
+        "updated_at": "2023-05-18T04:47:59.652Z",
+        "image": "",
+        "rating": 3,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 3,
+    "fields": {
+        "user": 6,
+        "recipe": 2,
+        "content": "여름에 먹으면 개꿀맛이에요 강추",
+        "created_at": "2023-05-18T04:48:22.325Z",
+        "updated_at": "2023-05-18T04:48:22.325Z",
+        "image": "",
+        "rating": 5,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 4,
+    "fields": {
+        "user": 6,
+        "recipe": 3,
+        "content": "솔의 눈은 솔의 눈이에요",
+        "created_at": "2023-05-18T04:48:40.699Z",
+        "updated_at": "2023-05-18T04:48:40.699Z",
+        "image": "",
+        "rating": 1,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 5,
+    "fields": {
+        "user": 6,
+        "recipe": 4,
+        "content": "누가 봐도 보장된 맛",
+        "created_at": "2023-05-18T04:49:05.586Z",
+        "updated_at": "2023-05-18T04:49:05.586Z",
+        "image": "",
+        "rating": 5,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 6,
+    "fields": {
+        "user": 6,
+        "recipe": 5,
+        "content": "으 양갱 왜 넣죠 개맛없음",
+        "created_at": "2023-05-18T04:49:28.744Z",
+        "updated_at": "2023-05-18T04:49:28.744Z",
+        "image": "",
+        "rating": 2,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 8,
+    "fields": {
+        "user": 2,
+        "recipe": 16,
+        "content": "편의점에서 쌈무가 있다니?!",
+        "created_at": "2023-05-18T04:49:48.213Z",
+        "updated_at": "2023-05-18T04:49:48.213Z",
+        "image": "",
+        "rating": 4,
+        "like_user": [
+            3
+        ]
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 9,
+    "fields": {
+        "user": 6,
+        "recipe": 6,
+        "content": "집에 머스타드가 없어요",
+        "created_at": "2023-05-18T04:49:53.459Z",
+        "updated_at": "2023-05-18T04:49:53.459Z",
+        "image": "",
+        "rating": 1,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 10,
+    "fields": {
+        "user": 3,
+        "recipe": 4,
+        "content": "와 배고프다...",
+        "created_at": "2023-05-18T04:49:55.690Z",
+        "updated_at": "2023-05-18T04:49:55.690Z",
+        "image": "",
+        "rating": 5,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 11,
+    "fields": {
+        "user": 6,
+        "recipe": 8,
+        "content": "생각보다 맛있음",
+        "created_at": "2023-05-18T04:50:10.601Z",
+        "updated_at": "2023-05-18T04:50:10.601Z",
+        "image": "",
+        "rating": 4,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 12,
+    "fields": {
+        "user": 4,
+        "recipe": 3,
+        "content": "솔의 눈은 못마시겠다 진짜",
+        "created_at": "2023-05-18T04:50:11.213Z",
+        "updated_at": "2023-05-18T04:50:11.213Z",
+        "image": "",
+        "rating": 1,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 13,
+    "fields": {
+        "user": 3,
+        "recipe": 14,
+        "content": "내 스타일은 아닌듯..",
+        "created_at": "2023-05-18T04:50:20.690Z",
+        "updated_at": "2023-05-18T04:50:20.690Z",
+        "image": "",
+        "rating": 1,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 14,
+    "fields": {
+        "user": 2,
+        "recipe": 8,
+        "content": "대존맛!",
+        "created_at": "2023-05-18T04:50:21.233Z",
+        "updated_at": "2023-05-18T04:50:21.233Z",
+        "image": "",
+        "rating": 5,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 15,
+    "fields": {
+        "user": 6,
+        "recipe": 9,
+        "content": "이것도 레시피라고?",
+        "created_at": "2023-05-18T04:50:26.441Z",
+        "updated_at": "2023-05-18T04:50:26.441Z",
+        "image": "",
+        "rating": 2,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 16,
+    "fields": {
+        "user": 4,
+        "recipe": 27,
+        "content": "에그머니나! 넘모 맛있지 모야!",
+        "created_at": "2023-05-18T04:50:39.819Z",
+        "updated_at": "2023-05-18T04:50:39.819Z",
+        "image": "",
+        "rating": 4,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 17,
+    "fields": {
+        "user": 6,
+        "recipe": 12,
+        "content": "이걸 먹느리 베라를 먹겠다 ㅋㅋㅋㅋ",
+        "created_at": "2023-05-18T04:50:44.835Z",
+        "updated_at": "2023-05-18T04:50:44.835Z",
+        "image": "",
+        "rating": 1,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 18,
+    "fields": {
+        "user": 3,
+        "recipe": 8,
+        "content": "만들기도 편하고 맛있겠다!!!!",
+        "created_at": "2023-05-18T04:50:50.979Z",
+        "updated_at": "2023-05-18T04:50:50.979Z",
+        "image": "",
+        "rating": 5,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 19,
+    "fields": {
+        "user": 2,
+        "recipe": 2,
+        "content": "사실 맛남..ㅎ",
+        "created_at": "2023-05-18T04:51:16.007Z",
+        "updated_at": "2023-05-18T05:06:03.918Z",
+        "image": "",
+        "rating": 3,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 20,
+    "fields": {
+        "user": 4,
+        "recipe": 18,
+        "content": "얼매나 통나무 같던지 먹다가 임플란트했습니다",
+        "created_at": "2023-05-18T04:51:23.982Z",
+        "updated_at": "2023-05-18T04:51:23.982Z",
+        "image": "",
+        "rating": 5,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 21,
+    "fields": {
+        "user": 6,
+        "recipe": 13,
+        "content": "편의점에서 만들만해요 꿀맛",
+        "created_at": "2023-05-18T04:51:25.043Z",
+        "updated_at": "2023-05-18T04:51:25.043Z",
+        "image": "",
+        "rating": 5,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 22,
+    "fields": {
+        "user": 6,
+        "recipe": 14,
+        "content": "칼칼하고 개꿀맛인듯?",
+        "created_at": "2023-05-18T04:51:38.455Z",
+        "updated_at": "2023-05-18T04:51:38.455Z",
+        "image": "",
+        "rating": 5,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 23,
+    "fields": {
+        "user": 3,
+        "recipe": 12,
+        "content": "너무 비싸요",
+        "created_at": "2023-05-18T04:51:46.972Z",
+        "updated_at": "2023-05-18T04:52:21.471Z",
+        "image": "",
+        "rating": 1,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 24,
+    "fields": {
+        "user": 2,
+        "recipe": 13,
+        "content": "이럴 바에 밖에서 먹지 왜 편의점 가냐?",
+        "created_at": "2023-05-18T04:51:52.004Z",
+        "updated_at": "2023-05-18T04:51:52.004Z",
+        "image": "",
+        "rating": 1,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 25,
+    "fields": {
+        "user": 6,
+        "recipe": 15,
+        "content": "이름부터 개 어그로임",
+        "created_at": "2023-05-18T04:51:57.613Z",
+        "updated_at": "2023-05-18T04:51:57.613Z",
+        "image": "",
+        "rating": 1,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 26,
+    "fields": {
+        "user": 6,
+        "recipe": 16,
+        "content": "새콤 달콤 맛있는듯?",
+        "created_at": "2023-05-18T04:52:15.487Z",
+        "updated_at": "2023-05-18T04:52:15.487Z",
+        "image": "",
+        "rating": 5,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 27,
+    "fields": {
+        "user": 6,
+        "recipe": 17,
+        "content": "따로 먹어도 맛있어요",
+        "created_at": "2023-05-18T04:52:32.740Z",
+        "updated_at": "2023-05-18T04:52:32.740Z",
+        "image": "",
+        "rating": 3,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 28,
+    "fields": {
+        "user": 4,
+        "recipe": 20,
+        "content": "이거에 소주먹다가 기억잃을 뻔 했습니다 휴...^^ 이거에 소주먹다가 기억잃을 뻔 했습니다 휴...^^ 이거에 소주먹다가 기억잃을 뻔 했습니다 휴...^^",
+        "created_at": "2023-05-18T04:52:44.463Z",
+        "updated_at": "2023-05-18T04:52:54.686Z",
+        "image": "",
+        "rating": 5,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 29,
+    "fields": {
+        "user": 2,
+        "recipe": 19,
+        "content": "이거 티비에 나온거 그대로 베끼셨군요?",
+        "created_at": "2023-05-18T04:52:45.153Z",
+        "updated_at": "2023-05-18T04:52:45.153Z",
+        "image": "",
+        "rating": 2,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 30,
+    "fields": {
+        "user": 6,
+        "recipe": 18,
+        "content": "고양이가 응아인줄 알고 모래로 묻었어요 ㅠ",
+        "created_at": "2023-05-18T04:53:01.803Z",
+        "updated_at": "2023-05-18T05:00:29.827Z",
+        "image": "images/review/hyndrome1/응아.jpg",
+        "rating": 2,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 31,
+    "fields": {
+        "user": 6,
+        "recipe": 19,
+        "content": "비싸긴 한데 술안주로 굳인듯?",
+        "created_at": "2023-05-18T04:53:21.143Z",
+        "updated_at": "2023-05-18T04:53:21.143Z",
+        "image": "",
+        "rating": 4,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 32,
+    "fields": {
+        "user": 5,
+        "recipe": 24,
+        "content": "편의점 레시피 11000원? 장난? 컵밥집 갈게요~",
+        "created_at": "2023-05-18T04:53:39.950Z",
+        "updated_at": "2023-05-18T04:53:39.950Z",
+        "image": "",
+        "rating": 1,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 33,
+    "fields": {
+        "user": 6,
+        "recipe": 20,
+        "content": "1점 드가자",
+        "created_at": "2023-05-18T04:53:45.585Z",
+        "updated_at": "2023-05-18T04:53:45.585Z",
+        "image": "",
+        "rating": 1,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 34,
+    "fields": {
+        "user": 4,
+        "recipe": 23,
+        "content": "혈관 막힐 뻔 했습니다. 숨통을 조여오는 맛이 좋네요.",
+        "created_at": "2023-05-18T04:53:49.461Z",
+        "updated_at": "2023-05-18T04:53:49.461Z",
+        "image": "",
+        "rating": 5,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 35,
+    "fields": {
+        "user": 2,
+        "recipe": 5,
+        "content": "연양갱에서 아저씨같아요",
+        "created_at": "2023-05-18T04:53:56.999Z",
+        "updated_at": "2023-05-18T04:53:56.999Z",
+        "image": "",
+        "rating": 1,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 36,
+    "fields": {
+        "user": 3,
+        "recipe": 1,
+        "content": "만들기 쉽고 가격이 저렴해요",
+        "created_at": "2023-05-18T04:54:41.646Z",
+        "updated_at": "2023-05-18T04:54:41.646Z",
+        "image": "",
+        "rating": 4,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 37,
+    "fields": {
+        "user": 2,
+        "recipe": 20,
+        "content": "프로필은 왜 휴개소 우동???",
+        "created_at": "2023-05-18T04:54:45.919Z",
+        "updated_at": "2023-05-18T04:54:45.919Z",
+        "image": "",
+        "rating": 1,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 38,
+    "fields": {
+        "user": 4,
+        "recipe": 7,
+        "content": "리조또 조또 맛있네",
+        "created_at": "2023-05-18T04:54:53.145Z",
+        "updated_at": "2023-05-18T04:54:53.145Z",
+        "image": "",
+        "rating": 5,
+        "like_user": [
+            3
+        ]
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 39,
+    "fields": {
+        "user": 6,
+        "recipe": 21,
+        "content": "밴쯔... 살아있나요??",
+        "created_at": "2023-05-18T04:54:59.265Z",
+        "updated_at": "2023-05-18T04:54:59.265Z",
+        "image": "",
+        "rating": 1,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 40,
+    "fields": {
+        "user": 5,
+        "recipe": 21,
+        "content": "굿~",
+        "created_at": "2023-05-18T04:55:12.485Z",
+        "updated_at": "2023-05-18T04:55:12.485Z",
+        "image": "images/review/gktjd425/다운로드.jpg",
+        "rating": 5,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 41,
+    "fields": {
+        "user": 6,
+        "recipe": 22,
+        "content": "너무 맛있는듯",
+        "created_at": "2023-05-18T04:55:15.398Z",
+        "updated_at": "2023-05-18T04:55:15.398Z",
+        "image": "",
+        "rating": 5,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 42,
+    "fields": {
+        "user": 6,
+        "recipe": 23,
+        "content": "개꿀맛입니다",
+        "created_at": "2023-05-18T04:55:38.532Z",
+        "updated_at": "2023-05-18T04:55:38.532Z",
+        "image": "",
+        "rating": 4,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 43,
+    "fields": {
+        "user": 6,
+        "recipe": 24,
+        "content": "전역하고 슈넬 치킨 먹으니까 다시 그때로 돌아간 것 같아요",
+        "created_at": "2023-05-18T04:56:00.530Z",
+        "updated_at": "2023-05-18T04:56:00.530Z",
+        "image": "",
+        "rating": 1,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 44,
+    "fields": {
+        "user": 3,
+        "recipe": 15,
+        "content": "일단 만들기 쉬워보임 맛은 아직 모르겠내요",
+        "created_at": "2023-05-18T04:56:13.296Z",
+        "updated_at": "2023-05-18T04:56:13.296Z",
+        "image": "",
+        "rating": 4,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 45,
+    "fields": {
+        "user": 4,
+        "recipe": 1,
+        "content": "맥주 안주로 좋네요",
+        "created_at": "2023-05-18T04:56:40.828Z",
+        "updated_at": "2023-05-18T04:56:40.828Z",
+        "image": "",
+        "rating": 5,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 46,
+    "fields": {
+        "user": 5,
+        "recipe": 9,
+        "content": "아이해브 만두~ 아이해브 사리곰탕~ 어! 만두 사리곰탕!",
+        "created_at": "2023-05-18T04:56:43.706Z",
+        "updated_at": "2023-05-18T04:56:43.707Z",
+        "image": "images/review/gktjd425/Q_800.jfif",
+        "rating": 1,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 47,
+    "fields": {
+        "user": 6,
+        "recipe": 25,
+        "content": "우유 부수다가 제 손이 오레오 처럼 부숴졌습니다",
+        "created_at": "2023-05-18T04:56:50.808Z",
+        "updated_at": "2023-05-18T05:02:28.400Z",
+        "image": "images/review/hyndrome1/손뿌사짐.jfif",
+        "rating": 1,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 48,
+    "fields": {
+        "user": 2,
+        "recipe": 18,
+        "content": "간단하고 예뻐요! 진짜 굿아이디어네요~ 누텔라바르니 맛도 더 좋네요~~",
+        "created_at": "2023-05-18T04:57:12.651Z",
+        "updated_at": "2023-05-18T04:57:12.652Z",
+        "image": "images/review/test/b3f3f601c2267ee6f1ff1eac1b62ec3c.jpg",
+        "rating": 5,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 49,
+    "fields": {
+        "user": 6,
+        "recipe": 26,
+        "content": "이것이 편의점 인도 까르보?",
+        "created_at": "2023-05-18T04:57:14.520Z",
+        "updated_at": "2023-05-18T04:57:14.520Z",
+        "image": "",
+        "rating": 5,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 50,
+    "fields": {
+        "user": 4,
+        "recipe": 4,
+        "content": "점심 2차로 갑니다",
+        "created_at": "2023-05-18T04:57:15.869Z",
+        "updated_at": "2023-05-18T04:57:15.869Z",
+        "image": "",
+        "rating": 5,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 51,
+    "fields": {
+        "user": 4,
+        "recipe": 26,
+        "content": "꾸덕한거 봐라?",
+        "created_at": "2023-05-18T04:57:36.308Z",
+        "updated_at": "2023-05-18T04:57:36.308Z",
+        "image": "",
+        "rating": 5,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 52,
+    "fields": {
+        "user": 3,
+        "recipe": 16,
+        "content": "새로운 도전인듯",
+        "created_at": "2023-05-18T04:57:46.670Z",
+        "updated_at": "2023-05-18T04:57:46.670Z",
+        "image": "",
+        "rating": 5,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 53,
+    "fields": {
+        "user": 5,
+        "recipe": 6,
+        "content": "꿀떡꿀떡 넘어가네요~",
+        "created_at": "2023-05-18T04:58:02.046Z",
+        "updated_at": "2023-05-18T04:58:02.047Z",
+        "image": "",
+        "rating": 4,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 54,
+    "fields": {
+        "user": 6,
+        "recipe": 27,
+        "content": "생각보다는 먹을만 한듯?",
+        "created_at": "2023-05-18T04:58:17.228Z",
+        "updated_at": "2023-05-18T04:58:17.228Z",
+        "image": "",
+        "rating": 3,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 55,
+    "fields": {
+        "user": 2,
+        "recipe": 23,
+        "content": "맛 없을 수 없는 페이지",
+        "created_at": "2023-05-18T04:58:21.686Z",
+        "updated_at": "2023-05-18T04:58:21.686Z",
+        "image": "",
+        "rating": 5,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 56,
+    "fields": {
+        "user": 4,
+        "recipe": 22,
+        "content": "이 친구 때깔봐라?",
+        "created_at": "2023-05-18T04:58:33.875Z",
+        "updated_at": "2023-05-18T04:58:44.638Z",
+        "image": "",
+        "rating": 5,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 57,
+    "fields": {
+        "user": 5,
+        "recipe": 13,
+        "content": "JMT",
+        "created_at": "2023-05-18T04:59:16.226Z",
+        "updated_at": "2023-05-18T04:59:16.226Z",
+        "image": "images/review/gktjd425/3690de8fc29ad7663ef34082c78b2f32.jpg",
+        "rating": 1,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 58,
+    "fields": {
+        "user": 4,
+        "recipe": 21,
+        "content": "이 가격이면 피자스쿨 핫치킨피자 먹겠는데?",
+        "created_at": "2023-05-18T04:59:35.692Z",
+        "updated_at": "2023-05-18T04:59:35.692Z",
+        "image": "",
+        "rating": 1,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 59,
+    "fields": {
+        "user": 3,
+        "recipe": 22,
+        "content": "군대의 추억이 떠오르내요",
+        "created_at": "2023-05-18T05:00:52.856Z",
+        "updated_at": "2023-05-18T05:00:52.856Z",
+        "image": "",
+        "rating": 5,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 60,
+    "fields": {
+        "user": 5,
+        "recipe": 8,
+        "content": "히트다 히트~!",
+        "created_at": "2023-05-18T05:00:54.801Z",
+        "updated_at": "2023-05-18T05:00:54.801Z",
+        "image": "images/review/gktjd425/IMG_8077.jpg",
+        "rating": 5,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 61,
+    "fields": {
+        "user": 4,
+        "recipe": 5,
+        "content": "한 입 베어물 때 부드럽고..~ 달콤하고..~ 참기름 처럼 꼬소-하고..~ 아카시아 꽃!향기가 나면서..~(뭐?! 아카시아 꽃향기?!) 하늘땅.. 하늘 땅!땅!땅!!만큼 맛있어요! 모두들 크림빵을 들어요!엄마!아빠!할머니!할아버지!형! 경주도~!",
+        "created_at": "2023-05-18T05:01:47.348Z",
+        "updated_at": "2023-05-18T05:02:10.588Z",
+        "image": "",
+        "rating": 5,
+        "like_user": [
+            5
+        ]
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 62,
+    "fields": {
+        "user": 2,
+        "recipe": 25,
+        "content": "연유 어디감?",
+        "created_at": "2023-05-18T05:02:05.320Z",
+        "updated_at": "2023-05-18T05:02:05.320Z",
+        "image": "",
+        "rating": 1,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 63,
+    "fields": {
+        "user": 3,
+        "recipe": 25,
+        "content": "만들기 너무 편하고",
+        "created_at": "2023-05-18T05:02:08.949Z",
+        "updated_at": "2023-05-18T05:02:08.949Z",
+        "image": "",
+        "rating": 5,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 64,
+    "fields": {
+        "user": 5,
+        "recipe": 7,
+        "content": "조또 마떼! 너무 맛있다구!",
+        "created_at": "2023-05-18T05:03:16.853Z",
+        "updated_at": "2023-05-18T05:03:16.853Z",
+        "image": "images/review/gktjd425/536771cac7e52a08a6e4397d4d7945941.jpg",
+        "rating": 4,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 65,
+    "fields": {
+        "user": 4,
+        "recipe": 13,
+        "content": "든든하고 맛있는거 봐라?",
+        "created_at": "2023-05-18T05:03:33.118Z",
+        "updated_at": "2023-05-18T05:03:33.118Z",
+        "image": "",
+        "rating": 5,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 66,
+    "fields": {
+        "user": 6,
+        "recipe": 13,
+        "content": "만들기도 쉽고 맛있어요",
+        "created_at": "2023-05-18T05:03:37.132Z",
+        "updated_at": "2023-05-18T05:03:37.132Z",
+        "image": "images/review/hyndrome1/마크정식.jfif",
+        "rating": 1,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 67,
+    "fields": {
+        "user": 3,
+        "recipe": 24,
+        "content": "너무 비싸요",
+        "created_at": "2023-05-18T05:04:07.255Z",
+        "updated_at": "2023-05-18T05:04:07.255Z",
+        "image": "",
+        "rating": 1,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 68,
+    "fields": {
+        "user": 2,
+        "recipe": 22,
+        "content": "없었던 추억도 떠오를 비주얼이네요",
+        "created_at": "2023-05-18T05:04:08.488Z",
+        "updated_at": "2023-05-18T05:04:08.488Z",
+        "image": "",
+        "rating": 5,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 69,
+    "fields": {
+        "user": 5,
+        "recipe": 17,
+        "content": "아 오늘은 로제직꾸불닭볶음면 먹어야겠다~",
+        "created_at": "2023-05-18T05:04:22.658Z",
+        "updated_at": "2023-05-18T05:04:22.658Z",
+        "image": "",
+        "rating": 4,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 70,
+    "fields": {
+        "user": 5,
+        "recipe": 18,
+        "content": "쩔어 쩔어!",
+        "created_at": "2023-05-18T05:07:36.547Z",
+        "updated_at": "2023-05-18T05:07:36.547Z",
+        "image": "",
+        "rating": 5,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 71,
+    "fields": {
+        "user": 2,
+        "recipe": 17,
+        "content": "더 맛있게 먹으려면 렌지 돌리기 전에 면 분리 필수!",
+        "created_at": "2023-05-18T05:07:55.766Z",
+        "updated_at": "2023-05-18T05:07:55.766Z",
+        "image": "",
+        "rating": 5,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 72,
+    "fields": {
+        "user": 5,
+        "recipe": 5,
+        "content": "양갱 억까단 말 듣지 마시고 한번 만들어보세요 꿀맛입니당",
+        "created_at": "2023-05-18T05:08:46.019Z",
+        "updated_at": "2023-05-18T05:08:46.019Z",
+        "image": "",
+        "rating": 5,
+        "like_user": []
+    }
+},
+{
+    "model": "recipes.review",
+    "pk": 73,
+    "fields": {
+        "user": 5,
+        "recipe": 12,
+        "content": "혹시 집주변에 공차가 없으신가요?",
+        "created_at": "2023-05-18T05:09:44.171Z",
+        "updated_at": "2023-05-18T05:09:44.171Z",
+        "image": "",
+        "rating": 1,
+        "like_user": []
+    }
+}
+]

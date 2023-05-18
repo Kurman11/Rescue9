@@ -209,7 +209,7 @@ CKEDITOR_5_CONFIGS = {
         ],
     },
     "extends": {
-        "language": "en",
+        "language": "kr",
         "blockToolbar": [
             "paragraph",
             "heading1",
@@ -238,6 +238,7 @@ CKEDITOR_5_CONFIGS = {
             "superscript",
             "highlight",
             "|",
+            "alignment",
             "bulletedList",
             "numberedList",
             "todoList",
@@ -329,6 +330,9 @@ CKEDITOR_5_CONFIGS = {
             "allow": [
                 {"name": "/.*/", "attributes": True, "classes": True, "styles": True}
             ]
+        },
+        "alignment": {
+            "options": [ 'left', 'right', 'center' ]
         },
     },
 }

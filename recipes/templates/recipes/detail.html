@@ -34,7 +34,7 @@
             {% if recipe.user.image %}
             <img class="recipe__user__image" src="{{ recipe.user.image.url }}" alt="{{ recipe.user.username }}의 프로필 이미지">
             {% else %}
-            <img class="recipe__user__image" src="{% static 'image/no_image432.png' %}" alt="유저 프로필 사진 없음">
+            <img class="recipe__user__image" src="{% static 'image/solo.png' %}" alt="유저 프로필 사진 없음">
             {% endif %}
           </div>
           <p>{{ recipe.user.username }}</p>
@@ -164,7 +164,7 @@
             {% if review.user.image %}
             <img class="recipe__user__image" src="{{ review.user.image.url }}" alt="{{ recipe.user.username }}의 프로필 이미지">
             {% else %}
-            <img class="recipe__user__image" src="{% static 'image/no_image432.png' %}" alt="유저 프로필 사진 없음">
+            <img class="recipe__user__image" src="{% static 'image/solo.png' %}" alt="유저 프로필 사진 없음">
             {% endif %}
           </div>
           <div>
@@ -276,6 +276,7 @@
   </div>
 {% comment %} 이미지 상세 모달 {% endcomment %}
 {% include 'recipes/detail_image_modal.html' %}
+{% include 'recipes/detail_delete_modal.html' %}
 
 {% endblock content %}
 
